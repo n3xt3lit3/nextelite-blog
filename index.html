@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>uke 1. / n3xt3lit3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<!-- l1ft0ff — Mission Tundra IV -->
+<!-- single-source bilingual. norwegian is the master. -->
+<!-- 18 frames. one week. everything starts here. -->
+<!-- rhode bones. bl0g:// voice. the weight contrast is the magic. -->
+<!-- if you found this, you're paying attention. good. -->
+<style>
+:root {
+  --bg: #F0EDE8;
+  --bg-warm: #F5F3F0;
+  --text: #4A4A4A;
+  --text-light: #8A8A8A;
+  --text-dark: #2A2A2A;
+  --accent: #C4A882;
+  --border: rgba(74, 74, 74, 0.1);
+  --side: clamp(20px, 6vw, 120px);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --heading: 'Clash Display', 'Inter', -apple-system, sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.75;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(74, 74, 74, 0.15);
+  color: var(--text-dark);
+}
+
+/* ═══════════════════════════════════════
+   NAV — Rhode style: Libre Franklin uppercase, spaced
+   ═══════════════════════════════════════ */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px var(--side);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.3s ease;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 28px;
+  flex: 1;
+}
+
+.nav-right {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: var(--heading);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-dark);
+}
+
+.nav-logo {
+  font-family: var(--heading);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  text-decoration: none;
+  padding: 0 40px;
+  white-space: nowrap;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.lang-btn {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 10px 6px;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.lang-btn.active {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.lang-btn:hover {
+  color: var(--text-dark);
+}
+
+.lang-sep {
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 300;
+  user-select: none;
+}
+
+.mobile-lang {
+  display: none;
+}
+
+/* ═══════════════════════════════════════
+   MAIN CONTENT
+   ═══════════════════════════════════════ */
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 140px var(--side) 120px;
+}
+
+/* ═══════════════════════════════════════
+   ARTICLE HEADER — Playfair Display, light weight
+   ═══════════════════════════════════════ */
+
+.article-meta {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+.article-title {
+  font-family: var(--heading);
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+
+/* ═══════════════════════════════════════
+   SECTION HEADINGS — Playfair Display, light
+   ═══════════════════════════════════════ */
+
+.section-label {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 80px;
+  margin-bottom: 32px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════
+   ARTICLE BODY — Libre Franklin, regular weight
+   ═══════════════════════════════════════ */
+
+.article-body p {
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+.article-body .fade-in + .fade-in {
+  margin-top: 16px;
+}
+
+.article-body .section-break {
+  margin-top: 64px;
+  margin-bottom: 32px;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.article-body p:last-child {
+  margin-bottom: 0;
+}
+
+.article-body .emphasis {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.article-body .pull-quote {
+  font-family: var(--font);
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--text-dark);
+  margin: 56px 0;
+  padding-left: 24px;
+  border-left: 3px solid var(--text-light);
+}
+
+/* ═══════════════════════════════════════
+   IMAGES
+   ═══════════════════════════════════════ */
+
+.article-image {
+  margin: 48px 0;
+  overflow: hidden;
+}
+
+.article-image img {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+.article-image figcaption {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+/* Image grid for gym photos */
+.image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 48px 0;
+}
+
+.image-pair img {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+.image-pair figcaption {
+  grid-column: 1 / -1;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-top: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════
+   SIGN OFF
+   ═══════════════════════════════════════ */
+
+.sign-off {
+  margin-top: 64px;
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════════════════════
+   TAGLINE — Rhode editorial statement
+   ═══════════════════════════════════════ */
+
+.tagline {
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.tagline-code {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 40px;
+}
+
+.tagline-statement {
+  font-family: var(--heading);
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+
+footer {
+  text-align: center;
+  padding: 60px var(--side) 40px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-logo {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.footer-sub {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════
+   FADE-IN ANIMATIONS
+   ═══════════════════════════════════════ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  nav {
+    padding: 16px 20px;
+  }
+
+  .nav-left {
+    display: none;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .nav-logo {
+    padding: 0;
+    font-size: 16px;
+  }
+
+  .desktop-lang {
+    display: none;
+  }
+
+  .mobile-lang {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+  }
+
+  main {
+    padding: 110px 24px 80px;
+  }
+
+  .article-title {
+    margin-bottom: 36px;
+  }
+
+  .pull-quote {
+    margin: 40px 0;
+  }
+
+  .article-image {
+    margin: 36px -24px;
+  }
+
+  .article-image img {
+    border-radius: 0;
+  }
+
+  .article-image figcaption {
+    padding: 0 24px;
+  }
+
+  .image-pair {
+    margin: 36px -24px;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .image-pair img {
+    border-radius: 0;
+  }
+
+  .image-pair figcaption {
+    padding: 0 24px;
+  }
+
+  .section-label {
+    margin-top: 56px;
+    padding-top: 36px;
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 100px 20px 60px;
+  }
+
+  .article-image {
+    margin: 32px -20px;
+  }
+
+  .article-image figcaption {
+    padding: 0 20px;
+  }
+
+  .image-pair {
+    margin: 32px -20px;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .image-pair img {
+    border-radius: 0;
+  }
+
+  .image-pair figcaption {
+    padding: 0 20px;
+  }
+}
+</style>
+</head>
+<body data-lang="no">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#" class="nav-link">journal</a>
+    <a href="#" class="nav-link">protokoll</a>
+  </div>
+  <a href="#" class="nav-logo">n3xt3lit3</a>
+  <div class="nav-right">
+    <a href="#" class="nav-link">om</a>
+    <div class="lang-toggle desktop-lang">
+      <button class="lang-btn active" data-lang-btn="no">NO</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" data-lang-btn="en">EN</button>
+    </div>
+  </div>
+  <div class="lang-toggle mobile-lang">
+    <button class="lang-btn active" data-lang-btn="no">NO</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang-btn="en">EN</button>
+  </div>
+</nav>
+
+<main>
+  <!-- Single article — rendered by JS from bilingual content array -->
+  <article id="blog-content"></article>
+</main>
+
+<footer>
+  <div class="footer-logo">n3xt3lit3</div>
+  <p class="footer-sub">uke 1 / 2026</p>
+</footer>
+
+<script>
+// l1ft0ff — Mission Tundra IV — single-source bilingual system
+// norwegian is the master. english rides alongside. sync is visual.
+console.log('%c05:45. the tray is ready.', 'color: #8A8A8A; font-family: Libre Franklin, sans-serif; font-size: 12px;');
+console.log('%cn3xt3lit3 — Mission Tundra IV — single-source translation layer', 'color: #4A4A4A; font-family: Libre Franklin, sans-serif; font-size: 10px;');
+// the weight contrast is the magic. light headings. heavy nav tracking. rhode knows.
+
+// ═══════════════════════════════════════════════════════════════
+// CONTENT — Single source of truth. Norwegian is master.
+// Edit NO first, then update EN beside it. They sit together.
+// ═══════════════════════════════════════════════════════════════
+
+const blogContent = [
+
+  // ─── HEADER ───
+  {
+    type: 'header',
+    meta: {
+      no: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len',
+      en: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len'
+    },
+    title: {
+      no: 'uke 1.',
+      en: 'week 1.'
+    },
+    date: {
+      no: 'April 2026',
+      en: 'April 2026'
+    }
+  },
+
+  // ─── INTRO ───
+  {
+    type: 'tagline-code',
+    no: '// code your next level',
+    en: '// code your next level'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg var ni \u00E5r da NRK filmet meg for Energikampen. Siden har kroppen min v\u00E6rt gjennom alt. Korsb\u00E5nd, ankel med metall, seks klubber og fem byer fra B\u00E6rum til Myre. N\u00E5 bokser jeg.',
+    en: 'I was nine when NRK filmed me for Energikampen. Since then my body has been through everything. ACL, ankle with metal, six clubs and five cities from B\u00E6rum to Myre. Now I box.'
+  },
+  {
+    type: 'tagline-statement',
+    no: 'not here to be pretty. here to be dangerous.',
+    en: 'not here to be pretty. here to be dangerous.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Dette er uke en.',
+    en: 'This is week one.'
+  },
+  {
+    type: 'image',
+    src: 'img/gym-6281.jpg',
+    alt: {
+      no: 'Hoppetau fra Timeless Jump',
+      en: 'Jump ropes from Timeless Jump'
+    },
+    caption: {
+      no: 'Timeless Jump. Fem tau. Null unnskyldninger.',
+      en: 'Timeless Jump. Five ropes. Zero excuses.'
+    }
+  },
+
+  // ─── ROMMET / THE ROOM (first section — strongest content) ───
+  {
+    type: 'section-label',
+    no: 'rommet.',
+    en: 'the room.'
+  },
+  {
+    type: 'paragraph',
+    no: 'NextElite. Myre, Vester\u00E5len. Det er ikke et fancy gym. Det er et rom med sekker, hansker og folk som m\u00F8ter opp.',
+    en: 'NextElite. Myre, Vester\u00E5len. It is not a fancy gym. It is a room with bags, gloves, and people who show up.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg bokser. Ikke fordi det er trendy. Fordi det er det eneste som f\u00E5r ADHD-hjernen min til \u00E5 bli stille. N\u00E5r noen kaster slag mot deg, tenker du ikke p\u00E5 e-post.',
+    en: 'I box. Not because it is trendy. Because it is the only thing that makes my ADHD brain go quiet. When someone throws a punch at you, you do not think about email.'
+  },
+  {
+    type: 'image-pair',
+    images: [
+      { src: 'img/gym-6228.jpg', alt: { no: 'Trening i bokseringen', en: 'Training in the ring' } },
+      { src: 'img/thumb-6231.jpg', alt: { no: 'Boksing', en: 'Boxing' } }
+    ]
+  },
+  {
+    type: 'paragraph',
+    no: 'Treningssenteret her er ikke Instagram-vennlig. Det er kaldt, det er enkelt, det fungerer. Det er folk som trener fordi de vil bli bedre, ikke fordi de vil legge det ut. Det passer meg.',
+    en: 'The gym here is not Instagram-friendly. It is cold, it is simple, it works. It is people who train because they want to get better, not because they want to post it. That suits me.'
+  },
+  {
+    type: 'image-pair',
+    images: [
+      { src: 'img/gym-6238.jpg', alt: { no: 'Trening', en: 'Training' } },
+      { src: 'img/gym-6253.jpg', alt: { no: 'I ringen', en: 'In the ring' } }
+    ]
+  },
+  {
+    type: 'image',
+    src: 'img/thumb-6272.jpg',
+    alt: {
+      no: 'Boksing p\u00E5 \u00D8ksnes Bokseklubb',
+      en: 'Boxing at Oksnes Boxing Club'
+    }
+  },
+  {
+    type: 'image-pair',
+    images: [
+      { src: 'img/gym-6285.jpg', alt: { no: 'Etter trening', en: 'After training' } },
+      { src: 'img/gym-6380.jpg', alt: { no: '\u00D8ksnes Bokseklubb', en: 'Oksnes Boxing Club' } }
+    ]
+  },
+
+  // ─── BRETTET / THE TRAY ───
+  {
+    type: 'section-label',
+    no: 'brettet.',
+    en: 'the tray.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg st\u00E5r opp 05:45. Hjernen min fungerer ikke klokka seks om morgenen. Det er hele poenget.',
+    en: 'I wake up at 05:45. My brain does not work at six in the morning. That is the whole point.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Brettet er et system for en hjerne som ikke kan ta beslutninger f\u00F8r klokka ni. Alt ordnes klart p\u00E5 morgenen. To bokser med supplementer, kreatin, frosne b\u00E6r, varmt vann med Baja Gold havsalt, hydrogenvann. Hele greia p\u00E5 et brett. Brettet g\u00E5r med meg til badet. Morgenrutinen skjer der, ikke p\u00E5 kj\u00F8kkenet.',
+    en: 'The tray is a system for a brain that cannot make decisions before nine. Everything gets prepped in the morning. Two tins of supplements, creatine, frozen berries, warm water with Baja Gold sea salt, hydrogen water. All of it on a tray. The board comes with me to the bathroom. The morning routine happens there, not in the kitchen.'
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-breakfast-tray-overview-asset-260406-v01.jpg',
+    alt: {
+      no: 'Brettet ovenfra, hele morgenoppsettet',
+      en: 'The tray from above, full morning setup'
+    },
+    caption: {
+      no: 'Brettet. F\u00F8rste handling etter alarmen.',
+      en: 'The tray. First thing after the alarm.'
+    }
+  },
+  {
+    type: 'paragraph',
+    no: 'F\u00F8r dette var morgenene mine kaos. St\u00E5 opp, stirre i veggen, scrolle telefonen i 40 minutter, glemme \u00E5 spise, ta supplementer klokka to p\u00E5 ettermiddagen. Eller aldri. ADHD-hjernen min brukte all sin energi p\u00E5 \u00E5 bestemme hva den skulle gj\u00F8re. Og svaret var som regel: ingenting.',
+    en: 'Before this, my mornings were chaos. Wake up, stare at the wall, scroll my phone for 40 minutes, forget to eat, take supplements at two in the afternoon. Or never. My ADHD brain spent all its energy deciding what to do. And the answer was usually: nothing.'
+  },
+  {
+    type: 'pull-quote',
+    no: 'Brettet fjernet alt det.',
+    en: 'The tray removed all of that.'
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-supplement-cups-layout-asset-260406-v01.jpg',
+    alt: {
+      no: 'Supplementboksene p\u00E5 brettet',
+      en: 'Supplement tins on the tray'
+    },
+    caption: {
+      no: 'To bokser. Morgen og kveld. Ingen beslutninger.',
+      en: 'Two tins. Morning and evening. No decisions.'
+    }
+  },
+  {
+    type: 'paragraph',
+    no: 'N\u00E5 er morgenene mine identiske. Ikke fordi jeg er disiplinert. Fordi jeg fjernet behovet for disiplin. Det er et brett. Du b\u00E6rer det. Ferdig.',
+    en: 'Now my mornings are identical. Not because I am disciplined. Because I removed the need for discipline. It is a tray. You carry it. Done.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Bryan Johnson bruker Blueprint til \u00E5 reversere aldring. Hele systemet hans bygger p\u00E5 ett prinsipp: fjern valg, gj\u00F8r det automatisk. Jeg bygger mitt eget system. Mye mindre skala, men samme logikk. Start med det som faktisk \u00F8delegger dagen din, og fiks det.',
+    en: 'Bryan Johnson uses Blueprint to reverse aging. His entire system is built on one principle: remove choices, make it automatic. I am building my own system. Much smaller scale, but the same logic. Start with the thing that actually ruins your day, and fix it.'
+  },
+  {
+    type: 'paragraph',
+    no: 'For meg var det morgenen. S\u00E5 jeg begynte der.',
+    en: 'For me, that was the morning. So I started there.'
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-creatine-supplement-asset-260406-v01.jpg',
+    alt: {
+      no: 'Kreatin p\u00E5 brettet',
+      en: 'Creatine on the tray'
+    },
+    caption: {
+      no: 'Kreatin. Del av morgenprotokollen.',
+      en: 'Creatine. Part of the morning protocol.'
+    }
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-candle-label-asset-260406-v01.jpg',
+    alt: {
+      no: 'Hydrogenvann p\u00E5 brettet',
+      en: 'Hydrogen water generator'
+    },
+    caption: {
+      no: 'Hydrogenvann. Del av morgenprotokollen.',
+      en: 'Hydrogen water. Part of the morning protocol.'
+    }
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-coffee-kimchi-closeup-asset-260406-v01.jpg',
+    alt: {
+      no: 'Kaffe og kimchi',
+      en: 'Coffee and kimchi'
+    },
+    caption: {
+      no: 'Kaffe og kimchi. Tarmhelse er ikke valgfritt.',
+      en: 'Coffee and kimchi. Gut health is not optional.'
+    }
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-morning-supplements-topdown-asset-260406-v01.jpg',
+    alt: {
+      no: 'Alle supplementene sett ovenfra',
+      en: 'All supplements from above'
+    },
+    caption: {
+      no: 'Hele stacken. Under utvikling.',
+      en: 'The full stack. Work in progress.'
+    }
+  },
+
+  // ─── SUPPLEMENTER / SUPPLEMENTS ───
+  {
+    type: 'section-label',
+    no: 'supplementer.',
+    en: 'supplements.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Stacken er ikke ferdig. Det er viktig \u00E5 si.',
+    en: 'The stack is not finished. That is important to say.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg tar supplementer som en del av morgenprotokollen. Noen er l\u00E5st. Resten er research. Jeg leser, jeg tester, jeg justerer. Blodpr\u00F8vene er ikke tatt enn\u00E5. Fastlegen sjekker mulighetene. S\u00E5 akkurat n\u00E5 er dette basert p\u00E5 lesing, ikke data. N\u00E5r biomark\u00F8rene kommer, endrer stacken seg. Kanskje drastisk.',
+    en: 'I take supplements as part of the morning protocol. Some are locked in. The rest is research. I read, I test, I adjust. Blood work hasn\u2019t been done yet. Working with my doctor to figure out the options. So right now this is based on reading, not data. When the biomarkers come in, the stack changes. Maybe drastically.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg publiserer den fulle protokollen n\u00E5r den faktisk er basert p\u00E5 noe mer enn Google og optimisme.',
+    en: 'I will publish the full protocol when it is actually based on something more than Google and optimism.'
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-agelab-nr-nmn-asset-260403-v01.jpg',
+    alt: {
+      no: 'AgeLab NR og NMN supplementer',
+      en: 'AgeLab NR and NMN supplements'
+    },
+    caption: {
+      no: 'NR og NMN fra AgeLab. Venter p\u00E5 blodpr\u00F8ver.',
+      en: 'NR and NMN from AgeLab. Waiting for blood work.'
+    }
+  },
+
+  // ─── KRIGER ───
+  {
+    type: 'section-label',
+    no: 'kriger.',
+    en: 'kriger.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Kriger er hunden min. Sch\u00E6fer. Hun er i recovery etter operasjon. 6-12 uker. Hun burde hvile. Hun vet det ikke selv.',
+    en: 'Kriger is my dog. German Shepherd. She is in recovery after surgery. 6-12 weeks. She should be resting. She does not know that.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Denne uka l\u00E5 hun i buret sitt og s\u00E5 p\u00E5 meg bokse til en coach p\u00E5 laptopen. Fra buret sitt. Som om det var hennes egen kamp.',
+    en: 'This week she lay in her crate and watched me box to a coach on the laptop. From her crate. Like it was her own fight.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Blue er den andre hunden v\u00E5r. Ogs\u00E5 sch\u00E6fer, eldre enn Kriger. Hun er den som beskytter flokken.',
+    en: 'Blue is our other dog. Also a German Shepherd, older than Kriger. She is the one who protects the pack.'
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-dog-crate-laptop-asset-260405-v01.jpg',
+    alt: {
+      no: 'Kriger i buret, ser mot skjermen',
+      en: 'Kriger in the crate, looking at the screen'
+    },
+    caption: {
+      no: 'Kriger ser p\u00E5 boksing fra buret. Recovery-modus.',
+      en: 'Kriger watching boxing from the crate. Recovery mode.'
+    }
+  },
+  {
+    type: 'image',
+    src: 'img/f1l3.sys-kriger-boxing-gear-closeup-asset-260323-v01.jpg',
+    alt: {
+      no: 'Kriger med bokseutstyr',
+      en: 'Blue with boxing gear'
+    },
+    caption: {
+      no: 'Blue. Den eldste. Den som passer p\u00E5 flokken.',
+      en: 'Blue. The eldest. The one who watches over the pack.'
+    }
+  },
+
+  // ─── VEIEN VIDERE / THE ROAD AHEAD ───
+  {
+    type: 'section-label',
+    no: 'veien videre.',
+    en: 'the road ahead.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Uke en er dokumentert. Det meste er halvveis. Brettet fungerer. Supplementene er uferdig. Blodpr\u00F8vene venter. Boksingen er det eneste som sitter hundre prosent.',
+    en: 'Week one is documented. Most of it is halfway there. The tray works. The supplements are unfinished. The blood work is waiting. Boxing is the only thing that is one hundred percent locked in.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Neste uke: f\u00F8rste samtale med fastlegen om blodpr\u00F8ver, protokollen justeres, treningsloggen starter. Og kanskje Kriger f\u00E5r g\u00E5 en tur uten \u00E5 dra i b\u00E5ndet.',
+    en: 'Next week: first conversation with the doctor about blood work, protocol gets adjusted, training log starts. And maybe Kriger gets to go for a walk without pulling the leash.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Dette er starten. Ikke produktet. Prosessen.',
+    en: 'This is the start. Not the product. The process.'
+  },
+  {
+    type: 'sign-off',
+    text: '<333'
+  }
+];
+
+// ═══════════════════════════════════════
+// RENDERER — Builds HTML from content array
+// ═══════════════════════════════════════
+
+let currentLang = 'no';
+
+function renderBlog(lang) {
+  currentLang = lang;
+  const container = document.getElementById('blog-content');
+  let html = '';
+
+  blogContent.forEach((block, i) => {
+    switch (block.type) {
+
+      case 'header':
+        html += `<div class="fade-in">
+          <p class="article-meta">${block.meta[lang]}</p>
+          <h1 class="article-title">${block.title[lang]}</h1>
+          <p class="article-meta" style="margin-top: 8px;">${block.date[lang]}</p>
+        </div>
+        <div class="article-body">`;
+        break;
+
+      case 'paragraph':
+        html += `<div class="fade-in">
+          <p>${block[lang]}</p>
+        </div>`;
+        break;
+
+      case 'tagline-code':
+        html += `<div class="fade-in">
+          <p class="tagline tagline-code">${block[lang]}</p>
+        </div>`;
+        break;
+
+      case 'tagline-statement':
+        html += `<div class="fade-in">
+          <p class="tagline-statement">${block[lang]}</p>
+        </div>`;
+        break;
+
+      case 'section-label':
+        html += `<div class="fade-in">
+          <p class="section-label">${block[lang]}</p>
+        </div>`;
+        break;
+
+      case 'pull-quote':
+        html += `<div class="fade-in">
+          <p class="pull-quote">${block[lang]}</p>
+        </div>`;
+        break;
+
+      case 'image':
+        html += `<figure class="article-image fade-in">
+          <img src="${block.src}" alt="${block.alt[lang]}" loading="lazy">`;
+        if (block.caption) {
+          html += `<figcaption>${block.caption[lang]}</figcaption>`;
+        }
+        html += `</figure>`;
+        break;
+
+      case 'image-pair':
+        html += `<figure class="image-pair fade-in">`;
+        block.images.forEach(img => {
+          html += `<img src="${img.src}" alt="${img.alt[lang]}" loading="lazy">`;
+        });
+        if (block.caption) {
+          html += `<figcaption>${block.caption[lang]}</figcaption>`;
+        }
+        html += `</figure>`;
+        break;
+
+      case 'sign-off':
+        html += `<div class="fade-in">
+          <p class="sign-off">&lt;333</p>
+        </div>`;
+        // Close .article-body
+        html += `</div>`;
+        break;
+    }
+  });
+
+  container.innerHTML = html;
+
+  // Re-attach intersection observer to new elements
+  container.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// ═══════════════════════════════════════
+// INTERSECTION OBSERVER — fade-in on scroll
+// ═══════════════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+// ═══════════════════════════════════════
+// LANGUAGE TOGGLE
+// ═══════════════════════════════════════
+const langBtns = document.querySelectorAll('[data-lang-btn]');
+
+langBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.getAttribute('data-lang-btn');
+    document.body.setAttribute('data-lang', lang);
+
+    langBtns.forEach(b => {
+      b.classList.remove('active');
+      if (b.getAttribute('data-lang-btn') === lang) b.classList.add('active');
+    });
+
+    // Update html lang attribute
+    document.documentElement.lang = lang === 'no' ? 'no' : 'en';
+
+    // Re-render content in new language
+    renderBlog(lang);
+
+    // Scroll to top on language switch
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// ═══════════════════════════════════════
+// NAV HIDE ON SCROLL DOWN, SHOW ON UP
+// ═══════════════════════════════════════
+let lastScroll = 0;
+const navEl = document.querySelector('nav');
+
+window.addEventListener('scroll', () => {
+  const current = window.scrollY;
+  if (current > lastScroll && current > 100) {
+    navEl.style.transform = 'translateY(-100%)';
+  } else {
+    navEl.style.transform = 'translateY(0)';
+  }
+  lastScroll = current;
+}, { passive: true });
+
+// ═══════════════════════════════════════
+// INITIAL RENDER
+// ═══════════════════════════════════════
+renderBlog('no');
+
+</script>
+
+</body>
+</html>
