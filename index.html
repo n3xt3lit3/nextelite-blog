@@ -514,8 +514,7 @@ footer {
 
 .inline-promo a {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
   text-decoration: none;
   color: var(--text);
   border: 1px solid var(--border);
@@ -531,15 +530,16 @@ footer {
 }
 
 .inline-promo-img {
-  width: 90px;
-  min-height: 90px;
-  object-fit: cover;
-  flex-shrink: 0;
-  filter: grayscale(30%);
+  width: 100%;
+  padding: 20px;
+  object-fit: contain;
+  background: #1a1a1a;
+  box-sizing: border-box;
 }
 
 .inline-promo-body {
-  padding: 14px 16px 14px 0;
+  padding: 14px 20px 16px;
+  text-align: center;
 }
 
 .inline-promo-label {
