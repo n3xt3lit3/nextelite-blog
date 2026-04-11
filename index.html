@@ -310,7 +310,8 @@ main {
   overflow: hidden;
 }
 
-.article-image img {
+.article-image img,
+.article-image video {
   width: 100%;
   max-height: 50vh;
   object-fit: cover;
@@ -728,7 +729,8 @@ footer {
     margin: 36px -24px;
   }
 
-  .article-image img {
+  .article-image img,
+  .article-image video {
     border-radius: 0;
   }
 
@@ -1766,6 +1768,20 @@ function renderBlog(lang) {
         }
         html += `</figure>`;
         break;
+
+      // l1ft0ff // mission voyager // video block added 260411
+      case 'video': {
+        const posterAttr = block.poster ? ` poster="${block.poster}"` : '';
+        const mutedAttr = block.audio === false ? ' muted' : '';
+        const altText = block.alt && block.alt[lang] ? block.alt[lang] : '';
+        html += `<figure class="article-image fade-in">
+          <video src="${block.src}"${posterAttr} controls preload="metadata" playsinline${mutedAttr} aria-label="${altText}"></video>`;
+        if (block.caption) {
+          html += `<figcaption>${block.caption[lang]}</figcaption>`;
+        }
+        html += `</figure>`;
+        break;
+      }
 
       case 'image-pair':
         html += `<figure class="image-pair fade-in">`;

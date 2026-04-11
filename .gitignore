@@ -1,0 +1,13 @@
+# l1ft0ff // mission voyager
+# never commit source video files. only optimized mp4 outputs are allowed.
+.DS_Store
+
+# source videos (raw iphone captures) stay out of git
+vid/*.mov
+vid/*.MOV
+vid/*.mkv
+vid/*.avi
+vid/*.m4v
+
+# allow optimized mp4 outputs (whitelist-style)
+!vid/*.mp4
