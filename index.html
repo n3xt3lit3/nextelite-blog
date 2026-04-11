@@ -1657,9 +1657,396 @@ let blogContent = [
 ];
 
 // ═══════════════════════════════════════
+// POST - forste kamp. / first fight.
+// l1ft0ff // mission bodo // shipped 260411
+// Arctic Boxing Bodo first fight recap
+// ═══════════════════════════════════════
+const postForsteKampContent = [
+
+  // ─── HEADER ───
+  {
+    type: 'header',
+    meta: {
+      no: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len',
+      en: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len'
+    },
+    title: {
+      no: 'f\u00F8rste kamp.',
+      en: 'first fight.'
+    },
+    date: {
+      no: 'Februar 2026',
+      en: 'February 2026'
+    }
+  },
+
+  // ─── HERO (right under title) ───
+  {
+    type: 'image',
+    src: 'img/boxing-hero-mirror-redblue.jpg',
+    alt: {
+      no: 'Nemine i speilet f\u00F8r kampen, treningst\u00F8y r\u00F8dt og bl\u00E5tt',
+      en: 'Nemine in the mirror before the fight, red and blue training kit'
+    },
+    caption: {
+      no: 'speilet f\u00F8r kampen. r\u00F8d og bl\u00E5.',
+      en: 'mirror before the fight. red and blue.'
+    }
+  },
+
+  // ─── INTRO ───
+  {
+    type: 'tagline-code',
+    no: '// code your next level',
+    en: '// code your next level'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg gikk fra hjerneskade til boksekamp. F\u00F8rste kamp noensinne, split decision 2-1 i tap, og seieren var at alle var med p\u00E5 reisen til f\u00F8rste kamp.',
+    en: 'I went from brain injury to boxing match. First fight ever, split decision 2-1 loss, and the win was that everyone came along for the ride to the first fight.'
+  },
+  {
+    type: 'tagline-statement',
+    no: 'm\u00E5let var ikke kampen. m\u00E5let var \u00E5 gjennomf\u00F8re.',
+    en: 'the goal was not the fight. the goal was to show up.'
+  },
+
+  // IMG 1 - opener, sets place
+  {
+    type: 'image',
+    src: 'img/boxing-bodo-harbor-snow.jpg',
+    alt: {
+      no: 'Bod\u00F8 havn i februarsn\u00F8',
+      en: 'Bod\u00F8 harbor in February snow'
+    },
+    caption: {
+      no: 'bod\u00F8 i februar. sn\u00F8, havn, ro f\u00F8r alt annet.',
+      en: 'bod\u00F8 in february. snow, harbor, calm before everything else.'
+    }
+  },
+
+  // ─── REGLENE ───
+  {
+    type: 'section-label',
+    no: 'reglene.',
+    en: 'the rules.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Norges Bokseforbund f\u00F8lger World Boxing. Det har de gjort siden de br\u00F8t med IBA i 2023. Regelboka er fra november 2024 og er den samme som i resten av Europa som har gjort det samme valget.',
+    en: 'Norges Bokseforbund follows World Boxing. They have since breaking with IBA in 2023. The rulebook is from November 2024 and it is the same one used by the rest of Europe that made the same choice.'
+  },
+  {
+    type: 'paragraph',
+    no: 'For kvinner betyr det tre ting. Hjelm er obligatorisk hele karrieren. Hanskene er ti unser uansett vektklasse. Innveiing er samme dag som kampen, ingen rehydrering, minimum tre timer f\u00F8r f\u00F8rste kamp g\u00E5r.',
+    en: 'For women it means three things. Headgear is mandatory for the entire career. Gloves are ten ounces across every weight class. Weigh-in is the morning of the fight, no rehydration window, minimum three hours before the first bout of the day.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Hjelmregelen er den folk lurer p\u00E5. Svaret er ikke "til du har g\u00E5tt ti kamper". Svaret er alltid. Elitemenn boksa uten hjelm fra 2013. Kvinner fortsatte med hjelm. I juni 2024 stemte IBA for \u00E5 fjerne hjelm for kvinner ogs\u00E5. Norge er ikke i IBA. Norge er i World Boxing. Og World Boxing krever fortsatt hjelm p\u00E5 alle kvinner i alle aldersklasser. Jeg gikk min f\u00F8rste kamp med hjelm fordi jeg er kvinne i Norge i 2026. Ikke fordi jeg var debutant.',
+    en: 'The headgear rule is the one people ask about. The answer is not "until you have ten fights on your record". The answer is always. Elite men stopped wearing headgear in 2013. Women kept theirs. In June 2024 IBA voted to remove headgear for women too. Norway is not in IBA. Norway is in World Boxing. And World Boxing still requires headgear on every woman in every age class. I fought my first fight in headgear because I am a woman in Norway in 2026. Not because I was a debutant.'
+  },
+  {
+    type: 'paragraph',
+    no: 'F\u00F8rste kampen min er kanskje en av de siste i en bestemt epoke. World Boxing kommer sannsynligvis til \u00E5 f\u00F8lge etter IBA innen et par \u00E5r. Men akkurat n\u00E5 er hjelmen der. Og det er greit. Hodet mitt har f\u00E5tt nok juling av medisiner. Det kan ligge i skum litt til.',
+    en: 'My first fight may be one of the last in a specific era. World Boxing will probably follow IBA within a couple of years. But right now the headgear is on. And that is fine. My head has taken enough damage from medication. It can sit in foam a little longer.'
+  },
+
+  // IMG 2 - headgear close
+  {
+    type: 'image',
+    src: 'img/boxing-headgear-video-frame.jpg',
+    alt: {
+      no: 'Headgear p\u00E5, frame fra video',
+      en: 'Headgear on, frame from video'
+    },
+    caption: {
+      no: 'hjelm. obligatorisk for kvinner i norge. hele karrieren.',
+      en: 'headgear. mandatory for women in norway. the entire career.'
+    }
+  },
+
+  // IMG 3 - gloves close
+  {
+    type: 'image',
+    src: 'img/boxing-title-gloves.jpg',
+    alt: {
+      no: 'Title-hansker, ti unser',
+      en: 'Title gloves, ten ounces'
+    },
+    caption: {
+      no: 'title. ti unser. samme for alle kvinner.',
+      en: 'title. ten ounces. same for every woman.'
+    }
+  },
+
+  // ─── VEKTKLASSE ───
+  {
+    type: 'section-label',
+    no: 'vektklasse.',
+    en: 'weight class.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Nye vektklasser kom 1. januar 2025. Ti klasser i stedet for tolv, b\u00E5de menn og kvinner. Ved 63 kilo g\u00E5r jeg i W65 Welterweight. Grensa er over 60 og til og med 65. Jeg hadde g\u00E5tt opp fra 62 f\u00F8r kampen fordi jeg ville v\u00E6re n\u00E6rmere taket, ikke n\u00E6rmere gulvet.',
+    en: 'New weight classes came in on January 1, 2025. Ten categories instead of twelve, for both men and women. At 63 kilos I fight W65 Welterweight. The range is over 60 and up to 65. I had cut up from 62 before the fight because I wanted to be closer to the ceiling, not closer to the floor.'
+  },
+  {
+    type: 'paragraph',
+    no: 'F\u00F8rste innveiing. Samme morgen som kampen. Undert\u00F8y, vekt, en dame med klemmebrett. Motstanderen min var omtrent \u00E9n kilo tyngre. Jeg var litt irritert. Jeg hadde klart \u00E5 g\u00E5 opp, og hun var fortsatt over. Det var ikke masse, men det var nok til at jeg merka det inni meg f\u00F8r jeg gikk inn i ringen.',
+    en: 'First weigh-in. Same morning as the fight. Underwear, scale, a woman with a clipboard. My opponent was about one kilo heavier. I was a little irritated. I had managed to cut up, and she was still over me. It was not much. It was enough for me to feel it before I walked in.'
+  },
+
+  // IMG 4 - arctic pass
+  {
+    type: 'image',
+    src: 'img/boxing-arctic-pass.jpg',
+    alt: {
+      no: 'Arctic Boxing akkrediteringspass',
+      en: 'Arctic Boxing accreditation pass'
+    },
+    caption: {
+      no: 'passet. arctic boxing. bod\u00F8 bokseklubbs 40-\u00E5rsjubileum.',
+      en: 'the pass. arctic boxing. bod\u00F8 bokseklubb\u0027s 40-year anniversary.'
+    }
+  },
+
+  // ─── 3 NETTER UTEN SØVN ───
+  {
+    type: 'section-label',
+    no: '3 netter uten s\u00F8vn.',
+    en: '3 nights without sleep.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg bodde p\u00E5 hotell i Bod\u00F8 i tre dager f\u00F8r kampen. Hotellmaten var j\u00E6vlig god. Jeg valgte sunt, selvf\u00F8lgelig. Men jeg fikk virkelig kjenne p\u00E5 hvor vanskelig det er \u00E5 f\u00F8lge en Bryan Johnson-protokoll n\u00E5r hele milj\u00F8et rundt deg endrer seg p\u00E5 en gang. Alt er forskj\u00F8vet. Lyset i rommet. Temperaturen. Lydene i gangen. Kroppen vet at den ikke er hjemme.',
+    en: 'I stayed at a hotel in Bod\u00F8 for three days before the fight. The hotel food was very good. I chose healthy, obviously. But I really felt how hard it is to follow a Bryan Johnson protocol when the whole environment around you shifts at once. Everything is off. The light in the room. The temperature. The sounds in the hallway. The body knows it is not home.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg sov nesten ikke i tre netter. Ren adrenalin. Jeg hadde aldri st\u00E5tt i en ordentlig ring f\u00F8r. Jeg visste ikke hva kroppen min kom til \u00E5 gj\u00F8re. P\u00E5 toppen av det var jeg fortsatt p\u00E5 en medisin jeg ikke likte. Den fikk jeg etter at en annen medisin utl\u00F8ste psykose. En "ved behov"-medisin for den verste perioden. Jeg likte den ikke. Den hjalp meg gjennom den m\u00F8rkeste perioden. Men selv med den i kroppen sov jeg ikke. Adrenalinet kj\u00F8rte over alt.',
+    en: 'I barely slept for three nights. Pure adrenaline. I had never stood in a real ring before. I did not know what my body was going to do. On top of that I was still on a medication I disliked. I got it after a different medication triggered psychosis. It was a "when needed" medication for the worst stretch. I did not like it. It carried me through the darkest period. But even with it in my system I did not sleep. The adrenaline ran over everything.'
+  },
+
+  // IMG 5 - hotel gearbag
+  {
+    type: 'image',
+    src: 'img/boxing-hotel-gearbag.jpg',
+    alt: {
+      no: 'Hotellrom, bag og pass',
+      en: 'Hotel room, bag, pass'
+    },
+    caption: {
+      no: 'tre dager p\u00E5 hotell. sekken, passet, kropp uten s\u00F8vn.',
+      en: 'three days in a hotel. the bag, the pass, a body without sleep.'
+    }
+  },
+
+  {
+    type: 'pull-quote',
+    no: 'Jeg hadde bedre l\u00F8sninger n\u00E5. Da hadde jeg ikke det.',
+    en: 'I have better solutions now. Back then I did not.'
+  },
+
+  // IMG 6 - topten mirror
+  {
+    type: 'image',
+    src: 'img/boxing-topten-mirror.jpg',
+    alt: {
+      no: 'Hjelmen p\u00E5 i speilet, Topten',
+      en: 'Headgear on in the mirror, Topten'
+    },
+    caption: {
+      no: 'dagen selv. hjelmen p\u00E5.',
+      en: 'fight day. headgear on.'
+    }
+  },
+
+  // ─── RINGEN ───
+  {
+    type: 'section-label',
+    no: 'ringen.',
+    en: 'the ring.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Bod\u00F8 Spektrum. L\u00F8rdag 21. februar 2026. Bod\u00F8 Bokseklubbs 40-\u00E5rsjubileum. Tre runder \u00E0 to minutter. Tre dommere. Jeg var kvinne, welterweight, f\u00F8rste kamp noensinne.',
+    en: 'Bod\u00F8 Spektrum. Saturday February 21, 2026. Bod\u00F8 Bokseklubb 40-year anniversary. Three rounds, two minutes each. Three judges. I was a woman, welterweight, first fight ever.'
+  },
+
+  // IMG 7 - ring purple lights
+  {
+    type: 'image',
+    src: 'img/boxing-bodo-ring-purple.jpg',
+    alt: {
+      no: 'Bod\u00F8 Spektrum-ringen, lilla lys',
+      en: 'The Bod\u00F8 Spektrum ring, purple lights'
+    },
+    caption: {
+      no: 'bod\u00F8 spektrum. lilla lys. \u00E5tte minutter totalt.',
+      en: 'bod\u00F8 spektrum. purple lights. eight minutes total.'
+    }
+  },
+
+  {
+    type: 'paragraph',
+    no: 'De f\u00F8rste sekundene var gode. Jeg fikk inn noen slag. Jeg husker at jeg tenkte okei, jeg kan faktisk dette. S\u00E5 gikk jeg litt inn i sjokk. Hva faen er det jeg deltar p\u00E5. Det kom fra ingensteds. En bevissthet om at jeg sto i en ring, foran folk, med en som ville sl\u00E5 meg. Jeg fikk litt boksestopp. Ikke knockout. Bare hjernen som ikke fant tilbake til kroppen.',
+    en: 'The first seconds were good. I landed a few punches. I remember thinking okay, I can actually do this. Then I went into a bit of shock. What the hell am I doing here. It came from nowhere. A sudden awareness that I was standing in a ring, in front of people, with someone who wanted to hit me. I froze a little. Not knocked out. Just my brain not finding its way back to my body.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Siste runde henta jeg meg litt mer inn. Problemet var at tre netter med d\u00E5rlig s\u00F8vn og en hjerne p\u00E5 feil medisin ikke holder til tre runder. Jeg var sliten. Jeg tapte. Split decision 2-1. Tre dommere, to for henne, en for meg. Dommerne var heller ikke enige om hvem som vant.',
+    en: 'Last round I came back a little. The problem was that three nights without sleep and a brain on the wrong medication do not hold up for three rounds. I was exhausted. I lost. Split decision 2-1. Three judges, two for her, one for me. The judges did not agree on who won either.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Motstanderen min hadde g\u00E5tt fem eller seks kamper f\u00F8r. Jeg hadde g\u00E5tt null. Jeg har to-tre \u00E5r med trening totalt. Jeg har mer fotball i beina enn slag i nevene. Men jeg f\u00F8lte meg t\u00F8ffere i denne arenaen enn jeg noen gang har gjort i en annen. Jeg vant tilbake selvrespekten i den ringen, selv om jeg ikke vant kampen.',
+    en: 'My opponent had five or six fights on her record. I had zero. I have two or three years of training, total. I have more football in my legs than punches in my fists. But I felt tougher in this arena than I have in any other. I got my self-respect back in that ring, even if I did not win the fight.'
+  },
+
+  // IMG 8 - pokemon charizard
+  {
+    type: 'image',
+    src: 'img/boxing-pokemon-charizard.jpg',
+    alt: {
+      no: 'Pokemon Charizard-kort i h\u00E5nda',
+      en: 'Pokemon Charizard card in hand'
+    },
+    caption: {
+      no: 'jeg som pr\u00F8ver \u00E5 v\u00E6re logan paul. ungraded charizard, ikke original.',
+      en: 'me trying to be logan paul. ungraded charizard, not original.'
+    }
+  },
+
+  // ─── LAGET ───
+  {
+    type: 'section-label',
+    no: 'laget.',
+    en: 'the team.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg hadde med meg en dritkul gjeng. Barry, Tim, Henning, Malvin. Lena, mamma. Tommy, pappa. Edgar, leder i Hadsel Bokseklubb. Trenerne Maksym og Aleksandr. S\u00F8lvi. \u00D8ksnes Entrepren\u00F8r dekte hotell og mat. De var med hele veien.',
+    en: 'I had a wild crew with me. Barry, Tim, Henning, Malvin. Lena, mom. Tommy, dad. Edgar, president of Hadsel Bokseklubb. Coaches Maksym and Aleksandr. S\u00F8lvi. \u00D8ksnes Entrepren\u00F8r covered the hotel and the food. They were with me the whole way.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Vi planla alt for at det skulle v\u00E6re s\u00E5 enkelt som mulig \u00E5 g\u00E5 inn i ringen. Der jeg hadde nerver. Der jeg hadde selvtillit. Der jeg ikke selv forsto at her trenger jeg teamet. De forsto det.',
+    en: 'We planned everything to make walking into the ring as simple as possible. Where I had nerves. Where I had confidence. Where I did not even understand that I needed the team. They understood it.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Mamma og pappa passa hundene, Kriger og Blue, dagene f\u00F8r. Jeg fikk komme innom og klemme p\u00E5 dem, og det ga meg ro som jeg ikke visste at jeg trengte. Under kampen h\u00F8rte jeg pappa rope KOM IGJEN NEMINE fra sidelinja. Som den eneste stemmen som skar seg gjennom alt st\u00F8yet. Og ikke helvete om jeg ga opp.',
+    en: 'Mom and dad watched the dogs, Kriger and Blue, the days before. I got to come by and hug them, and it gave me a calm I did not know I needed. During the fight I heard dad shouting KOM IGJEN NEMINE from the sideline. The only voice that cut through everything. And no fucking way was I giving up.'
+  },
+  {
+    type: 'pull-quote',
+    no: 'Seiren var at alle var med p\u00E5 reisen til f\u00F8rste kamp.',
+    en: 'The win was that everyone came along for the ride to the first fight.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg kjente energien av det familieselskapet \u00D8E er. Og hvorfor det er noe. For med en gjeng som dette kan man virkelig f\u00E5 til alt.',
+    en: 'I felt the energy of the family company \u00D8E is. And why it is something. Because with a crew like this you can actually do anything.'
+  },
+
+  // IMG 9 - coach notebook mike tyson
+  {
+    type: 'image',
+    src: 'img/boxing-coach-notebook.jpg',
+    alt: {
+      no: 'Coach-notatbok med Mike Tyson p\u00E5 forsida',
+      en: 'Coach notebook with Mike Tyson on the cover'
+    },
+    caption: {
+      no: 'maksym og aleksandr. notatboka de tok med. mike tyson p\u00E5 forsida.',
+      en: 'maksym and aleksandr. the notebook they brought. mike tyson on the cover.'
+    }
+  },
+
+  // ─── ETTERPÅ ───
+  {
+    type: 'section-label',
+    no: 'etterp\u00E5.',
+    en: 'after.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Da det var over var jeg helt stoked. Det kjentes som da jeg hoppa fallskjerm p\u00E5 NTG. Kroppen gjorde alt den kunne i \u00E5tte minutter totalt, og s\u00E5 var det stille. Adrenalinet ble ikke borte. Det ble bare fri. Jeg var sliten og tapte og helt stoked p\u00E5 en gang. Det finnes ikke et ord for den tilstanden p\u00E5 norsk. Kanskje ikke p\u00E5 engelsk heller.',
+    en: 'When it was over I was completely stoked. It felt like jumping out of a plane at NTG. The body did everything it could for eight total minutes, and then it was quiet. The adrenaline did not leave. It just went free. I was tired and losing and completely stoked at the same time. There is no word for that state in Norwegian. Probably not in English either.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Flere sa at det var en j\u00E6vlig imponerende f\u00F8rste kamp. Jeg syntes selv jeg boksa en dritt kamp. Begge deler kan v\u00E6re sanne. Det er s\u00E5nn f\u00F8rstekamper er.',
+    en: 'Several people said it was a pretty impressive first fight. I personally thought I boxed a shit fight. Both things can be true. That is how first fights are.'
+  },
+
+  // IMG 10 - plaster eyebrow
+  {
+    type: 'image',
+    src: 'img/boxing-plaster-eyebrow.jpg',
+    alt: {
+      no: 'Plaster over \u00F8yenbrynet, ikke fra kampen',
+      en: 'Plaster over the eyebrow, not from the fight'
+    },
+    caption: {
+      no: 'plasteret er fra ei bild\u00F8r. ikke fra kampen. skadene skjer f\u00F8r trening, ikke i den.',
+      en: 'this plaster is from a car door. not from the fight. the real injuries happen before training, not during.'
+    }
+  },
+
+  // ─── NESTE KAMP ───
+  {
+    type: 'section-label',
+    no: 'neste kamp.',
+    en: 'next fight.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Neste kamp er full Bryan Johnson-rutine f\u00F8r kampen. Ingen medisin. Alt som g\u00E5r an for s\u00F8vnkvalitet. Flere sparringsrunder. Og helst en ordentlig ring \u00E5 prime hjernen i, ikke bare bag og pads. Hadsel Bokseklubb bygger et nytt anlegg med ordentlig ring. Jeg venter p\u00E5 det.',
+    en: 'Next fight is the full Bryan Johnson routine beforehand. No medication. Everything I can do for sleep quality. More sparring rounds. And ideally a proper ring to prime my brain in, not just bags and pads. Hadsel Bokseklubb is building a new facility with a real ring. I am waiting on that.'
+  },
+  {
+    type: 'paragraph',
+    no: 'Jeg begynner \u00E5 kjenne p\u00E5 f\u00F8lelser jeg ikke har hatt kontakt med p\u00E5 flere \u00E5r. Jeg har f\u00E5tt tilbake fysikken min. Den g\u00E5r fra hjerneskade til boksekamp er faktisk den jeg er mest stolt av til n\u00E5.',
+    en: 'I am starting to feel things I have not been in touch with for years. I have my physique back. The line from brain injury to boxing match is the one I am most proud of so far.'
+  },
+  {
+    type: 'pull-quote',
+    no: 'gikk fra hjerneskade til boksekamp. s\u00E5 det var det jeg gjorde.',
+    en: 'went from brain injury to boxing match. so that is what I did.'
+  },
+
+  // IMG 11 - nike shoes (final)
+  {
+    type: 'image',
+    src: 'img/boxing-nike-shoes.jpg',
+    alt: {
+      no: 'Nike boksesko, stilt frem',
+      en: 'Nike boxing shoes set out'
+    },
+    caption: {
+      no: 'skoene venter. neste kamp. ingen medisin. bedre s\u00F8vn.',
+      en: 'the shoes wait. next fight. no medication. better sleep.'
+    }
+  },
+
+  {
+    type: 'sign-off',
+    text: '<333'
+  }
+];
+
+// ═══════════════════════════════════════
 // POSTS REGISTRY (multi-post system)
 // ═══════════════════════════════════════
 const postsIndex = [
+  {
+    slug: 'forste-kamp',
+    title: { no: 'f\u00F8rste kamp.', en: 'first fight.' },
+    date: { no: 'Februar 2026', en: 'February 2026' },
+    content: postForsteKampContent
+  },
   {
     slug: 'pakken-kom',
     title: { no: 'pakken kom.', en: 'the order arrived.' },
@@ -1690,7 +2077,7 @@ function loadPost(slug) {
 }
 
 window.addEventListener('hashchange', () => {
-  const slug = location.hash.replace('#', '') || 'pakken-kom';
+  const slug = location.hash.replace('#', '') || 'forste-kamp';
   loadPost(slug);
 });
 
