@@ -1671,6 +1671,12 @@ const postsIndex = [
     title: { no: 'jeg flytta og flytta, for sporten var alltid fotball.', en: 'I kept moving. the sport was always football.' },
     date: { no: 'April 2026', en: 'April 2026' },
     content: postFotballContent
+  },
+  {
+    slug: 'forste-kamp',
+    title: { no: 'første kamp.', en: 'first fight.' },
+    date: { no: 'April 2026', en: 'April 2026' },
+    href: 'forste-kamp.html'  // standalone page — external link
   }
 ];
 
@@ -1679,6 +1685,11 @@ let currentPostIdx = 0;
 function loadPost(slug) {
   const idx = postsIndex.findIndex(p => p.slug === slug);
   if (idx < 0) return false;
+  // external page — navigate directly
+  if (postsIndex[idx].href) {
+    window.location.href = postsIndex[idx].href;
+    return false;
+  }
   currentPostIdx = idx;
   blogContent = postsIndex[idx].content;
   if (location.hash !== '#' + slug) {
@@ -1832,8 +1843,10 @@ function renderBlog(lang) {
   const otherIdx = (currentPostIdx + 1) % postsIndex.length;
   const other = postsIndex[otherIdx];
   const navLabel = lang === 'no' ? 'les ogs\u00E5' : 'also read';
+  const otherHref = other.href ? other.href : `#${other.slug}`;
+  const otherOnclick = other.href ? '' : ` onclick="return loadPost('${other.slug}');"`;
   html += `<div class="post-nav fade-in" role="navigation" aria-label="${lang === 'no' ? 'Andre innlegg' : 'Other posts'}">
-    <a href="#${other.slug}" class="post-nav-link" onclick="return loadPost('${other.slug}');">
+    <a href="${otherHref}" class="post-nav-link"${otherOnclick}>
       <span class="post-nav-label">${navLabel}</span>
       <span class="post-nav-title">${other.title[lang]}</span>
       <span class="post-nav-date">${other.date[lang]}</span>

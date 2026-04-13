@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="første kamp. / n3xt3lit3">
+<meta property="og:description" content="jeg gikk fra hjerneskade til boksekamp. ikke planlagt. bare nordlenning-logikk.">
+<meta property="og:image" content="https://n3xt3lit3.github.io/nextelite-blog/img/boxing-topten-mirror.jpg">
+<meta property="og:url" content="https://n3xt3lit3.github.io/nextelite-blog/forste-kamp.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="første kamp. / n3xt3lit3">
+<meta name="twitter:description" content="jeg gikk fra hjerneskade til boksekamp. ikke planlagt. bare nordlenning-logikk.">
+<meta name="twitter:image" content="https://n3xt3lit3.github.io/nextelite-blog/img/boxing-topten-mirror.jpg">
+<title>første kamp. / n3xt3lit3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<!-- l1ft0ff // mission vega // production build // v9 final -->
+<!-- px3l designed the bones. 8//8//8 wrote the words. r3dp3n polished the language. -->
+<!-- enc0re reviewed the code. grn//red cleared legal. CEO approved. -->
+<!-- norwegian months stay lowercase. that is not a bug. that is grammar. -->
+<style>
+:root {
+  --bg: #F0EDE8;
+  --bg-warm: #F5F3F0;
+  --text: #4A4A4A;
+  --text-light: #8A8A8A;
+  --text-dark: #2A2A2A;
+  --accent: #C4A882;
+  --border: rgba(74, 74, 74, 0.1);
+  --side: clamp(20px, 6vw, 120px);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --heading: 'Clash Display', 'Inter', -apple-system, sans-serif;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(74, 74, 74, 0.15);
+  color: var(--text-dark);
+}
+
+/* ═══════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════ */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px var(--side);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.3s ease;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 28px;
+  flex: 1;
+}
+
+.nav-right {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: var(--heading);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-dark);
+}
+
+.nav-logo {
+  font-family: var(--heading);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  text-decoration: none;
+  padding: 0 40px;
+  white-space: nowrap;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.lang-btn {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 10px 6px;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.lang-btn.active {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.lang-btn:hover {
+  color: var(--text-dark);
+}
+
+.lang-sep {
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 300;
+  user-select: none;
+}
+
+.mobile-lang {
+  display: none;
+}
+
+/* ═══════════════════════════════════════
+   MAIN
+   ═══════════════════════════════════════ */
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 140px var(--side) 120px;
+}
+
+.article-meta {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+.article-title {
+  font-family: var(--heading);
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+
+.article-header-image {
+  margin: 0 0 48px 0;
+  overflow: hidden;
+}
+.article-header-image img {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+.article-header-image figcaption {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+.section-label {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 80px;
+  margin-bottom: 32px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.article-body p {
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.85;
+}
+.article-body .fade-in + .fade-in {
+  margin-top: 16px;
+}
+.article-body .pull-quote {
+  font-family: var(--font);
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--text-dark);
+  margin: 56px 0;
+  padding-left: 24px;
+  border-left: 3px solid var(--text-light);
+}
+.article-body p:last-child { margin-bottom: 0; }
+
+.tagline-statement {
+  font-family: var(--heading);
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.tagline-code {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.article-image {
+  margin: 48px 0;
+  overflow: visible;
+  position: relative;
+}
+.article-image img,
+.article-image video {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+.article-image figcaption {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+.post-footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════
+   POST NAV
+   ═══════════════════════════════════════ */
+
+.post-nav {
+  margin-top: 96px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.post-nav-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 24px 0;
+  transition: opacity 0.2s ease;
+}
+
+.post-nav-link:hover {
+  opacity: 0.6;
+}
+
+.post-nav-label {
+  display: block;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.post-nav-title {
+  display: block;
+  font-family: var(--heading);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.post-nav-date {
+  display: block;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ═══════════════════════════════════════
+   SIDEBAR PROMO
+   ═══════════════════════════════════════ */
+
+.sidebar-promo {
+  position: fixed;
+  right: clamp(16px, 2.5vw, 40px);
+  top: 38%;
+  transform: translateY(-50%);
+  z-index: 50;
+  width: 160px;
+}
+
+.sidebar-promo a {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-warm);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-promo a:hover {
+  border-color: rgba(74, 74, 74, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-promo-img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(30%);
+  transition: filter 0.3s ease;
+}
+
+.sidebar-promo a:hover .sidebar-promo-img {
+  filter: grayscale(0%);
+}
+
+.sidebar-promo-body {
+  padding: 14px 14px 16px;
+}
+
+.sidebar-promo-label {
+  font-family: var(--heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+.sidebar-promo-sub {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 6px;
+}
+
+.sidebar-promo-cta {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-top: 12px;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.sidebar-promo a:hover .sidebar-promo-cta {
+  color: var(--text-dark);
+}
+
+.sidebar-promo-cta svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-promo a:hover .sidebar-promo-cta svg {
+  transform: translateX(3px);
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+
+footer {
+  text-align: center;
+  padding: 60px var(--side) 40px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-logo {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.footer-sub {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════
+   FADE-IN ANIMATIONS
+   ═══════════════════════════════════════ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+  .sidebar-promo {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 16px 20px;
+  }
+
+  .nav-left {
+    display: none;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .nav-logo {
+    padding: 0;
+    font-size: 16px;
+  }
+
+  .desktop-lang {
+    display: none;
+  }
+
+  .mobile-lang {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+  }
+
+  main {
+    padding: 110px 24px 80px;
+  }
+
+  .article-title {
+    margin-bottom: 36px;
+    font-size: 34px;
+  }
+
+  .pull-quote {
+    margin: 40px 0;
+    font-size: 20px;
+  }
+
+  .article-header-image {
+    margin: 0 -24px 36px;
+  }
+
+  .article-header-image img {
+    border-radius: 0;
+  }
+
+  .article-image {
+    margin: 36px -24px;
+  }
+
+  .article-image img,
+  .article-image video {
+    border-radius: 0;
+  }
+
+  .article-image figcaption {
+    padding: 0 24px;
+  }
+
+  .section-label {
+    margin-top: 56px;
+    padding-top: 36px;
+  }
+
+  .post-nav { margin-top: 64px; padding-top: 32px; }
+  .post-nav-title { font-size: 22px; }
+}
+
+@media (max-width: 375px) {
+  body {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 100px 20px 60px;
+  }
+
+  .article-header-image {
+    margin: 0 -20px 32px;
+  }
+
+  .article-image {
+    margin: 32px -20px;
+  }
+
+  .article-image figcaption {
+    padding: 0 20px;
+  }
+}
+</style>
+</head>
+<body data-lang="no">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="index.html" class="nav-link">journal</a>
+    <a href="https://n3xt3lit3.github.io/nextelite-boxing/" class="nav-link" target="_blank" rel="noopener">gloves on</a>
+  </div>
+  <a href="index.html" class="nav-logo">n3xt3lit3</a>
+  <div class="nav-right">
+    <div class="lang-toggle desktop-lang">
+      <button class="lang-btn active" data-lang-btn="no">NO</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" data-lang-btn="en">EN</button>
+    </div>
+  </div>
+  <div class="lang-toggle mobile-lang">
+    <button class="lang-btn active" data-lang-btn="no">NO</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang-btn="en">EN</button>
+  </div>
+</nav>
+
+<main>
+  <article id="blog-content"></article>
+</main>
+
+<!-- sidebar promo — nextelite boxing -->
+<aside class="sidebar-promo" aria-label="NextElite training">
+  <a href="https://n3xt3lit3.github.io/nextelite-boxing/" target="_blank" rel="noopener" data-boxing-link>
+    <img class="sidebar-promo-img" src="img/boxing-bodo-ring-purple.jpg" alt="NextElite" loading="lazy">
+    <div class="sidebar-promo-body">
+      <div class="sidebar-promo-label">NEXTELITE</div>
+      <div class="sidebar-promo-sub">gloves on</div>
+      <div class="sidebar-promo-cta" data-sidebar-cta>
+        Se mer <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </div>
+  </a>
+</aside>
+
+<footer>
+  <div class="footer-logo">n3xt3lit3</div>
+  <p class="footer-sub">april 2026</p>
+</footer>
+
+<script>
+// l1ft0ff — Mission Vega — production build
+// v9 final. 10 CEO corrections applied. r3dp3n polished. enc0re approved.
+// the ring moved. the helmet fit. the words earned their place.
+console.log('%c// l1ft0ff // mission vega // production', 'color:#C4A882;font-weight:700;font-size:14px;');
+console.log('%cjeg gikk fra hjerneskade til boksekamp.', 'color:#888;font-style:italic;');
+console.log('%cdritt kamp. neste kamp vinner jeg.', 'color:#C4A882;');
+// hidden: the colonnade holds every punch. the quill wrote every word.
+
+// ============================================================
+// Content array — v9 final. Source:
+// 50-OUTBOX/8-boxing-post-v9-dlvr-260413-v01.md
+// ============================================================
+const postForsteKampContent = [
+
+  // ============================================================
+  // HERO
+  // ============================================================
+  {
+    type: "hero",
+    image: "boxing-topten-mirror.jpg",
+    alt_no: "Speilbilde på hotellrom. Topten-hjelm, kvelden før kamp.",
+    alt_en: "Mirror shot in a hotel room. Topten headgear, night before the fight.",
+    caption_no: "Natta før. Hjelm på. Game face on.",
+    caption_en: "Night before. Headgear fit. Head was a different project."
+  },
+
+  // ============================================================
+  // ACT 1: OPENER — Arctic Boxing. One flowing paragraph.
+  // ============================================================
+  {
+    type: "paragraph",
+    no: "Arctic Boxing. Bodø Spektrum. 21. februar 2026. Min første kamp. Jeg gikk fra hjerneskade til boksekamp. Ikke planlagt. Bare nordlenning-logikk.",
+    en: "Arctic Boxing. Bodø Spektrum. 21 February 2026. My first fight. I went from brain damage to boxing match. Not planned. Just the kind of stubborn you learn up north."
+  },
+  {
+    type: "paragraph",
+    no: "2-3 år med trening. Mer fotball i beina enn slag i nevene, men jeg følte meg som en vinner på denne arenaen. Jeg vet hva jeg gjør i en ring nå. Det visste jeg ikke da.",
+    en: "2-3 years of training. More football in my legs than punches in my fists, but I felt like a winner in this arena. I know what I'm doing in a ring now. I didn't then."
+  },
+  {
+    type: "image",
+    image: "boxing-bodo-ring-purple.jpg",
+    alt_no: "Tom ring i Bodø Spektrum. Lilla lys.",
+    alt_en: "Empty ring at Bodø Spektrum. Purple lights.",
+    caption_no: "Min neste arbeidsplass.",
+    caption_en: "The ring was ready. My nerves were not."
+  },
+
+  // ============================================================
+  // ACT 2: PREPARATION — Weight, team, dogs, headgear
+  // ============================================================
+  {
+    type: "heading",
+    no: "Forberedelser.",
+    en: "Preparation."
+  },
+  {
+    type: "paragraph",
+    no: "Jeg gikk inn på 66 kg. Opp fra 62. Motstanderen min lå på rundt 67. Ett kilo tyngre. Hun hadde seks kamper bak seg og lang trening inn mot hver eneste av dem. Jeg hadde null. Pulsen var allerede i taket bare av å stå på vekta.",
+    en: "I walked in at 66 kg. Up from 62. My opponent was around 67. One kilo heavier. She had six fights behind her and long training going into every single one. I had zero. My heart rate was already through the roof just standing on the scale."
+  },
+  {
+    type: "paragraph",
+    no: "Null kamper mot seks. Greit. Noen må være først.",
+    en: "Zero fights against six. Fine. Someone has to go first."
+  },
+  {
+    type: "paragraph",
+    no: "I norsk amatørboksing er hjelm obligatorisk for kvinner. Fint for meg. Hodet mitt har vært gjennom nok allerede. La det ligge i polstring litt til.",
+    en: "In Norwegian amateur boxing, women wear headgear. Fine by me. My head has been through enough already. Let it stay in padding a little longer."
+  },
+  {
+    type: "image",
+    image: "boxing-startbok.jpg",
+    alt_no: "Nasjonal startbok fra Norges Bokseforbund.",
+    alt_en: "National start book from Norges Bokseforbund.",
+    caption_no: "Hadsel Bokseklubb. Norway. Det holder.",
+    caption_en: "Hadsel Bokseklubb. Norway. That's enough."
+  },
+  {
+    type: "paragraph",
+    no: "Hver norsk amatørbokser har en startbok. Et lite hefte der kampene føres inn for hånd. Min sier: Nemine Elise Steffensen. Hadsel Bokseklubb. Norway. Og <333.",
+    en: "Every Norwegian amateur boxer has a start book. A small booklet where your fights are written in by hand. Mine says: Nemine Elise Steffensen. Hadsel Bokseklubb. Norway. And <333."
+  },
+  {
+    type: "paragraph",
+    no: "Teamet: begge trenerne mine, Maksym og Aleksandr. Edgar fra Hadsel Bokseklubb. Barry, Tim, Henning, Malvin, Sølvi, Ing-Martin. Mamma og pappa. Hadsel Bokseklubb dekket hotell og mat. Øksnes Entreprenør stilte også opp den uka.",
+    en: "The team: both my coaches, Maksym and Aleksandr. Edgar from Hadsel Bokseklubb. Barry, Tim, Henning, Malvin, Sølvi, Ing-Martin. Mom and dad. Hadsel Bokseklubb covered hotel and food. Øksnes Entreprenør also stepped up that week."
+  },
+  {
+    type: "paragraph",
+    no: "Første kamp sier alt om hvem som dukker opp. Denne gjengen stilte. De glemmer du ikke.",
+    en: "First fight tells you everything about who shows up. This crew did. You don't forget them."
+  },
+  {
+    type: "image",
+    image: "boxing-ingmartin-car.jpg",
+    alt_no: "Ing-Martin og Nemine i bilen.",
+    alt_en: "Ing-Martin and Nemine in the car.",
+    caption_no: "Ing-Martin. Bestevenn. Ikke i Bodø, men alltid i teamet.",
+    caption_en: "Ing-Martin. Best friend. Not in Bodø, but always on the team."
+  },
+  {
+    type: "paragraph",
+    no: "Mamma og pappa hadde hundene mine med, Kriger og Blue. Jeg fikk herje med dem før kampen. To tyske sjæfere som ikke forstår boksing. Det var akkurat det jeg trengte.",
+    en: "Mom and dad brought my dogs, Kriger and Blue. I got to mess around with them before the fight. Two German shepherds who understand nothing about boxing. Exactly what I needed."
+  },
+  {
+    type: "image",
+    image: "boxing-dasspapir-prank.jpg",
+    alt_no: "Nemine pakket inn i dasspapir av treningspartnere.",
+    alt_en: "Nemine wrapped in toilet paper by training partners.",
+    caption_no: "Bevis på at jeg er verdens beste lagspiller.",
+    caption_en: "Proof that I'm the world's best team player."
+  },
+
+  // ============================================================
+  // ACT 3: NIGHT BEFORE — Rewritten as coherent flowing narrative
+  // ============================================================
+  {
+    type: "heading",
+    no: "Natta før.",
+    en: "The Night Before."
+  },
+  {
+    type: "paragraph",
+    no: "Vi sjekket inn i Bodø kvelden før kampen. Trenerne, Edgar, familien, hundene. Noen på hotell, noen på Airbnb. Etterpå var jeg sikker på at vi hadde vært der i tre dager. Vi var der to netter. Sånn gjør adrenalin med tid. Alt strekker seg ut og du husker hvert minutt som om det var en hel kveld.",
+    en: "We checked in to Bodø the night before the fight. Coaches, Edgar, family, dogs. Some at the hotel, some at an Airbnb. Afterwards I was sure we'd been there for three days. We were there two nights. That's what adrenaline does to time. Everything stretches and you remember every minute like it was a whole evening."
+  },
+  {
+    type: "image",
+    image: "boxing-hotel-gearbag.jpg",
+    alt_no: "Gearbag og boksesko på hotellrommet.",
+    alt_en: "Gear bag and boxing shoes in the hotel room.",
+    caption_no: "Det eneste som sov den natta var hundene.",
+    caption_en: "The only thing that slept that night was the dogs."
+  },
+  {
+    type: "paragraph",
+    no: "Jeg lå i senga og stirret i taket med et hode fullt av Tommy og Tigern-striper og boksekamper som ikke fantes ennå. Tre netter med dårlig søvn allerede. En hjerne som nektet å skru seg av.",
+    en: "I lay in bed staring at the ceiling with a head full of Calvin and Hobbes strips and boxing matches that didn't exist yet. Three nights of bad sleep already. A brain that refused to turn off."
+  },
+  {
+    type: "paragraph",
+    no: "Jeg hadde kvetiapin i toalettmappa. En medisin jeg fikk etter at en annen medisin prøvde å ta meg ut. Den hjalp da det var som verst. I Bodø var det adrenalinet som styrte.",
+    en: "I had quetiapine in my toiletries bag. A medication I got after another medication tried to take me out. It helped when things were at their worst. In Bodø the adrenaline was in charge."
+  },
+  {
+    type: "paragraph",
+    no: "Så jeg lå der og tenkte på Tommy og Tigern. Calvin and Hobbes på norsk. Når du ikke kan sove og hodet ditt kjører på fullt, finnes det verre ting å ligge og tenke på enn en seksåring som snakker til en utstoppet tiger om eksistensen. Han er redd. Han er liten. Han later som han ikke bryr seg for ikke å bli knust. Jeg kjente meg igjen i det den kvelden. Jeg var ikke klar for en boksekamp. Jeg var aldri klar for noe av det som har kommet. Det har aldri stoppet meg.",
+    en: "So I lay there thinking about Calvin and Hobbes. In Norwegian we call them Tommy og Tigern. When you can't sleep and your head is running full speed, there are worse things to think about than a six-year-old who talks to a stuffed tiger about existence. He's scared. He's small. He pretends not to care so he won't get crushed. I recognised myself in that, that night. I wasn't ready for a boxing match. I was never ready for any of it. That's never stopped me."
+  },
+  {
+    type: "image",
+    image: "boxing-tommy-tigern.jpg",
+    alt_no: "Tommy og Tigern-bøker ved siden av senga.",
+    alt_en: "Calvin and Hobbes books next to the bed.",
+    caption_no: "Tommy som ikke forstår at han ikke skal kaste vannballonger.",
+    caption_en: "Tommy who doesn't understand he's not supposed to throw water balloons."
+  },
+  {
+    type: "paragraph",
+    no: "Hotellmaten var jævlig god. Jeg valgte sunt, men fikk virkelig kjenne på hvor vanskelig det er å følge NextElite-protokollen på reise. Alt i miljøet endrer seg. Rutinene mine er bygd for hjemme. For brettet mitt, supplementene mine, kjøleskapet mitt. Et hotellrom i Bodø er ikke det. Jeg gjorde mitt beste.",
+    en: "Hotel food was really good. I ate clean, but I felt how hard it is to follow a NextElite protocol on the road. Everything in the environment changes. My routines are built for home. For my tray, my supplements, my fridge. A hotel room in Bodø is not that. I did my best."
+  },
+  {
+    type: "paragraph",
+    no: "Til neste kamp er planen en annen. Ernæring og kosttilskudd helt inn. Bedre søvn. Neste gang har jeg bare tannbørsten i toalettmappa.",
+    en: "For the next fight the plan is different. Nutrition and supplements all the way in. Better sleep. Next time the toiletries bag just has the toothbrush."
+  },
+  {
+    type: "paragraph",
+    no: "Det som slo meg ut i Bodø var ikke motstanderen. Det var alt jeg hadde med meg inn i ringen.",
+    en: "What knocked me out in Bodø wasn't the opponent. It was everything I brought into the ring with me."
+  },
+
+  // ============================================================
+  // ACT 4: THE FIGHT
+  // ============================================================
+  {
+    type: "heading",
+    no: "Kampen.",
+    en: "The Fight."
+  },
+  {
+    type: "paragraph",
+    no: "Du kommer ikke til å se bilder fra selve kampen. Norsk lov er streng på retten til eget bilde. Bildene her stanser ved ringtauet.",
+    en: "You won't see photos from the fight itself. Norwegian law is strict on the right to your own image. The images here stop at the ropes."
+  },
+  {
+    type: "video",
+    video: "boxing-mascara-prep-3s.mp4",
+    poster: "boxing-mascara-thumb.jpg",
+    caption_no: "Boksere bruker også mascara. Prioriteringer.",
+    caption_en: "Boxers wear mascara too. Priorities."
+  },
+  {
+    type: "paragraph",
+    no: "Jeg hadde aldri stått i en ekte ring før. Hadde sparret. Gått miles med pads. Sett kamper live. Ingenting av det er en ring. Alt du har øvd forsvinner i det noen treffer tilbake.",
+    en: "I'd never been in a real ring before. I'd sparred. Done miles on the pads. Watched fights live. None of that is a ring. Everything you practised disappears the moment someone hits back."
+  },
+  {
+    type: "paragraph",
+    no: "De første sekundene var gode. Jeg fikk inn noen skikkelige slag. Deretter gikk jeg rett inn i sjokk. Hva faen er det jeg deltar på. Fikk litt boksestopp. Mistet bevegelsen, mistet pusten, mistet den versjonen av meg som hadde trent for dette.",
+    en: "The first seconds were good. I landed some clean shots. Then I walked straight into shock. What the hell did I sign up for. Got a bit of ring freeze. Lost the movement, lost the breath, lost the version of me that had trained for this."
+  },
+  {
+    type: "paragraph",
+    no: "I siste runde hentet jeg meg litt inn. Men tre netter med dårlig søvn var allerede bokført. Jeg var sliten. Jeg tapte på split decision 2-1. To dommere for henne, én for meg. Dommerne var ikke engang enige om hvem som vant.",
+    en: "In the last round I pulled it back a bit. But three nights of bad sleep were already on the ledger. I was tired. I lost on split decision 2-1. Two judges for her, one for me. The judges couldn't even agree on who won."
+  },
+  {
+    type: "paragraph",
+    no: "Fra sidelinja skar én stemme gjennom alt. Pappa. KOM IGJEN NEMINE. Det var den eneste stemmen jeg hørte hele kampen. Ikke helvete om jeg ga opp.",
+    en: "From the sideline, one voice cut through everything. Dad. KOM IGJEN NEMINE. It was the only voice I heard the whole fight. No way in hell I was giving up."
+  },
+  {
+    type: "image",
+    // NOTE: boxing-pokemon-charizard.jpg needs re-crop to show full Pokemon card.
+    image: "boxing-pokemon-charizard.jpg",
+    alt_no: "Ungraded Charizard-kort foran et bokseshow-bakteppe.",
+    alt_en: "Ungraded Charizard card against a boxing show backdrop.",
+    caption_no: "Jeg som prøver å være Logan Paul. Ungraded charizard, ikke original.",
+    caption_en: "Me trying to be Logan Paul. Ungraded charizard, not first edition."
+  },
+
+  // ============================================================
+  // ACT 5: AFTERMATH — Dritt kamp. Competitive thesis.
+  // ============================================================
+  {
+    type: "heading",
+    no: "Etterpå.",
+    en: "After."
+  },
+  {
+    type: "paragraph",
+    no: "Jeg bokset en dritt kamp. Alle andre syntes den var jævlig imponerende. Jeg syntes den var dritt. Kanskje det er derfor jeg alltid blir bedre.",
+    en: "I fought a shit fight. Everyone else thought it was impressive as hell. I thought it was shit. Maybe that's why I always get better."
+  },
+  {
+    type: "paragraph",
+    no: "Jeg var stoked likevel. Samme følelsen som da jeg hoppet fallskjerm på NTG. Sekunder der du er mer levende enn i hele året før. Men stoked er ikke fornøyd. Jeg liker å vinne. En split decision der dommerne ikke engang var enige er ikke godt nok. Ikke for meg.",
+    en: "I was stoked anyway. Same feeling as when I jumped out of a plane at NTG. Seconds where you're more alive than in the whole year before. But stoked is not satisfied. I like to win. A split decision where the judges can't even agree is not good enough. Not for me."
+  },
+  {
+    type: "image",
+    image: "boxing-plaster-eyebrow.jpg",
+    alt_no: "Plaster over venstre øyebryn. Dagen etter kampen.",
+    alt_en: "Plaster over the left eyebrow. Day after the fight.",
+    caption_no: "Plasteret er fra ei bildør. Ikke fra kampen.",
+    caption_en: "This plaster is from a car door. Not from the fight."
+  },
+  {
+    type: "paragraph",
+    no: "Jeg tapte kampen. Jeg vant tilbake selvrespekten. Hvor rått er det ikke å gå fra hjerneskade til boksekamp.",
+    en: "I lost the fight. I got my self-respect back. How wild is it to go from brain damage to a boxing match."
+  },
+
+  // ============================================================
+  // ACT 6: NEXT FIGHT — Teaser. Competitive. Forward.
+  // ============================================================
+  {
+    type: "heading",
+    no: "Neste kamp.",
+    en: "Next fight."
+  },
+  {
+    type: "paragraph",
+    no: "NextElite-protokollen helt inn til kampdagen. Ordentlig søvn. Flere sparringrunder. Hadsel Bokseklubb bygger nytt treningsanlegg med ordentlig ring. Der skal jeg lære at fire hjørner ikke er noe nytt før neste gang det teller.",
+    en: "NextElite protocol all the way to fight day. Real sleep. More sparring rounds. Hadsel Bokseklubb is building a new facility with a real ring. That's where I'll learn that four corners are nothing new before the next time it counts."
+  },
+  {
+    type: "paragraph",
+    no: "Dritt kamp. Neste kamp vinner jeg.",
+    en: "Shit fight. Next fight I win."
+  },
+
+  // ============================================================
+  // CLOSING
+  // ============================================================
+  {
+    type: "footer",
+    no: "Nemine Steffensen / Øksnes, Vesterålen / april 2026",
+    en: "Nemine Steffensen / Øksnes, Vesterålen / April 2026"
+  }
+];
+
+// ============================================================
+// Image slug bridge. boxing-dasspapir-prank.jpg does not exist
+// on disk yet. Reuse boxing-title-gloves.jpg as the same bytes
+// per v4 IC-06 (file recropped for this purpose).
+// ============================================================
+const imageSlugBridge = {
+  "boxing-dasspapir-prank.jpg": "boxing-title-gloves.jpg"
+};
+function resolveImage(slug) {
+  const file = imageSlugBridge[slug] || slug;
+  return "img/" + file;
+}
+
+// ============================================================
+// Renderer. Handles block types: hero, paragraph, heading,
+// image, video, tagline-statement, tagline-code, pullquote, footer.
+// Bilingual via data-lang.
+// ============================================================
+let currentLang = "no";
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderPost(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.body.setAttribute("data-lang", lang);
+  const container = document.getElementById("blog-content");
+  let html = "";
+
+  postForsteKampContent.forEach((block, i) => {
+    switch (block.type) {
+
+      case "hero": {
+        const alt = lang === "no" ? block.alt_no : block.alt_en;
+        const cap = lang === "no" ? block.caption_no : block.caption_en;
+        const dateMeta = lang === "no" ? "21. februar 2026" : "21 February 2026";
+        const kicker = "Bod\u00F8 Spektrum / Arctic Boxing";
+        const title = lang === "no" ? "f\u00F8rste kamp." : "first fight.";
+        html += `<div class="fade-in">
+          <p class="article-meta">${escapeHtml(kicker)}</p>
+          <h1 class="article-title">${escapeHtml(title)}</h1>
+          <p class="article-meta" style="margin-top: 8px;">${escapeHtml(dateMeta)}</p>
+        </div>`;
+        html += `<figure class="article-header-image fade-in">
+          <img src="${resolveImage(block.image)}" alt="${escapeHtml(alt)}" loading="eager">
+          <figcaption>${escapeHtml(cap)}</figcaption>
+        </figure>`;
+        html += `<div class="article-body">`;
+        break;
+      }
+
+      case "paragraph": {
+        const txt = block[lang];
+        html += `<div class="fade-in"><p>${escapeHtml(txt)}</p></div>`;
+        break;
+      }
+
+      case "heading": {
+        const txt = block[lang];
+        html += `<div class="fade-in"><p class="section-label">${escapeHtml(txt)}</p></div>`;
+        break;
+      }
+
+      case "image": {
+        const alt = lang === "no" ? block.alt_no : block.alt_en;
+        const cap = lang === "no" ? block.caption_no : block.caption_en;
+        html += `<figure class="article-image fade-in">
+          <img src="${resolveImage(block.image)}" alt="${escapeHtml(alt)}" loading="lazy">`;
+        if (cap) {
+          html += `<figcaption>${escapeHtml(cap)}</figcaption>`;
+        }
+        html += `</figure>`;
+        break;
+      }
+
+      case "video": {
+        const cap = lang === "no" ? block.caption_no : block.caption_en;
+        html += `<figure class="article-image fade-in">
+          <video src="${resolveImage(block.video)}" poster="${block.poster ? resolveImage(block.poster) : ''}" controls playsinline preload="metadata" style="width:100%;max-height:70vh;border-radius:4px;display:block;"></video>`;
+        if (cap) {
+          html += `<figcaption>${escapeHtml(cap)}</figcaption>`;
+        }
+        html += `</figure>`;
+        break;
+      }
+
+      case "tagline":
+      case "tagline-statement": {
+        const txt = block[lang];
+        html += `<div class="fade-in"><p class="tagline-statement">${escapeHtml(txt)}</p></div>`;
+        break;
+      }
+
+      case "tagline-code": {
+        const txt = block[lang];
+        html += `<div class="fade-in"><p class="tagline-code">${escapeHtml(txt)}</p></div>`;
+        break;
+      }
+
+      case "pullquote": {
+        const txt = block[lang];
+        html += `<div class="fade-in"><p class="pull-quote">${escapeHtml(txt)}</p></div>`;
+        break;
+      }
+
+      case "footer": {
+        const txt = block[lang];
+        html += `<div class="post-footer fade-in">${escapeHtml(txt)}</div>`;
+        html += `</div>`; // close .article-body
+
+        // post nav — link back to blog
+        const navLabel = lang === "no" ? "les også" : "also read";
+        const navTitle = lang === "no" ? "pakken kom." : "the order arrived.";
+        const navDate = "April 2026";
+        html += `<div class="post-nav fade-in" role="navigation" aria-label="${lang === 'no' ? 'Andre innlegg' : 'Other posts'}">
+          <a href="index.html" class="post-nav-link">
+            <span class="post-nav-label">${navLabel}</span>
+            <span class="post-nav-title">${navTitle}</span>
+            <span class="post-nav-date">${navDate}</span>
+          </a>
+        </div>`;
+        break;
+      }
+    }
+  });
+
+  container.innerHTML = html;
+
+  // Update sidebar promo CTA language
+  const sidebarCta = document.querySelector('[data-sidebar-cta]');
+  if (sidebarCta) {
+    sidebarCta.innerHTML = (lang === 'no' ? 'Se mer' : 'See more') + ' <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+  }
+
+  // intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  container.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+}
+
+// language toggle wiring
+const langBtns = document.querySelectorAll("[data-lang-btn]");
+langBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.getAttribute("data-lang-btn");
+    langBtns.forEach(b => b.classList.remove("active"));
+    langBtns.forEach(b => {
+      if (b.getAttribute("data-lang-btn") === lang) b.classList.add("active");
+    });
+    renderPost(lang);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+
+// nav hide on scroll down, show on up
+let lastScroll = 0;
+const navEl = document.querySelector("nav");
+window.addEventListener("scroll", () => {
+  const current = window.scrollY;
+  if (current > lastScroll && current > 100) {
+    navEl.style.transform = "translateY(-100%)";
+  } else {
+    navEl.style.transform = "translateY(0)";
+  }
+  lastScroll = current;
+}, { passive: true });
+
+// boot
+renderPost("no");
+</script>
+</body>
+</html>
