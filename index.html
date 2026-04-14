@@ -891,6 +891,20 @@ const postFotballContent = [
     }
   },
 
+  // ─── HERO ───
+  {
+    type: 'image',
+    src: 'img/hero-mamma-car.jpg',
+    alt: {
+      no: 'Meg og mamma aka lykketrollet i bilen, By\u00E5sen-jakka p\u00E5',
+      en: 'Me and mom aka the lucky troll in the car, By\u00E5sen jacket on'
+    },
+    caption: {
+      no: 'favorittselfien. dette bildet er overalt. mamma vet ikke at hun er kjendis p\u00E5 alle profilbildene mine.',
+      en: 'the favorite selfie. this photo is everywhere. mom does not know she is famous across all my profile pictures.'
+    }
+  },
+
   // ─── INTRO ───
   {
     type: 'tagline-code',
@@ -920,15 +934,16 @@ const postFotballContent = [
     en: 'the tray.'
   },
   {
-    type: 'image',
-    src: 'img/IMG_6417.JPG',
+    type: 'video',
+    src: 'img/blue-sofa-byasen.mp4',
+    poster: 'img/blue-sofa-byasen-thumb.jpg',
     alt: {
-      no: 'whoop vet.',
-      en: 'whoop knows.'
+      no: 'Blue og meg i sofaen',
+      en: 'Blue and me on the couch'
     },
     caption: {
-      no: 'whoop vet. seks m\u00E5neder med protokoll. s\u00F8vnen er fortsatt ikke perfekt. men kroppen svarer.',
-      en: 'whoop knows. six months of protocol. sleep isn\u0027t there yet. but the body responds.'
+      no: 'Sjefen. Hun vet ikke hva NMN er og gir faen. God som gull.',
+      en: 'The boss. She has no idea what NMN is and does not care. Solid gold, and does not need a Whoop to win.'
     }
   },
   {
@@ -1773,7 +1788,7 @@ function renderBlog(lang) {
 
       case 'image':
         html += `<figure class="article-image fade-in">
-          <img src="${block.src}" alt="${block.alt[lang]}" loading="lazy">`;
+          <img src="${block.src}" alt="${block.alt[lang]}" loading="lazy"${block.objectPosition ? ` style="object-position:${block.objectPosition}"` : ''}>`;
         if (block.caption) {
           html += `<figcaption>${block.caption[lang]}</figcaption>`;
         }
