@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="pakken kom. / n3xt3lit3">
-<meta property="og:description" content="// code your next level">
-<meta property="og:image" content="https://n3xt3lit3.github.io/nextelite-blog/img/f1l3.sys-supplement-new-6601-asset-260410-v01.jpg">
+<meta property="og:title" content="første kamp. / n3xt3lit3">
+<meta property="og:description" content="jeg gikk fra hjerneskade til boksekamp. ikke planlagt. bare nordlenning-logikk.">
+<meta property="og:image" content="https://n3xt3lit3.github.io/nextelite-blog/img/boxing-topten-mirror.jpg">
 <meta property="og:url" content="https://n3xt3lit3.github.io/nextelite-blog/">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="pakken kom. / n3xt3lit3">
-<meta name="twitter:description" content="// code your next level">
-<meta name="twitter:image" content="https://n3xt3lit3.github.io/nextelite-blog/img/f1l3.sys-supplement-new-6601-asset-260410-v01.jpg">
-<title>pakken kom. / n3xt3lit3</title>
+<meta name="twitter:title" content="første kamp. / n3xt3lit3">
+<meta name="twitter:description" content="jeg gikk fra hjerneskade til boksekamp. ikke planlagt. bare nordlenning-logikk.">
+<meta name="twitter:image" content="https://n3xt3lit3.github.io/nextelite-blog/img/boxing-topten-mirror.jpg">
+<title>første kamp. / n3xt3lit3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1661,6 +1661,12 @@ let blogContent = [
 // ═══════════════════════════════════════
 const postsIndex = [
   {
+    slug: 'forste-kamp',
+    title: { no: 'første kamp.', en: 'first fight.' },
+    date: { no: 'April 2026', en: 'April 2026' },
+    href: 'forste-kamp.html'  // standalone page — external link
+  },
+  {
     slug: 'pakken-kom',
     title: { no: 'pakken kom.', en: 'the order arrived.' },
     date: { no: 'April 2026', en: 'April 2026' },
@@ -1671,12 +1677,6 @@ const postsIndex = [
     title: { no: 'jeg flytta og flytta, for sporten var alltid fotball.', en: 'I kept moving. the sport was always football.' },
     date: { no: 'April 2026', en: 'April 2026' },
     content: postFotballContent
-  },
-  {
-    slug: 'forste-kamp',
-    title: { no: 'første kamp.', en: 'first fight.' },
-    date: { no: 'April 2026', en: 'April 2026' },
-    href: 'forste-kamp.html'  // standalone page — external link
   }
 ];
 
@@ -1701,7 +1701,7 @@ function loadPost(slug) {
 }
 
 window.addEventListener('hashchange', () => {
-  const slug = location.hash.replace('#', '') || 'pakken-kom';
+  const slug = location.hash.replace('#', '') || 'forste-kamp';
   loadPost(slug);
 });
 
@@ -1935,9 +1935,23 @@ window.addEventListener('scroll', () => {
   if (initSlug) {
     const idx = postsIndex.findIndex(p => p.slug === initSlug);
     if (idx >= 0) {
+      // external page — redirect
+      if (postsIndex[idx].href) {
+        window.location.href = postsIndex[idx].href;
+        return;
+      }
       currentPostIdx = idx;
       blogContent = postsIndex[idx].content;
     }
+  } else {
+    // No hash — default to first post
+    const first = postsIndex[0];
+    if (first.href) {
+      window.location.href = first.href;
+      return;
+    }
+    currentPostIdx = 0;
+    blogContent = first.content;
   }
   renderBlog('no');
 })();
