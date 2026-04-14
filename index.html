@@ -937,13 +937,14 @@ const postFotballContent = [
     type: 'video',
     src: 'img/blue-sofa-byasen.mp4',
     poster: 'img/blue-sofa-byasen-thumb.jpg',
+    objectPosition: 'center 40%',
     alt: {
       no: 'Blue og meg i sofaen',
       en: 'Blue and me on the couch'
     },
     caption: {
       no: 'Sjefen. Hun vet ikke hva NMN er og gir faen. God som gull.',
-      en: 'The boss. She has no idea what NMN is and does not care. Solid gold, and does not need a Whoop to win.'
+      en: 'The boss. She has no idea what NMN is and does not care. Solid gold.'
     }
   },
   {
@@ -1553,6 +1554,20 @@ let blogContent = [
       en: 'morning. before anything else.'
     }
   },
+  {
+    type: 'video',
+    src: 'img/mirror-selfie-smile.mp4',
+    poster: 'img/mirror-selfie-smile-thumb.jpg',
+    objectPosition: 'center 40%',
+    alt: {
+      no: 'Speilselfie med solbriller p\u00E5 hodet',
+      en: 'Mirror selfie with sunglasses on head'
+    },
+    caption: {
+      no: 'ferdig med badet. solbrillene er viktige.',
+      en: 'done with the bathroom. the sunglasses are important.'
+    }
+  },
 
   // ─── KRIGER ───
   {
@@ -1800,8 +1815,9 @@ function renderBlog(lang) {
         const posterAttr = block.poster ? ` poster="${block.poster}"` : '';
         const mutedAttr = block.audio === false ? ' muted' : '';
         const altText = block.alt && block.alt[lang] ? block.alt[lang] : '';
+        const vidStyle = block.objectPosition ? ` style="object-position:${block.objectPosition}"` : '';
         html += `<figure class="article-image fade-in">
-          <video src="${block.src}"${posterAttr} controls preload="metadata" playsinline${mutedAttr} aria-label="${altText}"></video>`;
+          <video src="${block.src}"${posterAttr} controls preload="metadata" playsinline${mutedAttr} aria-label="${altText}"${vidStyle}></video>`;
         if (block.caption) {
           html += `<figcaption>${block.caption[lang]}</figcaption>`;
         }
@@ -1959,14 +1975,10 @@ window.addEventListener('scroll', () => {
       blogContent = postsIndex[idx].content;
     }
   } else {
-    // No hash — default to first post
-    const first = postsIndex[0];
-    if (first.href) {
-      window.location.href = first.href;
-      return;
-    }
-    currentPostIdx = 0;
-    blogContent = first.content;
+    // No hash — default to first inline post (skip external href posts)
+    const firstInline = postsIndex.findIndex(p => !p.href);
+    currentPostIdx = firstInline >= 0 ? firstInline : 0;
+    blogContent = postsIndex[currentPostIdx].content;
   }
   renderBlog('no');
 })();
