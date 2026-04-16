@@ -1,0 +1,7 @@
+# nextelite — robots.txt
+# l1ft0ff — Mission Helios
+
+User-agent: *
+Allow: /
+
+Sitemap: https://nextelite.no/sitemap.xml
