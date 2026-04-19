@@ -207,8 +207,7 @@ main {
   margin: 0 0 48px 0;
   overflow: hidden;
 }
-.article-header-image img,
-.article-header-image video {
+.article-header-image img {
   width: 100%;
   max-height: 60vh;
   object-fit: cover;
@@ -559,8 +558,7 @@ footer {
     margin: 0 -24px 36px;
   }
 
-  .article-header-image img,
-  .article-header-image video {
+  .article-header-image img {
     border-radius: 0;
   }
 
@@ -723,20 +721,14 @@ const postForsteKampContent = [
 
   // ============================================================
   // HERO
-  // video: mascara-prep-3s.mp4. CEO approved swap 2026-04-18.
-  // original hero image preserved as fallback poster.
   // ============================================================
   {
     type: "hero",
-    video: "boxing-mascara-prep-3s.mp4",
-    poster: "boxing-topten-mirror.jpg",
     image: "boxing-topten-mirror.jpg",
-    aria_no: "Nemine tar på mascara foran trening. Boksere bruker også mascara. Prioriteringer.",
-    aria_en: "Nemine applying mascara before training. Boxers wear mascara too. Priorities.",
     alt_no: "Speilbilde på hotellrom. Topten-hjelm, kvelden før kamp.",
     alt_en: "Mirror shot in a hotel room. Topten headgear, night before the fight.",
-    caption_no: "Boksere bruker også mascara. Prioriteringer.",
-    caption_en: "Boxers wear mascara too. Priorities."
+    caption_no: "Natta før. Hjelm på. Game face on.",
+    caption_en: "Night before. Headgear fit. Head was a different project."
   },
 
   // ============================================================
@@ -1041,7 +1033,6 @@ function renderPost(lang) {
 
       case "hero": {
         const alt = lang === "no" ? block.alt_no : block.alt_en;
-        const aria = lang === "no" ? (block.aria_no || alt) : (block.aria_en || alt);
         const cap = lang === "no" ? block.caption_no : block.caption_en;
         const dateMeta = lang === "no" ? "21. februar 2026" : "21 February 2026";
         const kicker = "Bod\u00F8 Spektrum / Arctic Boxing";
@@ -1051,28 +1042,10 @@ function renderPost(lang) {
           <h1 class="article-title">${escapeHtml(title)}</h1>
           <p class="article-meta" style="margin-top: 8px;">${escapeHtml(dateMeta)}</p>
         </div>`;
-        if (block.video) {
-          const poster = block.poster ? resolveImage(block.poster) : '';
-          html += `<figure class="article-header-image fade-in">
-            <video
-              src="${resolveImage(block.video)}"
-              ${poster ? `poster="${poster}"` : ''}
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              aria-label="${escapeHtml(aria)}"
-              style="width:100%;max-height:60vh;object-fit:cover;display:block;border-radius:4px;"
-            ></video>
-            <figcaption>${escapeHtml(cap)}</figcaption>
-          </figure>`;
-        } else {
-          html += `<figure class="article-header-image fade-in">
-            <img src="${resolveImage(block.image)}" alt="${escapeHtml(alt)}" loading="eager">
-            <figcaption>${escapeHtml(cap)}</figcaption>
-          </figure>`;
-        }
+        html += `<figure class="article-header-image fade-in">
+          <img src="${resolveImage(block.image)}" alt="${escapeHtml(alt)}" loading="eager">
+          <figcaption>${escapeHtml(cap)}</figcaption>
+        </figure>`;
         html += `<div class="article-body">`;
         break;
       }
