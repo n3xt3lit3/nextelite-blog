@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="nb" aria-label="NextElite · pakken kom. · april 2026">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>pakken kom. — share card</title>
+<!--
+  XX
+  The Atelier — pakken-kom — rhode light minimal
+  Stripped to essence per CEO direction: title + ghost watermark only.
+  Rhode cream (#f1f0ed), Rektorat Heavy lowercase title, nextelite watermark.
+  No nav. No kicker. No pill. No byline. No rule.
+  l1ft0ff — Mission Helios
+-->
+<style>
+  @font-face {
+    font-family: 'Rektorat Heavy';
+    src: url('../fonts/RektoratHeavy-Regular.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #f1f0ed;
+    font-family: 'Rektorat Heavy', 'Inter', -apple-system, sans-serif;
+  }
+
+  .card {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    background: #f1f0ed;
+    overflow: hidden;
+  }
+
+  .watermark {
+    position: absolute;
+    bottom: 60px;
+    left: -8px;
+    font-family: 'Rektorat Heavy', -apple-system, sans-serif;
+    font-size: 240px;
+    font-weight: 800;
+    letter-spacing: -14px;
+    color: rgba(0,0,0,0.04);
+    text-transform: lowercase;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 60px 60px;
+  }
+
+  .title {
+    font-family: 'Rektorat Heavy', -apple-system, sans-serif;
+    font-size: 152px;
+    font-weight: 800;
+    letter-spacing: -7px;
+    color: #67645e;
+    text-transform: lowercase;
+    line-height: 0.88;
+  }
+
+  /* XX easter egg — cream-on-cream, invisible */
+  .xx-mark {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 7px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.07);
+    letter-spacing: 3px;
+    pointer-events: none;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+<div class="card" role="img" aria-label="NextElite · pakken kom. · april 2026">
+
+  <div class="watermark">nextelite</div>
+
+  <div class="content">
+    <div class="title">pakken<br>kom.</div>
+  </div>
+
+  <div class="xx-mark">XX</div>
+
+</div>
+</body>
+</html>
