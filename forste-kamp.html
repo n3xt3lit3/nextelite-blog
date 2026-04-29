@@ -663,7 +663,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-left">
-    <a href="index.html" class="nav-link">journal</a>
+    <a href="index.html" class="nav-link" data-no="blogg" data-en="blog">blogg</a>
     <a href="https://n3xt3lit3.github.io/nextelite-boxing/" class="nav-link" target="_blank" rel="noopener">gloves on</a>
   </div>
   <a href="index.html" class="nav-logo">nextelite</a>
@@ -1153,6 +1153,10 @@ langBtns.forEach(btn => {
     langBtns.forEach(b => b.classList.remove("active"));
     langBtns.forEach(b => {
       if (b.getAttribute("data-lang-btn") === lang) b.classList.add("active");
+    });
+    // swap nav labels with data-no / data-en
+    document.querySelectorAll("[data-no][data-en]").forEach(el => {
+      el.textContent = el.getAttribute("data-" + lang);
     });
     renderPost(lang);
     window.scrollTo({ top: 0, behavior: "smooth" });

@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="pakken kom.">
 <meta name="twitter:description" content="Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Nå kom den store.">
 <meta name="twitter:image" content="https://nextelite.no/img/share-cards/pakken-kom-og.png">
-<title>nextelite. / journal</title>
+<title>nextelite. / blogg</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -832,7 +832,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-left">
-    <a href="#" class="nav-link">journal</a>
+    <a href="#" class="nav-link" data-no="blogg" data-en="blog">blogg</a>
     <a href="#" class="nav-link">protokoll</a>
   </div>
   <a href="#" class="nav-logo">nextelite</a>
@@ -1946,6 +1946,11 @@ langBtns.forEach(btn => {
     langBtns.forEach(b => {
       b.classList.remove('active');
       if (b.getAttribute('data-lang-btn') === lang) b.classList.add('active');
+    });
+
+    // Swap nav labels with data-no / data-en
+    document.querySelectorAll('[data-no][data-en]').forEach(el => {
+      el.textContent = el.getAttribute('data-' + lang);
     });
 
     // Update html lang attribute
