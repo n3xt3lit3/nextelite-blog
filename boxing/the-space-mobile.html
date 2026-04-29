@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>THE SPACE — N3XT3LIT3</title>
+<!-- l1ft0ff — Mission Constellation — the-space mobile -->
+<!-- every piece earned its place. including this comment. -->
+<!-- l1ft0ff — Mission Babel — i18n added -->
+<link rel="stylesheet" href="lang-toggle.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<noscript><style>.fade-in{opacity:1!important;transform:none!important;}</style></noscript>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+<!-- l1ft0ff — 68 degrees north. no excuses up here. -->
+
+<!-- l1ft0ff — Mission Babel — language toggle -->
+<div class="lang-toggle lang-toggle--mobile" aria-label="Language selector">
+  <button class="lang-btn" data-lang-btn="no">NO</button>
+  <span class="lang-sep">/</span>
+  <button class="lang-btn active" data-lang-btn="en">EN</button>
+</div>
+
+<!-- ============================================
+     HERO — gym wide shot
+     ============================================ -->
+<section class="hero" id="top">
+  <div class="hero-photo" role="img" aria-label="Full gym wide shot" style="background-image: url('img/gym-6275.jpg'); background-size: cover; background-position: center;">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title" data-i18n="page-title-space">THE SPACE</h1>
+    <p class="hero-sub" data-i18n="space-subtitle">the gym.</p>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span class="scroll-arrow"></span>
+  </div>
+</section>
+
+
+<!-- ============================================
+     INTRO
+     ============================================ -->
+<section class="intro fade-in">
+  <p data-i18n="space-intro">a garage gym above the arctic circle. no memberships. no mirrors for vanity. every piece earned its place.</p>
+</section>
+
+
+<!-- ============================================
+     EQUIPMENT GALLERY — swipeable
+     ============================================ -->
+<section class="gallery-section" aria-label="Equipment photos">
+  <h2 class="section-label section-label--space fade-in" data-i18n="mobile-gallery-equipment">THE EQUIPMENT</h2>
+  <div class="gallery" role="region" aria-label="Swipeable equipment gallery" tabindex="0">
+    <div class="gallery-track">
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="Equipment wall" style="background-image: url('img/gym-6234.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="caption-command">command wall</span>
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="Speed bag" style="background-image: url('img/gym-6238.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="equip-speed-bag">meister speed bag</span>
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="TRX and speed bag corner" style="background-image: url('img/gym-6376.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="caption-trx">trx corner</span>
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="Fighter wallbag" style="background-image: url('img/gym-6221.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="equip-wallbag">fighter wallbag</span>
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="Wallbag with slip line" style="background-image: url('img/gym-6283.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="equip-wallbag-slip">wallbag + slip line</span>
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="Reflex ball" style="background-image: url('img/gym-6228.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="equip-reflex">reflex ball</span>
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="Title reflex stick" style="background-image: url('img/gym-6315.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="caption-reflex-stick">reflex stick</span>
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-photo" role="img" aria-label="Slip line" style="background-image: url('img/gym-6296.jpg'); background-size: cover; background-position: center;">
+          <span class="photo-caption" data-i18n="equip-slip-line">slip line</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-dots dots--space" aria-hidden="true">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  <p class="swipe-hint fade-in" data-i18n="mobile-swipe">swipe</p>
+</section>
+
+
+<!-- ============================================
+     EQUIPMENT CARDS — stacked list
+     ============================================ -->
+<section class="equip-section" id="gear">
+  <h2 class="section-label section-label--space fade-in" data-i18n="mobile-gallery-gear">THE GEAR</h2>
+
+  <div class="equip-card fade-in">
+    <div class="equip-photo" role="img" aria-label="Speed bag detail" style="background-image: url('img/gym-6243.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="equip-info">
+      <h3 class="equip-name" data-i18n="equip-speed-bag">meister speed bag</h3>
+      <p class="equip-desc" data-i18n="mob-space-speed-desc">wall-mounted on wood. rhythm is violence made precise.</p>
+    </div>
+  </div>
+
+  <div class="equip-card fade-in">
+    <div class="equip-photo" role="img" aria-label="TRX straps" style="background-image: url('img/gym-6380.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="equip-info">
+      <h3 class="equip-name" data-i18n="equip-trx-straps">trx straps</h3>
+      <p class="equip-desc" data-i18n="mob-space-trx-desc">suspension training. no machines. just gravity and intent.</p>
+    </div>
+  </div>
+
+  <div class="equip-card fade-in">
+    <div class="equip-photo" role="img" aria-label="Reflex ball close-up" style="background-image: url('img/gym-6286.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="equip-info">
+      <h3 class="equip-name" data-i18n="equip-reflex">reflex ball</h3>
+      <p class="equip-desc" data-i18n="mob-space-reflex-desc">hand-eye coordination. the thing that doesn't care how ready you think you are.</p>
+    </div>
+  </div>
+
+  <div class="equip-card fade-in">
+    <div class="equip-photo" role="img" aria-label="Timeless Jump bags" style="background-image: url('img/gym-6281.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="equip-info">
+      <h3 class="equip-name" data-i18n="equip-timeless">timeless jump</h3>
+      <p class="equip-desc" data-i18n="mob-space-jump-desc">jump rope collection. the oldest conditioning tool. still the best.</p>
+    </div>
+  </div>
+
+  <div class="equip-card fade-in">
+    <div class="equip-photo" role="img" aria-label="Wallbag with crate" style="background-image: url('img/gym-6258.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="equip-info">
+      <h3 class="equip-name" data-i18n="equip-wallbag">fighter wallbag</h3>
+      <p class="equip-desc" data-i18n="mob-space-wallbag-desc">wall-mounted uppercuts. close range. personal.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     LOCATION
+     ============================================ -->
+<section class="location fade-in">
+  <div class="location-photo" role="img" aria-label="Gym exterior" style="background-image: url('img/gym-6284.jpg'); background-size: cover; background-position: center;"></div>
+  <div class="location-info">
+    <h2 class="location-title" data-i18n="mob-location-title">myre, vesteralen</h2>
+    <p class="location-body" data-i18n="mob-space-location-body">above the arctic circle. where winter is five months of darkness and the gym lights are always on.</p>
+    <span class="location-coords">68.3919 N, 15.0567 E</span>
+  </div>
+</section>
+
+
+<!-- ============================================
+     CLOSING
+     ============================================ -->
+<section class="closing fade-in">
+  <p class="closing-text closing-text--space" data-i18n="mob-space-closing">every piece earned its place.</p>
+</section>
+
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="site-footer">
+  <div class="footer-watermark" aria-hidden="true">n3xt3lit3</div>
+  <div class="footer-links">
+    <a href="https://x.com/N3XT3LIT3" class="footer-link" aria-label="Follow on X">X</a>
+  </div>
+  <div class="footer-meta">
+    <span class="footer-tagline">&lt;333 xxx n3xt3lit3</span>
+    <span class="footer-legal">&copy; 2026 nextelite</span>
+  </div>
+</footer>
+
+<div class="bottom-nav-spacer" aria-hidden="true"></div>
+
+
+<!-- ============================================
+     BOTTOM NAV
+     ============================================ -->
+<nav class="bottom-nav nav--space" aria-label="Main navigation">
+  <a href="index-mobile.html" class="nav-tab" aria-label="Home">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span class="nav-label" data-i18n="mob-nav-home">HOME</span>
+  </a>
+  <a href="boxing-mobile.html" class="nav-tab" aria-label="Boxing">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+    <span class="nav-label" data-i18n="mob-nav-box">BOX</span>
+  </a>
+  <a href="#top" class="nav-tab active" aria-label="The Space">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+    <span class="nav-label" data-i18n="mob-nav-space">SPACE</span>
+  </a>
+  <a href="#gear" class="nav-tab" aria-label="Gear">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    <span class="nav-label" data-i18n="mob-nav-gear">GEAR</span>
+  </a>
+  <a href="index-mobile.html" class="nav-tab" aria-label="More">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <span class="nav-label" data-i18n="mob-nav-more">MORE</span>
+  </a>
+</nav>
+
+<!-- latitude: 68.7932. longitude: cold. -->
+<!-- mission constellation. the space on glass. -->
+
+<script>
+// l1ft0ff — Mission Constellation — the-space mobile
+console.log('%c THE SPACE ', 'background: #1a1a1a; color: #FFFFFF; font-size: 16px; font-weight: bold; padding: 8px 16px;');
+console.log('%c 68 north. no mirrors. ', 'color: #888; font-size: 12px;');
+console.log('%c mission constellation — mobile-native ', 'color: #1a1a1a; font-size: 11px;');
+
+// Fade-in on scroll
+(function() {
+  var els = document.querySelectorAll('.fade-in');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el) { el.style.opacity = '1'; el.style.transform = 'none'; });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+
+// Gallery dot sync
+(function() {
+  var track = document.querySelector('.gallery-track');
+  var dots = document.querySelectorAll('.gallery-dots .dot');
+  if (!track || dots.length === 0) return;
+
+  track.addEventListener('scroll', function() {
+    var slideWidth = track.querySelector('.gallery-slide').offsetWidth;
+    var idx = Math.round(track.scrollLeft / slideWidth);
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === idx);
+    });
+  }, { passive: true });
+})();
+
+// Smooth scroll for anchor links
+document.querySelectorAll('.nav-tab[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+<script src="lang.js"></script>
+
+</body>
+</html>

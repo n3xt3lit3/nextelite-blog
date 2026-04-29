@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAGTEACH — N3XT3LIT3</title>
+  <!-- l1ft0ff — Mission Tri-Ferg — tagteach subpage -->
+  <!-- the click is information. nothing more. nothing less. -->
+  <!-- l1ft0ff — Mission Babel — i18n added -->
+  <link rel="stylesheet" href="lang-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      background: #FFFFFF;
+      color: #1a1a1a;
+    }
+
+    .back {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 100;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1B2A4A;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .back:hover {
+      opacity: 0.6;
+    }
+
+    .hero {
+      padding: 120px 24px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(48px, 10vw, 96px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: #1B2A4A;
+    }
+
+    .hero .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: #888;
+      margin-top: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero .intro {
+      margin-top: 32px;
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 600px;
+      color: #444;
+    }
+
+    .photo-grid {
+      padding: 0 24px 64px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .photo-card {
+      overflow: hidden;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .photo-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.3s ease;
+    }
+
+    .photo-card:hover img {
+      filter: grayscale(0%);
+    }
+
+    .section {
+      padding: 64px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 4vw, 36px);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #1B2A4A;
+      margin-bottom: 24px;
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+      max-width: 600px;
+    }
+
+    .section ul {
+      list-style: none;
+      margin-top: 16px;
+      max-width: 600px;
+    }
+
+    .section ul li {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+      padding: 8px 0;
+    }
+
+    .section ul li::before {
+      content: "—";
+      margin-right: 12px;
+      color: #1B2A4A;
+    }
+
+    .step-number {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 14px;
+      color: #1B2A4A;
+      margin-right: 8px;
+    }
+
+    .statement {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .statement.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .statement p {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(20px, 4vw, 32px);
+      text-transform: uppercase;
+      color: #1B2A4A;
+      letter-spacing: -0.01em;
+    }
+
+    footer {
+      width: 100%;
+      padding: 48px 0 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .footer-row a,
+    .footer-row span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-row a:hover {
+      color: #1B2A4A;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 100px 20px 60px;
+      }
+
+      .photo-grid {
+        padding: 0 20px 48px;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 12px;
+      }
+
+      .photo-card img {
+        height: 220px;
+      }
+
+      .section {
+        padding: 48px 20px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .back {
+        top: 16px;
+        left: 16px;
+      }
+    }
+  @media (max-width: 768px) { .hero h1 { font-size: clamp(28px, 8vw, 40px) !important; } .hero .subtitle { font-size: 14px !important; } .photo-grid, .equip-grid { grid-template-columns: 1fr !important; } .equip-card img, .photo-card img { height: 250px !important; } .back { font-size: 11px !important; top: 12px !important; left: 12px !important; } section, .about, .walls, .statement { padding: 40px 20px !important; } .walls-grid { flex-direction: column !important; gap: 12px !important; } .footer-row { gap: 16px !important; } } 
+    /* === MOBILE GATE === */
+    .mobile-gate {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #FFFFFF;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .mobile-gate h1 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
+      line-height: 1.1;
+    }
+
+    .mobile-gate p {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #888;
+      margin-top: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-gate {
+        display: flex;
+      }
+
+      body > *:not(.mobile-gate) {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- l1ft0ff — Mission Constellation — mobile redirect -->
+<script>
+  (function() {
+    var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768);
+    if (isMobile) { // mobile redirect disabled
+  })();
+</script>
+
+
+<!-- l1ft0ff — the tag point is the smallest piece. the smallest piece is everything. -->
+
+<!-- l1ft0ff — Mission Babel — language toggle -->
+<div class="lang-toggle" aria-label="Language selector">
+  <button class="lang-btn" data-lang-btn="no">NO</button>
+  <span class="lang-sep">/</span>
+  <button class="lang-btn active" data-lang-btn="en">EN</button>
+</div>
+
+<a href="index.html" class="back" aria-label="Back to main navigation" data-i18n-html="back">&larr; BACK</a>
+
+<header class="hero">
+  <h1 data-i18n="page-title-tagteach">TAGTEACH</h1>
+  <p class="subtitle" data-i18n="tagteach-subtitle">click.</p>
+  <p class="intro" data-i18n="tagteach-intro">precision feedback. one click at a time. tagteach applies clicker training principles to human coaching. the tag point is the smallest piece of behavior that matters.</p>
+</header>
+
+<section class="photo-grid" aria-label="TagTeach photos">
+  <div class="photo-card">
+    <img src="img/gym-6253.jpg" alt="Kriger portrait close-up" loading="lazy">
+  </div>
+  <div class="photo-card">
+    <img src="img/gym-6227.jpg" alt="Kriger with red Kong toy" loading="lazy">
+  </div>
+  <div class="photo-card">
+    <img src="img/gym-6240.jpg" alt="Kriger with Kong toy and strike pad" loading="lazy">
+  </div>
+  <div class="photo-card">
+    <img src="img/gym-6251.jpg" alt="Kriger down the gym corridor" loading="lazy">
+  </div>
+  <div class="photo-card">
+    <img src="img/gym-6312.jpg" alt="Tripod for video analysis" loading="lazy">
+  </div>
+</section>
+
+<section class="section">
+  <h2 data-i18n="tagteach-how">HOW IT WORKS</h2>
+  <ul>
+    <li><span class="step-number">01</span> <span data-i18n="tagteach-step-1">identify the tag point</span></li>
+    <li><span class="step-number">02</span> <span data-i18n="tagteach-step-2">mark the moment</span></li>
+    <li><span class="step-number">03</span> <span data-i18n="tagteach-step-3">reinforce</span></li>
+  </ul>
+</section>
+
+<div class="statement">
+  <p data-i18n="tagteach-statement">the click is not a reward. it is information.</p>
+</div>
+
+<!-- tag point: you found this comment. click. -->
+<footer>
+  <div class="footer-row">
+    <a href="https://x.com/N3XT3LIT3">X</a>
+  </div>
+  <div class="footer-row">
+    <a href="#mailing" data-i18n="footer-mailing">MAILING LIST</a>
+    <span data-i18n="footer-boring">BORING STUFF</span>
+  </div>
+</footer>
+
+<script>
+  // l1ft0ff — Mission Tri-Ferg — tagteach
+  console.log('%c TAGTEACH ', 'background: #1B2A4A; color: #FFFFFF; font-size: 16px; font-weight: bold; padding: 8px 16px;');
+  console.log('%c click. ', 'color: #888; font-size: 12px;');
+  // Easter egg: clicking anywhere on the page plays a "click" in the console
+  var clickCount = 0;
+  document.addEventListener('click', function() {
+    clickCount++;
+    if (clickCount === 5) {
+      console.log('%c TAG POINT: attention. ', 'color: #1B2A4A; font-size: 11px; font-weight: bold;');
+      clickCount = 0;
+    }
+  });
+
+  (function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.photo-card, .section, .statement').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+<script src="lang.js"></script>
+</body>
+</html>

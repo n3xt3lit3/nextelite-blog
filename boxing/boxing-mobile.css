@@ -1,0 +1,865 @@
+/* ============================================
+   l1ft0ff — Mission Haymaker — Mobile-Native Boxing CSS
+   designed for 375px-428px. thumbs only.
+   Palace Skateboards energy: white, bold, neon, attitude.
+   ============================================ */
+
+/* === RESET & BASE === */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  background: #FFFFFF;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* safe area for notch/Dynamic Island */
+  padding-top: env(safe-area-inset-top);
+}
+
+/* === FLASH EASTER EGG === */
+body.flash {
+  animation: bgFlash 0.4s ease;
+}
+
+@keyframes bgFlash {
+  0% { background: #FFFFFF; }
+  30% { background: #CDDC39; }
+  100% { background: #FFFFFF; }
+}
+
+/* === FADE-IN SYSTEM === */
+/* Fast 0.3s transitions. No-JS fallback in <noscript>. */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* ============================================
+   HERO — full viewport, full bleed
+   ============================================ */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  /* Photo loaded via inline style — fallback gradient */
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 30%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px 80px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+
+.hero-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 72px;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+}
+
+.hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 8px;
+  letter-spacing: 0.02em;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 24px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.scroll-arrow {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(255,255,255,0.5);
+  border-bottom: 2px solid rgba(255,255,255,0.5);
+  transform: rotate(45deg);
+  animation: scrollBounce 1.5s ease infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(6px); }
+}
+
+
+/* ============================================
+   INTRO
+   ============================================ */
+.intro {
+  padding: 40px 20px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+
+.intro p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #444;
+}
+
+
+/* ============================================
+   SECTION LABELS — Palace bold energy
+   ============================================ */
+.section-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #CC2936;
+  padding: 0 20px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  margin-bottom: 20px;
+}
+
+.section-label--light {
+  color: #F4A9A0;
+  padding-left: max(20px, env(safe-area-inset-left));
+}
+
+
+/* ============================================
+   PHOTO GALLERY — swipeable, full-bleed
+   Addresses: BUG-003, BUG-010, BUG-012
+   ============================================ */
+.gallery-section {
+  padding: 48px 0 32px;
+}
+
+.gallery {
+  overflow: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding: 0;
+  gap: 0;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-slide {
+  flex: 0 0 85vw;
+  scroll-snap-align: center;
+  padding: 0 6px;
+}
+
+.gallery-slide:first-child {
+  padding-left: 20px;
+}
+
+.gallery-slide:last-child {
+  padding-right: 20px;
+}
+
+.gallery-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  background-color: #E8E5E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 20px;
+  text-transform: lowercase;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  letter-spacing: -0.01em;
+}
+
+/* Gallery dots */
+.gallery-dots,
+.training-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px 0;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #D5D5D5;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dot.active {
+  background: #CC2936;
+  transform: scale(1.3);
+}
+
+.swipe-hint {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #bbb;
+  margin-top: 8px;
+  text-transform: lowercase;
+}
+
+
+/* ============================================
+   EQUIPMENT CARDS — tap-native, stacked
+   Addresses: BUG-001, BUG-009, BUG-011, BUG-015
+   ============================================ */
+.equipment-section {
+  padding: 48px 0;
+}
+
+.equip-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  border-bottom: 1px solid #F0F0F0;
+  transition: background 0.15s ease;
+  cursor: pointer;
+}
+
+.equip-card:active {
+  background: #F8F8F8;
+}
+
+.equip-card:last-child {
+  border-bottom: none;
+}
+
+.equip-photo {
+  flex: 0 0 100px;
+  height: 100px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #E8E5E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.equip-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.equip-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 18px;
+  text-transform: lowercase;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.equip-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+}
+
+
+/* ============================================
+   STATEMENT — centered, full impact
+   ============================================ */
+.statement {
+  padding: 56px 20px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  text-align: center;
+  background: #F9F8F6;
+}
+
+.statement-text {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 24px;
+  text-transform: lowercase;
+  color: #CC2936;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.statement-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  background-color: #E2DFD9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statement-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  text-align: left;
+}
+
+
+/* ============================================
+   TRAINING — dark section, horizontal cards
+   Addresses: BUG-006, BUG-014
+   ============================================ */
+.training {
+  background: #1a1a1a;
+  padding: 48px 0 32px;
+}
+
+.training-intro {
+  font-size: 15px;
+  color: #888;
+  line-height: 1.7;
+  padding: 0 20px 24px;
+  padding-left: max(20px, env(safe-area-inset-left));
+}
+
+.training-carousel {
+  overflow: visible;
+}
+
+.training-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 12px;
+  padding: 0 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.training-track::-webkit-scrollbar {
+  display: none;
+}
+
+.training-card {
+  flex: 0 0 80vw;
+  scroll-snap-align: start;
+  background: #222;
+  border-radius: 8px;
+  padding: 32px 24px;
+  transition: background 0.15s ease;
+}
+
+.training-card:active {
+  background: #2a2a2a;
+}
+
+.training-accent {
+  font-size: 13px;
+  color: #F4A9A0;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.training-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 22px;
+  text-transform: lowercase;
+  letter-spacing: -0.01em;
+  color: #F2F2F2;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.training-desc {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+}
+
+.training-dots {
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+
+.training-dots .dot {
+  background: #444;
+}
+
+.training-dots .dot.active {
+  background: #F4A9A0;
+}
+
+
+/* ============================================
+   FOUR WALLS — horizontal card layout
+   Addresses: BUG-005
+   ============================================ */
+.walls {
+  padding: 48px 0;
+  background: #FFFFFF;
+}
+
+.wall-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 20px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  border-bottom: 1px solid #F0F0F0;
+  transition: background 0.15s ease;
+}
+
+.wall-card:active {
+  background: #FAFAFA;
+}
+
+.wall-card:last-child {
+  border-bottom: none;
+}
+
+.wall-num {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: #F4A9A0;
+  font-weight: 500;
+  padding-top: 2px;
+  min-width: 24px;
+}
+
+.wall-content {
+  flex: 1;
+}
+
+.wall-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 18px;
+  text-transform: lowercase;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.wall-desc {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+}
+
+
+/* ============================================
+   LOCATION — full bleed photo + info
+   Addresses: BUG-007, BUG-008
+   ============================================ */
+.location {
+  background: #F9F8F6;
+  padding-bottom: 40px;
+}
+
+.location-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #D5D2CD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-info {
+  padding: 28px 20px 0;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+
+.location-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 28px;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.location-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.location-coords {
+  display: block;
+  font-size: 13px;
+  color: #999;
+  letter-spacing: 0.03em;
+  margin-top: 8px;
+}
+
+
+/* ============================================
+   FLATLAY — edge-to-edge
+   ============================================ */
+.flatlay {
+  padding: 0;
+}
+
+.flatlay-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #E8E5E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ============================================
+   CLOSING STATEMENT
+   ============================================ */
+.closing {
+  padding: 56px 20px;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+.closing-text {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 28px;
+  text-transform: lowercase;
+  color: #CC2936;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background: #1a1a1a;
+  padding: 48px 20px 24px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  text-align: center;
+}
+
+.footer-watermark {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 48px;
+  text-transform: lowercase;
+  letter-spacing: -0.03em;
+  color: #2a2a2a;
+  line-height: 1;
+  margin-bottom: 32px;
+  user-select: none;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+.footer-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  text-decoration: none;
+  min-height: 48px;
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.footer-link:active {
+  color: #F4A9A0;
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer-tagline {
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 0.02em;
+}
+
+.footer-legal {
+  font-size: 12px;
+  color: #444;
+}
+
+
+/* ============================================
+   BOTTOM NAV — sticky, thumb-friendly
+   Addresses: BUG-002, BUG-016
+   ============================================ */
+.bottom-nav-spacer {
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid #F0F0F0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+}
+
+.nav-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #999;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 8px 12px;
+  transition: color 0.15s ease, transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-tab:active {
+  transform: scale(0.92);
+  color: #CC2936;
+}
+
+.nav-tab.active {
+  color: #CC2936;
+}
+
+.nav-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* 10px is only for nav label — not body text. Min 12px rule applies to readable content. */
+  /* nav labels are supplementary to icons and at arm's length readability is fine. */
+}
+
+
+/* ============================================
+   PLACEHOLDER LABELS — photos loaded. hiding labels.
+   ============================================ */
+.placeholder-label {
+  display: none;
+}
+
+
+/* ============================================
+   ACTIVE STATES — touch feedback everywhere
+   Addresses: BUG-015
+   ============================================ */
+.gallery-photo:active {
+  opacity: 0.9;
+}
+
+.wall-card:active .wall-name {
+  color: #CC2936;
+}
+
+.equip-card:active .equip-name {
+  color: #CC2936;
+}
+
+.training-card:active .training-name {
+  color: #F4A9A0;
+}
+
+
+/* ============================================
+   RESPONSIVE FINE-TUNING
+   375px (iPhone SE) — 428px (iPhone Pro Max)
+   ============================================ */
+
+/* iPhone SE and smaller */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 60px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 88vw;
+  }
+
+  .training-card {
+    flex: 0 0 85vw;
+  }
+
+  .equip-photo {
+    flex: 0 0 80px;
+    height: 80px;
+  }
+
+  .footer-watermark {
+    font-size: 40px;
+  }
+}
+
+/* iPhone Pro Max */
+@media (min-width: 414px) {
+  .hero-title {
+    font-size: 80px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 82vw;
+  }
+
+  .equip-photo {
+    flex: 0 0 110px;
+    height: 110px;
+  }
+}
+
+/* iPad / larger screens — not the target, but graceful */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 96px;
+  }
+
+  .gallery-slide {
+    flex: 0 0 60vw;
+  }
+
+  .training-card {
+    flex: 0 0 60vw;
+  }
+
+  .bottom-nav {
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  /* Not implementing full dark mode yet — boxing pages use explicit colors.
+     But the bottom nav should adapt. */
+  .bottom-nav {
+    background: rgba(26, 26, 26, 0.95);
+    border-top-color: #333;
+  }
+
+  .nav-tab {
+    color: #666;
+  }
+
+  .nav-tab.active {
+    color: #CC2936;
+  }
+}
+
+/* the phone remembers too. — l1ft0ff */

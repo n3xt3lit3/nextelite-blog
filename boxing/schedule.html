@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCHEDULE — N3XT3LIT3</title>
+  <!-- l1ft0ff — Mission Tri-Ferg — schedule subpage -->
+  <!-- the hardest round is the one before you start. -->
+  <!-- l1ft0ff — Mission Babel — i18n added -->
+  <link rel="stylesheet" href="lang-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      background: #FFFFFF;
+      color: #1a1a1a;
+    }
+
+    .back {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 100;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #CDDC39;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .back:hover {
+      opacity: 0.6;
+    }
+
+    .hero {
+      padding: 120px 24px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(48px, 10vw, 96px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: #CDDC39;
+    }
+
+    .hero .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: #888;
+      margin-top: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero .intro {
+      margin-top: 32px;
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 600px;
+      color: #444;
+    }
+
+    /* === PHOTO ROW === */
+    .photo-row {
+      padding: 0 24px 64px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .photo-card {
+      overflow: hidden;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .photo-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.3s ease;
+    }
+
+    .photo-card:hover img {
+      filter: grayscale(0%);
+    }
+
+    /* === SCHEDULE GRID === */
+    .schedule-section {
+      padding: 0 24px 64px;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .schedule-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .schedule-section h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 4vw, 36px);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #CDDC39;
+      margin-bottom: 32px;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .day-card {
+      border: 2px solid #f0f0f0;
+      border-radius: 4px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: border-color 0.3s ease;
+    }
+
+    .day-card:hover {
+      border-color: #CDDC39;
+    }
+
+    .day-card .day-name {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+
+    .day-card .day-time {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .day-card .day-tbd {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #CDDC39;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* === CONTACT === */
+    .contact {
+      padding: 48px 24px 64px;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .contact.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .contact h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(20px, 3vw, 28px);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+
+    .contact p {
+      font-size: 16px;
+      color: #888;
+      line-height: 1.7;
+    }
+
+    .contact a {
+      color: #1a1a1a;
+      text-decoration: none;
+      border-bottom: 1px solid #CDDC39;
+      transition: opacity 0.2s ease;
+    }
+
+    .contact a:hover {
+      opacity: 0.6;
+    }
+
+    .statement {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .statement.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .statement p {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(16px, 3vw, 24px);
+      text-transform: uppercase;
+      color: #CDDC39;
+      letter-spacing: -0.01em;
+    }
+
+    footer {
+      width: 100%;
+      padding: 48px 0 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .footer-row a,
+    .footer-row span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-row a:hover {
+      color: #CDDC39;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 100px 20px 60px;
+      }
+
+      .photo-row {
+        padding: 0 20px 48px;
+      }
+
+      .schedule-section {
+        padding: 0 20px 48px;
+      }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .contact {
+        padding: 48px 20px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .photo-row {
+        grid-template-columns: 1fr;
+      }
+
+      .back {
+        top: 16px;
+        left: 16px;
+      }
+    }
+  @media (max-width: 768px) { .hero h1 { font-size: clamp(28px, 8vw, 40px) !important; } .hero .subtitle { font-size: 14px !important; } .photo-grid, .equip-grid { grid-template-columns: 1fr !important; } .equip-card img, .photo-card img { height: 250px !important; } .back { font-size: 11px !important; top: 12px !important; left: 12px !important; } section, .about, .walls, .statement { padding: 40px 20px !important; } .walls-grid { flex-direction: column !important; gap: 12px !important; } .footer-row { gap: 16px !important; } } 
+    /* === MOBILE GATE === */
+    .mobile-gate {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #FFFFFF;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .mobile-gate h1 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
+      line-height: 1.1;
+    }
+
+    .mobile-gate p {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #888;
+      margin-top: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-gate {
+        display: flex;
+      }
+
+      body > *:not(.mobile-gate) {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- l1ft0ff — Mission Constellation — mobile redirect -->
+<script>
+  (function() {
+    var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768);
+    if (isMobile) { // mobile redirect disabled
+  })();
+</script>
+
+
+<!-- l1ft0ff — the hardest round is the one before you start. open the door. -->
+
+<!-- l1ft0ff — Mission Babel — language toggle -->
+<div class="lang-toggle" aria-label="Language selector">
+  <button class="lang-btn" data-lang-btn="no">NO</button>
+  <span class="lang-sep">/</span>
+  <button class="lang-btn active" data-lang-btn="en">EN</button>
+</div>
+
+<a href="index.html" class="back" aria-label="Back to main navigation" data-i18n-html="back">&larr; BACK</a>
+
+<header class="hero">
+  <h1 data-i18n="page-title-schedule">SCHEDULE</h1>
+  <p class="subtitle" data-i18n="schedule-subtitle">show up.</p>
+  <p class="intro" data-i18n="schedule-intro">the hardest round is the one before you start. open the door.</p>
+</header>
+
+<section class="photo-row" aria-label="Schedule photos">
+  <div class="photo-card">
+    <img src="img/gym-6264.jpg" alt="Footwork tape marks on floor" loading="lazy">
+  </div>
+  <div class="photo-card">
+    <img src="img/gym-6309.jpg" alt="Tripod with full gym perspective" loading="lazy">
+  </div>
+</section>
+
+<section class="schedule-section">
+  <h2 data-i18n="schedule-weekly">WEEKLY</h2>
+  <div class="schedule-grid">
+    <div class="day-card">
+      <div class="day-name" data-i18n="schedule-monday">MONDAY</div>
+      <div class="day-time" data-i18n="schedule-boxing">Boxing</div>
+      <div class="day-tbd" data-i18n="schedule-tbd">time tbd</div>
+    </div>
+    <div class="day-card">
+      <div class="day-name" data-i18n="schedule-wednesday">WEDNESDAY</div>
+      <div class="day-time" data-i18n="schedule-boxing">Boxing</div>
+      <div class="day-tbd" data-i18n="schedule-tbd">time tbd</div>
+    </div>
+    <div class="day-card">
+      <div class="day-name" data-i18n="schedule-friday">FRIDAY</div>
+      <div class="day-time" data-i18n="schedule-boxing">Boxing</div>
+      <div class="day-tbd" data-i18n="schedule-tbd">time tbd</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2 data-i18n="schedule-contact">CONTACT</h2>
+  <p><a href="mailto:nemine@nextelite.no">nemine@nextelite.no</a></p>
+  <p style="margin-top: 4px; font-size: 14px; color: #aaa;" data-i18n="schedule-location">myre, vesteralen</p>
+</section>
+
+<div class="statement">
+  <p data-i18n="schedule-statement">no excuses accepted. no excuses needed.</p>
+</div>
+
+<!-- monday. wednesday. friday. repeat until dangerous. -->
+<footer>
+  <div class="footer-row">
+    <a href="https://x.com/N3XT3LIT3">X</a>
+  </div>
+  <div class="footer-row">
+    <a href="#mailing" data-i18n="footer-mailing">MAILING LIST</a>
+    <span data-i18n="footer-boring">BORING STUFF</span>
+  </div>
+</footer>
+
+<script>
+  // l1ft0ff — Mission Tri-Ferg — schedule
+  console.log('%c SCHEDULE ', 'background: #CDDC39; color: #1a1a1a; font-size: 16px; font-weight: bold; padding: 8px 16px;');
+  console.log('%c show up. ', 'color: #888; font-size: 12px;');
+
+  (function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.photo-card, .schedule-section, .contact, .statement').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+<script src="lang.js"></script>
+</body>
+</html>

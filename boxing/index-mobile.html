@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>NextElite</title>
+<!-- l1ft0ff — Mission Constellation — mobile landing -->
+<!-- five doors. one thumb. choose. -->
+<!-- l1ft0ff — Mission Babel — i18n added -->
+<link rel="stylesheet" href="lang-toggle.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<noscript><style>.fade-in{opacity:1!important;transform:none!important;}</style></noscript>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+<!-- l1ft0ff — five doors on glass. same energy. smaller screen. -->
+
+<!-- ============================================
+     LANDING — full screen, stacked nav items
+     the whole site is one thumb away
+     ============================================ -->
+<!-- l1ft0ff — Mission Babel — language toggle -->
+<div class="lang-toggle lang-toggle--mobile" aria-label="Language selector">
+  <button class="lang-btn" data-lang-btn="no">NO</button>
+  <span class="lang-sep">/</span>
+  <button class="lang-btn active" data-lang-btn="en">EN</button>
+</div>
+
+<main class="index-hero">
+  <nav class="index-nav" aria-label="Main navigation">
+    <a href="boxing-mobile.html" class="index-link" data-id="boxing" aria-label="Boxing">
+      <span class="index-link-text" data-i18n="nav-boxing">BOXING</span>
+    </a>
+    <a href="tagteach-mobile.html" class="index-link" data-id="tagteach" aria-label="TagTeach">
+      <span class="index-link-text" data-i18n="nav-tagteach">TAGTEACH</span>
+    </a>
+    <a href="the-space-mobile.html" class="index-link" data-id="space" aria-label="The Space">
+      <span class="index-link-text" data-i18n="nav-space">THE SPACE</span>
+    </a>
+    <a href="schedule-mobile.html" class="index-link" data-id="schedule" aria-label="Schedule">
+      <span class="index-link-text" data-i18n="nav-schedule">SCHEDULE</span>
+    </a>
+    <a href="n3xt3lit3-mobile.html" class="index-link" data-id="n3xt3lit3" aria-label="NextElite">
+      <span class="index-link-text" data-i18n="nav-n3xt3lit3">N3XT3LIT3</span>
+    </a>
+  </nav>
+</main>
+
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="site-footer">
+  <div class="footer-watermark" aria-hidden="true">n3xt3lit3</div>
+  <div class="footer-links">
+    <a href="https://x.com/N3XT3LIT3" class="footer-link" aria-label="Follow on X">X</a>
+  </div>
+  <div class="footer-meta">
+    <span class="footer-tagline">&lt;333 xxx n3xt3lit3</span>
+    <span class="footer-legal">&copy; 2026 nextelite</span>
+  </div>
+</footer>
+
+<!-- <333 xxx n3xt3lit3 — the landing remembers too. -->
+<!-- mission constellation. the index that fits in your pocket. -->
+
+<script>
+// l1ft0ff — Mission Constellation — mobile index
+console.log('%c N3XT3LIT3 ', 'background: #1a1a1a; color: #CDDC39; font-size: 16px; font-weight: bold; padding: 8px 16px;');
+console.log('%c mission constellation — mobile-native ', 'color: #888; font-size: 12px;');
+console.log('%c five doors. one thumb. ', 'color: #D5D5D5; font-size: 10px;');
+
+// Easter egg: tap all 5 links within 3 seconds
+(function() {
+  var links = document.querySelectorAll('.index-link');
+  var tapped = new Set();
+  var firstTapTime = null;
+
+  links.forEach(function(link) {
+    link.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      var id = link.getAttribute('data-id');
+
+      if (tapped.size === 0) firstTapTime = Date.now();
+      tapped.add(id);
+
+      if (tapped.size === 5) {
+        var elapsed = Date.now() - firstTapTime;
+        if (elapsed <= 3000) {
+          document.body.classList.add('flash');
+          console.log('%c ACHIEVEMENT UNLOCKED ', 'background: #CDDC39; color: #1a1a1a; font-size: 14px; font-weight: bold; padding: 4px 12px;');
+          console.log('%c five taps. glass speed. respect. ', 'color: #888; font-size: 11px;');
+          setTimeout(function() { document.body.classList.remove('flash'); }, 500);
+        }
+        tapped.clear();
+        firstTapTime = null;
+      }
+
+      // Navigate after brief delay
+      setTimeout(function() {
+        window.location.href = link.getAttribute('href');
+      }, 150);
+    }, { passive: false });
+  });
+
+  setInterval(function() {
+    if (firstTapTime && Date.now() - firstTapTime > 3000) {
+      tapped.clear();
+      firstTapTime = null;
+    }
+  }, 500);
+})();
+</script>
+<script src="lang.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextElite</title>
+  <!-- l1ft0ff — Mission Tri-Ferg — exp-14 -->
+  <!-- Palace energy. Five words. That's the whole site. -->
+  <!-- If you're reading this, you're paying attention. Good. -->
+  <!-- l1ft0ff — Mission Babel — i18n added -->
+  <link rel="stylesheet" href="lang-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #FFFFFF;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+/* === NAV CONTAINER === */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 48px);
+      flex-wrap: wrap;
+      padding: 0 24px;
+      flex: 1;
+      align-content: center;
+    }
+
+    /* === NAV ITEM === */
+    .nav-item {
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 clamp(12px, 2vw, 32px);
+      min-height: 80px;
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      will-change: transform, opacity;
+    }
+
+    .nav-item .label,
+    .nav-item .hover-label {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 3.5vw, 52px);
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      white-space: nowrap;
+      /* handle longer Norwegian text — scale down gracefully */
+      max-width: 100%;
+      overflow: visible;
+    }
+
+    /* longer hover labels (e.g. TRENINGSLOKALET) get smaller font */
+    .nav-item .hover-label {
+      font-size: clamp(18px, 2.8vw, 42px);
+    }
+
+    .nav-item .label {
+      opacity: 1;
+    }
+
+    .nav-item .hover-label {
+      position: absolute;
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    /* Hover: swap text */
+    .nav-item:hover .label,
+    .nav-item:focus .label {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+
+    .nav-item:hover .hover-label,
+    .nav-item:focus .hover-label {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Hover: scale up hovered item */
+    .nav-item:hover,
+    .nav-item:focus {
+      transform: scale(1.05);
+    }
+
+    /* When ANY item is hovered, fade the others */
+    .nav:hover .nav-item {
+      opacity: 0.4;
+    }
+
+    .nav:hover .nav-item:hover,
+    .nav:hover .nav-item:focus {
+      opacity: 1;
+    }
+
+    /* === COLORS === */
+    .nav-item[data-id="boxing"] { color: #CC2936; }
+    .nav-item[data-id="tagteach"] { color: #1B2A4A; }
+    .nav-item[data-id="space"] { color: #1a1a1a; }
+    .nav-item[data-id="schedule"] { color: #CDDC39; }
+    .nav-item[data-id="n3xt3lit3"] { color: #D5D5D5; }
+
+    /* === FOOTER === */
+    footer {
+      width: 100%;
+      padding: 24px 0 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .footer-row a,
+    .footer-row span {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-row a:hover {
+      color: #1a1a1a;
+    }
+
+    /* === MOBILE NOTICE — Mission Ground Control === */
+    .mobile-notice {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #ffffff;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      font-family: 'Archivo Black', 'Inter', sans-serif;
+    }
+    .mobile-notice h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+      text-transform: uppercase;
+    }
+    .mobile-notice p {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .mobile-notice { display: flex; }
+      .nav, .lang-toggle, footer { display: none !important; }
+      html, body {
+        overflow: auto;
+      }
+
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+
+      .nav {
+        gap: 12px 24px;
+        padding: 0 16px;
+      }
+
+      .nav-item {
+        width: clamp(140px, 45vw, 200px);
+      }
+
+      .nav-item .label,
+      .nav-item .hover-label {
+        font-size: clamp(28px, 9vw, 44px);
+      }
+
+      .nav-item .hover-label {
+        font-size: clamp(20px, 7vw, 36px);
+      }
+    }
+
+    @media (max-width: 375px) {
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-item .label,
+      .nav-item .hover-label {
+        font-size: clamp(24px, 10vw, 38px);
+      }
+
+      .nav-item .hover-label {
+        font-size: clamp(18px, 8vw, 32px);
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Mission Ground Control — mobile notice -->
+<div class="mobile-notice">
+  <h2>N3XT3LIT3</h2>
+  <p>This page is built for desktop. Open it on a computer to see the full boxing experience.</p>
+</div>
+
+<!-- Mission Tri-Ferg. Five shapes. Five doors. Choose. -->
+<!-- l1ft0ff — Mission Haymaker — mobile routing added -->
+
+<!-- l1ft0ff — Mission Babel — language toggle -->
+<div class="lang-toggle" aria-label="Language selector">
+  <button class="lang-btn" data-lang-btn="no">NO</button>
+  <span class="lang-sep">/</span>
+  <button class="lang-btn active" data-lang-btn="en">EN</button>
+</div>
+
+<nav class="nav" aria-label="Main navigation">
+  <!-- 1. BOXING — red -->
+  <a href="boxing.html" class="nav-item" data-id="boxing" role="link" aria-label="Boxing">
+    <span class="label" data-i18n="nav-boxing">BOXING</span>
+    <span class="hover-label" aria-hidden="true" data-i18n="nav-hover-boxing">GLOVES ON</span>
+  </a>
+
+  <!-- 2. TAGTEACH — navy -->
+  <a href="tagteach.html" class="nav-item" data-id="tagteach" role="link" aria-label="TagTeach">
+    <span class="label" data-i18n="nav-tagteach">TAGTEACH</span>
+    <span class="hover-label" aria-hidden="true" data-i18n="nav-hover-tagteach">CLICK.</span>
+  </a>
+
+  <!-- 3. THE SPACE — black -->
+  <a href="the-space.html" class="nav-item" data-id="space" role="link" aria-label="The Space">
+    <span class="label" data-i18n="nav-space">THE SPACE</span>
+    <span class="hover-label" aria-hidden="true" data-i18n="nav-hover-space">THE GYM</span>
+  </a>
+
+  <!-- 4. SCHEDULE — neon -->
+  <a href="schedule.html" class="nav-item" data-id="schedule" role="link" aria-label="Schedule">
+    <span class="label" data-i18n="nav-schedule">SCHEDULE</span>
+    <span class="hover-label" aria-hidden="true" data-i18n="nav-hover-schedule">SHOW UP</span>
+  </a>
+
+  <!-- 5. N3XT3LIT3 — gray. the quiet one. -->
+  <a href="n3xt3lit3.html" class="nav-item" data-id="n3xt3lit3" role="link" aria-label="NextElite">
+    <span class="label" data-i18n="nav-n3xt3lit3">N3XT3LIT3</span>
+    <span class="hover-label" aria-hidden="true" data-i18n="nav-hover-n3xt3lit3">DANGEROUS</span>
+  </a>
+</nav>
+
+<!-- <333 xxx n3xt3lit3 -->
+<footer>
+  <div class="footer-row">
+    <a href="https://x.com/N3XT3LIT3">X</a>
+  </div>
+  <div class="footer-row">
+    <a href="#mailing" data-i18n="footer-mailing">MAILING LIST</a>
+    <span data-i18n="footer-boring">BORING STUFF</span>
+  </div>
+</footer>
+<!-- you found the boring stuff. congrats. -->
+
+<script>
+  // l1ft0ff — Mission Tri-Ferg + Haymaker — mobile routing
+  // "Five doors. No descriptions. No apologies."
+
+  // Route mobile users to mobile-native pages — Mission Constellation
+  (function() {
+    var isMobile = false; // mobile version in development
+    if (isMobile) {
+      // Redirect to dedicated mobile index
+      // window.location.href = 'index-mobile.html'; // disabled until mobile is approved
+      return;
+    }
+  })();
+  console.log('%c N3XT3LIT3 ', 'background: #1a1a1a; color: #CDDC39; font-size: 16px; font-weight: bold; padding: 8px 16px;');
+  console.log('%c not here to be pretty. ', 'color: #888; font-size: 12px;');
+  console.log('%c try hovering all five. fast. ', 'color: #D5D5D5; font-size: 10px;');
+
+  // Easter egg: hover all 5 within 3 seconds → flash neon
+  (function() {
+    const items = document.querySelectorAll('.nav-item');
+    const hovered = new Set();
+    let firstHoverTime = null;
+
+    items.forEach(function(item) {
+      item.addEventListener('mouseenter', function() {
+        const id = item.getAttribute('data-id');
+
+        if (hovered.size === 0) {
+          firstHoverTime = Date.now();
+        }
+
+        hovered.add(id);
+
+        if (hovered.size === 5) {
+          const elapsed = Date.now() - firstHoverTime;
+          if (elapsed <= 3000) {
+            document.body.classList.add('flash');
+            console.log('%c ACHIEVEMENT UNLOCKED ', 'background: #CDDC39; color: #1a1a1a; font-size: 14px; font-weight: bold; padding: 4px 12px;');
+            console.log('%c you hovered them all. respect. ', 'color: #888; font-size: 11px;');
+            setTimeout(function() {
+              document.body.classList.remove('flash');
+            }, 600);
+          }
+          // Reset
+          hovered.clear();
+          firstHoverTime = null;
+        }
+      });
+    });
+
+    // Reset if too slow (timeout after 3s from first hover)
+    setInterval(function() {
+      if (firstHoverTime && Date.now() - firstHoverTime > 3000) {
+        hovered.clear();
+        firstHoverTime = null;
+      }
+    }, 500);
+  })();
+</script>
+<script src="lang.js"></script>
+</body>
+</html>
