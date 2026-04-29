@@ -1,0 +1,91 @@
+/* l1ft0ff — Mission Babel — language toggle styles */
+/* Palace energy. Minimal. Upper-right corner. */
+
+.lang-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.lang-btn {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  padding: 10px 6px;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.lang-btn.active {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.lang-btn:hover {
+  color: #1a1a1a;
+}
+
+.lang-sep {
+  color: #ccc;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  user-select: none;
+}
+
+/* Mobile positioning */
+@media (max-width: 768px) {
+  .lang-toggle {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .lang-toggle {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* === MOBILE PAGES (with bottom nav) === */
+/* On mobile pages, put toggle in top-right but ensure it doesn't clash with hero overlay */
+.lang-toggle--mobile {
+  position: fixed;
+  top: env(safe-area-inset-top, 12px);
+  right: 16px;
+  z-index: 9999;
+}
+
+.lang-toggle--mobile .lang-btn {
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.lang-toggle--mobile .lang-btn.active {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.lang-toggle--mobile .lang-btn:hover {
+  color: #FFFFFF;
+}
+
+.lang-toggle--mobile .lang-sep {
+  color: rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextElite Boxing — Myre, Vesterålen</title>
+  <meta name="description" content="NextElite Boxing — boksing og TagTeach på Myre i Vesterålen. Drop-in og medlemskap.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400; font-size: 16px; line-height: 1.7;
+      background: #FFFFFF; color: #1a1a1a;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+    .stage {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 64px 24px;
+    }
+    .panel { max-width: 640px; text-align: center; }
+    h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(48px, 10vw, 96px); text-transform: uppercase;
+      line-height: 0.9; letter-spacing: -0.02em; color: #CC2936;
+      overflow-wrap: anywhere;
+    }
+    .subtitle {
+      font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px;
+      color: #888; margin-top: 24px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .lead {
+      margin-top: 40px; font-size: 18px; line-height: 1.7; color: #333;
+    }
+    .lead strong { color: #1a1a1a; }
+    .actions { margin-top: 48px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px;
+      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+      min-height: 44px; padding: 0 28px; border-radius: 999px;
+      display: inline-flex; align-items: center; transition: all 0.2s ease;
+    }
+    .btn-primary { background: #CC2936; color: #fff; border: 1px solid #CC2936; }
+    .btn-primary:hover { background: #a31f2a; border-color: #a31f2a; }
+    .btn-ghost { background: transparent; color: #1a1a1a; border: 1px solid #1a1a1a; }
+    .btn-ghost:hover { background: #1a1a1a; color: #fff; }
+    .meta {
+      margin-top: 64px; padding-top: 32px;
+      border-top: 1px solid #f0f0f0;
+      font-size: 13px; color: #888; line-height: 1.6;
+    }
+    .meta strong { color: #1a1a1a; }
+    .meta a { color: #CC2936; text-decoration: underline; text-underline-offset: 3px; }
+    footer {
+      width: 100%; padding: 32px 0 28px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .footer-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: clamp(16px, 3vw, 40px); flex-wrap: wrap;
+    }
+    .footer-row a {
+      font-family: 'Inter', sans-serif; font-weight: 500; font-size: 12px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #888;
+      text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .footer-row a:hover { color: #CC2936; }
+    @media (max-width: 768px) {
+      h1 { font-size: clamp(40px, 12vw, 64px); }
+      .lead { font-size: 16px; }
+      .stage { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="stage">
+  <section class="panel">
+    <h1>NextElite Boxing</h1>
+    <p class="subtitle">Myre · Vesterålen · Norge</p>
+    <p class="lead">
+      Boksing og TagTeach. Faste tider, ingen booking. Drop-in og medlemskap via Vipps. <strong>Ikke her for å være pen — her for å være farlig.</strong>
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://n3xt3lit3.github.io/nextelite-boxing/">Les mer</a>
+      <a class="btn btn-ghost" href="/salgsbetingelser">Salgsbetingelser</a>
+    </div>
+
+    <div class="meta">
+      <p><strong>Selger:</strong> Neminee Steffensen ENK · org.nr. 926 490 486</p>
+      <p><strong>Adresse:</strong> Fjellveien 22A, 8430 Myre, Norge</p>
+      <p><strong>Kontakt:</strong> <a href="mailto:nemine@nextelite.no">nemine@nextelite.no</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-row">
+    <a href="/">NextElite</a>
+    <a href="/salgsbetingelser">Salgsbetingelser</a>
+    <a href="/personvern">Personvern</a>
+    <a href="mailto:nemine@nextelite.no">Kontakt</a>
+  </div>
+</footer>
+
+<!-- l1ft0ff — Mission Liftoff. /boxing/ subpath holds the line. The fight stays loud. -->
+</body>
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="pv-title">Personvernerklæring — NextElite Boxing</title>
+  <meta name="description" content="Personvernerklæring for NextElite Boxing — hvilke personopplysninger vi samler inn, hvorfor, og dine rettigheter etter GDPR og personopplysningsloven.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/lang-toggle.css">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      background: #FFFFFF;
+      color: #1a1a1a;
+    }
+
+    /* === BACK LINK === */
+    .back {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 100;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #CC2936;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .back:hover {
+      opacity: 0.6;
+    }
+
+    /* === PAGE === */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 120px 24px 96px;
+    }
+
+    .page h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(40px, 7vw, 64px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: #CC2936;
+    }
+
+    .page .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #888;
+      margin-top: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .meta {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: #fafafa;
+      border-left: 3px solid #CC2936;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .meta strong {
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .meta p + p {
+      margin-top: 6px;
+    }
+
+    .lead {
+      margin-top: 40px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* === SECTIONS === */
+    section {
+      margin-top: 56px;
+    }
+
+    section h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(20px, 3vw, 28px);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    section h2 .num {
+      color: #CC2936;
+      margin-right: 12px;
+    }
+
+    section h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #1a1a1a;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    section p {
+      color: #333;
+      margin-bottom: 14px;
+    }
+
+    section ul {
+      list-style: none;
+      margin: 12px 0 16px;
+    }
+
+    section ul li {
+      color: #333;
+      padding: 4px 0;
+    }
+
+    section ul li::before {
+      content: "—";
+      margin-right: 12px;
+      color: #CC2936;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 8px;
+      font-size: 14px;
+    }
+
+    .data-table th,
+    .data-table td {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .data-table th {
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #888;
+    }
+
+    a {
+      color: #CC2936;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      opacity: 0.7;
+    }
+
+    /* === FOOTER === */
+    footer {
+      width: 100%;
+      padding: 48px 0 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 80px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .footer-row a,
+    .footer-row span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-row a:hover {
+      color: #CC2936;
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .page {
+        padding: 100px 20px 64px;
+      }
+
+      .page h1 {
+        font-size: clamp(28px, 7vw, 40px);
+        overflow-wrap: anywhere;
+      }
+
+      .back {
+        top: 16px;
+        left: 16px;
+        font-size: 12px;
+      }
+
+      section {
+        margin-top: 40px;
+      }
+
+      .data-table {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a href="/boxing/" class="back" aria-label="Back to home" data-i18n="pv-back">&larr; Tilbake</a>
+
+<!-- Mission Babel — language toggle (matches salgsbetingelser pattern) -->
+<div class="lang-toggle" aria-label="Language selector">
+  <button class="lang-btn active" data-lang-btn="no">NO</button>
+  <span class="lang-sep">/</span>
+  <button class="lang-btn" data-lang-btn="en">EN</button>
+</div>
+
+<main class="page">
+
+  <h1 data-i18n="pv-h1">Personvernerklæring</h1>
+  <p class="subtitle" data-i18n="pv-subtitle">NextElite Boxing — Myre, Vesterålen</p>
+
+  <div class="meta">
+    <p><strong data-i18n="pv-meta-controller-label">Behandlingsansvarlig:</strong> <span data-i18n="pv-meta-controller-value">Neminee Steffensen ENK</span></p>
+    <p><strong data-i18n="pv-meta-orgno-label">Org.nr:</strong> <span data-i18n="pv-meta-orgno-value">926 490 486</span></p>
+    <p><strong data-i18n="pv-meta-brand-label">Foretaksnavn / merkevare:</strong> <span data-i18n="pv-meta-brand-value">NextElite Boxing</span></p>
+    <p><strong data-i18n="pv-meta-address-label">Adresse:</strong> <span data-i18n="pv-meta-address-value">Fjellveien 22A, 8430 Myre, Norge</span></p>
+    <p><strong data-i18n="pv-meta-email-label">Kontakt:</strong> <a href="mailto:nemine@nextelite.no">nemine@nextelite.no</a></p>
+    <p><strong data-i18n="pv-meta-updated-label">Sist oppdatert:</strong> <span data-i18n="pv-meta-updated-value">29. april 2026</span></p>
+    <p><strong data-i18n="pv-meta-version-label">Versjon:</strong> <span data-i18n="pv-meta-version-value">v03</span></p>
+    <p data-i18n-html="pv-meta-archive">Tidligere versjoner: <a href="/personvern/historikk/">arkiv</a></p>
+  </div>
+
+  <p class="lead" data-i18n="pv-lead">
+    Denne personvernerklæringen forklarer hvilke personopplysninger NextElite Boxing samler inn om deg, hvorfor vi gjør det, og hvilke rettigheter du har. Vi følger personopplysningsloven og personvernforordningen (GDPR). Hvis noe er uklart, send en e-post til nemine@nextelite.no — vi svarer.
+  </p>
+
+  <section id="behandlingsansvarlig">
+    <h2><span class="num">1.</span><span data-i18n="pv-section-1-title">Behandlingsansvarlig</span></h2>
+    <p data-i18n-html="pv-section-1-p1">
+      Behandlingsansvarlig for personopplysningene dine er <strong>Neminee Steffensen ENK</strong> (org.nr. 926 490 486), heretter omtalt som "NextElite Boxing", "vi" eller "oss". Det betyr at vi bestemmer hvorfor og hvordan opplysningene dine behandles, og at vi er ansvarlige for at det skjer i tråd med loven.
+    </p>
+    <p data-i18n="pv-section-1-p2">Spørsmål om personvern rettes til:</p>
+    <ul>
+      <li data-i18n-html="pv-section-1-li1">E-post: <strong>nemine@nextelite.no</strong></li>
+      <li data-i18n-html="pv-section-1-li2">Adresse: <strong>Fjellveien 22A, 8430 Myre, Norge</strong></li>
+    </ul>
+  </section>
+
+  <section id="opplysninger">
+    <h2><span class="num">2.</span><span data-i18n="pv-section-2-title">Hvilke personopplysninger vi behandler</span></h2>
+    <p data-i18n="pv-section-2-p1">Vi behandler kun de opplysningene vi trenger for å levere tjenesten og oppfylle våre lovpålagte plikter.</p>
+
+    <h3 data-i18n="pv-section-2-h3-purchase">Når du kjøper drop-in eller medlemskap</h3>
+    <ul>
+      <li data-i18n="pv-section-2-purchase-li1">Navn</li>
+      <li data-i18n="pv-section-2-purchase-li2">E-postadresse</li>
+      <li data-i18n="pv-section-2-purchase-li3">Telefonnummer</li>
+      <li data-i18n-html="pv-section-2-purchase-li4">Betalingsinformasjon — håndteres av Vipps. <strong>Vi lagrer ikke kortdata eller kontonummer.</strong> Vi mottar kun bekreftelse på at betalingen er gjennomført, samt et avtale-ID for medlemskap.</li>
+    </ul>
+
+    <h3 data-i18n="pv-section-2-h3-health">Når du melder deg inn (helse-skjema)</h3>
+    <p data-i18n="pv-section-2-health-p1">Ved innmelding fyller du ut et frivillig digitalt skjema (via Tally) hvor du kan dele:</p>
+    <ul>
+      <li data-i18n="pv-section-2-health-li1">Skader, sykdom eller andre helseforhold som er relevante for trygg trening.</li>
+      <li data-i18n="pv-section-2-health-li2">Kontaktperson i nødssituasjoner.</li>
+    </ul>
+    <p data-i18n-html="pv-section-2-health-p2">Det er <strong>ditt valg</strong> hva du vil dele. Du kan stå over hele skjemaet og fortsatt trene. Hvis du fyller ut skjemaet, behandler vi opplysningene som <strong>særlig kategori-data (helseopplysninger)</strong> etter GDPR artikkel 9 — se punkt 7c for full beskrivelse.</p>
+
+    <h3 data-i18n="pv-section-2-h3-attendance">Når du møter til trening</h3>
+    <ul>
+      <li data-i18n="pv-section-2-attendance-li1">Oppmøtedata (hvilke økter du har deltatt på).</li>
+      <li data-i18n="pv-section-2-attendance-li2">Vi har ingen booking-system. Faste treningstider gjelder, du møter opp.</li>
+    </ul>
+
+    <h3 data-i18n="pv-section-2-h3-contact">Når du tar kontakt med oss</h3>
+    <p data-i18n="pv-section-2-contact-p">Innholdet i e-post, SMS, eller Signal-meldinger du sender oss, samt kontaktinformasjonen din.</p>
+
+    <h3 data-i18n="pv-section-2-h3-website">Når du besøker nettsiden</h3>
+    <p data-i18n-html="pv-section-2-website-p">Anonyme, aggregerte besøksdata (sidevisninger, nettleser-type, omtrentlig geografisk region på landsnivå). Disse dataene knyttes <strong>ikke</strong> til deg som person og kan ikke brukes til å identifisere deg. Se punkt 7a for detaljer om analyseverktøyet.</p>
+  </section>
+
+  <section id="grunnlag">
+    <h2><span class="num">3.</span><span data-i18n="pv-section-3-title">Rettslig grunnlag</span></h2>
+    <p data-i18n="pv-section-3-p1">Vi behandler personopplysningene dine på følgende grunnlag etter GDPR artikkel 6 og 9:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th data-i18n="pv-section-3-th-purpose">Formål</th>
+          <th data-i18n="pv-section-3-th-basis">Rettslig grunnlag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-i18n="pv-section-3-row1-purpose">Levere medlemskap og drop-in du har kjøpt</td>
+          <td data-i18n="pv-section-3-row1-basis">Art. 6 (1) (b) — oppfyllelse av avtale</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-3-row2-purpose">Bokføring og regnskap</td>
+          <td data-i18n="pv-section-3-row2-basis">Art. 6 (1) (c) — rettslig forpliktelse (bokføringsloven)</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-3-row3-purpose">Oppmøteregistrering og sikkerhet i lokalet</td>
+          <td data-i18n="pv-section-3-row3-basis">Art. 6 (1) (f) — berettiget interesse</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-3-row4-purpose">Anonyme besøksanalytikk for å forbedre nettsiden</td>
+          <td data-i18n="pv-section-3-row4-basis">Art. 6 (1) (f) — berettiget interesse</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-3-row5-purpose">Helseopplysninger du selv deler i innmeldingsskjema</td>
+          <td data-i18n="pv-section-3-row5-basis">Art. 9 (2) (a) — uttrykkelig samtykke</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-3-row6-purpose">Helseopplysninger du muntlig deler om skader på trening</td>
+          <td data-i18n="pv-section-3-row6-basis">Art. 9 (2) (a) — uttrykkelig samtykke</td>
+        </tr>
+      </tbody>
+    </table>
+    <p data-i18n="pv-section-3-p2">Den berettigede interessen for trening og lokalsikkerhet er at vi må vite hvem som er på trening for å kunne drive forsvarlig (kapasitet, sikkerhet, forsikring). Den berettigede interessen for besøksanalytikk er at vi trenger å forstå hvordan siden brukes for å forbedre den; behandlingen er anonym, cookieløs og ikke-inngripende. Vi har vurdert at ingen av disse går ut over dine rettigheter på en uforholdsmessig måte.</p>
+    <p data-i18n="pv-section-3-p3">For helseopplysninger gjelder strengere regler — se punkt 7c.</p>
+  </section>
+
+  <section id="databehandlere">
+    <h2><span class="num">4.</span><span data-i18n="pv-section-4-title">Databehandlere og deling</span></h2>
+    <p data-i18n="pv-section-4-p1">Vi deler personopplysninger kun med leverandører som behandler data på våre vegne (databehandlere), eller når vi er lovpålagt å gjøre det.</p>
+
+    <h3 data-i18n="pv-section-4-h3-processors">Databehandlere vi bruker</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th data-i18n="pv-section-4-th-vendor">Leverandør</th>
+          <th data-i18n="pv-section-4-th-what">Hva de gjør</th>
+          <th data-i18n="pv-section-4-th-where">Hvor data lagres</th>
+          <th data-i18n="pv-section-4-th-status">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-i18n-html="pv-section-4-row1-vendor"><strong>Vipps Mobilepay AS</strong></td>
+          <td data-i18n="pv-section-4-row1-what">Betalingsbehandling og faste betalinger (Vipps Recurring)</td>
+          <td data-i18n="pv-section-4-row1-where">EØS</td>
+          <td data-i18n="pv-section-4-row1-status">Aktiv</td>
+        </tr>
+        <tr>
+          <td data-i18n-html="pv-section-4-row2-vendor"><strong>GitHub Inc. (GitHub Pages)</strong></td>
+          <td data-i18n="pv-section-4-row2-what">Hosting av nextelite.no</td>
+          <td data-i18n="pv-section-4-row2-where">EØS / USA (under EU Standard Contractual Clauses)</td>
+          <td data-i18n="pv-section-4-row2-status">Aktiv</td>
+        </tr>
+        <tr>
+          <td data-i18n-html="pv-section-4-row3-vendor"><strong>Umami Software Inc. (Umami Cloud)</strong></td>
+          <td data-i18n="pv-section-4-row3-what">Anonym, cookieløs besøksanalytikk</td>
+          <td data-i18n="pv-section-4-row3-where">EU — AWS Frankfurt, Tyskland</td>
+          <td data-i18n="pv-section-4-row3-status">Aktiv</td>
+        </tr>
+        <tr>
+          <td data-i18n-html="pv-section-4-row4-vendor"><strong>Tally</strong></td>
+          <td data-i18n="pv-section-4-row4-what">Digitalt innmeldingsskjema (helseopplysninger)</td>
+          <td data-i18n="pv-section-4-row4-where">EU — GDPR-vennlig databehandler</td>
+          <td data-i18n="pv-section-4-row4-status">Aktiv</td>
+        </tr>
+      </tbody>
+    </table>
+    <p data-i18n="pv-section-4-p2">Vi har — eller vil ha — databehandleravtaler (DPA) med alle leverandører som behandler personopplysninger på våre vegne, før de tas i bruk.</p>
+
+    <h3 data-i18n="pv-section-4-h3-sms">Kommunikasjon via SMS og Signal</h3>
+    <p data-i18n="pv-section-4-sms-p1">Ved kortsiktig avlysning eller praktiske beskjeder kan vi sende SMS eller Signal-meldinger til medlemmer. Vi bruker da:</p>
+    <ul>
+      <li data-i18n-html="pv-section-4-sms-li1"><strong>Telenor / din mobiloperatør</strong> (SMS) — meldingen går gjennom standard mobilnett. Vi har ingen avtale med operatøren utover at vi er kunder hos dem.</li>
+      <li data-i18n-html="pv-section-4-sms-li2"><strong>Signal</strong> (Foundation, USA) — ende-til-ende-kryptert. Signal-serveren ser kun teknisk metadata, ikke meldingsinnholdet.</li>
+    </ul>
+    <p data-i18n="pv-section-4-sms-p2">Telefonnummeret ditt lagres lokalt i CEOs telefon (kontaktliste) og i medlemsregisteret vårt — det deles ikke med tredjeparter for kommunikasjon utover dette.</p>
+
+    <h3 data-i18n="pv-section-4-h3-legal">Når vi er lovpålagt å dele</h3>
+    <p data-i18n="pv-section-4-legal-p">Vi kan utlevere opplysninger til offentlige myndigheter (f.eks. Skatteetaten, politiet) når vi er pålagt det ved lov.</p>
+    <p data-i18n-html="pv-section-4-p-final">Vi <strong>selger ikke</strong> personopplysningene dine. Vi deler dem ikke med markedsføringspartnere.</p>
+  </section>
+
+  <section id="oppbevaring">
+    <h2><span class="num">5.</span><span data-i18n="pv-section-5-title">Oppbevaringstid</span></h2>
+    <p data-i18n="pv-section-5-p1">Vi oppbevarer personopplysninger kun så lenge det er nødvendig for formålet:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th data-i18n="pv-section-5-th-type">Type opplysning</th>
+          <th data-i18n="pv-section-5-th-time">Oppbevaringstid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-i18n="pv-section-5-row1-type">Bilag og regnskapsdata (faktura, kvittering, navn knyttet til transaksjon)</td>
+          <td data-i18n-html="pv-section-5-row1-time"><strong>5 år</strong> etter regnskapsårets slutt — bokføringsloven § 13</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row2-type">Aktivt medlemskap: kontakt- og oppmøtedata</td>
+          <td data-i18n="pv-section-5-row2-time">Så lenge medlemskapet er aktivt</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row3-type">Avsluttet medlemskap: kontaktdata</td>
+          <td data-i18n="pv-section-5-row3-time">Slettes innen 12 måneder etter siste trekk, med mindre bokføringsloven krever lengre lagring</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row4-type">Helse-skjema-data (Tally)</td>
+          <td data-i18n-html="pv-section-5-row4-time"><strong>12 måneder</strong>, eller frem til utmelding — det som inntreffer først</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row5-type">Helseopplysninger du muntlig deler om skader</td>
+          <td data-i18n="pv-section-5-row5-time">Slettes så snart de ikke lenger er nødvendige, eller når du trekker samtykket</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row6-type">E-postkorrespondanse fra medlemmer</td>
+          <td data-i18n-html="pv-section-5-row6-time">Slettes når saken er ferdigbehandlet, senest <strong>12 måneder</strong> etter siste utveksling</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row7-type">E-postkorrespondanse fra ikke-medlemmer (forespørsler)</td>
+          <td data-i18n-html="pv-section-5-row7-time">Slettes senest <strong>6 måneder</strong> etter siste utveksling</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row8-type">SMS/Signal-meldinger om praktiske beskjeder</td>
+          <td data-i18n="pv-section-5-row8-time">Slettes når beskjeden er irrelevant (typisk innen 30 dager)</td>
+        </tr>
+        <tr>
+          <td data-i18n="pv-section-5-row9-type">Anonyme besøksdata (Umami)</td>
+          <td data-i18n="pv-section-5-row9-time">Aggregert og anonymisert ved innsamling — ingen personlig kobling. Rådata slettes etter 12 måneder.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p data-i18n="pv-section-5-p2">Når oppbevaringstiden er ute, slettes eller anonymiseres dataene.</p>
+  </section>
+
+  <section id="rettigheter">
+    <h2><span class="num">6.</span><span data-i18n="pv-section-6-title">Dine rettigheter</span></h2>
+    <p data-i18n="pv-section-6-p1">Du har følgende rettigheter etter personopplysningsloven og GDPR:</p>
+    <ul>
+      <li data-i18n-html="pv-section-6-li1"><strong>Innsyn</strong> — du kan be om en kopi av opplysningene vi har om deg.</li>
+      <li data-i18n-html="pv-section-6-li2"><strong>Retting</strong> — du kan kreve at feil opplysninger rettes.</li>
+      <li data-i18n-html="pv-section-6-li3"><strong>Sletting</strong> — du kan kreve at opplysninger slettes når de ikke lenger er nødvendige, eller når du trekker tilbake samtykket. Merk at vi må beholde bilag i 5 år etter bokføringsloven.</li>
+      <li data-i18n-html="pv-section-6-li4"><strong>Begrensning</strong> — du kan kreve at behandlingen begrenses i visse tilfeller.</li>
+      <li data-i18n-html="pv-section-6-li5"><strong>Dataportabilitet</strong> — du kan få utlevert opplysningene du har gitt oss i et maskinlesbart format, eller få dem overført til en annen behandlingsansvarlig.</li>
+      <li data-i18n-html="pv-section-6-li6"><strong>Innsigelse</strong> — du kan protestere mot behandling som er basert på berettiget interesse, inkludert besøksanalytikk.</li>
+      <li data-i18n-html="pv-section-6-li7"><strong>Trekke samtykke</strong> — der behandlingen er basert på samtykke (inkludert helseopplysninger), kan du når som helst trekke det tilbake. Det påvirker ikke lovligheten av behandlingen før samtykket ble trukket.</li>
+    </ul>
+    <p data-i18n-html="pv-section-6-p2">For å bruke rettighetene dine, send en e-post til <strong>nemine@nextelite.no</strong>. Vi svarer innen 30 dager.</p>
+
+    <h3 data-i18n="pv-section-6-h3-complaint">Klage til Datatilsynet</h3>
+    <p data-i18n="pv-section-6-complaint-p">Hvis du mener vi behandler personopplysningene dine i strid med loven, kan du klage til Datatilsynet:</p>
+    <ul>
+      <li data-i18n-html="pv-section-6-complaint-li1">Nettside: <a href="https://www.datatilsynet.no" target="_blank" rel="noopener"><strong>datatilsynet.no</strong></a></li>
+      <li data-i18n="pv-section-6-complaint-li2">Telefon: 22 39 69 00</li>
+      <li data-i18n="pv-section-6-complaint-li3">Adresse: Postboks 458 Sentrum, 0105 Oslo</li>
+    </ul>
+    <p data-i18n="pv-section-6-p3">Vi setter pris på om du tar kontakt med oss først, slik at vi får mulighet til å rette opp i saken.</p>
+  </section>
+
+  <section id="cookies">
+    <h2><span class="num">7.</span><span data-i18n="pv-section-7-title">Cookies og lokal lagring</span></h2>
+    <p data-i18n-html="pv-section-7-p1">NextElite Boxing-siden bruker <strong>kun teknisk nødvendige cookies / lokal lagring</strong>. Konkret lagrer vi:</p>
+    <ul>
+      <li data-i18n-html="pv-section-7-li1"><strong>Språkvalg (norsk / engelsk)</strong> — slik at siden husker preferansen din mellom besøk. Lagres lokalt i nettleseren din (<code>localStorage</code>). Ingen cookie sendes til vår server.</li>
+    </ul>
+    <p data-i18n="pv-section-7-p2">Du kan slette språkpreferansen ved å tømme nettleserdata for nextelite.no. Siden vil fortsatt fungere — den vil bare bruke standardspråk neste gang.</p>
+    <p data-i18n="pv-section-7-p3">Vipps og GitHub Pages kan sette tekniske cookies under sine egne tjenester når du bruker dem. Vi anbefaler å lese deres personvernerklæringer for detaljer:</p>
+    <ul>
+      <li data-i18n-html="pv-section-7-li2">Vipps: <a href="https://vipps.no/personvern" target="_blank" rel="noopener">vipps.no/personvern</a></li>
+      <li data-i18n-html="pv-section-7-li3">GitHub: <a href="https://docs.github.com/privacy" target="_blank" rel="noopener">docs.github.com/privacy</a></li>
+    </ul>
+  </section>
+
+  <section id="umami">
+    <h2><span class="num">7a.</span><span data-i18n="pv-section-7a-title">Analyseverktøy (Umami)</span></h2>
+    <p data-i18n-html="pv-section-7a-p1">For å forstå hvordan nettsiden brukes — hvilke sider som leses, hvor mange som kommer hit, hvilke enheter folk bruker — benytter vi et <strong>personvernvennlig analyseverktøy som heter Umami</strong> (Umami Cloud, EU-region).</p>
+
+    <h3 data-i18n="pv-section-7a-h3-not">Hva Umami gjør IKKE:</h3>
+    <ul>
+      <li data-i18n="pv-section-7a-not-li1">Setter ingen cookies.</li>
+      <li data-i18n="pv-section-7a-not-li2">Lagrer ikke IP-adressen din i klartekst — IP-en hashes umiddelbart og forkastes.</li>
+      <li data-i18n="pv-section-7a-not-li3">Bygger ingen personlig profil av deg.</li>
+      <li data-i18n="pv-section-7a-not-li4">Følger deg ikke på tvers av andre nettsteder.</li>
+      <li data-i18n="pv-section-7a-not-li5">Selger ingen data til tredjeparter.</li>
+    </ul>
+
+    <h3 data-i18n="pv-section-7a-h3-does">Hva Umami gjør:</h3>
+    <ul>
+      <li data-i18n="pv-section-7a-does-li1">Teller anonyme sidevisninger.</li>
+      <li data-i18n="pv-section-7a-does-li2">Registrerer hvilken nettleser-type og operativsystem (anonymt) som brukes.</li>
+      <li data-i18n="pv-section-7a-does-li3">Estimerer omtrentlig geografisk region (f.eks. "Norge" eller "Nordland") basert på den hashede IP-en, før IP-en forkastes.</li>
+    </ul>
+
+    <p data-i18n-html="pv-section-7a-p2"><strong>Rettslig grunnlag:</strong> Berettiget interesse, GDPR art. 6 (1) (f). Fordi behandlingen er anonym og cookieløs, faller den utenfor samtykkekravet i ekomloven § 2-7b (cookie-paragrafen).</p>
+    <p data-i18n-html="pv-section-7a-p3"><strong>Hvor data lagres:</strong> AWS Frankfurt, Tyskland (EU). Databehandleravtale (DPA) er signert med Umami Software Inc.</p>
+    <p data-i18n-html="pv-section-7a-p4"><strong>Hvordan du sier nei:</strong> Selv om behandlingen er anonym og du har rett til å protestere etter punkt 6 (Innsigelse), kan du blokkere all besøksanalytikk ved å aktivere "Do Not Track" i nettleseren eller bruke en innholdsblokker. Vi respekterer DNT-signalet.</p>
+  </section>
+
+  <section id="ikke-bruk">
+    <h2><span class="num">7b.</span><span data-i18n="pv-section-7b-title">Hva vi IKKE bruker</span></h2>
+    <p data-i18n-html="pv-section-7b-p">Vi bruker <strong>ikke</strong>:</p>
+    <ul>
+      <li data-i18n="pv-section-7b-li1">Google Analytics</li>
+      <li data-i18n="pv-section-7b-li2">Meta Pixel (Facebook Pixel)</li>
+      <li data-i18n="pv-section-7b-li3">TikTok Pixel</li>
+      <li data-i18n="pv-section-7b-li4">LinkedIn Insight Tag</li>
+      <li data-i18n="pv-section-7b-li5">Markedsførings-cookies</li>
+      <li data-i18n="pv-section-7b-li6">Tredjeparts profileringsverktøy</li>
+      <li data-i18n="pv-section-7b-li7">Retargeting-piksler</li>
+      <li data-i18n="pv-section-7b-li8">A/B-test-verktøy som lagrer personlige identifikatorer</li>
+      <li data-i18n="pv-section-7b-li9">Booking-systemer som lagrer treningsdata hos tredjepart (vi har ingen Spond, ingen MyClub, ingen Pacta)</li>
+    </ul>
+    <p data-i18n="pv-section-7b-p2">Hvis vi i fremtiden ønsker å ta i bruk noen av disse, vil personvernerklæringen oppdateres og varsel sendes (se punkt 9).</p>
+  </section>
+
+  <section id="helse">
+    <h2><span class="num">7c.</span><span data-i18n="pv-section-7c-title">Særlig kategori — helseopplysninger</span></h2>
+    <p data-i18n-html="pv-section-7c-p1">Helseopplysninger er en <strong>særlig kategori</strong> av personopplysninger etter GDPR artikkel 9. Det betyr strengere regler. Vi behandler helseopplysningene dine kun hvis du gir <strong>uttrykkelig samtykke</strong> (art. 9 (2) (a)).</p>
+
+    <h3 data-i18n="pv-section-7c-h3-when">Når deler du helseopplysninger med oss:</h3>
+    <ul>
+      <li data-i18n-html="pv-section-7c-when-li1"><strong>Frivillig digitalt innmeldingsskjema (Tally)</strong> — ved innmelding kan du fylle ut et skjema med skader, kronisk sykdom, allergier, eller kontaktperson i nødssituasjoner. Skjemaet er valgfritt. Du kan trene uten å fylle det ut.</li>
+      <li data-i18n-html="pv-section-7c-when-li2"><strong>Muntlig på trening</strong> — du kan informere coachen om en skade eller en dårlig dag før økten starter.</li>
+    </ul>
+
+    <h3 data-i18n="pv-section-7c-h3-how">Hvordan vi behandler dataene:</h3>
+    <ul>
+      <li data-i18n-html="pv-section-7c-how-li1"><strong>Kun CEO</strong> (Neminee Steffensen) leser helseopplysninger. Coachene får kun beskjed om hva som er relevant for å tilpasse din økt — ikke detaljer.</li>
+      <li data-i18n-html="pv-section-7c-how-li2"><strong>Lagring:</strong> Tally-skjema-svar lagres i Tallys EU-baserte database. Vi henter ut nødvendige opplysninger og noterer dem i medlemsregisteret vårt. <strong>Datene krypteres i transit (HTTPS) og hos databehandleren.</strong></li>
+      <li data-i18n-html="pv-section-7c-how-li3"><strong>Lagringstid:</strong> 12 måneder, eller frem til du melder deg ut — det som inntreffer først. Du kan be om sletting når som helst.</li>
+      <li data-i18n-html="pv-section-7c-how-li4"><strong>Deling:</strong> vi deler aldri helseopplysninger med tredjeparter, med mindre du selv samtykker (f.eks. ved akutt nødssituasjon der ambulanse må kontaktes).</li>
+    </ul>
+    <p data-i18n-html="pv-section-7c-p2"><strong>Du kan trekke samtykket når som helst</strong> ved å sende e-post til nemine@nextelite.no. Da slettes helseopplysningene umiddelbart fra våre systemer (med unntak av lovpålagt bilag-data, som ikke inneholder helsedata).</p>
+  </section>
+
+  <section id="sikkerhet">
+    <h2><span class="num">8.</span><span data-i18n="pv-section-8-title">Sikkerhet</span></h2>
+    <p data-i18n="pv-section-8-p1">Vi tar rimelige tekniske og organisatoriske forholdsregler for å beskytte opplysningene dine mot uautorisert tilgang, endring eller sletting. Konkret:</p>
+    <ul>
+      <li data-i18n-html="pv-section-8-li1">All trafikk til nettsiden går over <strong>HTTPS</strong> (kryptert).</li>
+      <li data-i18n="pv-section-8-li2">Betalingsdata håndteres av Vipps og berører aldri våre systemer.</li>
+      <li data-i18n="pv-section-8-li3">Helseopplysninger krypteres i transit (HTTPS) og hos databehandleren (Tally).</li>
+      <li data-i18n="pv-section-8-li4">Tilgang til kunderegister er begrenset til personer som trenger det for å levere tjenesten. Kun CEO har tilgang til helseopplysninger.</li>
+      <li data-i18n="pv-section-8-li5">Ved et eventuelt sikkerhetsbrudd som utgjør en risiko for dine rettigheter, varsles Datatilsynet innen 72 timer, og du varsles uten ugrunnet opphold.</li>
+    </ul>
+  </section>
+
+  <section id="endringer">
+    <h2><span class="num">9.</span><span data-i18n="pv-section-9-title">Endringer i personvernerklæringen</span></h2>
+    <p data-i18n="pv-section-9-p1">Vi kan oppdatere denne personvernerklæringen ved endringer i tjenesten, regelverket, eller bruken av nye verktøy.</p>
+    <p data-i18n-html="pv-section-9-p2"><strong>Material endringer</strong> — endringer som påvirker hvilke data vi samler inn, hvem vi deler dem med, eller dine rettigheter — varsles på følgende måter:</p>
+    <ul>
+      <li data-i18n-html="pv-section-9-li1"><strong>E-post</strong> til alle aktive medlemmer minst <strong>30 dager før</strong> endringen trer i kraft.</li>
+      <li data-i18n-html="pv-section-9-li2"><strong>Banner på forsiden</strong> av nextelite.no/boxing i 30 dager før og etter ikrafttredelse.</li>
+      <li data-i18n-html="pv-section-9-li3"><strong>Versjonsnummer og dato</strong> oppdateres i header på erklæringen.</li>
+    </ul>
+    <p data-i18n-html="pv-section-9-p3"><strong>Mindre, ikke-materielle endringer</strong> (språkvask, klargjøringer som ikke endrer behandlingen) publiseres uten 30-dagers varsel, men dato og versjonsnummer oppdateres alltid.</p>
+    <p data-i18n-html="pv-section-9-p4"><strong>Tidligere versjoner</strong> av personvernerklæringen arkiveres på <a href="/personvern/historikk/"><strong>nextelite.no/personvern/historikk/</strong></a> slik at du kan se hva som tidligere har vært gjeldende. Hver arkivert versjon er tidsstemplet og inneholder en kort changelog.</p>
+    <p data-i18n="pv-section-9-p5">Den til enhver tid gjeldende versjonen ligger publisert på nextelite.no.</p>
+  </section>
+
+  <p style="margin-top: 64px; font-size: 13px; color: #888; line-height: 1.6;" data-i18n-html="pv-footer-version">
+    Personvernerklæring versjon <strong>v03</strong>, sist oppdatert <strong>29. april 2026</strong>.<br>
+    Tidligere versjoner: <a href="/personvern/historikk/">arkiv</a> (v01 — 29.04.2026, v02 — 29.04.2026).
+  </p>
+
+</main>
+
+<footer>
+  <div class="footer-row">
+    <a href="https://x.com/N3XT3LIT3">X</a>
+  </div>
+  <div class="footer-row">
+    <a href="/boxing/" data-i18n="pv-footer-home">Forsiden</a>
+    <a href="/salgsbetingelser" data-i18n="pv-footer-terms">Salgsbetingelser</a>
+    <a href="/personvern/historikk/" data-i18n="pv-footer-archive">Arkiv</a>
+    <a href="mailto:nemine@nextelite.no" data-i18n="pv-footer-contact">Kontakt</a>
+  </div>
+</footer>
+
+<!-- l1ft0ff — Mission Liftoff. Personvern v03 ship-ready. The vault keeps receipts. -->
+<script src="/lang.js"></script>
+</body>
+</html>

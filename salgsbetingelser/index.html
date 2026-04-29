@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="salg-title">Salgsbetingelser — NextElite Boxing</title>
+  <meta name="description" content="Salgsbetingelser for medlemskap og drop-in hos NextElite Boxing, Myre, Vesterålen.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/lang-toggle.css">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      background: #FFFFFF;
+      color: #1a1a1a;
+    }
+
+    /* === BACK LINK === */
+    .back {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 100;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #CC2936;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .back:hover {
+      opacity: 0.6;
+    }
+
+    /* === PAGE === */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 120px 24px 96px;
+    }
+
+    .page h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(40px, 7vw, 64px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: #CC2936;
+    }
+
+    .page .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #888;
+      margin-top: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .meta {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: #fafafa;
+      border-left: 3px solid #CC2936;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .meta strong {
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .meta p + p {
+      margin-top: 6px;
+    }
+
+    .lead {
+      margin-top: 40px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* === SECTIONS === */
+    section {
+      margin-top: 56px;
+    }
+
+    section h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(20px, 3vw, 28px);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    section h2 .num {
+      color: #CC2936;
+      margin-right: 12px;
+    }
+
+    section h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #1a1a1a;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    section p {
+      color: #333;
+      margin-bottom: 14px;
+    }
+
+    section ul {
+      list-style: none;
+      margin: 12px 0 16px;
+    }
+
+    section ul li {
+      color: #333;
+      padding: 4px 0;
+    }
+
+    section ul li::before {
+      content: "—";
+      margin-right: 12px;
+      color: #CC2936;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 8px;
+      font-size: 15px;
+    }
+
+    .price-table th,
+    .price-table td {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .price-table th {
+      font-weight: 600;
+      color: #1a1a1a;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #888;
+    }
+
+    .price-table td:last-child {
+      font-weight: 600;
+      color: #1a1a1a;
+      white-space: nowrap;
+    }
+
+    .age-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 8px;
+      font-size: 15px;
+    }
+
+    .age-table th,
+    .age-table td {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .age-table th {
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #888;
+    }
+
+    .age-table td:first-child {
+      font-weight: 600;
+      color: #1a1a1a;
+      white-space: nowrap;
+      width: 90px;
+    }
+
+    .todo {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #fff3cd;
+      color: #8a6d00;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    a {
+      color: #CC2936;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      opacity: 0.7;
+    }
+
+    /* === FOOTER === */
+    footer {
+      width: 100%;
+      padding: 48px 0 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 80px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .footer-row a,
+    .footer-row span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-row a:hover {
+      color: #CC2936;
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .page {
+        padding: 100px 20px 64px;
+      }
+
+      .page h1 {
+        font-size: clamp(28px, 7vw, 40px);
+        overflow-wrap: anywhere;
+      }
+
+      .back {
+        top: 16px;
+        left: 16px;
+        font-size: 12px;
+      }
+
+      section {
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a href="/boxing/" class="back" aria-label="Back to home" data-i18n="salg-back">&larr; Tilbake</a>
+
+<!-- Mission Babel — language toggle (matches index.html pattern) -->
+<div class="lang-toggle" aria-label="Language selector">
+  <button class="lang-btn active" data-lang-btn="no">NO</button>
+  <span class="lang-sep">/</span>
+  <button class="lang-btn" data-lang-btn="en">EN</button>
+</div>
+
+<main class="page">
+
+  <h1 data-i18n="salg-h1">Salgsbetingelser</h1>
+  <p class="subtitle" data-i18n="salg-subtitle">NextElite Boxing — Myre, Vesterålen</p>
+
+  <div class="meta">
+    <p><strong data-i18n="salg-meta-seller-label">Selger:</strong> <span data-i18n="salg-meta-seller-value">Neminee Steffensen ENK</span></p>
+    <p><strong data-i18n="salg-meta-orgno-label">Org.nr:</strong> <span data-i18n="salg-meta-orgno-value">926 490 486</span></p>
+    <p><strong data-i18n="salg-meta-brand-label">Foretaksnavn / merkevare:</strong> <span data-i18n="salg-meta-brand-value">NextElite Boxing</span></p>
+    <p><strong data-i18n="salg-meta-address-label">Adresse:</strong> <span data-i18n="salg-meta-address-value">Myre, Vesterålen, Norge</span></p>
+    <p><strong data-i18n="salg-meta-email-label">E-post:</strong> <a href="mailto:nemine@nextelite.no">nemine@nextelite.no</a></p>
+    <p><strong data-i18n="salg-meta-updated-label">Sist oppdatert:</strong> <span data-i18n="salg-meta-updated-value">28. april 2026</span></p>
+  </div>
+
+  <p class="lead" data-i18n="salg-lead">
+    Disse salgsbetingelsene gjelder for kjøp av drop-in og medlemskap hos NextElite Boxing. Ved å gjennomføre et kjøp aksepterer du betingelsene under. Vi følger norsk forbrukerlovgivning, inkludert forbrukerkjøpsloven og angrerettloven. Forbrukerkjøp reguleres ellers av disse lovene der de gir deg sterkere rettigheter enn det som står her.
+  </p>
+
+  <section id="parter">
+    <h2><span class="num">1.</span><span data-i18n="salg-section-1-title">Avtaleparter</span></h2>
+    <p data-i18n-html="salg-section-1-p1">
+      Selger er <strong>Neminee Steffensen ENK</strong> (org.nr. 926 490 486), heretter omtalt som "NextElite Boxing", "vi" eller "oss". Kjøper er den personen som gjennomfører bestilling, heretter omtalt som "du" eller "medlem".
+    </p>
+    <p data-i18n="salg-section-1-p2">
+      NextElite Boxing er merkenavnet — den juridiske enheten som driver virksomheten er enkeltpersonforetaket Neminee Steffensen ENK. Trenere og instruktører er ikke avtalepart.
+    </p>
+  </section>
+
+  <section id="produkter">
+    <h2><span class="num">2.</span><span data-i18n="salg-section-2-title">Hva du kjøper</span></h2>
+
+    <h3 data-i18n="salg-section-2-h3-dropin">Drop-in</h3>
+    <p data-i18n="salg-section-2-dropin-p">Tilgang til én treningsøkt på NextElite Boxing, gyldig på den dagen kjøpet gjelder.</p>
+    <table class="price-table">
+      <tr>
+        <th data-i18n="salg-price-th-category">Kategori</th>
+        <th data-i18n="salg-price-th-price">Pris</th>
+      </tr>
+      <tr>
+        <td data-i18n="salg-price-row-adult-label">Voksen</td>
+        <td data-i18n="salg-price-row-adult-value">120 kr</td>
+      </tr>
+      <tr>
+        <td data-i18n="salg-price-row-student-label">Student / ungdom</td>
+        <td data-i18n="salg-price-row-student-value">80 kr</td>
+      </tr>
+    </table>
+    <p style="font-size: 14px; color: #666;" data-i18n="salg-section-2-dropin-note">Studentpris krever gyldig studentbevis (digital eller fysisk) som vises ved første oppmøte. Ungdomsrabatt gjelder 13-19 år, verifisert via fødselsdato ved registrering. Misvisende informasjon kan medføre etterbetaling og oppsigelse av medlemskap.</p>
+
+    <h3 data-i18n="salg-section-2-h3-age">Aldersgrenser og tilstedeværelse</h3>
+    <table class="age-table">
+      <thead>
+        <tr>
+          <th data-i18n="salg-age-th-age">Alder</th>
+          <th data-i18n="salg-age-th-can">Kan trene</th>
+          <th data-i18n="salg-age-th-req">Krav</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-i18n="salg-age-row-1-age">6-9 år</td>
+          <td data-i18n="salg-age-row-1-can">Med foresatt eller annen voksen (18+)</td>
+          <td data-i18n="salg-age-row-1-req">Foresatt signerer avtalen</td>
+        </tr>
+        <tr>
+          <td data-i18n="salg-age-row-2-age">10-12 år</td>
+          <td data-i18n="salg-age-row-2-can">Voksens tilstedeværelse anbefalt, ikke påkrevd</td>
+          <td data-i18n="salg-age-row-2-req">Foresatt signerer avtalen</td>
+        </tr>
+        <tr>
+          <td data-i18n="salg-age-row-3-age">13-15 år</td>
+          <td data-i18n="salg-age-row-3-can">Selvstendig</td>
+          <td data-i18n="salg-age-row-3-req">Foresatt signerer avtalen</td>
+        </tr>
+        <tr>
+          <td data-i18n="salg-age-row-4-age">16-17 år</td>
+          <td data-i18n="salg-age-row-4-can">Selvstendig</td>
+          <td data-i18n="salg-age-row-4-req">Foresatt signerer avtalen (vergemålsloven)</td>
+        </tr>
+        <tr>
+          <td data-i18n="salg-age-row-5-age">18+</td>
+          <td data-i18n="salg-age-row-5-can">Selvstendig</td>
+          <td data-i18n="salg-age-row-5-req">Egen signatur</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 data-i18n="salg-section-2-h3-sparring">Sparring og kontakt-trening</h3>
+    <p data-i18n="salg-section-2-sparring-p">Hard sparring (kontakt-boksing) tillates ikke før 15 år. KO-trening tillates ikke før 18 år. Disse grensene følger Norges Bokseforbunds anbefalinger og gjelder uten unntak.</p>
+
+    <h3 data-i18n="salg-section-2-h3-monthly">Månedlig medlemskap uten binding</h3>
+    <p data-i18n="salg-section-2-monthly-p">Løpende medlemskap som fornyes automatisk hver måned via Vipps faste betalinger. Inkluderer tilgang til ordinære treninger i åpningstiden.</p>
+    <ul>
+      <li data-i18n-html="salg-section-2-monthly-li1">Pris: <strong>449 kr/mnd</strong></li>
+      <li data-i18n="salg-section-2-monthly-li2">Ingen bindingstid</li>
+      <li data-i18n="salg-section-2-monthly-li3">Fornyes automatisk inntil du selv avslutter avtalen i Vipps-appen</li>
+    </ul>
+
+    <h3 data-i18n="salg-section-2-h3-commit">Medlemskap med 6 måneders binding</h3>
+    <p data-i18n="salg-section-2-commit-p">Rabattert medlemskap mot at du forplikter deg til seks måneder. Inkluderer tilgang til lokalet i åpningstiden.</p>
+    <ul>
+      <li data-i18n-html="salg-section-2-commit-li1">Pris: <strong>299 kr/mnd</strong> i seks måneder, månedlig trekk via Vipps faste betalinger</li>
+      <li data-i18n="salg-section-2-commit-li2">Total i bindingsperioden: 1 794 kr</li>
+      <li data-i18n-html="salg-section-2-commit-li3">Etter endt bindingsperiode går avtalen automatisk over til løpende månedlig medlemskap til samme pris (299 kr/mnd) inntil du selv avslutter den i Vipps-appen.</li>
+    </ul>
+
+    <h3 data-i18n="salg-section-2-h3-includes">Hva medlemskapet gir</h3>
+    <p data-i18n-html="salg-section-2-includes-p">Medlemskapet gir tilgang til lokalet i åpningstiden — sekken, vektene, speilet, refleksstaven, alt utstyret som finnes der. Du trener selvstendig eller med treningspartner. <strong>Etterhvert kommer planlagte treninger og gruppetimer som inkluderes i medlemskapet</strong>; vi varsler i god tid før disse settes i drift.</p>
+    <p style="font-size: 14px; color: #666;" data-i18n-html="salg-section-2-includes-note">Praktiske detaljer om booking, kapasitet, åpningstider, husregler og pause-funksjon er beskrevet på <a href="#">praktisk informasjon</a>-siden. Disse kan endres uten varsel; vesentlige endringer i hva medlemskapet inkluderer varsles 30 dager i forveien.</p>
+  </section>
+
+  <section id="betaling">
+    <h2><span class="num">3.</span><span data-i18n="salg-section-3-title">Betaling</span></h2>
+
+    <h3 data-i18n="salg-section-3-h3-method">Betalingsmetode</h3>
+    <p data-i18n-html="salg-section-3-method-p">
+      Vi bruker <strong>Vipps</strong> som betalingsleverandør. Drop-in betales med Vipps engangsbetaling. Medlemskap betales gjennom <strong>Vipps faste betalinger</strong> (Vipps Recurring), som trekkes automatisk hver måned.
+    </p>
+
+    <h3 data-i18n="salg-section-3-h3-when">Når trekkes du</h3>
+    <p data-i18n="salg-section-3-when-p">
+      Ved kjøp av medlemskap blir første beløp trukket umiddelbart. Deretter trekkes du på samme dato hver måned. Du får varsel fra Vipps før hvert trekk.
+    </p>
+
+    <h3 data-i18n="salg-section-3-h3-renewal">Automatisk fornyelse</h3>
+    <p data-i18n="salg-section-3-renewal-p">
+      Medlemskap er en abonnementsavtale med automatisk fornyelse. Avtalen fornyes hver måned inntil du selv avslutter den. Du finner en oversikt over avtalen og kan stoppe den når som helst i Vipps-appen — se punkt 5.
+    </p>
+
+    <h3 data-i18n="salg-section-3-h3-prices">Prisendringer</h3>
+    <p data-i18n="salg-section-3-prices-p">
+      Eventuelle prisendringer på løpende medlemskap varsles minst 30 dager før de trer i kraft, slik at du har anledning til å si opp avtalen før ny pris trekkes. Inngåtte bindingsavtaler holder avtalt pris ut bindingsperioden.
+    </p>
+  </section>
+
+  <section id="angrerett">
+    <h2><span class="num">4.</span><span data-i18n="salg-section-4-title">Angrerett</span></h2>
+
+    <p data-i18n-html="salg-section-4-p1">
+      Når du kjøper et medlemskap som forbruker i Norge, har du <strong>14 dagers angrerett</strong> etter angrerettloven, regnet fra den dagen avtalen ble inngått.
+    </p>
+
+    <h3 data-i18n="salg-section-4-h3-how">Hvordan benytter du angreretten</h3>
+    <p data-i18n-html="salg-section-4-how-p">
+      Send oss en e-post til <a href="mailto:nemine@nextelite.no">nemine@nextelite.no</a> innen 14 dager med beskjed om at du angrer. Du kan bruke det offisielle <a href="https://www.forbrukertilsynet.no/angrerettskjema" target="_blank" rel="noopener">angreskjemaet fra Forbrukertilsynet</a>, men det er ikke et krav. Det holder at meldingen er entydig.
+    </p>
+
+    <h3 data-i18n="salg-section-4-h3-what">Hva skjer når du angrer</h3>
+    <p data-i18n="salg-section-4-what-p">
+      Vi stopper videre trekk og refunderer eventuelt betalt beløp uten ugrunnet opphold, og senest innen 14 dager etter at vi har mottatt angremeldingen din. Tilbakebetaling skjer til samme betalingsmiddel som ble brukt ved kjøpet.
+    </p>
+
+    <h3 data-i18n="salg-section-4-h3-exception">Unntak — tjenester du allerede har brukt</h3>
+    <p data-i18n="salg-section-4-exception-p">
+      Dersom du har bedt om at medlemskapet skal starte før angrefristen utløper og rakk å bruke det (for eksempel deltatt på trening), kan vi kreve betaling for den forholdsmessige andelen av tjenesten du faktisk har benyttet, jf. angrerettloven § 26. Drop-in regnes som en digital tjeneste levert umiddelbart, og angreretten faller bort når økten er gjennomført.
+    </p>
+  </section>
+
+  <section id="oppsigelse">
+    <h2><span class="num">5.</span><span data-i18n="salg-section-5-title">Avbestilling og oppsigelse</span></h2>
+
+    <h3 data-i18n="salg-section-5-h3-ongoing">Løpende medlemskap (uten binding)</h3>
+    <p data-i18n-html="salg-section-5-ongoing-p">
+      Avtaler via Vipps faste betalinger avsluttes i Vipps-appen. Gå til <em>Profil → Avtaler → NextElite Boxing → Avslutt avtale</em>. Avtalen løper ut inneværende betalingsperiode etter at du har avsluttet — du beholder tilgang til treningene til neste trekk-dato, men det blir ikke nytt trekk.
+    </p>
+
+    <h3 data-i18n="salg-section-5-h3-commit">Medlemskap med 6 måneders binding</h3>
+    <p data-i18n="salg-section-5-commit-p1">
+      Bindingstiden er bindende. Du kan ikke si opp avtalen i bindingsperioden, med mindre annet følger av ufravikelig forbrukerlovgivning (for eksempel ved vesentlig endring av tilbudet fra vår side, eller særskilte sosiale forhold som dokumentert sykdom over lengre tid — ta kontakt så finner vi en løsning).
+    </p>
+    <p data-i18n-html="salg-section-5-commit-p2">
+      Etter endt bindingsperiode fortsetter avtalen automatisk som løpende månedlig medlemskap til samme pris (299 kr/mnd) inntil du selv avslutter den i Vipps-appen, på samme måte som over.
+    </p>
+
+    <h3 data-i18n="salg-section-5-h3-dropin">Drop-in</h3>
+    <p data-i18n-html="salg-section-5-dropin-p">
+      Drop-in er kjøp av en enkelt treningsøkt. Vi tilbyr ikke refusjon ved avbestilling. Hvis du ikke kan møte, kan du gi plassen din til en venn — bare gi oss beskjed på e-post så vi vet hvem som kommer.
+    </p>
+
+    <h3 data-i18n="salg-section-5-h3-gruppe">Gruppetimer</h3>
+    <p data-i18n-html="salg-section-5-gruppe-p">
+      Gruppetimer er inkludert i månedlig medlemskap. Ikke-medlemmer kan delta på gruppetime ved å kjøpe drop-in til ordinær pris. Plasser kan være begrenset — book derfor i forkant når dette er aktuelt.
+    </p>
+  </section>
+
+  <section id="reklamasjon">
+    <h2><span class="num">6.</span><span data-i18n="salg-section-6-title">Reklamasjon og klage</span></h2>
+
+    <p data-i18n-html="salg-section-6-p1">
+      Hvis du mener noe ikke er som det skal — feil trekk i Vipps, manglende tilgang, mangler ved tjenesten — vil vi gjerne høre fra deg så snart som mulig. Send e-post til <a href="mailto:nemine@nextelite.no">nemine@nextelite.no</a> og beskriv hva som har skjedd.
+    </p>
+
+    <p data-i18n="salg-section-6-p2">
+      Vi svarer på alle e-poster innen 24 timer på hverdager. Vi svarer ikke i helger.
+    </p>
+
+    <p data-i18n="salg-section-6-p3">
+      Reklamasjon må fremsettes innen rimelig tid etter at du oppdaget eller burde oppdaget mangelen, og senest innen de fristene som følger av forbrukerkjøpsloven og angrerettloven.
+    </p>
+
+    <h3 data-i18n="salg-section-6-h3-disagree">Hvis vi ikke blir enige</h3>
+    <p data-i18n="salg-section-6-disagree-p">
+      Partene skal forsøke å løse eventuelle tvister i minnelighet. Dersom dette ikke lykkes, kan du som forbruker bringe saken inn for Forbrukertilsynet eller Forbrukerklageutvalget.
+    </p>
+    <ul>
+      <li data-i18n-html="salg-section-6-li1">Forbrukertilsynet: <a href="https://www.forbrukertilsynet.no" target="_blank" rel="noopener">forbrukertilsynet.no</a></li>
+      <li data-i18n-html="salg-section-6-li2">Forbrukerrådet: telefon +47 23 400 500, <a href="https://www.forbrukerradet.no" target="_blank" rel="noopener">forbrukerradet.no</a></li>
+      <li data-i18n-html="salg-section-6-li3">EU-kommisjonens nettbaserte klageportal (ODR): <a href="https://ec.europa.eu/odr" target="_blank" rel="noopener">ec.europa.eu/odr</a></li>
+    </ul>
+  </section>
+
+  <section id="personvern">
+    <h2><span class="num">7.</span><span data-i18n="salg-section-7-title">Behandling av personopplysninger</span></h2>
+
+    <p data-i18n="salg-section-7-p1">
+      For å levere medlemskap og drop-in behandler vi personopplysninger om deg — typisk navn, e-postadresse, telefonnummer og betalingsinformasjon (sistnevnte håndteres av Vipps; vi lagrer ikke kortdata).
+    </p>
+
+    <p data-i18n="salg-section-7-p2">
+      Behandlingsansvarlig er Neminee Steffensen ENK. Rettslig grunnlag for behandlingen er oppfyllelse av avtalen med deg (GDPR art. 6 (1) (b)) samt rettslige forpliktelser, herunder bokføringsloven (GDPR art. 6 (1) (c)).
+    </p>
+
+    <p data-i18n-html="salg-section-7-p3">
+      Du har rett til innsyn, retting, sletting og dataportabilitet etter personopplysningsloven og GDPR. Du kan også klage til Datatilsynet (<a href="https://www.datatilsynet.no" target="_blank" rel="noopener">datatilsynet.no</a>).
+    </p>
+
+    <p data-i18n-html="salg-section-7-p4">
+      Full personvernerklæring publiseres som eget dokument. Les den her: <a href="/personvern">personvernerklæring</a>.
+    </p>
+  </section>
+
+  <p style="margin-top: 64px; font-size: 13px; color: #888; line-height: 1.6;" data-i18n-html="salg-footer-version">
+    Salgsbetingelser sist oppdatert: 28. april 2026.<br>
+    Gjeldende versjon er den til enhver tid publiserte versjonen på denne siden.
+  </p>
+
+</main>
+
+<footer>
+  <div class="footer-row">
+    <a href="https://x.com/N3XT3LIT3">X</a>
+  </div>
+  <div class="footer-row">
+    <a href="/boxing/" data-i18n="salg-footer-home">Forsiden</a>
+    <a href="/personvern" data-i18n="salg-footer-privacy">Personvern</a>
+    <a href="mailto:nemine@nextelite.no" data-i18n="salg-footer-contact">Kontakt</a>
+  </div>
+</footer>
+
+<script src="/lang.js"></script>
+</body>
+</html>
