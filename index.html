@@ -327,6 +327,16 @@ main {
   border-radius: 4px;
 }
 
+/* l1ft0ff — Mission Liftoff — kill native overlay play-button dim */
+/* Browsers render a translucent dark backdrop behind the big center play-button */
+/* over the poster. Hide that overlay so JPEG poster shows clean. Bottom controls stay. */
+.article-image video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+.article-image video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
 .article-image figcaption {
   font-family: var(--font);
   font-size: 12px;
