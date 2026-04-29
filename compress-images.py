@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 """
 Image compression script for nextelite-blog
-Codename: Crane
-- Backs up originals with _original suffix
-- Resizes images wider than 2000px to max 2000px (respects EXIF orientation first)
-- Re-exports JPGs at 85% quality (with EXIF orientation baked into pixel data)
-- Creates WebP versions for all JPGs
-- Logs all changes with size savings
+Codename: Crane (rev 2 — l1ft0ff 260429: multi-width responsive set)
 
-IMPORTANT: Always call ImageOps.exif_transpose(img) before any resize/save.
-This bakes the EXIF rotation into the actual pixel data and sets orientation=1,
-so the image displays correctly in all browsers regardless of EXIF support.
+- Backs up originals with _original suffix
+- Emits 4 widths (400, 800, 1200, 2000) × 2 formats (JPEG + WebP) per source image
+- Naming convention: <slug>-<width>.<ext>  (e.g. boxing-bodo-ring-purple-800.webp)
+- The original-named file (e.g. boxing-bodo-ring-purple.jpg) is preserved as the
+  legacy entry-point and rewritten as the 1200-wide JPEG (so existing markup keeps
+  working). srcset references the *-400/-800/-1200/-2000 derivatives.
+- EXIF orientation baked into pixels via ImageOps.exif_transpose before resize.
+
+Why 4 widths: covers 320px phones (uses 400w) up to 4K (uses 2000w) plus retina.
+Why 2 formats: WebP saves ~30% over JPEG; JPEG kept for any older browser fallback.
+AVIF skipped per d33p:// section 5.6 (encode cost too high for v1).
 """
 
 from __future__ import annotations
@@ -20,28 +23,16 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 IMG_DIR = Path("/Users/neminesteffensen/Desktop/nextelite-blog/img")
-MAX_WIDTH = 2000
+WIDTHS = (400, 800, 1200, 2000)          # responsive srcset tiers
 JPG_QUALITY = 85
 WEBP_QUALITY = 82
-MIN_SIZE_BYTES = 500 * 1024  # 500KB threshold
-
-# Target sizes
-HERO_TARGET = 400 * 1024    # 400KB for hero images
-INLINE_TARGET = 150 * 1024  # 150KB for inline images
-
-# Hero image patterns (larger images likely used as heroes)
-HERO_PATTERNS = ["hero-", "IMG_6434", "IMG_6517", "IMG_6501"]
+MIN_SIZE_BYTES = 50 * 1024               # 50KB threshold (we want derivatives for all editorial images)
 
 log_entries = []
 total_original = 0
 total_new = 0
-total_webp = 0
 files_processed = 0
-webp_created = 0
-
-
-def is_hero(filename: str) -> bool:
-    return any(p in filename for p in HERO_PATTERNS)
+derivatives_created = 0
 
 
 def get_size_str(size_bytes: int) -> str:
@@ -50,11 +41,32 @@ def get_size_str(size_bytes: int) -> str:
     return f"{size_bytes / 1024:.0f}KB"
 
 
-def process_image(filepath: Path) -> None:
-    global total_original, total_new, total_webp, files_processed, webp_created
+def emit_derivative(img: Image.Image, target_path: Path, width: int, fmt: str) -> int:
+    """Resize img to target width (preserving aspect) and save as fmt. Returns bytes."""
+    orig_w, orig_h = img.size
+    if width >= orig_w:
+        # don't upscale — clone at native size
+        out = img.copy()
+    else:
+        ratio = width / orig_w
+        new_h = int(orig_h * ratio)
+        out = img.resize((width, new_h), Image.LANCZOS)
 
-    # Skip already-backed-up originals
+    if fmt == "JPEG":
+        out.save(target_path, "JPEG", quality=JPG_QUALITY, optimize=True)
+    elif fmt == "WEBP":
+        out.save(target_path, "WEBP", quality=WEBP_QUALITY, method=6)
+    return target_path.stat().st_size
+
+
+def process_image(filepath: Path) -> None:
+    global total_original, total_new, files_processed, derivatives_created
+
     if "_original" in filepath.stem:
+        return
+    # skip already-derived files (have width suffix)
+    stem = filepath.stem
+    if any(stem.endswith(f"-{w}") for w in WIDTHS):
         return
 
     original_size = filepath.stat().st_size
@@ -68,93 +80,61 @@ def process_image(filepath: Path) -> None:
     files_processed += 1
     total_original += original_size
 
-    # Create backup with _original suffix
-    backup_name = filepath.stem + "_original" + filepath.suffix
-    backup_path = filepath.parent / backup_name
+    # Backup with _original suffix (idempotent)
+    backup_path = filepath.parent / (filepath.stem + "_original" + filepath.suffix)
     if not backup_path.exists():
         shutil.copy2(filepath, backup_path)
 
-    # Open and process
     img = Image.open(filepath)
-
-    # Bake EXIF orientation into pixel data BEFORE any resize or save.
-    # Without this, iPhones/cameras tag portrait shots with orientation=6 (90° CW)
-    # but store pixels as landscape. Pillow saves raw pixels, drops the tag,
-    # and the image appears sideways in browsers that don't apply EXIF rotation.
-    img = ImageOps.exif_transpose(img)
-
-    orig_width, orig_height = img.size
-    resized = False
-
-    # Convert RGBA to RGB for JPG output
+    img = ImageOps.exif_transpose(img)        # bake EXIF rotation into pixels
     if img.mode in ("RGBA", "P"):
         img = img.convert("RGB")
 
-    # Resize if wider than MAX_WIDTH
-    if orig_width > MAX_WIDTH:
-        ratio = MAX_WIDTH / orig_width
-        new_height = int(orig_height * ratio)
-        img = img.resize((MAX_WIDTH, new_height), Image.LANCZOS)
-        resized = True
+    slug = filepath.stem                      # e.g. "boxing-bodo-ring-purple"
+    sizes_log = []
 
-    # Save compressed JPG (convert PNG to JPG too for photos)
-    if ext == ".png":
-        # For PNGs, check if it's a photo (not transparent)
-        # Save as both PNG (compressed) and WebP
-        jpg_path = filepath.with_suffix(".jpg")
-        img.save(filepath, "PNG", optimize=True)
-        # Also create a JPG version for photos
-        if img.mode == "RGB":
-            img.save(jpg_path, "JPEG", quality=JPG_QUALITY, optimize=True)
-    else:
-        img.save(filepath, "JPEG", quality=JPG_QUALITY, optimize=True)
+    # Emit -<width>.jpg + -<width>.webp per tier
+    for w in WIDTHS:
+        jpg_path = filepath.parent / f"{slug}-{w}.jpg"
+        webp_path = filepath.parent / f"{slug}-{w}.webp"
+        try:
+            jpg_size = emit_derivative(img, jpg_path, w, "JPEG")
+            webp_size = emit_derivative(img, webp_path, w, "WEBP")
+            derivatives_created += 2
+            total_new += jpg_size + webp_size
+            sizes_log.append(f"{w}w:{get_size_str(jpg_size)}/{get_size_str(webp_size)}")
+        except Exception as e:
+            sizes_log.append(f"{w}w:ERR({e})")
 
-    new_size = filepath.stat().st_size
-    total_new += new_size
-    savings = original_size - new_size
-
-    # Create WebP version
-    webp_path = filepath.with_suffix(".webp")
-    img.save(webp_path, "WEBP", quality=WEBP_QUALITY, method=6)
-    webp_size = webp_path.stat().st_size
-    total_webp += webp_size
-    webp_created += 1
-
-    # Determine target
-    target = HERO_TARGET if is_hero(filepath.name) else INLINE_TARGET
-    target_str = "HERO" if is_hero(filepath.name) else "INLINE"
-    meets_target = "YES" if new_size <= target else "NO"
-
-    dims_str = ""
-    if resized:
-        dims_str = f" [{orig_width}x{orig_height} -> {img.size[0]}x{img.size[1]}]"
+    # Also rewrite the legacy entry-point (slug.jpg + slug.webp) at 1200w —
+    # keeps existing markup that points at /img/<slug>.jpg working.
+    legacy_jpg = filepath
+    legacy_webp = filepath.with_suffix(".webp")
+    emit_derivative(img, legacy_jpg, min(1200, img.size[0]), "JPEG")
+    emit_derivative(img, legacy_webp, min(1200, img.size[0]), "WEBP")
 
     entry = (
-        f"  {filepath.name:<60} "
-        f"{get_size_str(original_size):>7} -> {get_size_str(new_size):>7} "
-        f"(WebP: {get_size_str(webp_size):>7}) "
-        f"saved {get_size_str(savings):>7} "
-        f"[{target_str} target {meets_target}]"
-        f"{dims_str}"
+        f"  {filepath.name:<60} {img.size[0]}x{img.size[1]} -> "
+        + " | ".join(sizes_log)
     )
     log_entries.append(entry)
-
     img.close()
 
 
 def main():
     print("=" * 100)
-    print("CRANE IMAGE COMPRESSION — nextelite-blog")
+    print("CRANE IMAGE COMPRESSION — nextelite-blog (rev 2: 4-width responsive set)")
     print("=" * 100)
     print()
 
-    # Gather all image files
     image_files = sorted(IMG_DIR.glob("*"))
     image_files = [f for f in image_files if f.suffix.lower() in (".jpg", ".jpeg", ".png")]
     image_files = [f for f in image_files if "_original" not in f.stem]
+    image_files = [f for f in image_files if not any(f.stem.endswith(f"-{w}") for w in WIDTHS)]
     image_files = [f for f in image_files if f.stat().st_size >= MIN_SIZE_BYTES]
 
-    print(f"Found {len(image_files)} images over 500KB to process")
+    print(f"Found {len(image_files)} source images over 500KB to process")
+    print(f"Will emit {len(image_files) * len(WIDTHS) * 2} derivatives ({len(WIDTHS)} widths × 2 formats)")
     print()
 
     for fp in image_files:
@@ -163,7 +143,6 @@ def main():
         except Exception as e:
             log_entries.append(f"  ERROR: {fp.name} — {e}")
 
-    # Print log
     print("COMPRESSION LOG:")
     print("-" * 100)
     for entry in log_entries:
@@ -173,15 +152,12 @@ def main():
     print("=" * 100)
     print("SUMMARY")
     print("=" * 100)
-    print(f"  Files processed:     {files_processed}")
-    print(f"  WebP files created:  {webp_created}")
-    print(f"  Total original size: {get_size_str(total_original)}")
-    print(f"  Total JPG size:      {get_size_str(total_new)}")
-    print(f"  Total WebP size:     {get_size_str(total_webp)}")
-    print(f"  JPG savings:         {get_size_str(total_original - total_new)} ({(total_original - total_new) / total_original * 100:.1f}%)")
-    print(f"  WebP savings:        {get_size_str(total_original - total_webp)} ({(total_original - total_webp) / total_original * 100:.1f}%)")
+    print(f"  Source files processed:  {files_processed}")
+    print(f"  Derivatives created:     {derivatives_created}")
+    print(f"  Total original size:     {get_size_str(total_original)}")
+    print(f"  Total derivative size:   {get_size_str(total_new)}")
     print()
-    print("Originals preserved with _original suffix. The Crane is ready.")
+    print("Originals preserved with _original suffix. Use srcset='<slug>-400.jpg 400w, ...'")
 
 
 if __name__ == "__main__":

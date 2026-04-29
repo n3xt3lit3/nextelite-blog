@@ -205,12 +205,12 @@ main {
 
 .article-header-image {
   margin: 0 0 48px 0;
-  overflow: hidden;
 }
-.article-header-image img {
+.article-header-image img,
+.article-header-image picture,
+.article-header-image picture img {
   width: 100%;
-  max-height: 60vh;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: 4px;
 }
@@ -280,14 +280,12 @@ main {
 
 .article-image {
   margin: 48px 0;
-  overflow: visible;
   position: relative;
 }
 .article-image img,
 .article-image video {
   width: 100%;
-  max-height: 50vh;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: 4px;
 }
@@ -298,6 +296,98 @@ main {
   color: var(--text-light);
   margin-top: 10px;
   letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════
+   .fig — d33p://-spec image system (260429)
+   Replaces max-height/object-fit cropping with
+   aspect-ratio-locked containers + intrinsic
+   sizing. Works 320px → 4K with no hand-tuning.
+   ═══════════════════════════════════════ */
+.fig {
+  margin: 48px auto;
+  position: relative;
+}
+.fig img,
+.fig video,
+.fig picture,
+.fig picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.fig figcaption {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+/* SIZE MODIFIERS */
+.fig--hero    { margin: 0 0 48px 0; }
+.fig--inset   { /* default: matches 680px prose column */ }
+.fig--wide    { max-width: 960px; margin-left: auto; margin-right: auto; }
+.fig--bleed   { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); width: 100vw; }
+.fig--narrow  { max-width: 480px; margin-left: auto; margin-right: auto; }
+
+/* ASPECT MODIFIERS */
+.fig--16x9 { aspect-ratio: 16 / 9; }
+.fig--3x2  { aspect-ratio: 3 / 2; }
+.fig--4x5  { aspect-ratio: 4 / 5; }
+.fig--1x1  { aspect-ratio: 1 / 1; }
+.fig--9x16 { aspect-ratio: 9 / 16; }
+.fig--auto { /* intrinsic — no aspect lock */ }
+
+/* When aspect is locked the image fills the box */
+.fig.fig--16x9 > img,
+.fig.fig--3x2  > img,
+.fig.fig--4x5  > img,
+.fig.fig--1x1  > img,
+.fig.fig--9x16 > img,
+.fig.fig--16x9 > picture > img,
+.fig.fig--3x2  > picture > img,
+.fig.fig--4x5  > picture > img,
+.fig.fig--1x1  > picture > img,
+.fig.fig--9x16 > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* LAYOUT MODIFIERS */
+.fig--pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.fig--pair > img,
+.fig--pair > picture { grid-row: 1; }
+.fig--pair > figcaption { grid-column: 1 / -1; }
+
+.fig--gallery-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.fig--gallery-3 > figcaption { grid-column: 1 / -1; }
+
+/* VERTICAL VIDEO */
+.fig--vertical-video {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 9 / 16;
+}
+.fig--vertical-video > video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  border-radius: 4px;
 }
 
 .post-footer {
@@ -575,6 +665,43 @@ footer {
     padding: 0 24px;
   }
 
+  /* .fig mobile: edge-bleed for inset/wide/bleed — matches existing .article-image behavior */
+  .fig--inset,
+  .fig--wide {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+  .fig--inset > img,
+  .fig--inset > picture > img,
+  .fig--inset > video,
+  .fig--wide > img,
+  .fig--wide > picture > img,
+  .fig--wide > video,
+  .fig--bleed > img,
+  .fig--bleed > picture > img,
+  .fig--bleed > video {
+    border-radius: 0;
+  }
+  .fig--narrow {
+    /* keep narrow centered, with padding so it doesn't touch the edge */
+    max-width: calc(100% - 48px);
+  }
+  .fig--pair {
+    margin-left: -24px;
+    margin-right: -24px;
+    gap: 8px;
+  }
+  .fig--gallery-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fig figcaption {
+    padding: 0 24px;
+  }
+  .fig--vertical-video {
+    /* stays centered, never edge-bleeds */
+    max-width: min(100% - 48px, 420px);
+  }
+
   .section-label {
     margin-top: 56px;
     padding-top: 36px;
@@ -602,6 +729,19 @@ footer {
   }
 
   .article-image figcaption {
+    padding: 0 20px;
+  }
+
+  .fig--inset,
+  .fig--wide,
+  .fig--pair {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .fig--gallery-3 {
+    grid-template-columns: 1fr;
+  }
+  .fig figcaption {
     padding: 0 20px;
   }
 }
@@ -1006,6 +1146,61 @@ function resolveImage(slug) {
 }
 
 // ============================================================
+// Intrinsic dimensions manifest (l1ft0ff 260429)
+// width/height in source-file pixels. Used for the HTML
+// width/height attributes — kills layout shift before bytes
+// arrive. Also drives the orientation default if a block
+// doesn't declare one.
+// ============================================================
+const imageDimensions = {
+  "boxing-bodo-ring-purple.jpg":   { w: 1350, h: 2400 },  // portrait phone shot
+  "boxing-topten-mirror.jpg":      { w: 1350, h: 2400 },
+  "boxing-startbok.jpg":           { w: 1476, h: 2280 },
+  "boxing-ingmartin-car.jpg":      { w: 1320, h: 2127 },
+  "boxing-title-gloves.jpg":       { w: 1104, h: 2400 },
+  "boxing-dasspapir-prank.jpg":    { w: 1104, h: 2400 },  // resolves to title-gloves
+  "boxing-hotel-gearbag.jpg":      { w: 1350, h: 2400 },
+  "boxing-tommy-tigern.jpg":       { w: 1350, h: 2400 },
+  "boxing-pokemon-charizard.jpg":  { w: 1874, h: 2400 },
+  "boxing-plaster-eyebrow.jpg":    { w: 1104, h: 2400 },
+  "boxing-mascara-thumb.jpg":      { w:  720, h: 1280 }   // 9:16 video poster
+};
+function dimsFor(slug) {
+  const file = imageSlugBridge[slug] || slug;
+  return imageDimensions[file] || imageDimensions[slug] || { w: 1200, h: 800 };
+}
+
+// Generate srcset for a slug. compress-images.py emits
+// <slug>-400.jpg, -800.jpg, -1200.jpg, -2000.jpg + .webp variants.
+function buildSrcset(slug, ext) {
+  const file = imageSlugBridge[slug] || slug;
+  const stem = file.replace(/\.(jpe?g|png|webp)$/i, "");
+  return [400, 800, 1200, 2000]
+    .map(w => `img/${stem}-${w}.${ext} ${w}w`)
+    .join(", ");
+}
+
+// Pick fig classes for an image block from its orientation field.
+// Falls back to intrinsic-dims-driven default if orientation absent
+// (preserves existing posts without orientation set).
+function figClassesForImage(orientation, slug) {
+  switch (orientation) {
+    case "landscape":        return "fig fig--inset fig--auto";
+    case "portrait":         return "fig fig--narrow fig--auto";
+    case "square":           return "fig fig--narrow fig--1x1";
+    case "vertical-video":   return "fig fig--vertical-video";
+    case "horizontal-video": return "fig fig--inset fig--16x9";
+    default: {
+      // default from intrinsic dims
+      const d = dimsFor(slug);
+      if (d.h > d.w * 1.15) return "fig fig--narrow fig--auto"; // portrait
+      if (d.w > d.h * 1.15) return "fig fig--inset fig--auto";  // landscape
+      return "fig fig--narrow fig--1x1";                         // square-ish
+    }
+  }
+}
+
+// ============================================================
 // Renderer. Handles block types: hero, paragraph, heading,
 // image, video, tagline-statement, tagline-code, pullquote, footer.
 // Bilingual via data-lang.
@@ -1037,13 +1232,27 @@ function renderPost(lang) {
         const dateMeta = lang === "no" ? "21. februar 2026" : "21 February 2026";
         const kicker = "Bod\u00F8 Spektrum / Arctic Boxing";
         const title = lang === "no" ? "f\u00F8rste kamp." : "first fight.";
+        const d = dimsFor(block.image);
+        const srcsetWebp = buildSrcset(block.image, "webp");
+        const srcsetJpg  = buildSrcset(block.image, "jpg");
+        // Hero: portrait 9:16-ish on mobile, intrinsic on desktop.
+        // <picture> with art direction \u2014 one source per breakpoint.
+        // Sizes: full viewport on small screens, capped to column on desktop.
+        const heroSizes = "(min-width: 1100px) 1200px, 100vw";
         html += `<div class="fade-in">
           <p class="article-meta">${escapeHtml(kicker)}</p>
           <h1 class="article-title">${escapeHtml(title)}</h1>
           <p class="article-meta" style="margin-top: 8px;">${escapeHtml(dateMeta)}</p>
         </div>`;
-        html += `<figure class="article-header-image fade-in">
-          <img src="${resolveImage(block.image)}" alt="${escapeHtml(alt)}" loading="eager">
+        html += `<figure class="article-header-image fig fig--hero fig--auto fade-in">
+          <picture>
+            <source type="image/webp" srcset="${srcsetWebp}" sizes="${heroSizes}">
+            <source type="image/jpeg" srcset="${srcsetJpg}" sizes="${heroSizes}">
+            <img src="${resolveImage(block.image)}"
+                 alt="${escapeHtml(alt)}"
+                 width="${d.w}" height="${d.h}"
+                 loading="eager" fetchpriority="high" decoding="async">
+          </picture>
           <figcaption>${escapeHtml(cap)}</figcaption>
         </figure>`;
         html += `<div class="article-body">`;
@@ -1065,8 +1274,24 @@ function renderPost(lang) {
       case "image": {
         const alt = lang === "no" ? block.alt_no : block.alt_en;
         const cap = lang === "no" ? block.caption_no : block.caption_en;
-        html += `<figure class="article-image fade-in">
-          <img src="${resolveImage(block.image)}" alt="${escapeHtml(alt)}" loading="lazy">`;
+        const d = dimsFor(block.image);
+        const figClasses = figClassesForImage(block.orientation, block.image);
+        const isNarrow = figClasses.includes("fig--narrow");
+        const sizes = isNarrow
+          ? "(min-width: 768px) 480px, 100vw"
+          : "(min-width: 768px) 680px, 100vw";
+        const srcsetWebp = buildSrcset(block.image, "webp");
+        const srcsetJpg  = buildSrcset(block.image, "jpg");
+        html += `<figure class="${figClasses} fade-in">
+          <picture>
+            <source type="image/webp" srcset="${srcsetWebp}" sizes="${sizes}">
+            <img src="${resolveImage(block.image)}"
+                 srcset="${srcsetJpg}"
+                 sizes="${sizes}"
+                 alt="${escapeHtml(alt)}"
+                 width="${d.w}" height="${d.h}"
+                 loading="lazy" decoding="async">
+          </picture>`;
         if (cap) {
           html += `<figcaption>${escapeHtml(cap)}</figcaption>`;
         }
@@ -1076,11 +1301,78 @@ function renderPost(lang) {
 
       case "video": {
         const cap = lang === "no" ? block.caption_no : block.caption_en;
-        html += `<figure class="article-image fade-in">
-          <video src="${resolveImage(block.video)}" poster="${block.poster ? resolveImage(block.poster) : ''}" controls playsinline preload="metadata" style="width:100%;max-height:70vh;border-radius:4px;display:block;"></video>`;
+        // Default to vertical-video unless block declares otherwise (most clips here are 9:16 phone shots)
+        const orient = block.orientation || "vertical-video";
+        const figClasses = orient === "horizontal-video"
+          ? "fig fig--inset fig--16x9"
+          : "fig fig--vertical-video";
+        const poster = block.poster ? resolveImage(block.poster) : '';
+        html += `<figure class="${figClasses} fade-in">
+          <video src="${resolveImage(block.video)}" poster="${poster}" controls playsinline preload="metadata"></video>`;
         if (cap) {
           html += `<figcaption>${escapeHtml(cap)}</figcaption>`;
         }
+        html += `</figure>`;
+        break;
+      }
+
+      case "pair": {
+        // images: [{image, alt_no, alt_en}, {image, alt_no, alt_en}]
+        const cap = lang === "no" ? block.caption_no : block.caption_en;
+        html += `<figure class="fig fig--inset fig--pair fade-in">`;
+        block.images.forEach(im => {
+          const alt = lang === "no" ? im.alt_no : im.alt_en;
+          const d = dimsFor(im.image);
+          const srcsetWebp = buildSrcset(im.image, "webp");
+          const srcsetJpg  = buildSrcset(im.image, "jpg");
+          html += `<picture>
+            <source type="image/webp" srcset="${srcsetWebp}" sizes="(min-width: 768px) 340px, 50vw">
+            <img src="${resolveImage(im.image)}" srcset="${srcsetJpg}" sizes="(min-width: 768px) 340px, 50vw"
+                 alt="${escapeHtml(alt)}" width="${d.w}" height="${d.h}"
+                 loading="lazy" decoding="async">
+          </picture>`;
+        });
+        if (cap) html += `<figcaption>${escapeHtml(cap)}</figcaption>`;
+        html += `</figure>`;
+        break;
+      }
+
+      case "bleed": {
+        const alt = lang === "no" ? block.alt_no : block.alt_en;
+        const cap = lang === "no" ? block.caption_no : block.caption_en;
+        const d = dimsFor(block.image);
+        const srcsetWebp = buildSrcset(block.image, "webp");
+        const srcsetJpg  = buildSrcset(block.image, "jpg");
+        const ratio = block.ratio || "16x9";
+        html += `<figure class="fig fig--bleed fig--${ratio} fade-in">
+          <picture>
+            <source type="image/webp" srcset="${srcsetWebp}" sizes="100vw">
+            <img src="${resolveImage(block.image)}" srcset="${srcsetJpg}" sizes="100vw"
+                 alt="${escapeHtml(alt)}" width="${d.w}" height="${d.h}"
+                 loading="lazy" decoding="async">
+          </picture>`;
+        if (cap) html += `<figcaption>${escapeHtml(cap)}</figcaption>`;
+        html += `</figure>`;
+        break;
+      }
+
+      case "gallery": {
+        // images: array of {image, alt_no, alt_en}
+        const cap = lang === "no" ? block.caption_no : block.caption_en;
+        html += `<figure class="fig fig--inset fig--gallery-3 fade-in">`;
+        block.images.forEach(im => {
+          const alt = lang === "no" ? im.alt_no : im.alt_en;
+          const d = dimsFor(im.image);
+          const srcsetWebp = buildSrcset(im.image, "webp");
+          const srcsetJpg  = buildSrcset(im.image, "jpg");
+          html += `<picture>
+            <source type="image/webp" srcset="${srcsetWebp}" sizes="(min-width: 1100px) 220px, 50vw">
+            <img src="${resolveImage(im.image)}" srcset="${srcsetJpg}" sizes="(min-width: 1100px) 220px, 50vw"
+                 alt="${escapeHtml(alt)}" width="${d.w}" height="${d.h}"
+                 loading="lazy" decoding="async">
+          </picture>`;
+        });
+        if (cap) html += `<figcaption>${escapeHtml(cap)}</figcaption>`;
         html += `</figure>`;
         break;
       }

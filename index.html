@@ -221,13 +221,13 @@ main {
 
 .article-header-image {
   margin: 0 0 48px 0;
-  overflow: hidden;
 }
 
-.article-header-image img {
+.article-header-image img,
+.article-header-image picture,
+.article-header-image picture img {
   width: 100%;
-  max-height: 60vh;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: 4px;
 }
@@ -315,14 +315,12 @@ main {
 
 .article-image {
   margin: 48px 0;
-  overflow: hidden;
 }
 
 .article-image img,
 .article-image video {
   width: 100%;
-  max-height: 50vh;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: 4px;
 }
@@ -346,8 +344,7 @@ main {
 
 .image-pair img {
   width: 100%;
-  max-height: 50vh;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: 4px;
 }
@@ -360,6 +357,92 @@ main {
   color: var(--text-light);
   margin-top: 6px;
   letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════
+   .fig — d33p://-spec image system (260429)
+   See forste-kamp.html for full doc. Same
+   class taxonomy here for consistent posts.
+   ═══════════════════════════════════════ */
+.fig {
+  margin: 48px auto;
+  position: relative;
+}
+.fig img,
+.fig video,
+.fig picture,
+.fig picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.fig figcaption {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+.fig--hero    { margin: 0 0 48px 0; }
+.fig--inset   { /* default */ }
+.fig--wide    { max-width: 960px; margin-left: auto; margin-right: auto; }
+.fig--bleed   { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); width: 100vw; }
+.fig--narrow  { max-width: 480px; margin-left: auto; margin-right: auto; }
+
+.fig--16x9 { aspect-ratio: 16 / 9; }
+.fig--3x2  { aspect-ratio: 3 / 2; }
+.fig--4x5  { aspect-ratio: 4 / 5; }
+.fig--1x1  { aspect-ratio: 1 / 1; }
+.fig--9x16 { aspect-ratio: 9 / 16; }
+.fig--auto { /* intrinsic */ }
+
+.fig.fig--16x9 > img,
+.fig.fig--3x2  > img,
+.fig.fig--4x5  > img,
+.fig.fig--1x1  > img,
+.fig.fig--9x16 > img,
+.fig.fig--16x9 > picture > img,
+.fig.fig--3x2  > picture > img,
+.fig.fig--4x5  > picture > img,
+.fig.fig--1x1  > picture > img,
+.fig.fig--9x16 > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fig--pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.fig--pair > img,
+.fig--pair > picture { grid-row: 1; }
+.fig--pair > figcaption { grid-column: 1 / -1; }
+
+.fig--gallery-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.fig--gallery-3 > figcaption { grid-column: 1 / -1; }
+
+.fig--vertical-video {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 9 / 16;
+}
+.fig--vertical-video > video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  border-radius: 4px;
 }
 
 /* ═══════════════════════════════════════
@@ -760,6 +843,41 @@ footer {
     padding: 0 24px;
   }
 
+  /* .fig mobile edge-bleed — match .article-image */
+  .fig--inset,
+  .fig--wide {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+  .fig--inset > img,
+  .fig--inset > picture > img,
+  .fig--inset > video,
+  .fig--wide > img,
+  .fig--wide > picture > img,
+  .fig--wide > video,
+  .fig--bleed > img,
+  .fig--bleed > picture > img,
+  .fig--bleed > video {
+    border-radius: 0;
+  }
+  .fig--narrow {
+    max-width: calc(100% - 48px);
+  }
+  .fig--pair {
+    margin-left: -24px;
+    margin-right: -24px;
+    gap: 8px;
+  }
+  .fig--gallery-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fig figcaption {
+    padding: 0 24px;
+  }
+  .fig--vertical-video {
+    max-width: min(100% - 48px, 420px);
+  }
+
   .section-label {
     margin-top: 56px;
     padding-top: 36px;
@@ -802,6 +920,19 @@ footer {
   }
 
   .image-pair figcaption {
+    padding: 0 20px;
+  }
+
+  .fig--inset,
+  .fig--wide,
+  .fig--pair {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .fig--gallery-3 {
+    grid-template-columns: 1fr;
+  }
+  .fig figcaption {
     padding: 0 20px;
   }
 }
@@ -1760,6 +1891,39 @@ window.addEventListener('hashchange', () => {
 
 let currentLang = 'no';
 
+// ============================================================
+// Image system helpers (l1ft0ff 260429 — d33p:// fig taxonomy)
+// Backward-compat: blocks without `orientation` keep legacy
+// .article-image / .image-pair markup. Blocks WITH `orientation`
+// get the new .fig-class markup with srcset/sizes/width/height.
+// ============================================================
+const indexImageDimensions = {
+  // hero / featured (drop in known dims as you go — defaults to 1200x800 otherwise)
+  'img/hero-mamma-car.jpg':                       { w: 2000, h: 1333 },
+  'img/IMG_6133-hero.jpg':                        { w: 2000, h: 1333 },
+  'img/IMG_6517.jpg':                             { w: 1600, h: 2000 }
+};
+function indexDimsFor(src) {
+  return indexImageDimensions[src] || { w: 1200, h: 800 };
+}
+function indexBuildSrcset(src, ext) {
+  // src like 'img/foo.jpg' -> 'img/foo-400.jpg 400w, ...'
+  const m = src.match(/^(.+)\.(jpe?g|png|webp)$/i);
+  if (!m) return src;
+  const stem = m[1];
+  return [400, 800, 1200, 2000].map(w => `${stem}-${w}.${ext} ${w}w`).join(', ');
+}
+function indexFigClasses(orientation) {
+  switch (orientation) {
+    case 'landscape':        return 'fig fig--inset fig--auto';
+    case 'portrait':         return 'fig fig--narrow fig--auto';
+    case 'square':           return 'fig fig--narrow fig--1x1';
+    case 'vertical-video':   return 'fig fig--vertical-video';
+    case 'horizontal-video': return 'fig fig--inset fig--16x9';
+    default:                 return 'fig fig--inset fig--auto';
+  }
+}
+
 function renderBlog(lang) {
   currentLang = lang;
   const container = document.getElementById('blog-content');
@@ -1818,40 +1982,131 @@ function renderBlog(lang) {
         </div>`;
         break;
 
-      case 'image':
-        html += `<figure class="article-image fade-in">
-          <img src="${block.src}" alt="${block.alt[lang]}" loading="lazy"${block.objectPosition ? ` style="object-position:${block.objectPosition}"` : ''}>`;
-        if (block.caption) {
-          html += `<figcaption>${block.caption[lang]}</figcaption>`;
+      case 'image': {
+        // New path: orientation present → .fig system with srcset/sizes/width/height.
+        // Legacy path: no orientation → keep old markup (preserves existing posts).
+        if (block.orientation) {
+          const figClasses = indexFigClasses(block.orientation);
+          const isNarrow = figClasses.includes('fig--narrow');
+          const sizes = isNarrow
+            ? '(min-width: 768px) 480px, 100vw'
+            : '(min-width: 768px) 680px, 100vw';
+          const d = indexDimsFor(block.src);
+          html += `<figure class="${figClasses} fade-in">
+            <picture>
+              <source type="image/webp" srcset="${indexBuildSrcset(block.src, 'webp')}" sizes="${sizes}">
+              <img src="${block.src}"
+                   srcset="${indexBuildSrcset(block.src, 'jpg')}"
+                   sizes="${sizes}"
+                   alt="${block.alt[lang]}"
+                   width="${d.w}" height="${d.h}"
+                   loading="lazy" decoding="async">
+            </picture>`;
+          if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+          html += `</figure>`;
+        } else {
+          html += `<figure class="article-image fade-in">
+            <img src="${block.src}" alt="${block.alt[lang]}" loading="lazy"${block.objectPosition ? ` style="object-position:${block.objectPosition}"` : ''}>`;
+          if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+          html += `</figure>`;
         }
-        html += `</figure>`;
         break;
+      }
 
       // l1ft0ff // mission voyager // video block added 260411
       case 'video': {
         const posterAttr = block.poster ? ` poster="${block.poster}"` : '';
         const mutedAttr = block.audio === false ? ' muted' : '';
         const altText = block.alt && block.alt[lang] ? block.alt[lang] : '';
-        const vidStyle = block.objectPosition ? ` style="object-position:${block.objectPosition}"` : '';
-        html += `<figure class="article-image fade-in">
-          <video src="${block.src}"${posterAttr} controls preload="metadata" playsinline${mutedAttr} aria-label="${altText}"${vidStyle}></video>`;
-        if (block.caption) {
-          html += `<figcaption>${block.caption[lang]}</figcaption>`;
+        if (block.orientation) {
+          const figClasses = block.orientation === 'horizontal-video'
+            ? 'fig fig--inset fig--16x9'
+            : 'fig fig--vertical-video';
+          html += `<figure class="${figClasses} fade-in">
+            <video src="${block.src}"${posterAttr} controls preload="metadata" playsinline${mutedAttr} aria-label="${altText}"></video>`;
+          if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+          html += `</figure>`;
+        } else {
+          const vidStyle = block.objectPosition ? ` style="object-position:${block.objectPosition}"` : '';
+          html += `<figure class="article-image fade-in">
+            <video src="${block.src}"${posterAttr} controls preload="metadata" playsinline${mutedAttr} aria-label="${altText}"${vidStyle}></video>`;
+          if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+          html += `</figure>`;
         }
-        html += `</figure>`;
         break;
       }
 
       case 'image-pair':
-        html += `<figure class="image-pair fade-in">`;
-        block.images.forEach(img => {
-          html += `<img src="${img.src}" alt="${img.alt[lang]}" loading="lazy">`;
-        });
-        if (block.caption) {
-          html += `<figcaption>${block.caption[lang]}</figcaption>`;
+        if (block.orientation) {
+          // New path: .fig--pair grid with srcset
+          html += `<figure class="fig fig--inset fig--pair fade-in">`;
+          block.images.forEach(im => {
+            const d = indexDimsFor(im.src);
+            html += `<picture>
+              <source type="image/webp" srcset="${indexBuildSrcset(im.src, 'webp')}" sizes="(min-width: 768px) 340px, 50vw">
+              <img src="${im.src}" srcset="${indexBuildSrcset(im.src, 'jpg')}" sizes="(min-width: 768px) 340px, 50vw"
+                   alt="${im.alt[lang]}" width="${d.w}" height="${d.h}"
+                   loading="lazy" decoding="async">
+            </picture>`;
+          });
+          if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+          html += `</figure>`;
+        } else {
+          html += `<figure class="image-pair fade-in">`;
+          block.images.forEach(img => {
+            html += `<img src="${img.src}" alt="${img.alt[lang]}" loading="lazy">`;
+          });
+          if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+          html += `</figure>`;
         }
+        break;
+
+      case 'bleed': {
+        const d = indexDimsFor(block.src);
+        const ratio = block.ratio || '16x9';
+        html += `<figure class="fig fig--bleed fig--${ratio} fade-in">
+          <picture>
+            <source type="image/webp" srcset="${indexBuildSrcset(block.src, 'webp')}" sizes="100vw">
+            <img src="${block.src}" srcset="${indexBuildSrcset(block.src, 'jpg')}" sizes="100vw"
+                 alt="${block.alt[lang]}" width="${d.w}" height="${d.h}"
+                 loading="lazy" decoding="async">
+          </picture>`;
+        if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
         html += `</figure>`;
         break;
+      }
+
+      case 'gallery': {
+        html += `<figure class="fig fig--inset fig--gallery-3 fade-in">`;
+        block.images.forEach(im => {
+          const d = indexDimsFor(im.src);
+          html += `<picture>
+            <source type="image/webp" srcset="${indexBuildSrcset(im.src, 'webp')}" sizes="(min-width: 1100px) 220px, 50vw">
+            <img src="${im.src}" srcset="${indexBuildSrcset(im.src, 'jpg')}" sizes="(min-width: 1100px) 220px, 50vw"
+                 alt="${im.alt[lang]}" width="${d.w}" height="${d.h}"
+                 loading="lazy" decoding="async">
+          </picture>`;
+        });
+        if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+        html += `</figure>`;
+        break;
+      }
+      case 'pair': {
+        // alias for image-pair with orientation
+        html += `<figure class="fig fig--inset fig--pair fade-in">`;
+        block.images.forEach(im => {
+          const d = indexDimsFor(im.src);
+          html += `<picture>
+            <source type="image/webp" srcset="${indexBuildSrcset(im.src, 'webp')}" sizes="(min-width: 768px) 340px, 50vw">
+            <img src="${im.src}" srcset="${indexBuildSrcset(im.src, 'jpg')}" sizes="(min-width: 768px) 340px, 50vw"
+                 alt="${im.alt[lang]}" width="${d.w}" height="${d.h}"
+                 loading="lazy" decoding="async">
+          </picture>`;
+        });
+        if (block.caption) html += `<figcaption>${block.caption[lang]}</figcaption>`;
+        html += `</figure>`;
+        break;
+      }
 
       case 'inline-promo-kennel':
         html += `<div class="inline-promo fade-in">
