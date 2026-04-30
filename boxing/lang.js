@@ -16,7 +16,7 @@
     'nav-tagteach': { en: 'TagTeach', no: 'TagTeach' },
     'nav-space': { en: 'THE SPACE', no: 'THE SPACE' },
     'nav-schedule': { en: 'SCHEDULE', no: 'TIMEPLAN' },
-    'nav-n3xt3lit3': { en: 'N3XT3LIT3', no: 'N3XT3LIT3' },
+    'nav-n3xt3lit3': { en: 'NEXTELITE', no: 'NEXTELITE' },
 
     // === PAGE TITLES (h1 on sub-pages) ===
     'page-title-boxing': { en: 'BOXING', no: 'BOKSING' },
