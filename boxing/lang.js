@@ -1297,8 +1297,8 @@
       return stored;
     }
 
-    // 3. Default to English
-    return 'en';
+    // 3. Default to Norwegian
+    return 'no';
   }
 
   // ═══════════════════════════════════════
@@ -1370,7 +1370,7 @@
 
   // Expose for external use
   window.nexteliteLang = {
-    get: function() { return localStorage.getItem('nextelite-lang') || 'en'; },
+    get: function() { return localStorage.getItem('nextelite-lang') || 'no'; },
     set: applyLanguage
   };
 
