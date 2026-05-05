@@ -1,0 +1,114 @@
+---
+/**
+ * Post.astro — canonical layout for all blog posts.
+ * Imports design tokens (copied from @nextelite/design-tokens, see src/styles/tokens.css).
+ * Sprint 1 scaffold — Sprint 2 migrates eksisterende HTML-poster inn her.
+ */
+import '../styles/tokens.css';
+
+interface Props {
+  title: string;
+  slug: string;
+  date: Date;
+  excerpt: string;
+  hero_image?: string;
+  tags?: string[];
+}
+
+const { title, slug, date, excerpt, hero_image, tags = [] } = Astro.props;
+const isoDate = date.toISOString();
+const displayDate = date.toLocaleDateString('nb-NO', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const canonical = new URL(`/${slug}/`, Astro.site ?? 'https://nextelite.no').toString();
+---
+
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} — NextElite</title>
+    <meta name="description" content={excerpt} />
+    <link rel="canonical" href={canonical} />
+    {hero_image && <meta property="og:image" content={hero_image} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={excerpt} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>{title}</h1>
+        <p>
+          <time datetime={isoDate}>{displayDate}</time>
+        </p>
+        {tags.length > 0 && (
+          <ul aria-label="tags">
+            {tags.map((tag) => <li>#{tag}</li>)}
+          </ul>
+        )}
+      </header>
+      {hero_image && <img src={hero_image} alt="" />}
+      <div class="post-content">
+        <slot />
+      </div>
+    </article>
+
+    <style>
+      body {
+        font-family: var(--font-body);
+        color: var(--text-primary);
+        background: var(--color-off-white);
+        max-width: var(--max-width-narrow);
+        margin: 0 auto;
+        padding: var(--space-8) var(--space-5);
+        line-height: var(--leading-relaxed);
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-weight: var(--weight-bold);
+        line-height: var(--leading-tight);
+        margin: 0 0 var(--space-3);
+      }
+      time {
+        color: var(--text-secondary);
+        font-size: var(--text-sm);
+      }
+      ul[aria-label='tags'] {
+        list-style: none;
+        padding: 0;
+        margin: var(--space-3) 0 0;
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+      }
+      ul[aria-label='tags'] li {
+        font-size: var(--text-xs);
+        color: var(--text-tertiary);
+      }
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius-md);
+        margin: var(--space-6) 0;
+      }
+      .post-content :global(h2) {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        margin-top: var(--space-8);
+      }
+      .post-content :global(p) {
+        margin: var(--space-4) 0;
+      }
+      .post-content :global(a) {
+        color: var(--brand-cobalt);
+      }
+    </style>
+  </body>
+</html>

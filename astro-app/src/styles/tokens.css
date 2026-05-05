@@ -1,0 +1,120 @@
+/*
+ * @nextelite/design-tokens — CSS custom properties
+ * Mirrors 30-IDENTITY/design-tokens.css (canonical source).
+ * This copy lives in the monorepo for consumption by Next.js apps.
+ *
+ * Import in Next.js globals.css:
+ * @import '@nextelite/design-tokens/css';
+ *
+ * l1ft0ff — Mission Copernicus
+ */
+
+:root {
+  /* ===== BRAND COLORS ===== */
+  --brand-gold: #F5C400;
+  --brand-cyan: #00BADF;
+  --brand-cobalt: #3B6EF5;
+  --brand-magenta: #E8197A;
+
+  /* ===== NEUTRAL PALETTE ===== */
+  --color-black: #0A0A0A;
+  --color-near-black: #1A1A1A;
+  --color-charcoal: #2A2A2A;
+  --color-gray-dark: #4A4A4A;
+  --color-gray: #6A6A6A;
+  --color-gray-light: #9A9A9A;
+  --color-gray-lighter: #D4D4D4;
+  --color-off-white: #FAFAFA;
+  --color-white: #FFFFFF;
+
+  /* ===== WARM PALETTE ===== */
+  --color-cream: #FAF7F5;
+  --color-blush: #F5E6E0;
+  --color-coral: #E8A090;
+  --color-skin: #D4A592;
+  --color-warm-gray: #C5B8B0;
+
+  /* ===== TEXT ===== */
+  --text-primary: var(--color-near-black);
+  --text-secondary: rgba(26, 26, 26, 0.65);
+  --text-tertiary: rgba(26, 26, 26, 0.45);
+  --text-on-dark: var(--color-off-white);
+  --text-on-dark-secondary: rgba(250, 250, 250, 0.65);
+  --text-on-dark-tertiary: rgba(250, 250, 250, 0.45);
+
+  /* ===== TYPOGRAPHY ===== */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'NN Rektorat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --text-xs: 0.707rem;
+  --text-sm: 0.85rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.414rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.827rem;
+  --text-4xl: 4rem;
+  --text-5xl: 5.653rem;
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* ===== SPACING (8px grid) ===== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+  --space-20: 10rem;
+
+  /* ===== BORDERS ===== */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ===== SHADOWS ===== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+
+  /* ===== MOTION ===== */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+
+  /* ===== LAYOUT ===== */
+  --max-width: 1200px;
+  --max-width-narrow: 720px;
+  --max-width-wide: 1440px;
+  --golden-major: 61.8%;
+  --golden-minor: 38.2%;
+
+  /* ===== GLASSMORPHISM ===== */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-dark: rgba(10, 10, 10, 0.7);
+  --glass-blur: blur(10px) saturate(180%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* ===== TOUCH / ACCESSIBILITY ===== */
+  --touch-min: 44px;
+  --font-min: 12px;
+}
