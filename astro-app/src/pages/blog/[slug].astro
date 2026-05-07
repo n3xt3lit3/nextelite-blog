@@ -1,0 +1,37 @@
+---
+/**
+ * Dynamic blog post route — Sprint 2.
+ * One static page per markdown file in src/content/blog/.
+ *
+ * NOTE on flat-slug URLs: CEO directive (memory: feedback_naming.md) is
+ * nextelite.no/<slug>/ instead of /blog/<slug>/. Sprint 2 ships /blog/<slug>/
+ * because moving [slug].astro to the project root collides with index.astro
+ * (Astro can't statically resolve which one owns "/"). Two solutions are
+ * flagged for CEO in the SITREP: (a) drop listing into /blog/, free root for
+ * flat slugs; or (b) keep listing at root + add redirects.
+ */
+import { getCollection, render } from 'astro:content';
+import Post from '../../layouts/Post.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Post
+  title={post.data.title}
+  slug={post.data.slug}
+  date={post.data.date}
+  excerpt={post.data.excerpt}
+  hero_image={post.data.hero_image}
+  tags={post.data.tags}
+>
+  <Content />
+</Post>

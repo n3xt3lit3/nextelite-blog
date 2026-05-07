@@ -1,17 +1,118 @@
 ---
+/**
+ * Listing — Sprint 2.
+ * Bare title, dato, excerpt, link. Sprint 3-4 polish design.
+ * Sortert nyeste først.
+ */
+import { getCollection } from 'astro:content';
+import '../styles/tokens.css';
 
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const formatter = new Intl.DateTimeFormat('nb-NO', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>NextElite — blogg</title>
+    <meta name="description" content="Boksing, protokoll, hunder. En blogg fra Vesterålen." />
+    <link rel="canonical" href={new URL('/', Astro.site ?? 'https://nextelite.no').toString()} />
+  </head>
+  <body>
+    <main>
+      <header class="site-header">
+        <h1>nextelite</h1>
+        <p class="tagline">boksing. protokoll. hunder. en blogg fra Vesterålen.</p>
+      </header>
+
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`}>
+              <time datetime={post.data.date.toISOString()}>
+                {formatter.format(post.data.date)}
+              </time>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.excerpt}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </main>
+
+    <style>
+      body {
+        font-family: var(--font-body);
+        color: var(--text-primary);
+        background: var(--color-off-white);
+        margin: 0;
+        line-height: var(--leading-normal);
+      }
+      main {
+        max-width: var(--max-width-narrow);
+        margin: 0 auto;
+        padding: var(--space-8) var(--space-5);
+      }
+      .site-header {
+        margin-bottom: var(--space-10);
+      }
+      .site-header h1 {
+        font-family: var(--font-display);
+        font-size: var(--text-4xl);
+        font-weight: var(--weight-bold);
+        margin: 0 0 var(--space-3);
+      }
+      .tagline {
+        color: var(--text-secondary);
+        margin: 0;
+      }
+      .post-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: var(--space-6);
+      }
+      .post-list a {
+        display: block;
+        padding: var(--space-5);
+        border: 1px solid var(--color-gray-lighter);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: inherit;
+        transition: border-color var(--duration-fast) var(--ease-premium);
+      }
+      .post-list a:hover {
+        border-color: var(--brand-cobalt);
+      }
+      .post-list time {
+        display: block;
+        font-size: var(--text-sm);
+        color: var(--text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: var(--space-2);
+      }
+      .post-list h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        margin: 0 0 var(--space-3);
+        line-height: var(--leading-tight);
+      }
+      .post-list p {
+        margin: 0;
+        color: var(--text-secondary);
+      }
+    </style>
+  </body>
 </html>
