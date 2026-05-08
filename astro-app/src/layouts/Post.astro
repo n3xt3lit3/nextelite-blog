@@ -1,10 +1,31 @@
 ---
 /**
- * Post.astro — canonical layout for all blog posts.
- * Imports design tokens (copied from @nextelite/design-tokens, see src/styles/tokens.css).
- * Sprint 1 scaffold — Sprint 2 migrates eksisterende HTML-poster inn her.
+ * Post.astro — visually identical to nextelite.no/forste-kamp.html
+ * + nextelite.no/pakken-kom.html.
+ *
+ * Sprint 3 visual port:
+ * - Rhode palette (#F0EDE8 bg, #4A4A4A text, #C4A882 accent)
+ * - Inter body + Clash Display headings (loaded in <head>)
+ * - Fixed nav, main column max-680px, side-rail promos, centered footer
+ * - Hero kicker + clash title + meta date, optional .article-header-image
+ * - Body content from MDX/MD slot inside .article-body
+ * - Cross-link post-nav above footer (when nextPost prop supplied)
  */
 import '../styles/tokens.css';
+import '../styles/site.css';
+import HeadCommon from '../components/HeadCommon.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SidebarPromos from '../components/SidebarPromos.astro';
+import Hero from '../components/Hero.astro';
+import ImageFigure from '../components/ImageFigure.astro';
+
+interface NextPost {
+  href: string;
+  title: string;
+  date: string;
+  label?: string;
+}
 
 interface Props {
   title: string;
@@ -12,10 +33,29 @@ interface Props {
   date: Date;
   excerpt: string;
   hero_image?: string;
+  hero_alt?: string;
+  hero_caption?: string;
+  kicker?: string;
   tags?: string[];
+  nextPost?: NextPost;
+  ogImage?: string;
+  footerSub?: string;
 }
 
-const { title, slug, date, excerpt, hero_image, tags = [] } = Astro.props;
+const {
+  title,
+  slug,
+  date,
+  excerpt,
+  hero_image,
+  hero_alt = '',
+  hero_caption,
+  kicker,
+  nextPost,
+  ogImage,
+  footerSub = 'april 2026',
+} = Astro.props;
+
 const isoDate = date.toISOString();
 const displayDate = date.toLocaleDateString('nb-NO', {
   year: 'numeric',
@@ -23,92 +63,87 @@ const displayDate = date.toLocaleDateString('nb-NO', {
   day: 'numeric',
 });
 const canonical = new URL(`/${slug}/`, Astro.site ?? 'https://nextelite.no').toString();
+const og = ogImage ?? hero_image;
 ---
 
 <!doctype html>
-<html lang="nb">
+<html lang="no">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} — NextElite</title>
+    <title>{title} / nextelite</title>
     <meta name="description" content={excerpt} />
+    <meta name="author" content="Neminee" />
     <link rel="canonical" href={canonical} />
-    {hero_image && <meta property="og:image" content={hero_image} />}
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={`${title} / nextelite`} />
     <meta property="og:description" content={excerpt} />
+    {og && <meta property="og:image" content={og} />}
     <meta property="og:type" content="article" />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="nextelite" />
+    <meta property="og:locale" content="nb_NO" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} / nextelite`} />
+    <meta name="twitter:description" content={excerpt} />
+    {og && <meta name="twitter:image" content={og} />}
+    <HeadCommon />
   </head>
-  <body>
-    <article>
-      <header>
-        <h1>{title}</h1>
-        <p>
-          <time datetime={isoDate}>{displayDate}</time>
-        </p>
-        {tags.length > 0 && (
-          <ul aria-label="tags">
-            {tags.map((tag) => <li>#{tag}</li>)}
-          </ul>
-        )}
-      </header>
-      {hero_image && <img src={hero_image} alt="" />}
-      <div class="post-content">
-        <slot />
-      </div>
-    </article>
+  <body data-lang="no">
+    <Nav current="blog" />
 
-    <style>
-      body {
-        font-family: var(--font-body);
-        color: var(--text-primary);
-        background: var(--color-off-white);
-        max-width: var(--max-width-narrow);
-        margin: 0 auto;
-        padding: var(--space-8) var(--space-5);
-        line-height: var(--leading-relaxed);
-      }
-      h1 {
-        font-family: var(--font-display);
-        font-size: var(--text-4xl);
-        font-weight: var(--weight-bold);
-        line-height: var(--leading-tight);
-        margin: 0 0 var(--space-3);
-      }
-      time {
-        color: var(--text-secondary);
-        font-size: var(--text-sm);
-      }
-      ul[aria-label='tags'] {
-        list-style: none;
-        padding: 0;
-        margin: var(--space-3) 0 0;
-        display: flex;
-        gap: var(--space-2);
-        flex-wrap: wrap;
-      }
-      ul[aria-label='tags'] li {
-        font-size: var(--text-xs);
-        color: var(--text-tertiary);
-      }
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: var(--radius-md);
-        margin: var(--space-6) 0;
-      }
-      .post-content :global(h2) {
-        font-family: var(--font-display);
-        font-size: var(--text-2xl);
-        margin-top: var(--space-8);
-      }
-      .post-content :global(p) {
-        margin: var(--space-4) 0;
-      }
-      .post-content :global(a) {
-        color: var(--brand-cobalt);
-      }
-    </style>
+    <main>
+      <article id="blog-content">
+        <Hero kicker={kicker} title={title} date={displayDate} />
+
+        {hero_image && (
+          <ImageFigure
+            src={hero_image}
+            alt={hero_alt}
+            caption={hero_caption}
+            variant="header"
+            loading="eager"
+          />
+        )}
+
+        <div class="article-body">
+          <slot />
+        </div>
+
+        {nextPost && (
+          <div class="post-nav fade-in" role="navigation" aria-label="Andre innlegg">
+            <a href={nextPost.href} class="post-nav-link">
+              <span class="post-nav-label">{nextPost.label ?? 'les også'}</span>
+              <span class="post-nav-title">{nextPost.title}</span>
+              <span class="post-nav-date">{nextPost.date}</span>
+            </a>
+          </div>
+        )}
+      </article>
+    </main>
+
+    <SidebarPromos />
+
+    <Footer sub={footerSub} />
+
+    <script is:inline>
+      // fade-in IntersectionObserver — verbatim from main
+      (function () {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+        );
+        document.querySelectorAll('.fade-in').forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>

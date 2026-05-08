@@ -1,27 +1,45 @@
 ---
 /**
- * Dynamic blog post route — Sprint 2.
- * One static page per markdown file in src/content/blog/.
+ * Dynamic blog post route — Sprint 3.
+ * Renders one static page per markdown file in src/content/blog/.
+ * Auto-derives the cross-link "les også" target as the chronologically
+ * adjacent post (matches main's post-nav behavior — wraps to first when
+ * we run out).
  *
- * NOTE on flat-slug URLs: CEO directive (memory: feedback_naming.md) is
- * nextelite.no/<slug>/ instead of /blog/<slug>/. Sprint 2 ships /blog/<slug>/
- * because moving [slug].astro to the project root collides with index.astro
- * (Astro can't statically resolve which one owns "/"). Two solutions are
- * flagged for CEO in the SITREP: (a) drop listing into /blog/, free root for
- * flat slugs; or (b) keep listing at root + add redirects.
+ * Flat-slug URL note: still under /blog/<slug>/. Migration to flat slugs
+ * remains a Sprint 4 task per CEO directive (feedback_naming.md).
  */
 import { getCollection, render } from 'astro:content';
 import Post from '../../layouts/Post.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  const all = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
+
+  const formatter = new Intl.DateTimeFormat('nb-NO', {
+    year: 'numeric',
+    month: 'long',
+  });
+
+  return all.map((post, i) => {
+    const next = all[(i + 1) % all.length];
+    return {
+      params: { slug: post.id },
+      props: {
+        post,
+        nextPost: {
+          href: `/blog/${next.id}/`,
+          title: next.data.title,
+          date: formatter.format(next.data.date),
+          label: 'les også',
+        },
+      },
+    };
+  });
 }
 
-const { post } = Astro.props;
+const { post, nextPost } = Astro.props;
 const { Content } = await render(post);
 ---
 
@@ -31,7 +49,13 @@ const { Content } = await render(post);
   date={post.data.date}
   excerpt={post.data.excerpt}
   hero_image={post.data.hero_image}
+  hero_alt={post.data.hero_alt}
+  hero_caption={post.data.hero_caption}
+  kicker={post.data.kicker}
+  ogImage={post.data.og_image}
+  footerSub={post.data.footer_sub}
   tags={post.data.tags}
+  nextPost={nextPost}
 >
   <Content />
 </Post>

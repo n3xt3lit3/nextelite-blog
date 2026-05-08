@@ -1,0 +1,56 @@
+---
+/**
+ * Nav.astro — fixed top nav, exact port from nextelite.no/index.html.
+ * - Centered "nextelite" logo
+ * - Left: blogg / gloves on
+ * - Right: NO/EN toggle (visual only — toggle non-functional in Sprint 3,
+ *   bilingual content collections deferred to Sprint 4 per CEO scope)
+ * - Hides on scroll-down, returns on scroll-up (small inline script)
+ */
+interface Props {
+  current?: 'blog' | 'boxing' | null;
+}
+const { current = null } = Astro.props;
+---
+
+<nav class="site-nav" data-site-nav>
+  <div class="nav-left">
+    <a href="/" class={`nav-link${current === 'blog' ? ' is-active' : ''}`}>blogg</a>
+    <a href="https://nextelite.no/boxing/" class={`nav-link${current === 'boxing' ? ' is-active' : ''}`} target="_blank" rel="noopener">gloves on</a>
+  </div>
+  <a href="/" class="nav-logo">nextelite</a>
+  <div class="nav-right">
+    <div class="lang-toggle desktop-lang">
+      <button class="lang-btn active" data-lang-btn="no" type="button">NO</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" data-lang-btn="en" type="button">EN</button>
+    </div>
+  </div>
+  <div class="lang-toggle mobile-lang">
+    <button class="lang-btn active" data-lang-btn="no" type="button">NO</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang-btn="en" type="button">EN</button>
+  </div>
+</nav>
+
+<script is:inline>
+  // nav hide on scroll down, show on up — verbatim from main
+  (function () {
+    var lastScroll = 0;
+    var navEl = document.querySelector('[data-site-nav]');
+    if (!navEl) return;
+    window.addEventListener(
+      'scroll',
+      function () {
+        var current = window.scrollY;
+        if (current > lastScroll && current > 100) {
+          navEl.style.transform = 'translateY(-100%)';
+        } else {
+          navEl.style.transform = 'translateY(0)';
+        }
+        lastScroll = current;
+      },
+      { passive: true },
+    );
+  })();
+</script>

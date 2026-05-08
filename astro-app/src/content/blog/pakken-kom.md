@@ -4,15 +4,14 @@ slug: "pakken-kom"
 date: 2026-04-10
 excerpt: "Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Begge deler stemmer fortsatt. To ting har endra seg."
 hero_image: "/images/pakken-kom/hero.jpg"
+hero_alt: "Meg og Blue i gresset etter morgenrutinen"
+hero_caption: "chiller med hunden min etter dårlig medisin og dårlig kaffe."
+kicker: "Nemine Steffensen / Øksnes, Vesterålen"
+og_image: "/images/pakken-kom/hero.jpg"
+footer_sub: "april 2026"
 tags: ["protokoll", "supplementer", "iherb", "whoop"]
 draft: false
 ---
-
-Nemine Steffensen / Øksnes, Vesterålen — April 2026
-
-![Meg og Blue i gresset etter morgenrutinen](/images/pakken-kom/hero.jpg)
-
-*chiller med hunden min etter dårlig medisin og dårlig kaffe.*
 
 > **Reklame / annonselenke:** Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.
 

@@ -1,0 +1,41 @@
+---
+/**
+ * SidebarPromos.astro — fixed-position right rail with two cards
+ * (NextElite boxing + Steffensen Kennel). Hidden under 1100px.
+ * Mobile fallback (.inline-promo) is rendered inline within posts on main;
+ * Sprint 3 keeps parity by emitting the same DOM as the source so CSS
+ * can switch them on/off identically.
+ */
+---
+
+<aside class="sidebar-promo" aria-label="NextElite training">
+  <a href="https://nextelite.no/boxing/" target="_blank" rel="noopener">
+    <img class="sidebar-promo-img" src="/images/promo/boxing-bodo-ring-purple.jpg" alt="NextElite" loading="lazy" />
+    <div class="sidebar-promo-body">
+      <div class="sidebar-promo-label">NEXTELITE</div>
+      <div class="sidebar-promo-sub">gloves on</div>
+      <div class="sidebar-promo-cta">
+        Se mer
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </div>
+    </div>
+  </a>
+</aside>
+
+<aside class="sidebar-promo sidebar-promo-kennel" aria-label="Steffensen Kennel">
+  <a href="https://n3xt3lit3.github.io/nextelite-kennel/" target="_blank" rel="noopener">
+    <img class="sidebar-promo-img" src="/images/promo/hundehus-exterior-1.jpg" alt="Hundehus" loading="lazy" />
+    <div class="sidebar-promo-body">
+      <div class="sidebar-promo-label">STEFFENSEN</div>
+      <div class="sidebar-promo-sub">handbuilt kennel</div>
+      <div class="sidebar-promo-cta">
+        Se mer
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </div>
+    </div>
+  </a>
+</aside>

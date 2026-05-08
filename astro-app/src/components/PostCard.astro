@@ -1,0 +1,22 @@
+---
+/**
+ * PostCard.astro — homepage list item.
+ * Editorial list style port from main: top-rule + date + clash title +
+ * single-paragraph excerpt, hover fades opacity.
+ */
+interface Props {
+  href: string;
+  date: string;
+  title: string;
+  excerpt: string;
+}
+const { href, date, title, excerpt } = Astro.props;
+---
+
+<li>
+  <a href={href}>
+    <span class="post-card-date">{date}</span>
+    <h2 class="post-card-title">{title}</h2>
+    <p class="post-card-excerpt">{excerpt}</p>
+  </a>
+</li>

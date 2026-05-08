@@ -1,0 +1,20 @@
+---
+/**
+ * Hero.astro — article header used inside Post layout.
+ * Renders kicker (article-meta) + h1 + secondary date meta.
+ * Optional header image is rendered separately via ImageFigure to keep the
+ * markup parity with main (.article-header-image > img + figcaption).
+ */
+interface Props {
+  kicker?: string;
+  title: string;
+  date?: string;
+}
+const { kicker, title, date } = Astro.props;
+---
+
+<div class="fade-in">
+  {kicker && <p class="article-meta">{kicker}</p>}
+  <h1 class="article-title">{title}</h1>
+  {date && <p class="article-meta" style="margin-top: 8px;">{date}</p>}
+</div>

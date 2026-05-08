@@ -1,0 +1,17 @@
+---
+/**
+ * PullQuote.astro — italic editorial pull-quote with left border.
+ * Markdown blockquotes (>) inside .article-body get the same styling via
+ * site.css; this component is for inline use from .astro files.
+ */
+interface Props {
+  text?: string;
+}
+const { text } = Astro.props;
+---
+
+<div class="fade-in">
+  <p class="pull-quote">
+    {text ?? <slot />}
+  </p>
+</div>

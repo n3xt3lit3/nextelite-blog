@@ -1,0 +1,20 @@
+---
+/**
+ * HeadCommon.astro — shared <head> metadata + font loads.
+ * Fonts: Inter (Google Fonts) + Clash Display (Fontshare) — verbatim from
+ * nextelite.no/index.html lines 24-27. NN Rektorat Heavy is local woff2,
+ * but the public site uses Clash Display for headings; Rektorat is reserved
+ * for OG share-cards only (per share-cards/pakken-kom-og.html).
+ */
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
+  rel="stylesheet"
+/>

@@ -1,0 +1,23 @@
+---
+/**
+ * ImageFigure.astro — .article-image figure wrapper.
+ * Used by Post layout for the header image. Body images coming through
+ * Markdown are styled by site.css via .article-body p > img:only-child.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  variant?: 'header' | 'body';
+  loading?: 'eager' | 'lazy';
+  objectPosition?: string;
+}
+const { src, alt, caption, variant = 'body', loading = 'lazy', objectPosition } = Astro.props;
+const cls = variant === 'header' ? 'article-header-image fade-in' : 'article-image fade-in';
+const style = objectPosition ? `object-position:${objectPosition}` : undefined;
+---
+
+<figure class={cls}>
+  <img src={src} alt={alt} loading={loading} style={style} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

@@ -1,0 +1,28 @@
+---
+/**
+ * VideoFigure.astro — .article-image figure for video.
+ * Same wrapper as ImageFigure so caption sits identically under media.
+ */
+interface Props {
+  src: string;
+  poster?: string;
+  caption?: string;
+  alt?: string;
+  muted?: boolean;
+}
+const { src, poster, caption, alt = '', muted = false } = Astro.props;
+---
+
+<figure class="article-image fade-in">
+  <video
+    src={src}
+    poster={poster}
+    controls
+    playsinline
+    preload="metadata"
+    aria-label={alt}
+    muted={muted}
+    style="width:100%;max-height:70vh;border-radius:4px;display:block;"
+  ></video>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

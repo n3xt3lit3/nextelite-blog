@@ -4,15 +4,14 @@ slug: "forste-kamp"
 date: 2026-04-01
 excerpt: "Arctic Boxing. Bodø Spektrum. 21. februar 2026. Min første kamp. Jeg gikk fra hjerneskade til boksekamp. Ikke planlagt. Bare nordlenning-logikk."
 hero_image: "/images/forste-kamp/hero.jpg"
+hero_alt: "Tom ring i Bodø Spektrum. Lilla lys."
+hero_caption: "Min neste arbeidsplass."
+kicker: "Bodø Spektrum / Arctic Boxing"
+og_image: "/images/forste-kamp/hero.jpg"
+footer_sub: "april 2026"
 tags: ["boksing", "bodø", "arctic-boxing"]
 draft: false
 ---
-
-Bodø Spektrum / Arctic Boxing — 21. februar 2026
-
-![Tom ring i Bodø Spektrum. Lilla lys.](/images/forste-kamp/hero.jpg)
-
-*Min neste arbeidsplass.*
 
 Arctic Boxing. Bodø Spektrum. 21. februar 2026. Min første kamp. Jeg gikk fra hjerneskade til boksekamp. Ikke planlagt. Bare nordlenning-logikk.
 
@@ -78,7 +77,7 @@ Det som slo meg ut i Bodø var ikke motstanderen. Det var alt jeg hadde med meg 
 
 Du kommer ikke til å se bilder fra selve kampen. Norsk lov er streng på retten til eget bilde. Bildene her stanser ved ringtauet.
 
-<figure>
+<figure class="article-image fade-in">
   <video src="/images/forste-kamp/boxing-mascara-prep-3s.mp4" poster="/images/forste-kamp/boxing-mascara-thumb.jpg" controls playsinline preload="metadata" style="width:100%;max-height:70vh;border-radius:4px;display:block;"></video>
   <figcaption>Boksere bruker også mascara. Prioriteringer.</figcaption>
 </figure>
@@ -113,6 +112,4 @@ NextElite-protokollen helt inn til kampdagen. Ordentlig søvn. Flere sparringrun
 
 Dritt kamp. Neste kamp vinner jeg.
 
----
-
-Nemine Steffensen / Øksnes, Vesterålen / april 2026
+<div class="post-footer">Nemine Steffensen / Øksnes, Vesterålen / april 2026</div>

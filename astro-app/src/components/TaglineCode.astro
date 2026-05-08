@@ -1,0 +1,15 @@
+---
+/**
+ * TaglineCode.astro — // code your next level — mono accent line.
+ * Markdown inline-code (`...`) on its own paragraph inherits the same
+ * styling via site.css.
+ */
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<div class="fade-in">
+  <p class="tagline tagline-code">{text}</p>
+</div>

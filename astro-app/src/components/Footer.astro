@@ -1,0 +1,15 @@
+---
+/**
+ * Footer.astro — minimal centered footer (logo + sub).
+ * Verbatim port from nextelite.no/index.html footer.
+ */
+interface Props {
+  sub?: string;
+}
+const { sub = 'april 2026' } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="footer-logo">nextelite</div>
+  <p class="footer-sub">{sub}</p>
+</footer>
