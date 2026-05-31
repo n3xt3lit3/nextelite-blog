@@ -537,10 +537,6 @@ footer {
   width: 160px;
 }
 
-.sidebar-promo-kennel {
-  top: 68%;
-}
-
 .sidebar-promo a {
   display: block;
   text-decoration: none;
@@ -874,19 +870,6 @@ footer {
       <div class="sidebar-promo-label">NEXTELITE</div>
       <div class="sidebar-promo-sub">gloves on</div>
       <div class="sidebar-promo-cta" data-sidebar-cta>
-        Se mer <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </div>
-    </div>
-  </a>
-</aside>
-
-<aside class="sidebar-promo sidebar-promo-kennel" aria-label="Steffensen Kennel">
-  <a href="https://n3xt3lit3.github.io/nextelite-kennel/" target="_blank" rel="noopener">
-    <img class="sidebar-promo-img" src="img/hundehus-exterior-1.jpg" alt="Hundehus" loading="lazy">
-    <div class="sidebar-promo-body">
-      <div class="sidebar-promo-label">STEFFENSEN</div>
-      <div class="sidebar-promo-sub">handbuilt kennel</div>
-      <div class="sidebar-promo-cta">
         Se mer <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </div>
     </div>
@@ -1278,11 +1261,6 @@ const postFotballContent = [
   // ─── INLINE PROMO — gloves on (bottom) ───
   {
     type: 'inline-promo'
-  },
-
-  // ─── INLINE PROMO — kennel (bottom) ───
-  {
-    type: 'inline-promo-kennel'
   }
 ];
 
@@ -1861,18 +1839,6 @@ function renderBlog(lang) {
           html += `<figcaption>${block.caption[lang]}</figcaption>`;
         }
         html += `</figure>`;
-        break;
-
-      case 'inline-promo-kennel':
-        html += `<div class="inline-promo fade-in">
-          <a href="https://n3xt3lit3.github.io/nextelite-kennel/" target="_blank" rel="noopener">
-            <img class="inline-promo-img" src="img/hundehus-exterior-1.jpg" alt="${lang === 'no' ? 'Hundehus' : 'Dog Kennel'}" loading="lazy">
-            <div class="inline-promo-body">
-              <div class="inline-promo-label">STEFFENSEN</div>
-              <div class="inline-promo-sub">${lang === 'no' ? 'håndbygget hundehus' : 'handbuilt kennel'}</div>
-            </div>
-          </a>
-        </div>`;
         break;
 
       case 'inline-promo':
