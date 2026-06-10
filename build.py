@@ -12,8 +12,10 @@ Leser content/posts/YYYY-MM-DD-slug.md (NO+EN i samme fil) og genererer:
   - feed.xml           RSS 2.0
 
 To markup-varianter, bevart 1:1 fra de to originale JS-rendererne:
-  - "index"-varianten (renderBlog i gamle index.html): rå HTML-innsetting,
-    brukt av pakken-kom + fotball. Default.
+  - "index"-varianten (renderBlog i gamle index.html): brukt av pakken-kom
+    + fotball. Default. Blokk-tekst escapes som default (BLOCKER-001);
+    blokker med `html: true` settes inn rått (legitim markup: lenker,
+    strong — rå-med-vilje, eksplisitt per blokk).
   - "vega"-varianten (renderPost i forste-kamp.html): escapeHtml på all
     tekst, body-klasse v-vega for scopede CSS-avvik. Velges med
     `variant: vega` i frontmatter.
@@ -124,6 +126,24 @@ def bi_esc(no, en):
     return bi(esc(no), esc(en))
 
 
+def esc_text(s):
+    """Tekst-node-escaping (&, <, >). Kvoter er ufarlige utenfor attributter
+    — bevarer apostrofer byte-likt i eksisterende poster."""
+    return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def bi_text(no, en):
+    return bi(esc_text(no), esc_text(en))
+
+
+def block_bi(b, no_key="no", en_key="en"):
+    """Blokk-tekst i index-varianten. Escaped som default (BLOCKER-001).
+    `html: true` på blokken = rå-med-vilje (legitim markup i innholdet)."""
+    if b.get("html") == "true":
+        return bi(b[no_key], b[en_key])
+    return bi_text(b[no_key], b[en_key])
+
+
 def bi_attr(name, no, en, default_lang="no"):
     """Attributt med JS-byttbar tospråklighet (alt / aria-label)."""
     base = no if default_lang == "no" else en
@@ -225,8 +245,8 @@ def post_nav_html(other, root=""):
     return f'''<div class="post-nav fade-in" role="navigation" aria-label="Andre innlegg" data-aria-no="Andre innlegg" data-aria-en="Other posts">
     <a href="{root}{other["slug"]}.html" class="post-nav-link">
       <span class="post-nav-label">{bi("les også", "also read")}</span>
-      <span class="post-nav-title">{bi(title_no, title_en)}</span>
-      <span class="post-nav-date">{bi(date_no, date_en)}</span>
+      <span class="post-nav-title">{bi_text(title_no, title_en)}</span>
+      <span class="post-nav-date">{bi_text(date_no, date_en)}</span>
     </a>
   </div>'''
 
@@ -238,9 +258,9 @@ def render_index_body(post, other):
 
     # header (fra frontmatter — tilsvarer 'header'-blokken)
     html.append(f'''<div class="fade-in">
-          <p class="article-meta">{bi(m["kicker_no"], m["kicker_en"])}</p>
-          <h1 class="article-title">{bi(m["title_no"], m["title_en"])}</h1>
-          <p class="article-meta" style="margin-top: 8px;">{bi(m["date_label_no"], m["date_label_en"])}</p>
+          <p class="article-meta">{bi_text(m["kicker_no"], m["kicker_en"])}</p>
+          <h1 class="article-title">{bi_text(m["title_no"], m["title_en"])}</h1>
+          <p class="article-meta" style="margin-top: 8px;">{bi_text(m["date_label_no"], m["date_label_en"])}</p>
         </div>''')
     html.append('<div class="article-body">')
 
@@ -248,55 +268,55 @@ def render_index_body(post, other):
         t = b["type"]
         if t == "paragraph":
             html.append(f'''<div class="fade-in">
-          <p>{bi(b["no"], b["en"])}</p>
+          <p>{block_bi(b)}</p>
         </div>''')
         elif t == "disclosure":
             html.append(f'''<div class="fade-in">
-          <blockquote class="affiliate-disclosure">{bi(b["no"], b["en"])}</blockquote>
+          <blockquote class="affiliate-disclosure">{block_bi(b)}</blockquote>
         </div>''')
         elif t == "tagline-code":
             html.append(f'''<div class="fade-in">
-          <p class="tagline tagline-code">{bi(b["no"], b["en"])}</p>
+          <p class="tagline tagline-code">{block_bi(b)}</p>
         </div>''')
         elif t == "tagline-statement":
             html.append(f'''<div class="fade-in">
-          <p class="tagline-statement">{bi(b["no"], b["en"])}</p>
+          <p class="tagline-statement">{block_bi(b)}</p>
         </div>''')
         elif t == "section-label":
             html.append(f'''<div class="fade-in">
-          <p class="section-label">{bi(b["no"], b["en"])}</p>
+          <p class="section-label">{block_bi(b)}</p>
         </div>''')
         elif t == "pull-quote":
             html.append(f'''<div class="fade-in">
-          <p class="pull-quote">{bi(b["no"], b["en"])}</p>
+          <p class="pull-quote">{block_bi(b)}</p>
         </div>''')
         elif t == "image":
-            style = f' style="object-position:{b["object_position"]}"' if b.get("object_position") else ""
+            style = f' style="object-position:{attr(b["object_position"])}"' if b.get("object_position") else ""
             fig = (f'<figure class="article-image fade-in">\n'
-                   f'          <img src="{b["src"]}"{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy"{style}>')
+                   f'          <img src="{attr(b["src"])}"{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy"{style}>')
             if b.get("caption_no"):
-                fig += f'<figcaption>{bi(b["caption_no"], b["caption_en"])}</figcaption>'
+                fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
             html.append(fig)
         elif t == "video":
-            poster = f' poster="{b["poster"]}"' if b.get("poster") else ""
+            poster = f' poster="{attr(b["poster"])}"' if b.get("poster") else ""
             muted = " muted" if b.get("audio") == "false" else ""
-            style = f' style="object-position:{b["object_position"]}"' if b.get("object_position") else ""
+            style = f' style="object-position:{attr(b["object_position"])}"' if b.get("object_position") else ""
             aria = bi_attr("aria-label", b.get("alt_no", ""), b.get("alt_en", "")) if b.get("alt_no") else ' aria-label=""'
             fig = (f'<figure class="article-image fade-in">\n'
-                   f'          <video src="{b["src"]}"{poster} controls preload="metadata" playsinline{muted}{aria}{style}></video>')
+                   f'          <video src="{attr(b["src"])}"{poster} controls preload="metadata" playsinline{muted}{aria}{style}></video>')
             if b.get("caption_no"):
-                fig += f'<figcaption>{bi(b["caption_no"], b["caption_en"])}</figcaption>'
+                fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
             html.append(fig)
         elif t == "image-pair":
             fig = '<figure class="image-pair fade-in">'
             n = 1
             while b.get(f"src_{n}"):
-                fig += f'<img src="{b[f"src_{n}"]}"{bi_attr("alt", b[f"alt_{n}_no"], b[f"alt_{n}_en"])} loading="lazy">'
+                fig += f'<img src="{attr(b[f"src_{n}"])}"{bi_attr("alt", b[f"alt_{n}_no"], b[f"alt_{n}_en"])} loading="lazy">'
                 n += 1
             if b.get("caption_no"):
-                fig += f'<figcaption>{bi(b["caption_no"], b["caption_en"])}</figcaption>'
+                fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
             html.append(fig)
         elif t == "inline-promo":
@@ -333,7 +353,7 @@ def render_vega_body(post, other):
           <p class="article-meta" style="margin-top: 8px;">{bi_esc(m["date_label_no"], m["date_label_en"])}</p>
         </div>''')
     html.append(f'''<figure class="article-header-image fade-in">
-          <img src="{m["header_image"]}"{bi_attr("alt", m["header_image_alt_no"], m["header_image_alt_en"])} loading="eager">
+          <img src="{attr(m["header_image"])}"{bi_attr("alt", m["header_image_alt_no"], m["header_image_alt_en"])} loading="eager">
           <figcaption>{bi_esc(m["header_image_caption_no"], m["header_image_caption_en"])}</figcaption>
         </figure>''')
     html.append('<div class="article-body">')
@@ -352,15 +372,15 @@ def render_vega_body(post, other):
             html.append(f'<div class="fade-in"><p class="pull-quote">{bi_esc(b["no"], b["en"])}</p></div>')
         elif t == "image":
             fig = (f'<figure class="article-image fade-in">\n'
-                   f'          <img src="{b["src"]}"{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy">')
+                   f'          <img src="{attr(b["src"])}"{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy">')
             if b.get("caption_no"):
                 fig += f'<figcaption>{bi_esc(b["caption_no"], b["caption_en"])}</figcaption>'
             fig += "</figure>"
             html.append(fig)
         elif t == "video":
-            poster = b.get("poster", "")
+            poster = attr(b.get("poster", ""))
             fig = (f'<figure class="article-image fade-in">\n'
-                   f'          <video src="{b["src"]}" poster="{poster}" controls playsinline preload="metadata" '
+                   f'          <video src="{attr(b["src"])}" poster="{poster}" controls playsinline preload="metadata" '
                    f'style="width:100%;max-height:70vh;border-radius:4px;display:block;"></video>')
             if b.get("caption_no"):
                 fig += f'<figcaption>{bi_esc(b["caption_no"], b["caption_en"])}</figcaption>'
@@ -388,10 +408,10 @@ def og_image_abs(post):
 def og_image_extra(post):
     out = ""
     if post.get("og_image_width"):
-        out += f'<meta property="og:image:width" content="{post["og_image_width"]}">\n'
-        out += f'<meta property="og:image:height" content="{post["og_image_height"]}">\n'
+        out += f'<meta property="og:image:width" content="{attr(post["og_image_width"])}">\n'
+        out += f'<meta property="og:image:height" content="{attr(post["og_image_height"])}">\n'
     if post.get("og_image_alt"):
-        out += f'<meta property="og:image:alt" content="{post["og_image_alt"]}">\n'
+        out += f'<meta property="og:image:alt" content="{attr(post["og_image_alt"])}">\n'
     return out
 
 
@@ -426,12 +446,15 @@ def jsonld_for_post(post):
              "item": canonical_url(post)},
         ],
     }
+    # `</` → `<\/` er standard JSON-in-script-mitigering: hindrer at et
+    # `</script>` i frontmatter-tekst stenger script-blokken tidlig.
+    # JSON-spec tillater \/ — payloaden er semantisk identisk.
     return (
         '<script type="application/ld+json">\n'
-        + json.dumps(blogposting, indent=2, ensure_ascii=False)
+        + json.dumps(blogposting, indent=2, ensure_ascii=False).replace("</", "<\\/")
         + "\n</script>\n"
         + '<script type="application/ld+json">\n'
-        + json.dumps(breadcrumb, indent=2, ensure_ascii=False)
+        + json.dumps(breadcrumb, indent=2, ensure_ascii=False).replace("</", "<\\/")
         + "\n</script>"
     )
 
@@ -458,20 +481,22 @@ def build_post_page(post, other, tpl):
         nav = nav_html("index", "post")
 
     out = tpl
+    # frontmatter-felter inn i attributt-/tekst-kontekst i template: kvote-
+    # sikker escaping (BLOCKER-001). CANONICAL/tider/nav er build.py-styrt.
     repl = {
-        "{{DESCRIPTION}}": post["description"],
+        "{{DESCRIPTION}}": attr(post["description"]),
         "{{CANONICAL}}": canonical_url(post),
-        "{{OG_TITLE}}": f"{post['title_no']} / {SITE_NAME}",
-        "{{OG_IMAGE}}": og_image_abs(post),
+        "{{OG_TITLE}}": attr(f"{post['title_no']} / {SITE_NAME}"),
+        "{{OG_IMAGE}}": attr(og_image_abs(post)),
         "{{OG_IMAGE_EXTRA}}": og_image_extra(post),
         "{{PUBLISHED_TIME}}": iso_time(post["date"]),
         "{{MODIFIED_TIME}}": iso_time(post.get("modified", post["date"])),
-        "{{SECTION}}": post.get("section", "Blog"),
+        "{{SECTION}}": attr(post.get("section", "Blog")),
         "{{JSONLD}}": jsonld_for_post(post),
         "{{BODY_CLASS}}": body_class,
         "{{NAV}}": nav,
         "{{CONTENT}}": content,
-        "{{FOOTER_LABEL}}": post.get("footer_label", SITE_FOOTER_LABEL),
+        "{{FOOTER_LABEL}}": attr(post.get("footer_label", SITE_FOOTER_LABEL)),
     }
     for k, v in repl.items():
         out = out.replace(k, v)
@@ -485,9 +510,9 @@ def build_index_page(posts, tpl):
     slug_map = {p["slug"]: 1 for p in posts}
     repl = {
         "{{REDIRECT_SLUGS}}": json.dumps(slug_map),
-        "{{OG_TITLE}}": latest["title_no"],
-        "{{OG_DESCRIPTION}}": latest["description"],
-        "{{OG_IMAGE}}": og_image_abs(latest),
+        "{{OG_TITLE}}": attr(latest["title_no"]),
+        "{{OG_DESCRIPTION}}": attr(latest["description"]),
+        "{{OG_IMAGE}}": attr(og_image_abs(latest)),
         "{{OG_IMAGE_EXTRA}}": og_image_extra(latest),
         "{{LATEST_SLUG}}": latest["slug"],
         "{{NAV}}": nav_html("index", "home"),
@@ -501,10 +526,10 @@ def build_index_page(posts, tpl):
 
 
 def arkiv_list_item(post, root="../"):
-    title = bi(post.get("nav_title_no", post["title_no"]),
-               post.get("nav_title_en", post["title_en"]))
-    date = bi(post.get("date_label_no", post["date"]),
-              post.get("date_label_en", post["date"]))
+    title = bi_text(post.get("nav_title_no", post["title_no"]),
+                    post.get("nav_title_en", post["title_en"]))
+    date = bi_text(post.get("date_label_no", post["date"]),
+                   post.get("date_label_en", post["date"]))
     return (f'      <div class="fade-in"><p>'
             f'<a href="{root}{post["slug"]}.html" class="post-nav-link">'
             f'<span class="post-nav-title">{title}</span>'

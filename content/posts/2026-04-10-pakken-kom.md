@@ -26,6 +26,7 @@ caption_no: chiller med hunden min etter dårlig medisin og dårlig kaffe.
 caption_en: chilling with my dog after bad medicine and bad coffee.
 
 ::disclosure
+html: true
 no: <strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.
 en: <strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don't use.
 
@@ -69,6 +70,7 @@ no: Theanin er 200 milligram om morgenen og 200 milligram om kvelden. Neuro-Mag 
 en: Theanine: 200mg in the morning, 200mg at night. Neuro-Mag: two caps morning, one evening. That's the difference from last week. Everything else is the same. For now.
 
 ::paragraph
+html: true
 no: De to flaskene i boksen: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine og Neuro-Mag</a> (annonselenke). Samme deal.
 en: The two bottles in that box: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine and Neuro-Mag</a> (annonselenke). Same deal.
 
@@ -111,6 +113,7 @@ no: Det er kanskje det som er poenget. De store øyeblikkene er ikke store. De e
 en: Maybe that's the point. The big moments aren't big. They're just small moments that look like the ones before them.
 
 ::paragraph
+html: true
 no: Hele bestillingen er seks Thorne-produkter. Basic Nutrients, Super EPA, Magnesium Glysinat, Vitamin C, Rhodiola, Collagen Fit. Akkurat det som sto i pappeska da jeg åpna den i dag. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Hele handlekurven her</a> (annonselenke). Rabattkoden NHR7699 er på. Du sparer ti prosent. Jeg får betalt for å ha lest Bryan Johnsons protokoll på en fredagskveld. Fair handel.
 en: The whole order is six Thorne products. Basic Nutrients, Super EPA, Magnesium Glycinate, Vitamin C, Rhodiola, Collagen Fit. Exactly what was in the box when I opened it today. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">The full cart is here</a> (annonselenke). Code NHR7699 is already applied. You save ten percent. I get paid for reading Bryan Johnson's protocol on a Friday night. Fair deal.
 
@@ -163,6 +166,7 @@ no: Supplementer er én ting. Verktøy er noe annet. Jeg har en Nurosym på skri
 en: Supplements are one thing. Tools are something else. I have a Nurosym on my desk. It stimulates the vagus nerve through the ear and it always sits to the left of the laptop when I code. I use it because Bryan Johnson uses one, and because for me a calm vagus nerve is a calm PTSD.
 
 ::paragraph
+html: true
 no: Kalenderen på laptopen er også et verktøy. Det er <a href="fotball.html">den samme kalenderen jeg skrev om forrige uke</a>. Brettet er det fysiske laget. Kalenderen er det digitale. Begge gjør samme jobb: ta valgene vekk fra meg før klokka ni.
 en: The calendar on the laptop is also a tool. It's <a href="fotball.html">the same calendar I wrote about last week</a>. The tray is the physical layer. The calendar is the digital layer. Both do the same job: take the choices away from me before nine in the morning.
 
@@ -262,6 +266,7 @@ no: Jeg bruker WHOOP hver dag. Jeg har gjort det i seks måneder. Det er det ene
 en: I wear a WHOOP every day. Have done for six months. It's the one tool I trust end to end. It tells me things I don't want to hear and things I needed to hear. It logs the misses and the wins. It doesn't lie.
 
 ::paragraph
+html: true
 no: Hvis du vurderer å begynne, så gjør det. Det er det jeg bruker. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">Gratis WHOOP og en måned gratis med min link</a> (annonselenke). Du får en måned gratis. Jeg får kickback. Det betaler for alle timene jeg har brukt på å finne ut hva som faktisk funker. Ingen skam.
 en: Thinking about starting? Do it. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">A free month for you</a> (annonselenke). A kickback for me. I need an excuse to stare at HRV numbers when I should be sleeping. Thanks in advance.
 

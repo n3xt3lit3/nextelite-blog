@@ -32,3 +32,7 @@ Repoet inneholder alltid ferdigbygd HTML — GitHub Pages serverer roten direkte
 Innholdsformat: frontmatter mellom `---`-linjer, deretter blokker som starter
 med `::paragraph`, `::image`, `::video`, `::section-label`, `::pull-quote` osv.
 `variant: vega` i frontmatter gir forste-kamp-utseendet (scopede CSS-avvik).
+
+All blokk-tekst escapes automatisk (`<` og `>` blir ufarlig tekst). Skal en
+blokk inneholde ekte HTML (lenke, `<strong>`), legg til linja `html: true`
+i blokken — da settes teksten inn rått, med vilje.
