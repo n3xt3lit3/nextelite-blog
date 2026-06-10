@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="author" content="Neminee">
+<link rel="canonical" href="{{CANONICAL}}">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+{{OG_IMAGE_EXTRA}}<meta property="og:url" content="{{CANONICAL}}">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:site_name" content="nextelite">
+<meta property="article:published_time" content="{{PUBLISHED_TIME}}">
+<meta property="article:modified_time" content="{{MODIFIED_TIME}}">
+<meta property="article:author" content="Neminee">
+<meta property="article:section" content="{{SECTION}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{OG_TITLE}}">
+<meta name="twitter:description" content="{{DESCRIPTION}}">
+<meta name="twitter:image" content="{{OG_IMAGE}}">
+<title>{{OG_TITLE}}</title>
+<link rel="alternate" type="application/rss+xml" title="nextelite" href="https://nextelite.no/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<!-- generert av build.py — rediger content/posts/, ikke denne fila -->
+<link rel="stylesheet" href="assets/blog.css">
+{{JSONLD}}
+</head>
+<body data-lang="no"{{BODY_CLASS}}>
+
+<!-- NAV -->
+{{NAV}}
+
+<main>
+  <article id="blog-content">{{CONTENT}}</article>
+</main>
+
+<!-- sidebar promo — nextelite boxing -->
+<aside class="sidebar-promo" aria-label="NextElite training">
+  <a href="https://nextelite.no/boxing/" target="_blank" rel="noopener" data-boxing-link>
+    <img class="sidebar-promo-img" src="img/boxing-bodo-ring-purple.jpg" alt="NextElite" loading="lazy">
+    <div class="sidebar-promo-body">
+      <div class="sidebar-promo-label">NEXTELITE</div>
+      <div class="sidebar-promo-sub">gloves on</div>
+      <div class="sidebar-promo-cta" data-sidebar-cta>
+        Se mer <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+    </div>
+  </a>
+</aside>
+
+<footer>
+  <div class="footer-logo">nextelite</div>
+  <p class="footer-sub">{{FOOTER_LABEL}}</p>
+</footer>
+
+<script src="assets/blog.js" defer></script>
+</body>
+</html>

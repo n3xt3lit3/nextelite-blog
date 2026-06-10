@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="author" content="Neminee">
+<link rel="canonical" href="{{CANONICAL}}">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:url" content="{{CANONICAL}}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:site_name" content="nextelite">
+<title>{{OG_TITLE}}</title>
+<link rel="alternate" type="application/rss+xml" title="nextelite" href="https://nextelite.no/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<!-- generert av build.py — rediger content/posts/, ikke denne fila -->
+<link rel="stylesheet" href="{{ROOT}}assets/blog.css">
+</head>
+<body data-lang="no">
+
+<!-- NAV -->
+{{NAV}}
+
+<main>
+  <article id="blog-content">
+    <div class="fade-in">
+      <p class="article-meta"><span class="l-no">arkiv</span><span class="l-en">archive</span></p>
+      <h1 class="article-title">{{ARKIV_TITLE}}</h1>
+    </div>
+    <div class="article-body">
+{{POST_LIST}}
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-logo">nextelite</div>
+  <p class="footer-sub">{{FOOTER_LABEL}}</p>
+</footer>
+
+<script src="{{ROOT}}assets/blog.js" defer></script>
+</body>
+</html>
