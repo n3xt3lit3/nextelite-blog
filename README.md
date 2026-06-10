@@ -36,3 +36,7 @@ med `::paragraph`, `::image`, `::video`, `::section-label`, `::pull-quote` osv.
 All blokk-tekst escapes automatisk (`<` og `>` blir ufarlig tekst). Skal en
 blokk inneholde ekte HTML (lenke, `<strong>`), legg til linja `html: true`
 i blokken — da settes teksten inn rått, med vilje.
+
+**Hvis Actions er rødt:** siten er ikke nede — main serverer alltid sist
+committede HTML. Men den nye posten er ikke publisert. Kjør `python3 build.py
+&& python3 tools/verify-build.py` lokalt, fiks feilen, og push ferdig output.

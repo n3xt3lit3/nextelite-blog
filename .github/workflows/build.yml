@@ -41,3 +41,21 @@ jobs:
           git diff --cached --quiet && echo "ingen endringer" && exit 0
           git commit -m "build: regenerate site [skip ci]"
           git push
+
+      # HIGH-002: gjør feil synlig. Uten dette steget er en rød kjøring
+      # (verify-FAIL, push avvist av branch protection, o.l.) stille —
+      # siten på main serverer da forrige committede HTML uten ny post.
+      - name: synliggjor feil
+        if: failure()
+        run: |
+          echo "::error::Build feilet. Siten er IKKE nede - main serverer forrige committede HTML - men den nye posten er IKKE publisert. Se hvilket steg over som er roedt (build / verify / commit+push)."
+          {
+            echo "## Build FEILET"
+            echo ""
+            echo "Siten er ikke nede: main serverer fortsatt forrige committede HTML."
+            echo "Men den nye posten er **ikke publisert**."
+            echo ""
+            echo "Fiks: kjor lokalt \`python3 build.py && python3 tools/verify-build.py\`,"
+            echo "rett feilen som rapporteres, og push ferdig output til main."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
