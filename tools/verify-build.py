@@ -183,6 +183,32 @@ for fname in sorted(os.listdir(POSTS_DIR)):
         body, re.M)]
     content_preserved(strings, slug, f"content/{fname}")
 
+# (b3) strukturell blokk-bevaring (HIGH-001): substring-sjekken i (b1)/(b2)
+# beviser at teksten ikke er BORTE, men ikke at den rendres i riktig
+# blokk-struktur. Disse asserts teller renderte blokker mot kildefila.
+print("(b3) strukturell blokk-bevaring (block-count per post)")
+for fname in sorted(os.listdir(POSTS_DIR)):
+    if not fname.endswith(".md"):
+        continue
+    body = open(os.path.join(POSTS_DIR, fname), encoding="utf-8").read()
+    slug = re.search(r"^slug: (.+)$", body, re.M).group(1)
+    page = read(f"{slug}.html")
+    types = re.findall(r"^::(\S+)", body, re.M)
+    n_para = types.count("paragraph")
+    n_fig = types.count("image") + types.count("video") + types.count("image-pair")
+    if re.search(r"^variant: vega$", body, re.M):
+        n_fig += 1  # vega: header_image fra frontmatter rendres som egen <figure>
+    n_disc = types.count("disclosure")
+    got_p = len(re.findall(r"<p[ >]", page))
+    got_fig = page.count("<figure")
+    got_disc = page.count('<blockquote class="affiliate-disclosure"')
+    check(got_p >= n_para,
+          f"{slug}: {got_p} <p> >= {n_para} ::paragraph-blokker")
+    check(got_fig == n_fig,
+          f"{slug}: {got_fig} <figure> == {n_fig} bilde/video-blokker i kilden")
+    check(got_disc == n_disc,
+          f"{slug}: {got_disc} disclosure-blockquotes == {n_disc} ::disclosure-blokker")
+
 # ── (c) canonical / og:url / JSON-LD ───────────
 
 print("(c) canonical / og:url / JSON-LD per side")
