@@ -94,6 +94,17 @@ def parse_post(path):
     for k in required:
         if k not in meta:
             sys.exit(f"{path}: mangler frontmatter-felt {k!r}")
+    # affiliate: true -> Forbrukertilsynet-merkingsplikt. Posten MAA ha
+    # minst én ::disclosure-blokk. bl0g://-spec
+    # (50-OUTBOX/bl0g-cowork-to-published-spec-260612-v01.md): build-feil
+    # er den eneste forsvarbare gaten — et glemt disclosure-flagg er en
+    # legal/compliance-risiko, ikke en stil-feil.
+    if meta.get("affiliate") == "true":
+        if not any(b["type"] == "disclosure" for b in blocks):
+            sys.exit(
+                f"{path}: 'affiliate: true' i frontmatter krever minst én "
+                f"::disclosure-blokk i posten (Forbrukertilsynet-merkingsplikt)."
+            )
     meta["_date"] = datetime.date.fromisoformat(meta["date"])
     meta["_blocks"] = blocks
     meta["_path"] = path

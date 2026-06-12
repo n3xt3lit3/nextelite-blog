@@ -16,6 +16,7 @@ og_image_height: 630
 og_image_alt: pakken kom.
 section: Protocol
 footer_label: uke 1 / 2026
+affiliate: true
 ---
 
 ::disclosure
