@@ -648,10 +648,20 @@ def build_feed(posts):
       <description>{xml_esc(p["description"])}</description>
     </item>""")
 
-    # deterministisk: nyeste post-dato, ikke now() — idempotente bygg
-    latest = posts[0]["_date"]
-    _, tz = oslo_offset(latest)
-    now = datetime.datetime(latest.year, latest.month, latest.day, tzinfo=tz)
+    # lastBuildDate = naar innholdet sist endret seg. RSS-konvensjon
+    # (RFC 4287/2822): tidspunktet feeden ble sist GENERERT med faktisk
+    # innholds-endring. Bruker max(mtime) av .md-filene i content/posts/
+    # heller enn nyeste post-DATO. To grunner:
+    #   1. En post kan editeres uten at frontmatter-date endres
+    #      (typo-fiks, bilde-bytte). lastBuildDate maa fange det.
+    #   2. Frontmatter-date == publiseringsdato, ikke siste-touch.
+    # CI-determinisme bevart: git checkout setter mtime til checkout-tid
+    # for ALLE filer, saa max(mtime) blir konstant per CI-kjoering.
+    last_touch = datetime.datetime.fromtimestamp(
+        max(os.path.getmtime(p["_path"]) for p in posts)
+    )
+    _, tz = oslo_offset(last_touch.date())
+    now = last_touch.replace(tzinfo=tz)
     out = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
