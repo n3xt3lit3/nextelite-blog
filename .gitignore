@@ -11,3 +11,5 @@ vid/*.m4v
 
 # allow optimized mp4 outputs (whitelist-style)
 !vid/*.mp4
+astro-app/
+__pycache__/

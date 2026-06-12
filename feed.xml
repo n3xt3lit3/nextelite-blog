@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nextelite</title>
+    <link>https://nextelite.no/</link>
+    <description>nextelite. boxing, protocol, art. en blogg fra vesteralen.</description>
+    <language>nb</language>
+    <lastBuildDate>Fri, 12 Jun 2026 15:16:32 +0200</lastBuildDate>
+    <atom:link href="https://nextelite.no/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>pakken kom.</title>
+      <link>https://nextelite.no/pakken-kom</link>
+      <guid isPermaLink="true">https://nextelite.no/pakken-kom</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 +0200</pubDate>
+      <description>Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Nå kom den store.</description>
+    </item>
+    <item>
+      <title>jeg flytta og flytta, for sporten var alltid fotball. til den ikke var det lenger.</title>
+      <link>https://nextelite.no/fotball</link>
+      <guid isPermaLink="true">https://nextelite.no/fotball</guid>
+      <pubDate>Mon, 06 Apr 2026 00:00:00 +0200</pubDate>
+      <description>Jeg var ni år da NRK filmet meg for Energikampen. Siden har kroppen min vært gjennom alt. Seks klubber og fem steder fra Bærum til Myre. Nå bokser jeg.</description>
+    </item>
+    <item>
+      <title>første kamp.</title>
+      <link>https://nextelite.no/forste-kamp</link>
+      <guid isPermaLink="true">https://nextelite.no/forste-kamp</guid>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0200</pubDate>
+      <description>Jeg gikk fra hjerneskade til boksekamp. Arctic Boxing, Bodø Spektrum, 21. februar 2026. Min første kamp. Ikke planlagt. Bare nordlenning-logikk.</description>
+    </item>
+  </channel>
+</rss>

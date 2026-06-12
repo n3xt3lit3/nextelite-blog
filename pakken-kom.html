@@ -3,836 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="nextelite. boxing, protocol, art. en blogg fra vesteralen.">
+<meta name="description" content="Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Nå kom den store.">
 <meta name="author" content="Neminee">
-<link rel="canonical" href="https://nextelite.no/">
-<meta property="og:title" content="pakken kom.">
+<link rel="canonical" href="https://nextelite.no/pakken-kom">
+<meta property="og:title" content="pakken kom. / nextelite">
 <meta property="og:description" content="Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Nå kom den store.">
 <meta property="og:image" content="https://nextelite.no/img/share-cards/pakken-kom-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="pakken kom.">
-<meta property="og:url" content="https://nextelite.no/#pakken-kom">
+<meta property="og:url" content="https://nextelite.no/pakken-kom">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="nb_NO">
 <meta property="og:site_name" content="nextelite">
+<meta property="article:published_time" content="2026-04-10T00:00:00+02:00">
+<meta property="article:modified_time" content="2026-04-10T00:00:00+02:00">
+<meta property="article:author" content="Neminee">
+<meta property="article:section" content="Protocol">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="pakken kom.">
+<meta name="twitter:title" content="pakken kom. / nextelite">
 <meta name="twitter:description" content="Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Nå kom den store.">
 <meta name="twitter:image" content="https://nextelite.no/img/share-cards/pakken-kom-og.png">
-<title>nextelite. / blogg</title>
+<title>pakken kom. / nextelite</title>
+<link rel="alternate" type="application/rss+xml" title="nextelite" href="https://nextelite.no/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
-<!-- l1ft0ff — Mission Tundra IV -->
-<!-- single-source bilingual. norwegian is the master. -->
-<!-- 18 frames. one week. everything starts here. -->
-<!-- rhode bones. bl0g:// voice. the weight contrast is the magic. -->
-<!-- if you found this, you're paying attention. good. -->
-<style>
-:root {
-  --bg: #F0EDE8;
-  --bg-warm: #F5F3F0;
-  --text: #4A4A4A;
-  --text-light: #8A8A8A;
-  --text-dark: #2A2A2A;
-  --accent: #C4A882;
-  --border: rgba(74, 74, 74, 0.1);
-  --side: clamp(20px, 6vw, 120px);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  --heading: 'Clash Display', 'Inter', -apple-system, sans-serif;
-}
-
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font);
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.75;
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-::selection {
-  background: rgba(74, 74, 74, 0.15);
-  color: var(--text-dark);
-}
-
-/* ═══════════════════════════════════════
-   NAV — Rhode style: Libre Franklin uppercase, spaced
-   ═══════════════════════════════════════ */
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px var(--side);
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  transition: transform 0.3s ease;
-}
-
-.nav-left,
-.nav-right {
-  display: flex;
-  gap: 28px;
-  flex: 1;
-}
-
-.nav-right {
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.nav-link {
-  font-family: var(--heading);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text);
-  text-decoration: none;
-  padding: 10px 0;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s ease;
-}
-
-.nav-link:hover {
-  color: var(--text-dark);
-}
-
-.nav-logo {
-  font-family: var(--heading);
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--text-dark);
-  text-decoration: none;
-  padding: 0 40px;
-  white-space: nowrap;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-}
-
-.lang-toggle {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  margin-left: 20px;
-}
-
-.lang-btn {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  background: none;
-  border: none;
-  color: var(--text-light);
-  cursor: pointer;
-  padding: 10px 6px;
-  min-height: 44px;
-  min-width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease;
-}
-
-.lang-btn.active {
-  color: var(--text-dark);
-  font-weight: 600;
-}
-
-.lang-btn:hover {
-  color: var(--text-dark);
-}
-
-.lang-sep {
-  color: var(--text-light);
-  font-size: 12px;
-  font-weight: 300;
-  user-select: none;
-}
-
-.mobile-lang {
-  display: none;
-}
-
-/* ═══════════════════════════════════════
-   MAIN CONTENT
-   ═══════════════════════════════════════ */
-
-main {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 140px var(--side) 120px;
-}
-
-/* ═══════════════════════════════════════
-   ARTICLE HEADER — Playfair Display, light weight
-   ═══════════════════════════════════════ */
-
-.article-meta {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 24px;
-}
-
-.article-title {
-  font-family: var(--heading);
-  font-size: clamp(36px, 6vw, 56px);
-  font-weight: 700;
-  line-height: 1.05;
-  color: var(--text-dark);
-  letter-spacing: -0.01em;
-  margin-bottom: 48px;
-}
-
-/* ═══════════════════════════════════════
-   HEADER IMAGE — full-width post hero
-   ═══════════════════════════════════════ */
-
-.article-header-image {
-  margin: 0 0 48px 0;
-  overflow: hidden;
-}
-
-.article-header-image img {
-  width: 100%;
-  max-height: 60vh;
-  object-fit: cover;
-  display: block;
-  border-radius: 4px;
-}
-
-/* ═══════════════════════════════════════
-   SECTION HEADINGS — Playfair Display, light
-   ═══════════════════════════════════════ */
-
-.section-label {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-top: 80px;
-  margin-bottom: 32px;
-  padding-top: 48px;
-  border-top: 1px solid var(--border);
-}
-
-/* ═══════════════════════════════════════
-   ARTICLE BODY — Libre Franklin, regular weight
-   ═══════════════════════════════════════ */
-
-.article-body p {
-  margin-bottom: 0;
-  font-weight: 400;
-  line-height: 1.85;
-}
-
-.article-body .fade-in + .fade-in {
-  margin-top: 16px;
-}
-
-.article-body .section-break {
-  margin-top: 64px;
-  margin-bottom: 32px;
-  border: none;
-  border-top: 1px solid var(--border);
-}
-
-.article-body p:last-child {
-  margin-bottom: 0;
-}
-
-.article-body .emphasis {
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.article-body .pull-quote {
-  font-family: var(--font);
-  font-size: clamp(22px, 3.5vw, 28px);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.35;
-  color: var(--text-dark);
-  margin: 56px 0;
-  padding-left: 24px;
-  border-left: 3px solid var(--text-light);
-}
-
-.article-body .affiliate-disclosure {
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.55;
-  color: var(--text-light);
-  background: #f6f6f3;
-  border-left: 2px solid var(--text-dark);
-  padding: 14px 18px;
-  margin: 32px 0;
-  border-radius: 2px;
-}
-
-.article-body .affiliate-disclosure strong {
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.article-body .affiliate-disclosure p { margin: 0 0 8px 0; font-size: 13px; line-height: 1.55; }
-.article-body .affiliate-disclosure p:last-child { margin-bottom: 0; }
-
-/* ═══════════════════════════════════════
-   IMAGES
-   ═══════════════════════════════════════ */
-
-.article-image {
-  margin: 48px 0;
-  overflow: hidden;
-}
-
-.article-image img,
-.article-image video {
-  width: 100%;
-  max-height: 50vh;
-  object-fit: cover;
-  display: block;
-  border-radius: 4px;
-}
-
-/* l1ft0ff — Mission Liftoff — kill native overlay play-button dim */
-/* Browsers render a translucent dark backdrop behind the big center play-button */
-/* over the poster. Hide that overlay so JPEG poster shows clean. Bottom controls stay. */
-.article-image video::-webkit-media-controls-overlay-play-button {
-  display: none !important;
-}
-.article-image video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-}
-
-.article-image figcaption {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 300;
-  color: var(--text-light);
-  margin-top: 10px;
-  letter-spacing: 0.02em;
-}
-
-/* Image grid for gym photos */
-.image-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 48px 0;
-}
-
-.image-pair img {
-  width: 100%;
-  max-height: 50vh;
-  object-fit: cover;
-  display: block;
-  border-radius: 4px;
-}
-
-.image-pair figcaption {
-  grid-column: 1 / -1;
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 300;
-  color: var(--text-light);
-  margin-top: 6px;
-  letter-spacing: 0.02em;
-}
-
-/* ═══════════════════════════════════════
-   SIGN OFF
-   ═══════════════════════════════════════ */
-
-.sign-off {
-  margin-top: 64px;
-  font-family: var(--font);
-  font-size: 20px;
-  font-weight: 300;
-  color: var(--text-light);
-  letter-spacing: 0.05em;
-}
-
-/* ═══════════════════════════════════════
-   POST NAV — cross-link to other post
-   ═══════════════════════════════════════ */
-
-.post-nav {
-  margin-top: 96px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.post-nav-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  padding: 24px 0;
-  transition: opacity 0.2s ease;
-}
-
-.post-nav-link:hover {
-  opacity: 0.6;
-}
-
-.post-nav-label {
-  display: block;
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 12px;
-}
-
-.post-nav-title {
-  display: block;
-  font-family: var(--font-display, var(--font));
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-
-.post-nav-date {
-  display: block;
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-light);
-}
-
-@media (max-width: 768px) {
-  .post-nav { margin-top: 64px; padding-top: 32px; }
-  .post-nav-title { font-size: 22px; }
-}
-
-/* ═══════════════════════════════════════
-   TAGLINE — Rhode editorial statement
-   ═══════════════════════════════════════ */
-
-.tagline {
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: lowercase;
-  color: var(--text-light);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.tagline-code {
-  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin-bottom: 40px;
-}
-
-.tagline-statement {
-  font-family: var(--heading);
-  font-size: clamp(18px, 3vw, 24px);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--text-dark);
-  line-height: 1.4;
-  margin-top: 48px;
-  margin-bottom: 48px;
-}
-
-/* ═══════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════ */
-
-footer {
-  text-align: center;
-  padding: 60px var(--side) 40px;
-  border-top: 1px solid var(--border);
-}
-
-.footer-logo {
-  font-family: var(--font);
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--text-dark);
-  margin-bottom: 12px;
-}
-
-.footer-sub {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 300;
-  color: var(--text-light);
-  letter-spacing: 0.04em;
-}
-
-/* ═══════════════════════════════════════
-   FADE-IN ANIMATIONS
-   ═══════════════════════════════════════ */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ═══════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════ */
-
-/* ═══════════════════════════════════════
-   SIDEBAR PROMO — Desktop only
-   ═══════════════════════════════════════ */
-
-.sidebar-promo {
-  position: fixed;
-  right: clamp(16px, 2.5vw, 40px);
-  top: 38%;
-  transform: translateY(-50%);
-  z-index: 50;
-  width: 160px;
-}
-
-.sidebar-promo a {
-  display: block;
-  text-decoration: none;
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg-warm);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sidebar-promo a:hover {
-  border-color: rgba(74, 74, 74, 0.25);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-}
-
-.sidebar-promo-img {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-  display: block;
-  filter: grayscale(30%);
-  transition: filter 0.3s ease;
-}
-
-.sidebar-promo a:hover .sidebar-promo-img {
-  filter: grayscale(0%);
-}
-
-.sidebar-promo-body {
-  padding: 14px 14px 16px;
-}
-
-.sidebar-promo-label {
-  font-family: var(--heading);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--text-dark);
-  line-height: 1.3;
-}
-
-.sidebar-promo-sub {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-top: 6px;
-}
-
-.sidebar-promo-cta {
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--accent);
-  margin-top: 12px;
-  letter-spacing: 0.04em;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.2s ease;
-}
-
-.sidebar-promo a:hover .sidebar-promo-cta {
-  color: var(--text-dark);
-}
-
-.sidebar-promo-cta svg {
-  width: 12px;
-  height: 12px;
-  transition: transform 0.2s ease;
-}
-
-.sidebar-promo a:hover .sidebar-promo-cta svg {
-  transform: translateX(3px);
-}
-
-/* ═══════════════════════════════════════
-   INLINE PROMO — Mobile only (injected by JS)
-   ═══════════════════════════════════════ */
-
-.inline-promo {
-  display: none;
-}
-
-.inline-promo + .inline-promo {
-  margin-top: 32px;
-}
-
-.inline-promo a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg-warm);
-  transition: border-color 0.3s ease;
-  margin: 56px auto;
-  max-width: 260px;
-}
-
-.inline-promo a:hover {
-  border-color: rgba(74, 74, 74, 0.25);
-}
-
-.inline-promo-img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.inline-promo-body {
-  padding: 10px 16px 12px;
-  text-align: center;
-}
-
-.inline-promo-label {
-  font-family: var(--heading);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--text-dark);
-  line-height: 1.3;
-}
-
-.inline-promo-sub {
-  font-family: var(--font);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-top: 4px;
-}
-
-/* Hide sidebar when main content would overlap, show inline instead */
-@media (max-width: 1100px) {
-  .sidebar-promo {
-    display: none;
-  }
-  .inline-promo {
-    display: block;
-  }
-}
-
-@media (max-width: 768px) {
-
-  nav {
-    padding: 16px 20px;
-  }
-
-  .nav-left {
-    display: none;
-  }
-
-  .nav-right {
-    display: none;
-  }
-
-  .nav-logo {
-    padding: 0;
-    font-size: 16px;
-  }
-
-  .desktop-lang {
-    display: none;
-  }
-
-  .mobile-lang {
-    display: flex;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 0;
-  }
-
-  main {
-    padding: 110px 24px 80px;
-  }
-
-  .article-title {
-    margin-bottom: 36px;
-  }
-
-  .pull-quote {
-    margin: 40px 0;
-  }
-
-  .article-header-image {
-    margin: 0 -24px 36px;
-  }
-
-  .article-header-image img {
-    border-radius: 0;
-  }
-
-  .article-image {
-    margin: 36px -24px;
-  }
-
-  .article-image img,
-  .article-image video {
-    border-radius: 0;
-  }
-
-  .article-image figcaption {
-    padding: 0 24px;
-  }
-
-  .image-pair {
-    margin: 36px -24px;
-    gap: 8px;
-    padding: 0;
-  }
-
-  .image-pair img {
-    border-radius: 0;
-  }
-
-  .image-pair figcaption {
-    padding: 0 24px;
-  }
-
-  .section-label {
-    margin-top: 56px;
-    padding-top: 36px;
-  }
-}
-
-@media (max-width: 375px) {
-  body {
-    font-size: 16px;
-  }
-
-  main {
-    padding: 100px 20px 60px;
-  }
-
-  .article-header-image {
-    margin: 0 -20px 32px;
-  }
-
-  .article-header-image img {
-    border-radius: 0;
-  }
-
-  .article-image {
-    margin: 32px -20px;
-  }
-
-  .article-image figcaption {
-    padding: 0 20px;
-  }
-
-  .image-pair {
-    margin: 32px -20px;
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .image-pair img {
-    border-radius: 0;
-  }
-
-  .image-pair figcaption {
-    padding: 0 20px;
-  }
-}
-</style>
+<!-- generert av build.py — rediger content/posts/, ikke denne fila -->
+<link rel="stylesheet" href="assets/blog.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "nextelite",
-  "url": "https://nextelite.no",
-  "description": "nextelite. boxing, protocol, art. en blogg fra vesteralen.",
-  "inLanguage": ["nb", "en"],
+  "@type": "BlogPosting",
+  "headline": "pakken kom.",
   "author": {
     "@type": "Person",
     "name": "Neminee",
     "url": "https://nextelite.no"
   },
+  "datePublished": "2026-04-10",
+  "dateModified": "2026-04-10",
+  "image": "https://nextelite.no/img/share-cards/pakken-kom-og.png",
   "publisher": {
     "@type": "Organization",
     "name": "nextelite",
-    "url": "https://nextelite.no"
-  }
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nextelite.no/img/boxing-topten-mirror.jpg"
+    }
+  },
+  "description": "Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Nå kom den store.",
+  "inLanguage": [
+    "nb",
+    "en"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nextelite.no/pakken-kom"
+  },
+  "articleSection": "Protocol"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "nextelite",
+      "item": "https://nextelite.no"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "pakken kom.",
+      "item": "https://nextelite.no/pakken-kom"
+    }
+  ]
 }
 </script>
 </head>
@@ -841,10 +91,10 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-left">
-    <a href="#" class="nav-link" data-no="blogg" data-en="blog">blogg</a>
+    <a href="index.html" class="nav-link" data-no="blogg" data-en="blog">blogg</a>
     <a href="#" class="nav-link">protokoll</a>
   </div>
-  <a href="#" class="nav-logo">nextelite</a>
+  <a href="index.html" class="nav-logo">nextelite</a>
   <div class="nav-right">
     <a href="#" class="nav-link">om</a>
     <div class="lang-toggle desktop-lang">
@@ -861,11 +111,128 @@ footer {
 </nav>
 
 <main>
-  <!-- Single article — rendered by JS from bilingual content array -->
-  <article id="blog-content"></article>
+  <article id="blog-content"><div class="fade-in">
+          <p class="article-meta">Nemine Steffensen / Øksnes, Vesterålen</p>
+          <h1 class="article-title"><span class="l-no">pakken kom.</span><span class="l-en">the order arrived.</span></h1>
+          <p class="article-meta" style="margin-top: 8px;">April 2026</p>
+        </div><div class="article-body"><aside class="affiliate-disclosure fade-in" role="note" aria-label="Reklame"><p><span class="l-no"><strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.</span><span class="l-en"><strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don't use.</span></p><p><span class="l-no">PS: jeg tar tjueåtte piller om dagen. Noen må betale for dem. Klikker du på linkene her, får jeg kickback. Kaffepenger blir til supplementer blir til neste blogpost. Det er et lukket kretsløp. Du skylder meg ingenting. Klikk hvis du vil.</span><span class="l-en">PS: I take twenty-eight pills a day. Someone has to pay for them. If you click the links in this post, I get a kickback. Coffee money turns into supplements turns into the next blog post. Closed loop. You don't owe me anything. Click if you want.</span></p></aside><figure class="article-image fade-in">
+          <img src="img/IMG_6133-hero.jpg" alt="Meg og Blue i gresset etter morgenrutinen" data-alt-no="Meg og Blue i gresset etter morgenrutinen" data-alt-en="Me and Blue in the grass after the morning routine" loading="lazy"><figcaption><span class="l-no">chiller med hunden min etter dårlig medisin og dårlig kaffe.</span><span class="l-en">chilling with my dog after bad medicine and bad coffee.</span></figcaption></figure><div class="fade-in">
+          <p class="tagline tagline-code">// code your next level</p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Begge deler stemmer fortsatt. To ting har endra seg. Den første pakken kom. Nå kom den store.</span><span class="l-en">Last week I said the tray worked and the stack wasn't finished. Both still true. Two things have changed. The first order arrived. Now the big one arrived.</span></p>
+        </div><div class="fade-in">
+          <p class="tagline-statement"><span class="l-no">research er arbeid. kroppen er prosjektet.</span><span class="l-en">research is work. the body is the project.</span></p>
+        </div><div class="fade-in">
+          <p class="section-label"><span class="l-no">brettet.</span><span class="l-en">the tray.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Tirsdag og onsdag denne uka la jeg to nye bokser ned på brettet. L-Theanin fra Thorne. Neuro-Mag fra Life Extension. Det er ikke mye. To bokser og en kvittering fra iHerb. Men det er det første som faktisk kom fram. I dag kom resten.</span><span class="l-en">Tuesday and Wednesday this week I put two new bottles on the tray. L-Theanine from Thorne. Neuro-Mag from Life Extension. It isn't much. Two bottles and a receipt from iHerb. But it's the first thing that actually arrived. The rest arrived today.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Det er fortsatt den samme morgenen. Alarmen, brettet, badet, supplementene. Ingen nye beslutninger. Det er hele poenget. Når noe nytt kommer inn i stacken, går det rett på brettet og blir en del av den samme handlingen du allerede gjør. Det blir ikke et nytt prosjekt. Det blir en boks til.</span><span class="l-en">The morning is still the same. Alarm, tray, bathroom, supplements. No new decisions. That's the whole point. When something new enters the stack, it goes straight on the tray. It becomes part of a motion you already make. It doesn't become a new project. It becomes one more tub.</span></p>
+        </div><figure class="article-image fade-in">
+          <img src="img/f1l3.sys-blog-new-6611-asset-260410-v01.jpg" alt="Hele supplementhylla etter at pakken kom" data-alt-no="Hele supplementhylla etter at pakken kom" data-alt-en="The full supplement shelf after the package arrived" loading="lazy"><figcaption><span class="l-no">hylla. etter pakken.</span><span class="l-en">the shelf. after the package.</span></figcaption></figure><div class="fade-in">
+          <p><span class="l-no">Theanin er 200 milligram om morgenen og 200 milligram om kvelden. Neuro-Mag er to kapsler om morgenen og én om kvelden. Det er forskjellen fra forrige uke. Alt annet er det samme. Foreløpig.</span><span class="l-en">Theanine: 200mg in the morning, 200mg at night. Neuro-Mag: two caps morning, one evening. That's the difference from last week. Everything else is the same. For now.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">De to flaskene i boksen: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine og Neuro-Mag</a> (annonselenke). Samme deal.</span><span class="l-en">The two bottles in that box: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine and Neuro-Mag</a> (annonselenke). Same deal.</span></p>
+        </div><div class="fade-in">
+          <p class="section-label"><span class="l-no">pakken kom.</span><span class="l-en">the package arrived.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Klokka tolv i dag sto det en pappeske på gulvet. Jeg åpnet den. Åtte bokser Thorne og én stor boks Collagen Fit. 1800 kroner med kapsler som har vært underveis i fem måneder i hodet mitt og noen dager på en bil.</span><span class="l-en">Noon today there was a cardboard box on the floor. I opened it. Eight Thorne tubs and one big tub of Collagen Fit. 1800 kroner of capsules that had been in transit for five months in my head and a few days on a van.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Basic Nutrients 2/Day. Super EPA. Magnesium Glycinate. Rhodiola. Vitamin C 500mg med flavonoider. Og Collagen Fit i den store lilla boksen som veier mer enn alt det andre til sammen.</span><span class="l-en">Basic Nutrients 2/Day. Super EPA. Magnesium Glycinate. Rhodiola. Vitamin C 500mg with flavonoids. And Collagen Fit in the big purple tub that weighs more than everything else combined.</span></p>
+        </div><figure class="article-image fade-in">
+          <img src="img/f1l3.sys-supplement-new-6601-asset-260410-v01.jpg" alt="Open eske med Thorne-bokser og Collagen Fit" data-alt-no="Open eske med Thorne-bokser og Collagen Fit" data-alt-en="Open box with Thorne bottles and Collagen Fit" loading="lazy"><figcaption><span class="l-no">Åtte bokser og en boks Collagen Fit. Klokka tolv.</span><span class="l-en">Eight tubs and one big tub of Collagen Fit. Noon.</span></figcaption></figure><div class="fade-in">
+          <p><span class="l-no">Jeg plukka opp Vitamin C-boksen først. Ikke fordi den er viktigst. Fordi fargen på etiketten er blå og de andre er mer dempa og jeg ville se om noe av det faktisk stemte overens med bildet i hodet mitt. Det gjorde det. Det er bare en boks. En helt vanlig boks med kapsler. Ingenting magisk. Bare noe som faktisk er her nå.</span><span class="l-en">I picked up the Vitamin C first. Not because it's the most important. Because the label is blue and the others are more muted and I wanted to see if any of it actually matched the picture in my head. It did. It's a bottle. A regular bottle with capsules in it. Nothing magic. Just something that's actually here now.</span></p>
+        </div><figure class="article-image fade-in">
+          <img src="img/f1l3.sys-supplement-new-6604-asset-260410-v01.jpg" alt="Thorne Vitamin C 500mg with Flavonoids, nærbilde" data-alt-no="Thorne Vitamin C 500mg with Flavonoids, nærbilde" data-alt-en="Thorne Vitamin C 500mg with Flavonoids, close-up" loading="lazy"><figcaption><span class="l-no">Vitamin C. Den første jeg plukka opp.</span><span class="l-en">Vitamin C. The first one I picked up.</span></figcaption></figure><div class="fade-in">
+          <p><span class="l-no">Jeg hadde tenkt at det skulle føles som noe. Et lite punkt. En liten seier. Det føltes ikke som det. Det føltes som å komme hjem med en handlepose. Du har ikke løst noe. Du har bare flytta det fra bestillingsbekreftelsen til kjøkkenet. Jobben starter i morgen, på brettet, med ett mer glass og tre nye bokser på plass.</span><span class="l-en">I thought it would feel like something. A small point. A small win. It didn't. It felt like coming home with a grocery bag. You haven't solved anything. You've just moved it from an order confirmation to the kitchen. The work starts tomorrow, on the tray, with one more glass and three new tubs in place.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Det er kanskje det som er poenget. De store øyeblikkene er ikke store. De er bare små øyeblikk som ligner på de forrige.</span><span class="l-en">Maybe that's the point. The big moments aren't big. They're just small moments that look like the ones before them.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Hele bestillingen er seks Thorne-produkter. Basic Nutrients, Super EPA, Magnesium Glysinat, Vitamin C, Rhodiola, Collagen Fit. Akkurat det som sto i pappeska da jeg åpna den i dag. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Hele handlekurven her</a> (annonselenke). Rabattkoden NHR7699 er på. Du sparer ti prosent. Jeg får betalt for å ha lest Bryan Johnsons protokoll på en fredagskveld. Fair handel.</span><span class="l-en">The whole order is six Thorne products. Basic Nutrients, Super EPA, Magnesium Glycinate, Vitamin C, Rhodiola, Collagen Fit. Exactly what was in the box when I opened it today. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">The full cart is here</a> (annonselenke). Code NHR7699 is already applied. You save ten percent. I get paid for reading Bryan Johnson's protocol on a Friday night. Fair deal.</span></p>
+        </div><div class="fade-in">
+          <p class="section-label"><span class="l-no">fortsatt ingen data.</span><span class="l-en">still no data.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Blodprøvene er fortsatt ikke tatt. Det er det ærlige i dette. Jeg skrev det forrige uke og jeg skriver det igjen. Hele stacken er basert på lesing, ikke på biomarkører. Jeg vet ikke om D-vitaminet mitt er lavt. Jeg vet ikke hva ferritinet er. Jeg vet ikke om skjoldbruskkjertelen tåler ashwagandha. Derfor ligger ashwagandha på vent. Det blir der til noen stikker en nål i armen min og sender meg en pdf.</span><span class="l-en">The blood work still hasn't been done. That's the honest part. I wrote it last week. I'm writing it again. The whole stack is built on reading. Not on biomarkers. I don't know if my vitamin D is low. I don't know what my ferritin looks like. I don't know if my thyroid can handle ashwagandha. So ashwagandha stays on hold. It stays there until someone puts a needle in my arm and sends me a pdf.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Jeg har fastlegen min. Papirene er i gang. Det tar den tida det tar i Norge, og det er greit. Det er ikke en unnskyldning. Det er bare sånn det er.</span><span class="l-en">I have a doctor. The paperwork is moving. Things take the time they take in Norway. That's fine. Not an excuse. Just how it is.</span></p>
+        </div><div class="fade-in">
+          <p class="pull-quote"><span class="l-no">Dette er ikke ferdig. Det blir kanskje aldri helt ferdig. Men det er ikke lenger ingenting heller.</span><span class="l-en">This isn't finished. Maybe it never will be. But it isn't nothing anymore.</span></p>
+        </div><div class="fade-in">
+          <p class="section-label"><span class="l-no">hva som endra seg.</span><span class="l-en">what changed.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Sengetid er klokka ni nå. Den var halv ti. Tretti minutter høres ikke mye ut. WHOOP sier søvnkonsistensen min ligger rundt 78 prosent den siste uka. Jeg trodde den var lavere. Kroppen lyver ikke, men hjernen min gjør det av og til.</span><span class="l-en">Bedtime is nine now. It used to be half past. Thirty minutes doesn't sound like much. WHOOP says my sleep consistency sits around 78 percent for the week. I thought it was lower. The body doesn't lie. My head does sometimes.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">WHOOP-en sier sakte det samme som speilet sier. Kroppen svarer på det jeg gjør. Ikke fort. Ikke dramatisk. Bare sakte. Snittpulsen min i hvile har lagt seg mellom 49 og 57. HRV-en svinger fra 99 til 157. Mandag traff jeg 96 prosent recovery. Onsdag lå jeg på 39, etter seks timer i bil til Harstad og tilbake. Å kjøre er en hardere treningsøkt enn boksing. Kroppen vet forskjell på stress og strain, selv om jeg ikke alltid gjør det. Jeg har ikke en gunstig oppvekstsone for dette. Jeg bor på 68 grader nord. Sola er sesongarbeider her. Halvparten av året betyr D-vitamin at du husker at du er et pattedyr.</span><span class="l-en">The WHOOP is saying slowly what the mirror says. The body is responding. Not fast. Not dramatic. Slow. My resting heart rate has settled between 49 and 57. HRV swings from 99 to 157. Monday I hit 96 percent recovery. Wednesday I was at 39, after six hours in a car to Harstad and back. Driving is a harder workout than boxing. The body knows the difference between stress and strain. I don't always. I don't live in a kind climate for this. I'm at 68 degrees north. The sun is a seasonal worker here. Half the year, vitamin D is how you remember you're a mammal.</span></p>
+        </div><div class="fade-in">
+          <p class="section-label"><span class="l-no">taurin.</span><span class="l-en">taurine.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">I dag la jeg taurin på brettet. Pulver. Ett gram. Det er ikke et stort valg. Det er en skje til i det varme vannet. Den tar et halvt sekund og kroppen merker det ikke før uke tre.</span><span class="l-en">Today I put taurine on the tray. Powder. One gram. Not a big decision. One more scoop in the warm water. It takes half a second. The body won't notice it until week three.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Det er sånn protokoller faktisk bygges. Ikke med en stor annonsering. Med en skje til i et glass du allerede drikker.</span><span class="l-en">This is how protocols actually get built. Not with a big announcement. With one more scoop in a glass you're already drinking.</span></p>
+        </div><div class="fade-in">
+          <p class="section-label"><span class="l-no">verktøy.</span><span class="l-en">tools.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Supplementer er én ting. Verktøy er noe annet. Jeg har en Nurosym på skrivebordet. Den stimulerer vagusnerven gjennom øret og den står alltid til venstre for laptopen når jeg koder. Jeg bruker den fordi Bryan Johnson bruker den, og fordi en rolig vagusnerve er en rolig PTSD for meg.</span><span class="l-en">Supplements are one thing. Tools are something else. I have a Nurosym on my desk. It stimulates the vagus nerve through the ear and it always sits to the left of the laptop when I code. I use it because Bryan Johnson uses one, and because for me a calm vagus nerve is a calm PTSD.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Kalenderen på laptopen er også et verktøy. Det er <a href="fotball.html">den samme kalenderen jeg skrev om forrige uke</a>. Brettet er det fysiske laget. Kalenderen er det digitale. Begge gjør samme jobb: ta valgene vekk fra meg før klokka ni.</span><span class="l-en">The calendar on the laptop is also a tool. It's <a href="fotball.html">the same calendar I wrote about last week</a>. The tray is the physical layer. The calendar is the digital layer. Both do the same job: take the choices away from me before nine in the morning.</span></p>
+        </div><figure class="article-image fade-in">
+          <img src="img/IMG_6517.jpg" alt="Laptop med kalender åpen på 8. april, Nurosym vagusnervstimulator med ørepropper ved siden av" data-alt-no="Laptop med kalender åpen på 8. april, Nurosym vagusnervstimulator med ørepropper ved siden av" data-alt-en="Laptop with calendar open on April 8, Nurosym vagus nerve stimulator with earbuds beside it" loading="lazy"><figcaption><span class="l-no">kalender. nurosym. earbuds. 8. april, klokka et sted mellom frokost og trening.</span><span class="l-en">calendar. nurosym. earbuds. april 8, somewhere between breakfast and training.</span></figcaption></figure><div class="fade-in">
+          <p class="section-label"><span class="l-no">badet.</span><span class="l-en">the bathroom.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Badet er der jeg starter dagen. Jeg står på vekta først. Withings-vekta. Samme vekt hver morgen, samme tidspunkt, samme belysning. Tallet er ikke alltid det jeg vil ha, men det er ærlig.</span><span class="l-en">The bathroom is where the day starts. I step on the scale first. The Withings. Same scale every morning, same time, same light. The number isn't always what I want, but it's honest.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Ved siden av vekta ligger en groundingmatte og en nålematte. Begge er på badet. Groundingmatta er jordet. Nålematta er bare spiker. Jeg står på den ene. Jeg står på den andre når skuldrene trenger å gi opp. Ingen av dem er magiske. De er bare små innganger til at kroppen husker at den er et dyr.</span><span class="l-en">Next to the scale there is a grounding mat and an acupuncture mat. Both are in the bathroom. The grounding mat is earthed. The acupuncture mat is just spikes. I stand on one. I stand on the other when my shoulders need to give up. Neither is magic. They are just small entry points to reminding the body it is an animal.</span></p>
+        </div><figure class="article-image fade-in">
+          <img src="img/IMG_6455.jpg" alt="Føtter i grønne Adidas-slippers, fotposisjon-øvelse" data-alt-no="Føtter i grønne Adidas-slippers, fotposisjon-øvelse" data-alt-en="Feet in green Adidas slides, foot position drill" loading="lazy"><figcaption><span class="l-no">grønne slippers. fotposisjon, hver dag.</span><span class="l-en">grounding mat. scale. slippers.</span></figcaption></figure><div class="fade-in">
+          <p><span class="l-no">Jeg øver på å gå med rett fotposisjon. Øvelsen kommer fra en video jeg så. Det er rart å lære å gå på nytt når du er tjueåtte. Men her er vi.</span><span class="l-en">I am learning to walk with the right foot position. The drill comes from a video I watched. It is a strange thing to relearn when you are twenty-eight. But here we are.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Og så er det tungen. Jeg øver på mewing også. Samme logikk: lær kroppen sin rette form på nytt, litt hver dag, og ikke tenk på det resten av tida.</span><span class="l-en">And then there is the tongue. I am practicing mewing too. Same logic: teach the body its correct shape again, a little every day, and do not think about it the rest of the time.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">WHOOP-appen er det første jeg sjekker. Recovery-tallet fra natta. HRV-en. Hvor mye søvn jeg faktisk fikk. Den forteller meg hva dagen er før jeg rekker å gjette. Noen dager liker jeg tallet. Andre dager forstår jeg det.</span><span class="l-en">The WHOOP app is the first thing I check. Last night's recovery. HRV. How much sleep I actually got. It tells me what the day is before I have a chance to guess. Some days I like the number. Other days I understand it.</span></p>
+        </div><figure class="article-image fade-in">
+          <img src="img/IMG_6542.jpg" alt="Speilbilde i badspeil, myk grå hoodie, morgenlys" data-alt-no="Speilbilde i badspeil, myk grå hoodie, morgenlys" data-alt-en="Mirror reflection in a bathroom mirror, dark tank top, holding a phone" loading="lazy"><figcaption><span class="l-no">morgen. før alt annet.</span><span class="l-en">morning. before anything else.</span></figcaption></figure><div class="fade-in">
+          <p class="section-label">kriger.</p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Hun er fortsatt i recovery. Onsdag var vi på AniCura Harstad. Jeg kjørte Myre, ferje Flesnes-Refsnes, opp til klinikken, tilbake igjen. Seks timer fram og tilbake for kontrollen som tok gipsen av. Hun sov hele veien hjem.</span><span class="l-en">She's still in recovery. Wednesday we drove to AniCura Harstad. From Myre, the ferry Flesnes to Refsnes, up to the clinic, back home. Six hours round trip for the checkup that took the cast off. She slept the whole way home.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Blue bor hos foreldrene mine mens Kriger er i recovery. Det er bedre for henne. Det er også på brettet, bare at brettet heter kalender.</span><span class="l-en">Blue is staying at my parents' place while Kriger heals. It's better for her. It's on the tray too. The tray is just called a calendar now.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Kriger er fra Kennel Tigerdyret i Danmark. Hun er tysk schæfer, og hun og Blue er hjertet mitt i hundeform. Skaden var alvorlig nok til at vi nesten mistet henne. De opererte senene, og siden da har AniCura Harstad holdt oss i hånda gjennom hele rehabiliteringa.</span><span class="l-en">Kriger came from Kennel Tigerdyret in Denmark. German Shepherd. She and Blue are my whole heart in dog shape. The injury was bad enough that we almost lost her. They operated on the tendons, and since then AniCura Harstad has held our hand through the whole recovery.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Det har vært gipsskift etter gipsskift, hver under narkose, hver med en ny farge. Teamet har dekorert noen av dem også. Den vi fikk rundt påske hadde en kanin og "god påske" skrevet på siden. Små ting, men det er sånne ting du husker når du kjører seks timer tur-retur med en hund som sover bak i bilen.</span><span class="l-en">It has been cast change after cast change, each one under anesthesia, each one in a new color. The team has decorated some of them too. The one we got around Easter had a rabbit and "happy easter" written on the side. Small things, but those are the things you remember when you are driving six hours round trip with a dog sleeping in the back of the car.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">I dag er vi seks uker ut i rehab. Gipsen er borte. Nå har hun en mindre avstivet bandasje istedenfor, og protokollen slipper akkurat nå litt mer bevegelse gjennom senene som ble operert. Det er et skritt. Et lite et, men det teller.</span><span class="l-en">Today we are six weeks into rehab. The cast is off. She has a lighter bandage now instead, and the protocol is letting a little more movement through the tendons that were operated on. It is a step. A small one, but it counts.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Recovery skjer ikke på én time hos veterinæren. Det skjer i ukene imellom.</span><span class="l-en">Recovery does not happen in one hour at the vet. It happens in the weeks between.</span></p>
+        </div><figure class="article-image fade-in">
+          <img src="img/IMG_6434.jpg" alt="Kriger ligger i senga si med rosa sokk over bandasjen på venstre bakfot" data-alt-no="Kriger ligger i senga si med rosa sokk over bandasjen på venstre bakfot" data-alt-en="Kriger lying in her bed with a pink sock over the bandage on her left hind foot" loading="lazy"><figcaption><span class="l-no">Kriger i påska. Rosa gips, kanin og god påske.</span><span class="l-en">Kriger at Easter. Pink cast, rabbit, god påske.</span></figcaption></figure><figure class="article-image fade-in">
+          <img src="img/IMG_6240.jpg" alt="Kriger med beskytter over bandasjen mot vann og fukt" data-alt-no="Kriger med beskytter over bandasjen mot vann og fukt" data-alt-en="Kriger with a protective cover over the bandage to keep water and moisture out" loading="lazy"><figcaption><span class="l-no">Beskytter over bandasjen. Holder vann og fukt ute.</span><span class="l-en">Cover over the bandage. Keeps water and moisture out.</span></figcaption></figure><div class="fade-in">
+          <p class="section-label">whoop.</p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Jeg bruker WHOOP hver dag. Jeg har gjort det i seks måneder. Det er det eneste verktøyet jeg stoler på fra start til slutt. Det sier meg ting jeg ikke vil vite og det sier meg ting jeg trengte å høre. Det registrerer feilene og seirene. Det lyver ikke.</span><span class="l-en">I wear a WHOOP every day. Have done for six months. It's the one tool I trust end to end. It tells me things I don't want to hear and things I needed to hear. It logs the misses and the wins. It doesn't lie.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Hvis du vurderer å begynne, så gjør det. Det er det jeg bruker. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">Gratis WHOOP og en måned gratis med min link</a> (annonselenke). Du får en måned gratis. Jeg får kickback. Det betaler for alle timene jeg har brukt på å finne ut hva som faktisk funker. Ingen skam.</span><span class="l-en">Thinking about starting? Do it. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">A free month for you</a> (annonselenke). A kickback for me. I need an excuse to stare at HRV numbers when I should be sleeping. Thanks in advance.</span></p>
+        </div><div class="fade-in">
+          <p class="section-label"><span class="l-no">veien videre.</span><span class="l-en">the road ahead.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Neste uke er det samme som forrige uke. Bygg stacken. Snakk med legen. Bygg brettet. Bokse. Mate Kriger klokka ti. Sove klokka ni.</span><span class="l-en">Next week looks the same as last week. Build the stack. Talk to the doctor. Build the tray. Box. Feed Kriger at ten. Sleep at nine.</span></p>
+        </div><div class="fade-in">
+          <p><span class="l-no">Det er ikke spennende. Det er det som er poenget.</span><span class="l-en">It isn't exciting. That's the point.</span></p>
+        </div><figure class="article-image fade-in">
+          <video src="img/mirror-selfie-smile.mp4" poster="img/mirror-selfie-smile-thumb.jpg" controls preload="metadata" playsinline muted aria-label="Speilselfie med solbriller på hodet" data-aria-no="Speilselfie med solbriller på hodet" data-aria-en="Mirror selfie with sunglasses on head" style="object-position:center 25%"></video><figcaption><span class="l-no">ferdig med badet. solbrillene er viktige.</span><span class="l-en">done with the bathroom. the sunglasses are important.</span></figcaption></figure><div class="fade-in">
+          <p><span class="l-no">Forrige uke var alt nytt. Nå er alt fortsatt nytt, bare litt mindre nytt. Det er framgang. Det er ikke resultatet. Det er prosessen. Jeg sa det forrige uke og jeg kommer til å si det igjen til jeg har noe annet å si.</span><span class="l-en">Last week was all new. Now it's still new, just a little less new. That's progress. Not a result. A process. I said it last week. I'll keep saying it until I have something else to say.</span></p>
+        </div><div class="fade-in">
+          <p class="sign-off">&lt;333</p>
+        </div></div><div class="post-nav fade-in" role="navigation" aria-label="Andre innlegg" data-aria-no="Andre innlegg" data-aria-en="Other posts">
+    <a href="fotball.html" class="post-nav-link">
+      <span class="post-nav-label"><span class="l-no">les også</span><span class="l-en">also read</span></span>
+      <span class="post-nav-title"><span class="l-no">jeg flytta og flytta, for sporten var alltid fotball.</span><span class="l-en">I kept moving. the sport was always football.</span></span>
+      <span class="post-nav-date">April 2026</span>
+    </a>
+  </div></article>
 </main>
 
-<!-- l1ft0ff — sidebar promo — gloves on -->
+<!-- sidebar promo — nextelite boxing -->
 <aside class="sidebar-promo" aria-label="NextElite training">
   <a href="https://nextelite.no/boxing/" target="_blank" rel="noopener" data-boxing-link>
     <img class="sidebar-promo-img" src="img/boxing-bodo-ring-purple.jpg" alt="NextElite" loading="lazy">
@@ -884,1099 +251,6 @@ footer {
   <p class="footer-sub">uke 1 / 2026</p>
 </footer>
 
-<script>
-// l1ft0ff — Mission Tundra IV — single-source bilingual system
-// norwegian is the master. english rides alongside. sync is visual.
-console.log('%c05:45. the tray is ready.', 'color: #8A8A8A; font-family: Libre Franklin, sans-serif; font-size: 12px;');
-console.log('%cnextelite — Mission Tundra IV — single-source translation layer', 'color: #4A4A4A; font-family: Libre Franklin, sans-serif; font-size: 10px;');
-// the weight contrast is the magic. light headings. heavy nav tracking. rhode knows.
-
-// ═══════════════════════════════════════════════════════════════
-// CONTENT — Single source of truth. Norwegian is master.
-// Edit NO first, then update EN beside it. They sit together.
-// ═══════════════════════════════════════════════════════════════
-
-const postFotballContent = [
-
-  // ─── HEADER ───
-  {
-    type: 'header',
-    meta: {
-      no: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len',
-      en: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len'
-    },
-    title: {
-      no: 'jeg flytta og flytta, for sporten var alltid fotball. til den ikke var det lenger.',
-      en: 'I kept moving. the sport was always football. until it wasn\u0027t.'
-    },
-    date: {
-      no: 'April 2026',
-      en: 'April 2026'
-    }
-  },
-
-  // ─── HERO ───
-  {
-    type: 'image',
-    src: 'img/hero-mamma-car.jpg',
-    alt: {
-      no: 'Meg og mamma aka lykketrollet i bilen, By\u00E5sen-jakka p\u00E5',
-      en: 'Me and mom aka the lucky troll in the car, By\u00E5sen jacket on'
-    },
-    caption: {
-      no: 'favorittselfien. dette bildet er overalt. mamma vet ikke at hun er kjendis p\u00E5 alle profilbildene mine.',
-      en: 'the favorite selfie. this photo is everywhere. mom does not know she is famous across all my profile pictures.'
-    }
-  },
-
-  // ─── INTRO ───
-  {
-    type: 'tagline-code',
-    no: '// code your next level',
-    en: '// code your next level'
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg var ni \u00E5r da NRK filmet meg for Energikampen. Siden har kroppen min v\u00E6rt gjennom alt. R\u00F8ket korsb\u00E5nd, ankel med metall, midlertidig hjerneskade, seks klubber og fem steder fra B\u00E6rum til Myre. N\u00E5 bokser jeg.',
-    en: 'I was nine when NRK filmed me for Energikampen. Since then my body has been through it all. Torn ACL, ankle full of metal, temporary brain injury, six clubs and five cities from B\u00E6rum to Myre. Now I box.'
-  },
-  {
-    type: 'tagline-statement',
-    no: 'not here to be pretty. here to be dangerous.',
-    en: 'not here to be pretty. here to be dangerous.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Dette er uke en.',
-    en: 'This is week one.'
-  },
-
-  // ─── BRETTET / THE TRAY (bloggens hjerte) ───
-  {
-    type: 'section-label',
-    no: 'brettet.',
-    en: 'the tray.'
-  },
-  {
-    type: 'video',
-    src: 'img/blue-sofa-byasen.mp4',
-    poster: 'img/blue-sofa-byasen-thumb.jpg',
-    objectPosition: 'center 40%',
-    alt: {
-      no: 'Blue og meg i sofaen',
-      en: 'Blue and me on the couch'
-    },
-    caption: {
-      no: 'Sjefen. Hun vet ikke hva NMN er og gir faen. God som gull.',
-      en: 'The boss. She has no idea what NMN is and does not care. Solid gold.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg st\u00E5r opp 05:45. Hjernen min fungerer ikke klokka seks om morgenen. Det er hele poenget.',
-    en: 'I wake up at 05:45. My brain doesn\u0027t work at six in the morning. That\u0027s the point.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Brettet er et system for en hjerne som ikke kan ta beslutninger f\u00F8r klokka ni. Alt ordnes klart p\u00E5 morgenen. To bokser med supplementer, kreatin, frosne b\u00E6r, varmt vann med Baja Gold havsalt, hydrogenvann. Hele greia p\u00E5 et brett. Brettet g\u00E5r med meg til badet. Morgenrutinen skjer der, ikke p\u00E5 kj\u00F8kkenet.',
-    en: 'The tray is a system for a brain that can\u0027t make decisions before nine. Everything laid out the night before. Two tins of supplements, creatine, frozen berries, warm water with Baja Gold sea salt, hydrogen water. All on one tray. The tray comes with me to the bathroom. Morning protocol happens there, not in the kitchen.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-breakfast-tray-overview-asset-260406-v01.jpg',
-    alt: {
-      no: 'Brettet ovenfra, hele morgenoppsettet',
-      en: 'The tray from above, full morning setup'
-    },
-    caption: {
-      no: 'Brettet. F\u00F8rste handling etter alarmen.',
-      en: 'The tray. First thing after the alarm.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'F\u00F8r dette var morgenene mine kaos. St\u00E5 opp, stirre i veggen, scrolle telefonen i 40 minutter, glemme \u00E5 spise, ta supplementer klokka to p\u00E5 ettermiddagen. Eller aldri. ADHD-hjernen min brukte all sin energi p\u00E5 \u00E5 bestemme hva den skulle gj\u00F8re. Og svaret var som regel: ingenting.',
-    en: 'Before this, mornings were chaos. Wake up, stare at the wall, scroll for 40 minutes, forget to eat, take supplements at two in the afternoon. Or never. My ADHD brain burned all its energy deciding what to do. The answer was usually: nothing.'
-  },
-  {
-    type: 'pull-quote',
-    no: 'Brettet fjernet alt det.',
-    en: 'The tray removed all of that.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-supplement-cups-layout-asset-260406-v01.jpg',
-    alt: {
-      no: 'Supplementboksene p\u00E5 brettet',
-      en: 'Supplement tins on the tray'
-    },
-    caption: {
-      no: 'To bokser. Morgen og kveld. Ingen beslutninger.',
-      en: 'Two tins. Morning and evening. No decisions.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'N\u00E5 er morgenene mine identiske. Ikke fordi jeg er disiplinert. Fordi jeg fjernet behovet for disiplin. Det er et brett. Du b\u00E6rer det. Ferdig.',
-    en: 'Now every morning is identical. Not because I\u0027m disciplined. Because I removed the need for discipline. It\u0027s a tray. You carry it. Done.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Bryan Johnson bruker Blueprint til \u00E5 reversere aldring. Hele systemet hans bygger p\u00E5 ett prinsipp: fjern valg, gj\u00F8r det automatisk. Jeg bygger mitt eget system. Mye mindre skala, men samme logikk. Start med det som faktisk \u00F8delegger dagen din, og fiks det.',
-    en: 'Bryan Johnson uses Blueprint to reverse aging. His entire system runs on one principle: remove choices, make it automatic. I\u0027m building my own version. Much smaller scale, same logic. Start with the thing that actually ruins your day, and fix it.'
-  },
-  {
-    type: 'paragraph',
-    no: 'For meg var det morgenen. S\u00E5 jeg begynte der.',
-    en: 'For me, that was the morning. So I started there.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-creatine-supplement-asset-260406-v01.jpg',
-    alt: {
-      no: 'Kreatin p\u00E5 brettet',
-      en: 'Creatine on the tray'
-    },
-    caption: {
-      no: 'Kreatin. Del av morgenprotokollen.',
-      en: 'Creatine. Part of the morning protocol.'
-    }
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-candle-label-asset-260406-v01.jpg',
-    alt: {
-      no: 'Hydrogenvann p\u00E5 brettet',
-      en: 'Hydrogen water generator'
-    },
-    caption: {
-      no: 'Hydrogenvann. Del av morgenprotokollen.',
-      en: 'Hydrogen water. Part of the morning protocol.'
-    }
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-coffee-kimchi-closeup-asset-260406-v01.jpg',
-    alt: {
-      no: 'Kaffe og kimchi',
-      en: 'Coffee and kimchi'
-    },
-    caption: {
-      no: 'Kaffe og kimchi. Tarmhelse er ikke valgfritt.',
-      en: 'Coffee and kimchi. Gut health isn\u0027t optional.'
-    }
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-morning-supplements-topdown-asset-260406-v01.jpg',
-    alt: {
-      no: 'Alle supplementene sett ovenfra',
-      en: 'All supplements from above'
-    },
-    caption: {
-      no: 'Hele stacken. Under utvikling.',
-      en: 'The full stack. Work in progress.'
-    }
-  },
-
-  // ─── SUPPLEMENTER / SUPPLEMENTS ───
-  {
-    type: 'section-label',
-    no: 'supplementer.',
-    en: 'supplements.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Stacken er ikke ferdig. Det er viktig \u00E5 si.',
-    en: 'The stack isn\u0027t finished. That matters.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg tar supplementer som en del av morgenprotokollen. Noen er l\u00E5st. Resten er research. Jeg leser, jeg tester, jeg justerer. Blodpr\u00F8vene er ikke tatt enn\u00E5. Fastlegen sjekker mulighetene. S\u00E5 akkurat n\u00E5 er dette basert p\u00E5 lesing, ikke data. N\u00E5r biomark\u00F8rene kommer, endrer stacken seg. Kanskje drastisk.',
-    en: 'Supplements are part of the morning protocol. Some are locked in. The rest is research. I read, I test, I adjust. Blood work hasn\u0027t been done yet. Working with my doctor on options. So right now this is based on reading, not data. When the biomarkers come back, the stack changes. Maybe drastically.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg publiserer den fulle protokollen n\u00E5r den faktisk er basert p\u00E5 noe mer enn Google og optimisme.',
-    en: 'I\u0027ll publish the full protocol when it\u0027s based on something more than Google and optimism.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-agelab-nr-nmn-asset-260403-v01.jpg',
-    alt: {
-      no: 'AgeLab NR og NMN supplementer',
-      en: 'AgeLab NR and NMN supplements'
-    },
-    caption: {
-      no: 'NR og NMN fra AgeLab. Venter p\u00E5 blodpr\u00F8ver.',
-      en: 'NR and NMN from AgeLab. Waiting for blood work.'
-    }
-  },
-
-  // ─── ROMMET / THE ROOM ───
-  {
-    type: 'section-label',
-    no: 'rommet.',
-    en: 'the room.'
-  },
-  {
-    type: 'paragraph',
-    no: 'NextElite. Myre, Vester\u00E5len. Det er ikke et fancy gym. Det er et rom med sekker, hansker og folk som m\u00F8ter opp.',
-    en: 'NextElite. Myre, Vester\u00E5len. Not a fancy gym. A room with bags, gloves, and people who show up.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg bokser. Ikke fordi det er trendy. Fordi det er det eneste som f\u00E5r ADHD-hjernen min til \u00E5 bli stille. N\u00E5r noen kaster slag mot deg, tenker du ikke p\u00E5 e-post.',
-    en: 'I box. Not because it\u0027s trendy. Because it\u0027s the only thing that makes my ADHD brain go quiet. When someone throws a punch at you, you don\u0027t think about email.'
-  },
-  {
-    type: 'image-pair',
-    images: [
-      { src: 'img/gym-6228.jpg', alt: { no: 'Trening i bokseringen', en: 'Training in the ring' } },
-      { src: 'img/thumb-6231.jpg', alt: { no: 'Boksing', en: 'Boxing' } }
-    ]
-  },
-  {
-    type: 'paragraph',
-    no: 'Treningssenteret her er ikke Instagram-vennlig. Det er kaldt, det er enkelt, det fungerer. Det er folk som trener fordi de vil bli bedre, ikke fordi de vil legge det ut. Det passer meg.',
-    en: 'The gym here isn\u0027t Instagram-friendly. Cold, simple, works. People train because they want to get better, not because they want to post it. My kind of place.'
-  },
-  {
-    type: 'image-pair',
-    images: [
-      { src: 'img/gym-6238.jpg', alt: { no: 'Trening', en: 'Training' } },
-      { src: 'img/gym-6253.jpg', alt: { no: 'I ringen', en: 'In the ring' } }
-    ]
-  },
-  {
-    type: 'image',
-    src: 'img/thumb-6272.jpg',
-    alt: {
-      no: 'Boksing p\u00E5 NextElite',
-      en: 'Boxing at NextElite'
-    }
-  },
-  {
-    type: 'image-pair',
-    images: [
-      { src: 'img/gym-6285.jpg', alt: { no: 'Etter trening', en: 'After training' } },
-      { src: 'img/gym-6380.jpg', alt: { no: 'Kriger i gymmen', en: 'Kriger in the gym' } }
-    ]
-  },
-  {
-    type: 'image',
-    src: 'img/thumb-6246.jpg',
-    alt: {
-      no: 'JBL-h\u00F8yttaler i gymmen',
-      en: 'JBL speaker in the gym'
-    },
-    caption: {
-      no: 'Musikken er alltid med.',
-      en: 'Music. Always.'
-    }
-  },
-
-  {
-    type: 'image',
-    src: 'img/gym-6281.jpg',
-    alt: {
-      no: 'Hoppetau fra Timeless Jump',
-      en: 'Jump ropes from Timeless Jump'
-    },
-    caption: {
-      no: 'Timeless Jump. Fem tau. Null unnskyldninger.',
-      en: 'Timeless Jump. Five ropes. Zero excuses.'
-    }
-  },
-
-  // ─── KRIGER ───
-  {
-    type: 'section-label',
-    no: 'kriger.',
-    en: 'kriger.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Kriger er hunden min. Sch\u00E6fer. Hun er i recovery etter operasjon. 6-12 uker. Hun burde hvile. Hun vet det ikke selv.',
-    en: 'Kriger is my dog. German Shepherd. Recovering from surgery. 6-12 weeks. She should be resting. She doesn\u0027t know that.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Denne uka l\u00E5 hun i buret sitt og s\u00E5 p\u00E5 meg bokse til en coach p\u00E5 laptopen. Fra buret sitt. Som om det var hennes egen kamp.',
-    en: 'This week she lay in her crate watching me box along to a coach on the laptop. From inside the crate. Like it was her fight too.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Blue er den andre hunden v\u00E5r. Ogs\u00E5 sch\u00E6fer, eldre enn Kriger. Hun er den som beskytter flokken.',
-    en: 'Blue is our other dog. Also a Shepherd, older than Kriger. She\u0027s the one who guards the pack.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-dog-crate-laptop-asset-260405-v01.jpg',
-    alt: {
-      no: 'Kriger i buret, ser mot skjermen',
-      en: 'Kriger in the crate, looking at the screen'
-    },
-    caption: {
-      no: 'Kriger ser p\u00E5 boksing fra buret. Recovery-modus.',
-      en: 'Kriger watching boxing from the crate. Recovery mode.'
-    }
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-kriger-boxing-gear-closeup-asset-260323-v01.jpg',
-    alt: {
-      no: 'Kriger med bokseutstyr',
-      en: 'Blue with boxing gear'
-    },
-    caption: {
-      no: 'Blue. Den eldste. Den som passer p\u00E5 flokken.',
-      en: 'Blue. The eldest. The one who watches over the pack.'
-    }
-  },
-
-  // ─── VEIEN VIDERE / THE ROAD AHEAD ───
-  {
-    type: 'section-label',
-    no: 'veien videre.',
-    en: 'the road ahead.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Uke en er dokumentert. Det meste er halvveis. Brettet fungerer. Supplementene er uferdig. Blodpr\u00F8vene venter. Boksingen er det eneste som sitter hundre prosent.',
-    en: 'Week one is documented. Most of it is halfway there. The tray works. Supplements are unfinished. Blood work is pending. Boxing is the only thing that\u0027s fully locked in.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Neste uke: f\u00F8rste samtale med fastlegen om blodpr\u00F8ver, protokollen justeres, treningsloggen starter. Og kanskje Kriger f\u00E5r g\u00E5 en tur uten \u00E5 dra i b\u00E5ndet.',
-    en: 'Next week: first doctor visit about blood work, protocol gets adjusted, training log starts. And maybe Kriger gets to walk without pulling the leash.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Dette er starten. Ikke produktet. Prosessen.',
-    en: 'This is the start. Not the product. The process.'
-  },
-  {
-    type: 'sign-off',
-    text: '<333'
-  },
-
-  // ─── INLINE PROMO — gloves on (bottom) ───
-  {
-    type: 'inline-promo'
-  }
-];
-
-let blogContent = [
-
-  // ─── HEADER ───
-  {
-    type: 'header',
-    meta: {
-      no: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len',
-      en: 'Nemine Steffensen / \u00D8ksnes, Vester\u00E5len'
-    },
-    title: {
-      no: 'pakken kom.',
-      en: 'the order arrived.'
-    },
-    date: {
-      no: 'April 2026',
-      en: 'April 2026'
-    }
-  },
-
-  // ─── MANDATORY DISCLOSURE (grn//red legal ruling — exact wording, do not paraphrase) ───
-  // Renders above hero per Forbrukertilsynet above-the-fold requirement. PS folded in as second paragraph.
-  {
-    type: 'disclosure',
-    no: '<p><strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.</p><p>PS: jeg tar tjueåtte piller om dagen. Noen må betale for dem. Klikker du på linkene her, får jeg kickback. Kaffepenger blir til supplementer blir til neste blogpost. Det er et lukket kretsløp. Du skylder meg ingenting. Klikk hvis du vil.</p>',
-    en: '<p><strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don\u0027t use.</p><p>PS: I take twenty-eight pills a day. Someone has to pay for them. If you click the links in this post, I get a kickback. Coffee money turns into supplements turns into the next blog post. Closed loop. You don\u0027t owe me anything. Click if you want.</p>'
-  },
-
-  // ─── HERO (right under disclosure) ───
-  {
-    type: 'image',
-    src: 'img/IMG_6133-hero.jpg',
-    alt: {
-      no: 'Meg og Blue i gresset etter morgenrutinen',
-      en: 'Me and Blue in the grass after the morning routine'
-    },
-    caption: {
-      no: 'chiller med hunden min etter d\u00E5rlig medisin og d\u00E5rlig kaffe.',
-      en: 'chilling with my dog after bad medicine and bad coffee.'
-    }
-  },
-
-  // ─── INTRO ───
-  {
-    type: 'tagline-code',
-    no: '// code your next level',
-    en: '// code your next level'
-  },
-  {
-    type: 'paragraph',
-    no: 'Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Begge deler stemmer fortsatt. To ting har endra seg. Den f\u00F8rste pakken kom. N\u00E5 kom den store.',
-    en: 'Last week I said the tray worked and the stack wasn\u0027t finished. Both still true. Two things have changed. The first order arrived. Now the big one arrived.'
-  },
-  {
-    type: 'tagline-statement',
-    no: 'research er arbeid. kroppen er prosjektet.',
-    en: 'research is work. the body is the project.'
-  },
-
-  // ─── BRETTET ───
-  {
-    type: 'section-label',
-    no: 'brettet.',
-    en: 'the tray.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Tirsdag og onsdag denne uka la jeg to nye bokser ned p\u00E5 brettet. L-Theanin fra Thorne. Neuro-Mag fra Life Extension. Det er ikke mye. To bokser og en kvittering fra iHerb. Men det er det f\u00F8rste som faktisk kom fram. I dag kom resten.',
-    en: 'Tuesday and Wednesday this week I put two new bottles on the tray. L-Theanine from Thorne. Neuro-Mag from Life Extension. It isn\u0027t much. Two bottles and a receipt from iHerb. But it\u0027s the first thing that actually arrived. The rest arrived today.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Det er fortsatt den samme morgenen. Alarmen, brettet, badet, supplementene. Ingen nye beslutninger. Det er hele poenget. N\u00E5r noe nytt kommer inn i stacken, g\u00E5r det rett p\u00E5 brettet og blir en del av den samme handlingen du allerede gj\u00F8r. Det blir ikke et nytt prosjekt. Det blir en boks til.',
-    en: 'The morning is still the same. Alarm, tray, bathroom, supplements. No new decisions. That\u0027s the whole point. When something new enters the stack, it goes straight on the tray. It becomes part of a motion you already make. It doesn\u0027t become a new project. It becomes one more tub.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-blog-new-6611-asset-260410-v01.jpg',
-    alt: {
-      no: 'Hele supplementhylla etter at pakken kom',
-      en: 'The full supplement shelf after the package arrived'
-    },
-    caption: {
-      no: 'hylla. etter pakken.',
-      en: 'the shelf. after the package.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'Theanin er 200 milligram om morgenen og 200 milligram om kvelden. Neuro-Mag er to kapsler om morgenen og \u00E9n om kvelden. Det er forskjellen fra forrige uke. Alt annet er det samme. Forel\u00F8pig.',
-    en: 'Theanine: 200mg in the morning, 200mg at night. Neuro-Mag: two caps morning, one evening. That\u0027s the difference from last week. Everything else is the same. For now.'
-  },
-  {
-    type: 'paragraph',
-    no: 'De to flaskene i boksen: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine og Neuro-Mag</a> (annonselenke). Samme deal.',
-    en: 'The two bottles in that box: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine and Neuro-Mag</a> (annonselenke). Same deal.'
-  },
-
-  // ─── PAKKEN KOM ───
-  {
-    type: 'section-label',
-    no: 'pakken kom.',
-    en: 'the package arrived.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Klokka tolv i dag sto det en pappeske p\u00E5 gulvet. Jeg \u00E5pnet den. \u00C5tte bokser Thorne og \u00E9n stor boks Collagen Fit. 1800 kroner med kapsler som har v\u00E6rt underveis i fem m\u00E5neder i hodet mitt og noen dager p\u00E5 en bil.',
-    en: 'Noon today there was a cardboard box on the floor. I opened it. Eight Thorne tubs and one big tub of Collagen Fit. 1800 kroner of capsules that had been in transit for five months in my head and a few days on a van.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Basic Nutrients 2/Day. Super EPA. Magnesium Glycinate. Rhodiola. Vitamin C 500mg med flavonoider. Og Collagen Fit i den store lilla boksen som veier mer enn alt det andre til sammen.',
-    en: 'Basic Nutrients 2/Day. Super EPA. Magnesium Glycinate. Rhodiola. Vitamin C 500mg with flavonoids. And Collagen Fit in the big purple tub that weighs more than everything else combined.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-supplement-new-6601-asset-260410-v01.jpg',
-    alt: {
-      no: 'Open eske med Thorne-bokser og Collagen Fit',
-      en: 'Open box with Thorne bottles and Collagen Fit'
-    },
-    caption: {
-      no: '\u00C5tte bokser og en boks Collagen Fit. Klokka tolv.',
-      en: 'Eight tubs and one big tub of Collagen Fit. Noon.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg plukka opp Vitamin C-boksen f\u00F8rst. Ikke fordi den er viktigst. Fordi fargen p\u00E5 etiketten er bl\u00E5 og de andre er mer dempa og jeg ville se om noe av det faktisk stemte overens med bildet i hodet mitt. Det gjorde det. Det er bare en boks. En helt vanlig boks med kapsler. Ingenting magisk. Bare noe som faktisk er her n\u00E5.',
-    en: 'I picked up the Vitamin C first. Not because it\u0027s the most important. Because the label is blue and the others are more muted and I wanted to see if any of it actually matched the picture in my head. It did. It\u0027s a bottle. A regular bottle with capsules in it. Nothing magic. Just something that\u0027s actually here now.'
-  },
-  {
-    type: 'image',
-    src: 'img/f1l3.sys-supplement-new-6604-asset-260410-v01.jpg',
-    alt: {
-      no: 'Thorne Vitamin C 500mg with Flavonoids, n\u00E6rbilde',
-      en: 'Thorne Vitamin C 500mg with Flavonoids, close-up'
-    },
-    caption: {
-      no: 'Vitamin C. Den f\u00F8rste jeg plukka opp.',
-      en: 'Vitamin C. The first one I picked up.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg hadde tenkt at det skulle f\u00F8les som noe. Et lite punkt. En liten seier. Det f\u00F8ltes ikke som det. Det f\u00F8ltes som \u00E5 komme hjem med en handlepose. Du har ikke l\u00F8st noe. Du har bare flytta det fra bestillingsbekreftelsen til kj\u00F8kkenet. Jobben starter i morgen, p\u00E5 brettet, med ett mer glass og tre nye bokser p\u00E5 plass.',
-    en: 'I thought it would feel like something. A small point. A small win. It didn\u0027t. It felt like coming home with a grocery bag. You haven\u0027t solved anything. You\u0027ve just moved it from an order confirmation to the kitchen. The work starts tomorrow, on the tray, with one more glass and three new tubs in place.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Det er kanskje det som er poenget. De store \u00F8yeblikkene er ikke store. De er bare sm\u00E5 \u00F8yeblikk som ligner p\u00E5 de forrige.',
-    en: 'Maybe that\u0027s the point. The big moments aren\u0027t big. They\u0027re just small moments that look like the ones before them.'
-  },
-
-  // ─── IHERB ORDER-SHARE (affiliate, inline per grn//red) ───
-  {
-    type: 'paragraph',
-    no: 'Hele bestillingen er seks Thorne-produkter. Basic Nutrients, Super EPA, Magnesium Glysinat, Vitamin C, Rhodiola, Collagen Fit. Akkurat det som sto i pappeska da jeg \u00E5pna den i dag. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Hele handlekurven her</a> (annonselenke). Rabattkoden NHR7699 er p\u00E5. Du sparer ti prosent. Jeg f\u00E5r betalt for \u00E5 ha lest Bryan Johnsons protokoll p\u00E5 en fredagskveld. Fair handel.',
-    en: 'The whole order is six Thorne products. Basic Nutrients, Super EPA, Magnesium Glycinate, Vitamin C, Rhodiola, Collagen Fit. Exactly what was in the box when I opened it today. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">The full cart is here</a> (annonselenke). Code NHR7699 is already applied. You save ten percent. I get paid for reading Bryan Johnson\u0027s protocol on a Friday night. Fair deal.'
-  },
-
-  // ─── FORTSATT INGEN DATA ───
-  {
-    type: 'section-label',
-    no: 'fortsatt ingen data.',
-    en: 'still no data.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Blodpr\u00F8vene er fortsatt ikke tatt. Det er det \u00E6rlige i dette. Jeg skrev det forrige uke og jeg skriver det igjen. Hele stacken er basert p\u00E5 lesing, ikke p\u00E5 biomark\u00F8rer. Jeg vet ikke om D-vitaminet mitt er lavt. Jeg vet ikke hva ferritinet er. Jeg vet ikke om skjoldbruskkjertelen t\u00E5ler ashwagandha. Derfor ligger ashwagandha p\u00E5 vent. Det blir der til noen stikker en n\u00E5l i armen min og sender meg en pdf.',
-    en: 'The blood work still hasn\u0027t been done. That\u0027s the honest part. I wrote it last week. I\u0027m writing it again. The whole stack is built on reading. Not on biomarkers. I don\u0027t know if my vitamin D is low. I don\u0027t know what my ferritin looks like. I don\u0027t know if my thyroid can handle ashwagandha. So ashwagandha stays on hold. It stays there until someone puts a needle in my arm and sends me a pdf.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg har fastlegen min. Papirene er i gang. Det tar den tida det tar i Norge, og det er greit. Det er ikke en unnskyldning. Det er bare s\u00E5nn det er.',
-    en: 'I have a doctor. The paperwork is moving. Things take the time they take in Norway. That\u0027s fine. Not an excuse. Just how it is.'
-  },
-  {
-    type: 'pull-quote',
-    no: 'Dette er ikke ferdig. Det blir kanskje aldri helt ferdig. Men det er ikke lenger ingenting heller.',
-    en: 'This isn\u0027t finished. Maybe it never will be. But it isn\u0027t nothing anymore.'
-  },
-
-  // ─── HVA SOM ENDRA SEG ───
-  {
-    type: 'section-label',
-    no: 'hva som endra seg.',
-    en: 'what changed.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Sengetid er klokka ni n\u00E5. Den var halv ti. Tretti minutter h\u00F8res ikke mye ut. WHOOP sier s\u00F8vnkonsistensen min ligger rundt 78 prosent den siste uka. Jeg trodde den var lavere. Kroppen lyver ikke, men hjernen min gj\u00F8r det av og til.',
-    en: 'Bedtime is nine now. It used to be half past. Thirty minutes doesn\u0027t sound like much. WHOOP says my sleep consistency sits around 78 percent for the week. I thought it was lower. The body doesn\u0027t lie. My head does sometimes.'
-  },
-  {
-    type: 'paragraph',
-    no: 'WHOOP-en sier sakte det samme som speilet sier. Kroppen svarer p\u00E5 det jeg gj\u00F8r. Ikke fort. Ikke dramatisk. Bare sakte. Snittpulsen min i hvile har lagt seg mellom 49 og 57. HRV-en svinger fra 99 til 157. Mandag traff jeg 96 prosent recovery. Onsdag l\u00E5 jeg p\u00E5 39, etter seks timer i bil til Harstad og tilbake. \u00C5 kj\u00F8re er en hardere trenings\u00F8kt enn boksing. Kroppen vet forskjell p\u00E5 stress og strain, selv om jeg ikke alltid gj\u00F8r det. Jeg har ikke en gunstig oppvekstsone for dette. Jeg bor p\u00E5 68 grader nord. Sola er sesongarbeider her. Halvparten av \u00E5ret betyr D-vitamin at du husker at du er et pattedyr.',
-    en: 'The WHOOP is saying slowly what the mirror says. The body is responding. Not fast. Not dramatic. Slow. My resting heart rate has settled between 49 and 57. HRV swings from 99 to 157. Monday I hit 96 percent recovery. Wednesday I was at 39, after six hours in a car to Harstad and back. Driving is a harder workout than boxing. The body knows the difference between stress and strain. I don\u0027t always. I don\u0027t live in a kind climate for this. I\u0027m at 68 degrees north. The sun is a seasonal worker here. Half the year, vitamin D is how you remember you\u0027re a mammal.'
-  },
-
-  // ─── TAURIN ───
-  {
-    type: 'section-label',
-    no: 'taurin.',
-    en: 'taurine.'
-  },
-  {
-    type: 'paragraph',
-    no: 'I dag la jeg taurin p\u00E5 brettet. Pulver. Ett gram. Det er ikke et stort valg. Det er en skje til i det varme vannet. Den tar et halvt sekund og kroppen merker det ikke f\u00F8r uke tre.',
-    en: 'Today I put taurine on the tray. Powder. One gram. Not a big decision. One more scoop in the warm water. It takes half a second. The body won\u0027t notice it until week three.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Det er s\u00E5nn protokoller faktisk bygges. Ikke med en stor annonsering. Med en skje til i et glass du allerede drikker.',
-    en: 'This is how protocols actually get built. Not with a big announcement. With one more scoop in a glass you\u0027re already drinking.'
-  },
-
-  // ─── VERKTØY (tools beyond supplements) ───
-  {
-    type: 'section-label',
-    no: 'verkt\u00F8y.',
-    en: 'tools.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Supplementer er \u00E9n ting. Verkt\u00F8y er noe annet. Jeg har en Nurosym p\u00E5 skrivebordet. Den stimulerer vagusnerven gjennom \u00F8ret og den st\u00E5r alltid til venstre for laptopen n\u00E5r jeg koder. Jeg bruker den fordi Bryan Johnson bruker den, og fordi en rolig vagusnerve er en rolig PTSD for meg.',
-    en: 'Supplements are one thing. Tools are something else. I have a Nurosym on my desk. It stimulates the vagus nerve through the ear and it always sits to the left of the laptop when I code. I use it because Bryan Johnson uses one, and because for me a calm vagus nerve is a calm PTSD.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Kalenderen p\u00E5 laptopen er ogs\u00E5 et verkt\u00F8y. Det er <a href="#fotball" onclick="return loadPost(\u0027fotball\u0027);">den samme kalenderen jeg skrev om forrige uke</a>. Brettet er det fysiske laget. Kalenderen er det digitale. Begge gj\u00F8r samme jobb: ta valgene vekk fra meg f\u00F8r klokka ni.',
-    en: 'The calendar on the laptop is also a tool. It\u0027s <a href="#fotball" onclick="return loadPost(\u0027fotball\u0027);">the same calendar I wrote about last week</a>. The tray is the physical layer. The calendar is the digital layer. Both do the same job: take the choices away from me before nine in the morning.'
-  },
-  {
-    type: 'image',
-    src: 'img/IMG_6517.jpg',
-    alt: {
-      no: 'Laptop med kalender \u00E5pen p\u00E5 8. april, Nurosym vagusnervstimulator med \u00F8repropper ved siden av',
-      en: 'Laptop with calendar open on April 8, Nurosym vagus nerve stimulator with earbuds beside it'
-    },
-    caption: {
-      no: 'kalender. nurosym. earbuds. 8. april, klokka et sted mellom frokost og trening.',
-      en: 'calendar. nurosym. earbuds. april 8, somewhere between breakfast and training.'
-    }
-  },
-
-  // ─── BADET (morning bathroom ritual) ───
-  {
-    type: 'section-label',
-    no: 'badet.',
-    en: 'the bathroom.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Badet er der jeg starter dagen. Jeg st\u00E5r p\u00E5 vekta f\u00F8rst. Withings-vekta. Samme vekt hver morgen, samme tidspunkt, samme belysning. Tallet er ikke alltid det jeg vil ha, men det er \u00E6rlig.',
-    en: 'The bathroom is where the day starts. I step on the scale first. The Withings. Same scale every morning, same time, same light. The number isn\u0027t always what I want, but it\u0027s honest.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Ved siden av vekta ligger en groundingmatte og en n\u00E5lematte. Begge er p\u00E5 badet. Groundingmatta er jordet. N\u00E5lematta er bare spiker. Jeg st\u00E5r p\u00E5 den ene. Jeg st\u00E5r p\u00E5 den andre n\u00E5r skuldrene trenger \u00E5 gi opp. Ingen av dem er magiske. De er bare sm\u00E5 innganger til at kroppen husker at den er et dyr.',
-    en: 'Next to the scale there is a grounding mat and an acupuncture mat. Both are in the bathroom. The grounding mat is earthed. The acupuncture mat is just spikes. I stand on one. I stand on the other when my shoulders need to give up. Neither is magic. They are just small entry points to reminding the body it is an animal.'
-  },
-{
-    type: 'image',
-    src: 'img/IMG_6455.jpg',
-    alt: {
-      no: 'F\u00F8tter i gr\u00F8nne Adidas-slippers, fotposisjon-\u00F8velse',
-      en: 'Feet in green Adidas slides, foot position drill'
-    },
-    caption: {
-      no: 'gr\u00F8nne slippers. fotposisjon, hver dag.',
-      en: 'grounding mat. scale. slippers.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg \u00F8ver p\u00E5 \u00E5 g\u00E5 med rett fotposisjon. \u00D8velsen kommer fra en video jeg s\u00E5. Det er rart \u00E5 l\u00E6re \u00E5 g\u00E5 p\u00E5 nytt n\u00E5r du er tjue\u00E5tte. Men her er vi.',
-    en: 'I am learning to walk with the right foot position. The drill comes from a video I watched. It is a strange thing to relearn when you are twenty-eight. But here we are.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Og s\u00E5 er det tungen. Jeg \u00F8ver p\u00E5 mewing ogs\u00E5. Samme logikk: l\u00E6r kroppen sin rette form p\u00E5 nytt, litt hver dag, og ikke tenk p\u00E5 det resten av tida.',
-    en: 'And then there is the tongue. I am practicing mewing too. Same logic: teach the body its correct shape again, a little every day, and do not think about it the rest of the time.'
-  },
-  {
-    type: 'paragraph',
-    no: 'WHOOP-appen er det f\u00F8rste jeg sjekker. Recovery-tallet fra natta. HRV-en. Hvor mye s\u00F8vn jeg faktisk fikk. Den forteller meg hva dagen er f\u00F8r jeg rekker \u00E5 gjette. Noen dager liker jeg tallet. Andre dager forst\u00E5r jeg det.',
-    en: 'The WHOOP app is the first thing I check. Last night\u0027s recovery. HRV. How much sleep I actually got. It tells me what the day is before I have a chance to guess. Some days I like the number. Other days I understand it.'
-  },
-  {
-    type: 'image',
-    src: 'img/IMG_6542.jpg',
-    alt: {
-      no: 'Speilbilde i badspeil, myk gr\u00E5 hoodie, morgenlys',
-      en: 'Mirror reflection in a bathroom mirror, dark tank top, holding a phone'
-    },
-    caption: {
-      no: 'morgen. f\u00F8r alt annet.',
-      en: 'morning. before anything else.'
-    }
-  },
-
-  // ─── KRIGER ───
-  {
-    type: 'section-label',
-    no: 'kriger.',
-    en: 'kriger.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Hun er fortsatt i recovery. Onsdag var vi p\u00E5 AniCura Harstad. Jeg kj\u00F8rte Myre, ferje Flesnes-Refsnes, opp til klinikken, tilbake igjen. Seks timer fram og tilbake for kontrollen som tok gipsen av. Hun sov hele veien hjem.',
-    en: 'She\u0027s still in recovery. Wednesday we drove to AniCura Harstad. From Myre, the ferry Flesnes to Refsnes, up to the clinic, back home. Six hours round trip for the checkup that took the cast off. She slept the whole way home.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Blue bor hos foreldrene mine mens Kriger er i recovery. Det er bedre for henne. Det er ogs\u00E5 p\u00E5 brettet, bare at brettet heter kalender.',
-    en: 'Blue is staying at my parents\u0027 place while Kriger heals. It\u0027s better for her. It\u0027s on the tray too. The tray is just called a calendar now.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Kriger er fra Kennel Tigerdyret i Danmark. Hun er tysk sch\u00E6fer, og hun og Blue er hjertet mitt i hundeform. Skaden var alvorlig nok til at vi nesten mistet henne. De opererte senene, og siden da har AniCura Harstad holdt oss i h\u00E5nda gjennom hele rehabiliteringa.',
-    en: 'Kriger came from Kennel Tigerdyret in Denmark. German Shepherd. She and Blue are my whole heart in dog shape. The injury was bad enough that we almost lost her. They operated on the tendons, and since then AniCura Harstad has held our hand through the whole recovery.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Det har v\u00E6rt gipsskift etter gipsskift, hver under narkose, hver med en ny farge. Teamet har dekorert noen av dem ogs\u00E5. Den vi fikk rundt p\u00E5ske hadde en kanin og "god p\u00E5ske" skrevet p\u00E5 siden. Sm\u00E5 ting, men det er s\u00E5nne ting du husker n\u00E5r du kj\u00F8rer seks timer tur-retur med en hund som sover bak i bilen.',
-    en: 'It has been cast change after cast change, each one under anesthesia, each one in a new color. The team has decorated some of them too. The one we got around Easter had a rabbit and "happy easter" written on the side. Small things, but those are the things you remember when you are driving six hours round trip with a dog sleeping in the back of the car.'
-  },
-  {
-    type: 'paragraph',
-    no: 'I dag er vi seks uker ut i rehab. Gipsen er borte. N\u00E5 har hun en mindre avstivet bandasje istedenfor, og protokollen slipper akkurat n\u00E5 litt mer bevegelse gjennom senene som ble operert. Det er et skritt. Et lite et, men det teller.',
-    en: 'Today we are six weeks into rehab. The cast is off. She has a lighter bandage now instead, and the protocol is letting a little more movement through the tendons that were operated on. It is a step. A small one, but it counts.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Recovery skjer ikke p\u00E5 \u00E9n time hos veterin\u00E6ren. Det skjer i ukene imellom.',
-    en: 'Recovery does not happen in one hour at the vet. It happens in the weeks between.'
-  },
-  {
-    type: 'image',
-    src: 'img/IMG_6434.jpg',
-    alt: {
-      no: 'Kriger ligger i senga si med rosa sokk over bandasjen p\u00E5 venstre bakfot',
-      en: 'Kriger lying in her bed with a pink sock over the bandage on her left hind foot'
-    },
-    caption: {
-      no: 'Kriger i p\u00E5ska. Rosa gips, kanin og god p\u00E5ske.',
-      en: 'Kriger at Easter. Pink cast, rabbit, god p\u00E5ske.'
-    }
-  },
-  {
-    type: 'image',
-    src: 'img/IMG_6240.jpg',
-    alt: {
-      no: 'Kriger med beskytter over bandasjen mot vann og fukt',
-      en: 'Kriger with a protective cover over the bandage to keep water and moisture out'
-    },
-    caption: {
-      no: 'Beskytter over bandasjen. Holder vann og fukt ute.',
-      en: 'Cover over the bandage. Keeps water and moisture out.'
-    }
-  },
-
-  // ─── WHOOP (affiliate) ───
-  {
-    type: 'section-label',
-    no: 'whoop.',
-    en: 'whoop.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Jeg bruker WHOOP hver dag. Jeg har gjort det i seks m\u00E5neder. Det er det eneste verkt\u00F8yet jeg stoler p\u00E5 fra start til slutt. Det sier meg ting jeg ikke vil vite og det sier meg ting jeg trengte \u00E5 h\u00F8re. Det registrerer feilene og seirene. Det lyver ikke.',
-    en: 'I wear a WHOOP every day. Have done for six months. It\u0027s the one tool I trust end to end. It tells me things I don\u0027t want to hear and things I needed to hear. It logs the misses and the wins. It doesn\u0027t lie.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Hvis du vurderer \u00E5 begynne, s\u00E5 gj\u00F8r det. Det er det jeg bruker. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">Gratis WHOOP og en m\u00E5ned gratis med min link</a> (annonselenke). Du f\u00E5r en m\u00E5ned gratis. Jeg f\u00E5r kickback. Det betaler for alle timene jeg har brukt p\u00E5 \u00E5 finne ut hva som faktisk funker. Ingen skam.',
-    en: 'Thinking about starting? Do it. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">A free month for you</a> (annonselenke). A kickback for me. I need an excuse to stare at HRV numbers when I should be sleeping. Thanks in advance.'
-  },
-
-  // ─── VEIEN VIDERE ───
-  {
-    type: 'section-label',
-    no: 'veien videre.',
-    en: 'the road ahead.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Neste uke er det samme som forrige uke. Bygg stacken. Snakk med legen. Bygg brettet. Bokse. Mate Kriger klokka ti. Sove klokka ni.',
-    en: 'Next week looks the same as last week. Build the stack. Talk to the doctor. Build the tray. Box. Feed Kriger at ten. Sleep at nine.'
-  },
-  {
-    type: 'paragraph',
-    no: 'Det er ikke spennende. Det er det som er poenget.',
-    en: 'It isn\u0027t exciting. That\u0027s the point.'
-  },
-  {
-    type: 'video',
-    src: 'img/mirror-selfie-smile.mp4',
-    poster: 'img/mirror-selfie-smile-thumb.jpg',
-    objectPosition: 'center 25%',
-    audio: false,
-    alt: {
-      no: 'Speilselfie med solbriller på hodet',
-      en: 'Mirror selfie with sunglasses on head'
-    },
-    caption: {
-      no: 'ferdig med badet. solbrillene er viktige.',
-      en: 'done with the bathroom. the sunglasses are important.'
-    }
-  },
-  {
-    type: 'paragraph',
-    no: 'Forrige uke var alt nytt. N\u00E5 er alt fortsatt nytt, bare litt mindre nytt. Det er framgang. Det er ikke resultatet. Det er prosessen. Jeg sa det forrige uke og jeg kommer til \u00E5 si det igjen til jeg har noe annet \u00E5 si.',
-    en: 'Last week was all new. Now it\u0027s still new, just a little less new. That\u0027s progress. Not a result. A process. I said it last week. I\u0027ll keep saying it until I have something else to say.'
-  },
-  {
-    type: 'sign-off',
-    text: '<333'
-  }
-];
-
-// ═══════════════════════════════════════
-// POSTS REGISTRY (multi-post system)
-// ═══════════════════════════════════════
-const postsIndex = [
-  {
-    slug: 'forste-kamp',
-    title: { no: 'første kamp.', en: 'first fight.' },
-    date: { no: 'April 2026', en: 'April 2026' },
-    href: 'forste-kamp.html'  // standalone page — external link
-  },
-  {
-    slug: 'pakken-kom',
-    title: { no: 'pakken kom.', en: 'the order arrived.' },
-    date: { no: 'April 2026', en: 'April 2026' },
-    content: blogContent  // currently set to postPakken (the newest)
-  },
-  {
-    slug: 'fotball',
-    title: { no: 'jeg flytta og flytta, for sporten var alltid fotball.', en: 'I kept moving. the sport was always football.' },
-    date: { no: 'April 2026', en: 'April 2026' },
-    content: postFotballContent
-  }
-];
-
-let currentPostIdx = 0;
-
-function loadPost(slug) {
-  const idx = postsIndex.findIndex(p => p.slug === slug);
-  if (idx < 0) return false;
-  // external page — navigate directly
-  if (postsIndex[idx].href) {
-    window.location.href = postsIndex[idx].href;
-    return false;
-  }
-  currentPostIdx = idx;
-  blogContent = postsIndex[idx].content;
-  if (location.hash !== '#' + slug) {
-    history.replaceState(null, '', '#' + slug);
-  }
-  renderBlog(currentLang);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  return false;
-}
-
-window.addEventListener('hashchange', () => {
-  const slug = location.hash.replace('#', '') || 'forste-kamp';
-  loadPost(slug);
-});
-
-
-
-// ═══════════════════════════════════════
-// RENDERER — Builds HTML from content array
-// ═══════════════════════════════════════
-
-let currentLang = 'no';
-
-function renderBlog(lang) {
-  currentLang = lang;
-  const container = document.getElementById('blog-content');
-  let html = '';
-
-  blogContent.forEach((block, i) => {
-    switch (block.type) {
-
-      case 'header':
-        html += `<div class="fade-in">
-          <p class="article-meta">${block.meta[lang]}</p>
-          <h1 class="article-title">${block.title[lang]}</h1>
-          <p class="article-meta" style="margin-top: 8px;">${block.date[lang]}</p>
-        </div>`;
-        if (block.headerImage) {
-          html += `<figure class="article-header-image fade-in">
-            <img src="${block.headerImage.src}" alt="${block.headerImage.alt[lang]}" loading="eager">
-          </figure>`;
-        }
-        html += `<div class="article-body">`;
-        break;
-
-      case 'paragraph':
-        html += `<div class="fade-in">
-          <p>${block[lang]}</p>
-        </div>`;
-        break;
-
-      case 'disclosure':
-        html += `<aside class="affiliate-disclosure fade-in" role="note" aria-label="Reklame">${block[lang]}</aside>`;
-        break;
-
-      case 'tagline-code':
-        html += `<div class="fade-in">
-          <p class="tagline tagline-code">${block[lang]}</p>
-        </div>`;
-        break;
-
-      case 'tagline-statement':
-        html += `<div class="fade-in">
-          <p class="tagline-statement">${block[lang]}</p>
-        </div>`;
-        break;
-
-      case 'section-label':
-        html += `<div class="fade-in">
-          <p class="section-label">${block[lang]}</p>
-        </div>`;
-        break;
-
-      case 'pull-quote':
-        html += `<div class="fade-in">
-          <p class="pull-quote">${block[lang]}</p>
-        </div>`;
-        break;
-
-      case 'image':
-        html += `<figure class="article-image fade-in">
-          <img src="${block.src}" alt="${block.alt[lang]}" loading="lazy"${block.objectPosition ? ` style="object-position:${block.objectPosition}"` : ''}>`;
-        if (block.caption) {
-          html += `<figcaption>${block.caption[lang]}</figcaption>`;
-        }
-        html += `</figure>`;
-        break;
-
-      // l1ft0ff // mission voyager // video block added 260411
-      case 'video': {
-        const posterAttr = block.poster ? ` poster="${block.poster}"` : '';
-        const mutedAttr = block.audio === false ? ' muted' : '';
-        const altText = block.alt && block.alt[lang] ? block.alt[lang] : '';
-        const vidStyle = block.objectPosition ? ` style="object-position:${block.objectPosition}"` : '';
-        html += `<figure class="article-image fade-in">
-          <video src="${block.src}"${posterAttr} controls preload="metadata" playsinline${mutedAttr} aria-label="${altText}"${vidStyle}></video>`;
-        if (block.caption) {
-          html += `<figcaption>${block.caption[lang]}</figcaption>`;
-        }
-        html += `</figure>`;
-        break;
-      }
-
-      case 'image-pair':
-        html += `<figure class="image-pair fade-in">`;
-        block.images.forEach(img => {
-          html += `<img src="${img.src}" alt="${img.alt[lang]}" loading="lazy">`;
-        });
-        if (block.caption) {
-          html += `<figcaption>${block.caption[lang]}</figcaption>`;
-        }
-        html += `</figure>`;
-        break;
-
-      case 'inline-promo':
-        html += `<div class="inline-promo fade-in">
-          <a href="https://nextelite.no/boxing/?lang=${lang}" target="_blank" rel="noopener" data-boxing-link>
-            <img class="inline-promo-img" src="img/boxing-bodo-ring-purple.jpg" alt="NextElite" loading="lazy">
-            <div class="inline-promo-body">
-              <div class="inline-promo-label">NEXTELITE</div>
-              <div class="inline-promo-sub">gloves on</div>
-            </div>
-          </a>
-        </div>`;
-        break;
-
-      case 'sign-off':
-        html += `<div class="fade-in">
-          <p class="sign-off">&lt;333</p>
-        </div>`;
-        // Close .article-body
-        html += `</div>`;
-        break;
-    }
-  });
-
-  // ─── POST NAV (cross-link to other post) ───
-  const otherIdx = (currentPostIdx + 1) % postsIndex.length;
-  const other = postsIndex[otherIdx];
-  const navLabel = lang === 'no' ? 'les ogs\u00E5' : 'also read';
-  const otherHref = other.href ? other.href : `#${other.slug}`;
-  const otherOnclick = other.href ? '' : ` onclick="return loadPost('${other.slug}');"`;
-  html += `<div class="post-nav fade-in" role="navigation" aria-label="${lang === 'no' ? 'Andre innlegg' : 'Other posts'}">
-    <a href="${otherHref}" class="post-nav-link"${otherOnclick}>
-      <span class="post-nav-label">${navLabel}</span>
-      <span class="post-nav-title">${other.title[lang]}</span>
-      <span class="post-nav-date">${other.date[lang]}</span>
-    </a>
-  </div>`;
-
-  container.innerHTML = html;
-
-  // Update sidebar promo CTA language
-  const sidebarCta = document.querySelector('[data-sidebar-cta]');
-  if (sidebarCta) {
-    sidebarCta.innerHTML = (lang === 'no' ? 'Se mer' : 'See more') + ' <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
-  }
-
-  // Update all boxing promo links with current language — Mission Babel
-  document.querySelectorAll('[data-boxing-link]').forEach(function(link) {
-    link.href = 'https://nextelite.no/boxing/?lang=' + lang;
-  });
-
-  // Re-attach intersection observer to new elements
-  container.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-}
-
-// ═══════════════════════════════════════
-// INTERSECTION OBSERVER — fade-in on scroll
-// ═══════════════════════════════════════
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -40px 0px'
-});
-
-// ═══════════════════════════════════════
-// LANGUAGE TOGGLE
-// ═══════════════════════════════════════
-const langBtns = document.querySelectorAll('[data-lang-btn]');
-
-langBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const lang = btn.getAttribute('data-lang-btn');
-    document.body.setAttribute('data-lang', lang);
-
-    langBtns.forEach(b => {
-      b.classList.remove('active');
-      if (b.getAttribute('data-lang-btn') === lang) b.classList.add('active');
-    });
-
-    // Swap nav labels with data-no / data-en
-    document.querySelectorAll('[data-no][data-en]').forEach(el => {
-      el.textContent = el.getAttribute('data-' + lang);
-    });
-
-    // Update html lang attribute
-    document.documentElement.lang = lang === 'no' ? 'no' : 'en';
-
-    // Re-render content in new language
-    renderBlog(lang);
-
-    // Scroll to top on language switch
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
-
-// ═══════════════════════════════════════
-// NAV HIDE ON SCROLL DOWN, SHOW ON UP
-// ═══════════════════════════════════════
-let lastScroll = 0;
-const navEl = document.querySelector('nav');
-
-window.addEventListener('scroll', () => {
-  const current = window.scrollY;
-  if (current > lastScroll && current > 100) {
-    navEl.style.transform = 'translateY(-100%)';
-  } else {
-    navEl.style.transform = 'translateY(0)';
-  }
-  lastScroll = current;
-}, { passive: true });
-
-// ═══════════════════════════════════════
-// INITIAL RENDER
-// ═══════════════════════════════════════
-(function initialRender() {
-  const initSlug = location.hash.replace('#', '');
-  if (initSlug) {
-    const idx = postsIndex.findIndex(p => p.slug === initSlug);
-    if (idx >= 0) {
-      // external page — redirect
-      if (postsIndex[idx].href) {
-        window.location.href = postsIndex[idx].href;
-        return;
-      }
-      currentPostIdx = idx;
-      blogContent = postsIndex[idx].content;
-    }
-  } else {
-    // No hash — default to first inline post (skip external href posts)
-    const firstInline = postsIndex.findIndex(p => !p.href);
-    currentPostIdx = firstInline >= 0 ? firstInline : 0;
-    blogContent = postsIndex[currentPostIdx].content;
-  }
-  renderBlog('no');
-})();
-
-</script>
-
+<script src="assets/blog.js" defer></script>
 </body>
 </html>
