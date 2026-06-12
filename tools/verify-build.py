@@ -201,7 +201,7 @@ for fname in sorted(os.listdir(POSTS_DIR)):
     n_disc = types.count("disclosure")
     got_p = len(re.findall(r"<p[ >]", page))
     got_fig = page.count("<figure")
-    got_disc = page.count('<blockquote class="affiliate-disclosure"')
+    got_disc = page.count('<aside class="affiliate-disclosure')
     check(got_p >= n_para,
           f"{slug}: {got_p} <p> >= {n_para} ::paragraph-blokker")
     check(got_fig == n_fig,

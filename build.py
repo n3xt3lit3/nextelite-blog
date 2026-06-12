@@ -271,9 +271,21 @@ def render_index_body(post, other):
           <p>{block_bi(b)}</p>
         </div>''')
         elif t == "disclosure":
-            html.append(f'''<div class="fade-in">
-          <blockquote class="affiliate-disclosure">{block_bi(b)}</blockquote>
-        </div>''')
+            # Forbrukertilsynet-klarert aside (commit 647ce1d / 11dfa6e):
+            # role="note" + aria-label="Reklame" for screen-reader-merking.
+            # Innholdet kan ha flere ::p1/::p2-felter — slå sammen som
+            # separate <p>-elementer for korrekt avstand (CSS-regel i
+            # blog.css linje 312-313).
+            inner_parts = []
+            i = 1
+            while b.get(f"p{i}_no"):
+                inner_parts.append(f"<p>{block_bi(b, f'p{i}_no', f'p{i}_en')}</p>")
+                i += 1
+            inner = "".join(inner_parts) if inner_parts else block_bi(b)
+            html.append(
+                f'<aside class="affiliate-disclosure fade-in" role="note"'
+                f' aria-label="Reklame">{inner}</aside>'
+            )
         elif t == "tagline-code":
             html.append(f'''<div class="fade-in">
           <p class="tagline tagline-code">{block_bi(b)}</p>

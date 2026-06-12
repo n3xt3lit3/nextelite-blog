@@ -18,21 +18,19 @@ section: Protocol
 footer_label: uke 1 / 2026
 ---
 
+::disclosure
+html: true
+p1_no: <strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.
+p1_en: <strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don't use.
+p2_no: PS: jeg tar tjueåtte piller om dagen. Noen må betale for dem. Klikker du på linkene her, får jeg kickback. Kaffepenger blir til supplementer blir til neste blogpost. Det er et lukket kretsløp. Du skylder meg ingenting. Klikk hvis du vil.
+p2_en: PS: I take twenty-eight pills a day. Someone has to pay for them. If you click the links in this post, I get a kickback. Coffee money turns into supplements turns into the next blog post. Closed loop. You don't owe me anything. Click if you want.
+
 ::image
 src: img/IMG_6133-hero.jpg
 alt_no: Meg og Blue i gresset etter morgenrutinen
 alt_en: Me and Blue in the grass after the morning routine
 caption_no: chiller med hunden min etter dårlig medisin og dårlig kaffe.
 caption_en: chilling with my dog after bad medicine and bad coffee.
-
-::disclosure
-html: true
-no: <strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.
-en: <strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don't use.
-
-::paragraph
-no: PS: jeg tar tjueåtte piller om dagen. Noen må betale for dem. Klikker du på linkene her, får jeg kickback. Kaffepenger blir til supplementer blir til neste blogpost. Det er et lukket kretsløp. Du skylder meg ingenting. Klikk hvis du vil.
-en: PS: I take twenty-eight pills a day. Someone has to pay for them. If you click the links in this post, I get a kickback. Coffee money turns into supplements turns into the next blog post. Closed loop. You don't owe me anything. Click if you want.
 
 ::tagline-code
 no: // code your next level
