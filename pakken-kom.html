@@ -309,6 +309,9 @@ main {
   color: var(--text-dark);
 }
 
+.article-body .affiliate-disclosure p { margin: 0 0 8px 0; font-size: 13px; line-height: 1.55; }
+.article-body .affiliate-disclosure p:last-child { margin-bottom: 0; }
+
 /* ═══════════════════════════════════════
    IMAGES
    ═══════════════════════════════════════ */
@@ -1283,7 +1286,15 @@ let blogContent = [
     }
   },
 
-  // ─── HERO (right under title) ───
+  // ─── MANDATORY DISCLOSURE (grn//red legal ruling — exact wording, do not paraphrase) ───
+  // Renders above hero per Forbrukertilsynet above-the-fold requirement. PS folded in as second paragraph.
+  {
+    type: 'disclosure',
+    no: '<p><strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.</p><p>PS: jeg tar tjueåtte piller om dagen. Noen må betale for dem. Klikker du på linkene her, får jeg kickback. Kaffepenger blir til supplementer blir til neste blogpost. Det er et lukket kretsløp. Du skylder meg ingenting. Klikk hvis du vil.</p>',
+    en: '<p><strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don\u0027t use.</p><p>PS: I take twenty-eight pills a day. Someone has to pay for them. If you click the links in this post, I get a kickback. Coffee money turns into supplements turns into the next blog post. Closed loop. You don\u0027t owe me anything. Click if you want.</p>'
+  },
+
+  // ─── HERO (right under disclosure) ───
   {
     type: 'image',
     src: 'img/IMG_6133-hero.jpg',
@@ -1295,20 +1306,6 @@ let blogContent = [
       no: 'chiller med hunden min etter d\u00E5rlig medisin og d\u00E5rlig kaffe.',
       en: 'chilling with my dog after bad medicine and bad coffee.'
     }
-  },
-
-  // ─── MANDATORY DISCLOSURE (grn//red legal ruling — exact wording, do not paraphrase) ───
-  {
-    type: 'disclosure',
-    no: '<strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.',
-    en: '<strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don\u0027t use.'
-  },
-
-  // ─── ATTITUDE LINE (research as labor) ───
-  {
-    type: 'paragraph',
-    no: 'PS: jeg tar tjue\u00E5tte piller om dagen. Noen m\u00E5 betale for dem. Klikker du p\u00E5 linkene her, f\u00E5r jeg kickback. Kaffepenger blir til supplementer blir til neste blogpost. Det er et lukket kretsl\u00F8p. Du skylder meg ingenting. Klikk hvis du vil.',
-    en: 'PS: I take twenty-eight pills a day. Someone has to pay for them. If you click the links in this post, I get a kickback. Coffee money turns into supplements turns into the next blog post. Closed loop. You don\u0027t owe me anything. Click if you want.'
   },
 
   // ─── INTRO ───
@@ -1777,9 +1774,7 @@ function renderBlog(lang) {
         break;
 
       case 'disclosure':
-        html += `<div class="fade-in">
-          <blockquote class="affiliate-disclosure">${block[lang]}</blockquote>
-        </div>`;
+        html += `<aside class="affiliate-disclosure fade-in" role="note" aria-label="Reklame">${block[lang]}</aside>`;
         break;
 
       case 'tagline-code':
