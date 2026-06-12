@@ -276,6 +276,9 @@ main {
   color: var(--text-dark);
 }
 
+.article-body .affiliate-disclosure p { margin: 0 0 8px 0; font-size: 13px; line-height: 1.55; }
+.article-body .affiliate-disclosure p:last-child { margin-bottom: 0; }
+
 /* ═══════════════════════════════════════
    IMAGES
    ═══════════════════════════════════════ */
