@@ -30,6 +30,7 @@ import os
 import re
 import sys
 from email.utils import format_datetime
+from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS_DIR = os.path.join(ROOT, "content", "posts")
@@ -99,7 +100,7 @@ def parse_post(path):
     # (50-OUTBOX/bl0g-cowork-to-published-spec-260612-v01.md): build-feil
     # er den eneste forsvarbare gaten — et glemt disclosure-flagg er en
     # legal/compliance-risiko, ikke en stil-feil.
-    if meta.get("affiliate") == "true":
+    if str(meta.get("affiliate", "")).strip().lower() in ("true", "yes", "1"):
         if not any(b["type"] == "disclosure" for b in blocks):
             sys.exit(
                 f"{path}: 'affiliate: true' i frontmatter krever minst én "
@@ -669,10 +670,10 @@ def build_feed(posts):
     # CI-determinisme bevart: git checkout setter mtime til checkout-tid
     # for ALLE filer, saa max(mtime) blir konstant per CI-kjoering.
     last_touch = datetime.datetime.fromtimestamp(
-        max(os.path.getmtime(p["_path"]) for p in posts)
+        max(os.path.getmtime(p["_path"]) for p in posts),
+        tz=ZoneInfo("Europe/Oslo"),
     )
-    _, tz = oslo_offset(last_touch.date())
-    now = last_touch.replace(tzinfo=tz)
+    now = last_touch
     out = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
