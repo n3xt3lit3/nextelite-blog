@@ -56,6 +56,18 @@ def read(relpath):
         return f.read()
 
 
+# draft: true frontmatter — speiler build.py-gaten (d981427):
+# `str(p.get("draft", "")).strip().lower() in ("true", "yes", "1")`.
+# Frontmatter er alltid i toppen, så les kun de første 2 KB.
+_DRAFT_RE = re.compile(r"^draft:\s*(true|yes|1)\s*$",
+                       re.MULTILINE | re.IGNORECASE)
+
+
+def _is_draft(path):
+    with open(path, encoding="utf-8") as fh:
+        return bool(_DRAFT_RE.search(fh.read(2000)))
+
+
 # ── normalisering ──────────────────────────────
 
 def js_unescape(s):
@@ -176,6 +188,8 @@ POSTS_DIR = os.path.join(ROOT, "content", "posts")
 for fname in sorted(os.listdir(POSTS_DIR)):
     if not fname.endswith(".md"):
         continue
+    if _is_draft(os.path.join(POSTS_DIR, fname)):
+        continue
     body = open(os.path.join(POSTS_DIR, fname), encoding="utf-8").read()
     slug = re.search(r"^slug: (.+)$", body, re.M).group(1)
     strings = [m.group(2) for m in re.finditer(
@@ -189,6 +203,8 @@ for fname in sorted(os.listdir(POSTS_DIR)):
 print("(b3) strukturell blokk-bevaring (block-count per post)")
 for fname in sorted(os.listdir(POSTS_DIR)):
     if not fname.endswith(".md"):
+        continue
+    if _is_draft(os.path.join(POSTS_DIR, fname)):
         continue
     body = open(os.path.join(POSTS_DIR, fname), encoding="utf-8").read()
     slug = re.search(r"^slug: (.+)$", body, re.M).group(1)
@@ -261,8 +277,11 @@ print("(e) feed.xml well-formed")
 try:
     feed = ET.parse(os.path.join(ROOT, "feed.xml"))
     items = feed.getroot().findall(".//item")
-    n_posts = len([f for f in os.listdir(POSTS_DIR) if f.endswith(".md")])
-    check(len(items) == n_posts, f"feed: {len(items)} items == {n_posts} poster")
+    n_posts = sum(1 for f in os.listdir(POSTS_DIR)
+                  if f.endswith(".md")
+                  and not _is_draft(os.path.join(POSTS_DIR, f)))
+    check(len(items) == n_posts,
+          f"feed: {len(items)} items == {n_posts} publiserbare poster")
     links = [i.find("link").text for i in items]
     check(f"{SITE}/pakken-kom" in links, "feed: nyeste post i feed")
 except ET.ParseError as e:
