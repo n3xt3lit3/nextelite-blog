@@ -699,6 +699,22 @@ def main():
     if not files:
         sys.exit("ingen poster i content/posts/")
     posts = [parse_post(os.path.join(POSTS_DIR, f)) for f in files]
+
+    # draft: true frontmatter — post ekskluderes HELT fra build (ingen HTML,
+    # ikke i index/arkiv/sitemap/feed). Uten feltet eller draft: false =
+    # publiseres som før. Boolean-normalisering matcher affiliate-gaten i
+    # parse_post: strict on ON, liberal on OFF. Uten denne gaten ville en
+    # ferdigskrevet-men-uklar post ligge én push unna live.
+    def is_draft(p):
+        return str(p.get("draft", "")).strip().lower() in ("true", "yes", "1")
+    drafts = [p for p in posts if is_draft(p)]
+    posts = [p for p in posts if not is_draft(p)]
+    if drafts:
+        print(f"build.py: {len(drafts)} draft(s) ekskludert: "
+              f"{', '.join(sorted(p['slug'] for p in drafts))}")
+    if not posts:
+        sys.exit("ingen publiserbare poster i content/posts/ (alle draft: true)")
+
     posts.sort(key=lambda p: (p["_date"], p["slug"]), reverse=True)
 
     slugs = [p["slug"] for p in posts]
