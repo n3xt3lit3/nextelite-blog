@@ -951,6 +951,14 @@ body.has-marquee main { padding-top: 184px; }
   color: var(--accent);
 }
 
+/* Paused/play-state: SVG-glyfen (play-trekant) arver aksent-fargen
+   fra <3-glyfen. Bevisst kobling — når båndet står stille, «peker»
+   trekanten mot samme varm-gull som hjertet. Gjelder både manuell
+   pause og reduced-motion-tilstanden (JS setter is-paused i begge). */
+.marquee.is-paused .marquee__pause {
+  color: var(--accent);
+}
+
 @keyframes marquee-slide {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -970,6 +978,12 @@ body.has-marquee main { padding-top: 184px; }
   }
   .marquee {
     transition: none;
+  }
+  /* CSS-only safety: hvis JS ikke rekker å sette is-paused før
+     første paint (matchMedia er synchron, men vi belte-og-brytere
+     her så play-trekanten aldri viser orphan svart). */
+  .marquee__pause {
+    color: var(--accent);
   }
 }
 
@@ -991,7 +1005,14 @@ body.has-marquee main { padding-top: 184px; }
     padding-left: 12px;
     padding-right: 48px;
   }
+  /* <B> gate-note 2026-07-09: 10px whitespace mellom marquee-bunn (44px)
+     og nav-topp så small-screen ikke føles crammed. Nav skyves til top:54.
+     Main padding kompenserer: 44 (marquee) + 10 (gap) + ~60 (compact nav)
+     + ~50 (breathe) = 164 → oppjustert til 174. */
+  body.has-marquee nav {
+    top: 54px;
+  }
   body.has-marquee main {
-    padding-top: 164px;
+    padding-top: 174px;
   }
 }
