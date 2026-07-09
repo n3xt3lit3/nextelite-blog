@@ -567,7 +567,7 @@ footer {
   font-family: var(--font);
   font-size: 12px;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--text-dark);
   margin-top: 12px;
   letter-spacing: 0.04em;
   display: flex;
@@ -578,6 +578,8 @@ footer {
 
 .sidebar-promo a:hover .sidebar-promo-cta {
   color: var(--text-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .sidebar-promo-cta svg {
