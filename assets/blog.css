@@ -262,29 +262,6 @@ main {
   border-left: 3px solid var(--text-light);
 }
 
-/* Affiliate topp-hvisker (grn//red mikro-ruling 260708-v01):
-   Én diskret linje over hero, første viewport på 375px. Ordet «Reklame»
-   først (lovkrav §8 + Forbrukertilsynet). Ingen ramme, ingen boks.
-   14px matcher rulingens minimum. --text på --bg gir kontrast 7.03:1
-   (well above WCAG AA 4.5:1). Normal weight, ikke fet (ruling: fet er
-   IKKE påkrevd). Marker mellom title-blokka og hero-figur. */
-.article-body .affiliate-top {
-  font-family: var(--font);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--text);
-  background: transparent;
-  border: none;
-  padding: 8px 0;
-  margin: 0 0 24px 0;
-}
-.article-body .affiliate-top p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
 .article-body .affiliate-disclosure {
   font-family: var(--font);
   font-size: 13px;
