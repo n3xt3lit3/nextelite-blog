@@ -1011,7 +1011,7 @@ body.has-marquee main { padding-top: 184px; }
        Tuned: 20s ved ≤768px så item-crossing-time faller fra ~30s → ~19s
        (measured: 1222px translation / 20s = 61 px/s; item(373) + vp(768)
        = 1141px / 61 = 18.7s crossing). */
-    animation-duration: 20s;
+    animation-duration: 14s;
   }
   .marquee__pause {
     width: 44px;
@@ -1025,7 +1025,7 @@ body.has-marquee main { padding-top: 184px; }
        Item-crossing på 480px: (373+480)/86.7 = 9.8s. På 375px:
        1185/14 = 84.6 px/s → (373+375)/84.6 = 8.8s crossing. Fra 22.5/20.2s
        til 9.8/8.8s: over 2x brisker på faktisk phone-viewport. */
-    animation-duration: 14s;
+    animation-duration: 9s;
   }
 }
 
