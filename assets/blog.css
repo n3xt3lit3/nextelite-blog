@@ -1005,10 +1005,27 @@ body.has-marquee main { padding-top: 184px; }
   .marquee__viewport {
     gap: 32px;
     padding-right: 52px;
+    /* CEO live-korreksjon r4: opplevd fart var for langsom på telefon.
+       Absolutt px/s var lik desktop (~38 px/s), men en 44px-band tar større
+       andel av mobil visuelt-attention-felt så 32s-loopen føltes «slow».
+       Tuned: 20s ved ≤768px så item-crossing-time faller fra ~30s → ~19s
+       (measured: 1222px translation / 20s = 61 px/s; item(373) + vp(768)
+       = 1141px / 61 = 18.7s crossing). */
+    animation-duration: 20s;
   }
   .marquee__pause {
     width: 44px;
     height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee__viewport {
+    /* Enda strammere for telefon: 14s. 1214px translation / 14s = 86.7 px/s.
+       Item-crossing på 480px: (373+480)/86.7 = 9.8s. På 375px:
+       1185/14 = 84.6 px/s → (373+375)/84.6 = 8.8s crossing. Fra 22.5/20.2s
+       til 9.8/8.8s: over 2x brisker på faktisk phone-viewport. */
+    animation-duration: 14s;
   }
 }
 
