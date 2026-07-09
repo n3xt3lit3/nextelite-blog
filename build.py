@@ -330,7 +330,16 @@ def post_nav_html(other, root=""):
 
 
 def render_index_body(post, other):
-    """Artikkelkropp, index-varianten (renderBlog 1:1, statisk tospråklig)."""
+    """Artikkelkropp, index-varianten (renderBlog 1:1, statisk tospråklig).
+
+    Affiliate-mønster (grn//red mikro-ruling 260708-v01):
+    - `affiliate: true`-poster får en ÉN-linjes topp-hvisker («Reklame: …»)
+      renderet som første element i .article-body, over hero-bildet.
+    - `::disclosure`-blokk (p1/p2-avsnitt) blir IKKE renderet in-place,
+      men samlet inn og emittert som en «om lenkene.»-seksjon nederst,
+      rett før ::sign-off. Ordlyden er uendret (juridisk klarert +
+      CEO-stemme). Per-lenke `(annonselenke)` er urørt (lovkrav).
+    """
     m = post
     html = []
 
@@ -342,6 +351,46 @@ def render_index_body(post, other):
         </div>''')
     html.append('<div class="article-body">')
 
+    is_affiliate = str(m.get("affiliate", "")).strip().lower() in ("true", "yes", "1")
+
+    # Topp-hvisker (grn//red ruling 260708-v01 Q3 verbatim tekst). Renderes
+    # over hero + første avsnitt så merkingen er umiddelbart synlig i første
+    # 375px-viewport. ≥14px, kontrast ≥4.5:1 mot --bg via --text, ingen
+    # ramme, ingen boks — én dempet linje. Aria-label «Reklame».
+    if is_affiliate:
+        html.append(
+            '<aside class="affiliate-top fade-in" role="note" aria-label="Reklame">'
+            '<p>' + bi(
+                "Reklame: posten inneholder annonselenker. Jeg får provisjon når du bruker dem.",
+                "Advertising: this post contains affiliate links. I earn commission when you use them."
+            ) + '</p></aside>'
+        )
+
+    # Samle disclosure-blokker for bunn-emisjon
+    disclosure_blocks = [b for b in m["_blocks"] if b["type"] == "disclosure"]
+
+    def render_bottom_disclosure():
+        """Emit «om lenkene.»-seksjon: section-label + fyldig disclosure
+        aside med p1/p2-avsnitt. Ordlyd uendret fra ::disclosure-blokken."""
+        if not (is_affiliate and disclosure_blocks):
+            return
+        html.append(
+            '<div class="fade-in"><p class="section-label">'
+            + bi("om lenkene.", "about the links.")
+            + '</p></div>'
+        )
+        for db in disclosure_blocks:
+            inner_parts = []
+            i = 1
+            while db.get(f"p{i}_no"):
+                inner_parts.append(f"<p>{block_bi(db, f'p{i}_no', f'p{i}_en')}</p>")
+                i += 1
+            inner = "".join(inner_parts) if inner_parts else block_bi(db)
+            html.append(
+                f'<aside class="affiliate-disclosure fade-in" role="note"'
+                f' aria-label="Reklame">{inner}</aside>'
+            )
+
     for b in m["_blocks"]:
         t = b["type"]
         if t == "paragraph":
@@ -349,21 +398,9 @@ def render_index_body(post, other):
           <p>{block_bi(b)}</p>
         </div>''')
         elif t == "disclosure":
-            # Forbrukertilsynet-klarert aside (commit 647ce1d / 11dfa6e):
-            # role="note" + aria-label="Reklame" for screen-reader-merking.
-            # Innholdet kan ha flere ::p1/::p2-felter — slå sammen som
-            # separate <p>-elementer for korrekt avstand (CSS-regel i
-            # blog.css linje 312-313).
-            inner_parts = []
-            i = 1
-            while b.get(f"p{i}_no"):
-                inner_parts.append(f"<p>{block_bi(b, f'p{i}_no', f'p{i}_en')}</p>")
-                i += 1
-            inner = "".join(inner_parts) if inner_parts else block_bi(b)
-            html.append(
-                f'<aside class="affiliate-disclosure fade-in" role="note"'
-                f' aria-label="Reklame">{inner}</aside>'
-            )
+            # Skippes in-place — emittes i «om lenkene.»-seksjon nederst
+            # av render_bottom_disclosure() rett før sign-off.
+            continue
         elif t == "tagline-code":
             html.append(f'''<div class="fade-in">
           <p class="tagline tagline-code">{block_bi(b)}</p>
@@ -420,6 +457,9 @@ def render_index_body(post, other):
           </a>
         </div>''')
         elif t == "sign-off":
+            # Affiliate-poster: emit «om lenkene.»-seksjon rett før sign-off
+            # (juridisk klarert bunn-plassering per grn//red 260708-v01).
+            render_bottom_disclosure()
             html.append('''<div class="fade-in">
           <p class="sign-off">&lt;333</p>
         </div>''')
