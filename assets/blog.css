@@ -5,6 +5,10 @@
   --text-light: #8A8A8A;
   --text-dark: #2A2A2A;
   --accent: #C4A882;
+  /* Brand-magenta: matcher rhode-versjonens hjerte-farge (rhode/blog-rhode.css:42
+     --accent) og NextElite kanon (30-IDENTITY/nextelite-base.css --brand-magenta).
+     Kun for punkt-aksenter (<3-glyf, play-glyph i paused-state); ikke button-bg. */
+  --brand-magenta: #E8197A;
   --border: rgba(74, 74, 74, 0.1);
   --side: clamp(20px, 6vw, 120px);
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
@@ -905,6 +909,12 @@ body.has-marquee main { padding-top: 184px; }
 }
 
 .marquee__link {
+  /* Touch-target: WCAG 2.5.8 + 44px-spec. Visuell høyde er 16px letters,
+     så 14px padding-block gir 44px hit area. Negativ margin-block absorberer
+     den visuelle plassen så bånd-layoutet holdes (vrd1ct QA BUG-001 fix). */
+  display: inline-block;
+  padding-block: 14px;
+  margin-block: -14px;
   color: var(--text-dark);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease, color 0.2s ease;
@@ -913,16 +923,17 @@ body.has-marquee main { padding-top: 184px; }
 .marquee__link:hover,
 .marquee__link:focus-visible {
   color: var(--text-dark);
-  border-color: var(--accent);
+  border-color: var(--brand-magenta);
 }
 
-/* «<3» — subtil aksent, ikke skrikende. Warm gold i tokens, ikke rhode-magenta. */
+/* «<3» — matcher rhode-versjonens rosa hjerte (--brand-magenta = #E8197A).
+   CEO-korreksjon 2026-07-09: samme rosa som rhode, ikke gull-oversettelsen. */
 .marquee__heart {
   font-family: var(--heading);
   font-weight: 600;
   font-size: 13px;
   letter-spacing: -0.02em;
-  color: var(--accent);
+  color: var(--brand-magenta);
   vertical-align: baseline;
   position: relative;
   top: 0.5px;
@@ -951,12 +962,13 @@ body.has-marquee main { padding-top: 184px; }
   color: var(--accent);
 }
 
-/* Paused/play-state: SVG-glyfen (play-trekant) arver aksent-fargen
-   fra <3-glyfen. Bevisst kobling — når båndet står stille, «peker»
-   trekanten mot samme varm-gull som hjertet. Gjelder både manuell
-   pause og reduced-motion-tilstanden (JS setter is-paused i begge). */
+/* Paused/play-state: SVG-glyfen (play-trekant) arver hjerte-fargen
+   (rosa --brand-magenta). Bevisst kobling — når båndet står stille,
+   «peker» trekanten mot samme rosa som <3-glyfen. Gjelder både
+   manuell pause og reduced-motion-tilstanden (JS setter is-paused i begge).
+   CEO-korreksjon 2026-07-09 sammen med .marquee__heart-farge-endringen. */
 .marquee.is-paused .marquee__pause {
-  color: var(--accent);
+  color: var(--brand-magenta);
 }
 
 @keyframes marquee-slide {
@@ -981,9 +993,10 @@ body.has-marquee main { padding-top: 184px; }
   }
   /* CSS-only safety: hvis JS ikke rekker å sette is-paused før
      første paint (matchMedia er synchron, men vi belte-og-brytere
-     her så play-trekanten aldri viser orphan svart). */
+     her så play-trekanten aldri viser orphan svart). Rosa etter
+     CEO-korreksjon 2026-07-09. */
   .marquee__pause {
-    color: var(--accent);
+    color: var(--brand-magenta);
   }
 }
 

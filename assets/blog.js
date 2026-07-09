@@ -71,32 +71,54 @@
   // MARQUEE — pause/play + prefers-reduced-motion runtime
   // Portert fra rhode-staging (Mission Cassini). Kun aktiv når forsiden
   // har renderet marquee-elementet (post-/arkiv-sider ignorerer denne blokka).
+  // enc0re REVIEW-260709 ISSUE-002 + ISSUE-003: bilingual applyPauseState
+  // helper (les data-lang, oppdater aria + ikon), matchMedia change-listener
+  // med Safari<14 addListener-fallback så OS-toggle mid-økt respekteres.
   // ═══════════════════════════════════════
   var marqueeEl = document.querySelector('.marquee');
   var marqueePause = document.querySelector('.marquee__pause');
   if (marqueeEl && marqueePause) {
-    // Runtime reduced-motion: sett is-paused hvis brukeren har OS-preferansen.
-    // (CSS stopper også animasjonen — dette gjør SVG-ikonet konsistent play-tilstand.)
-    var reduceMotion = window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      marqueeEl.classList.add('is-paused');
-      marqueePause.setAttribute('aria-pressed', 'true');
-      marqueePause.setAttribute('aria-label', 'play announcement');
-      marqueePause.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4l12 8-12 8V4z" fill="currentColor"/></svg>';
+    // Husstil: norsk pause-verb = «pause bånd», play-verb = «fortsett bånd»
+    // (per enc0re REVIEW-260709 ISSUE-002; CEO kan overstyre ved ja).
+    var MARQUEE_LABELS = {
+      no: { pause: 'pause bånd', play: 'fortsett bånd' },
+      en: { pause: 'pause announcement', play: 'play announcement' }
+    };
+    var PAUSE_ICON = '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
+    var PLAY_ICON = '<path d="M6 4l12 8-12 8V4z" fill="currentColor"/>';
+
+    function applyPauseState(paused) {
+      var lang = document.body.getAttribute('data-lang') || 'no';
+      var role = paused ? 'play' : 'pause';
+      marqueeEl.classList.toggle('is-paused', paused);
+      marqueePause.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      marqueePause.setAttribute('aria-label', MARQUEE_LABELS[lang][role]);
+      // Oppdater data-aria-no/en så eksisterende lang-toggle-mekanikk
+      // (blog.js linje 29-31) plukker riktig label ved språkbryt.
+      marqueePause.setAttribute('data-aria-no', MARQUEE_LABELS.no[role]);
+      marqueePause.setAttribute('data-aria-en', MARQUEE_LABELS.en[role]);
+      var svg = marqueePause.querySelector('svg');
+      if (svg) svg.innerHTML = paused ? PLAY_ICON : PAUSE_ICON;
+    }
+
+    // Runtime reduced-motion: init state fra OS-preferansen.
+    var mm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mm && mm.matches) applyPauseState(true);
+
+    // OS-toggle mid-økt respekteres (ISSUE-003). Safari<14 mangler
+    // addEventListener på MediaQueryList — fall tilbake til deprecated
+    // addListener der.
+    if (mm) {
+      var onReduceChange = function (e) { applyPauseState(e.matches); };
+      if (mm.addEventListener) {
+        mm.addEventListener('change', onReduceChange);
+      } else if (mm.addListener) {
+        mm.addListener(onReduceChange);
+      }
     }
 
     marqueePause.addEventListener('click', function () {
-      var paused = marqueeEl.classList.toggle('is-paused');
-      marqueePause.setAttribute('aria-pressed', paused ? 'true' : 'false');
-      marqueePause.setAttribute('aria-label',
-        paused ? 'play announcement' : 'pause announcement');
-      var svg = marqueePause.querySelector('svg');
-      if (svg) {
-        svg.innerHTML = paused
-          ? '<path d="M6 4l12 8-12 8V4z" fill="currentColor"/>'
-          : '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
-      }
+      applyPauseState(!marqueeEl.classList.contains('is-paused'));
     });
   }
 

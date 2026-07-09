@@ -42,6 +42,11 @@ SITE_DESCRIPTION = "nextelite. boxing, protocol, art. en blogg fra vesteralen."
 SITE_FOOTER_LABEL = "uke 1 / 2026"  # forsidens live footer-tekst i dag
 PUBLISHER_LOGO = SITE + "/img/boxing-topten-mirror.jpg"
 
+# Antall duplikater av marquee-item for sømløs translateX(-50%) loop.
+# 6 tilsvarer ~2x desktop-viewport-bredde ved typisk item-lengde — nok
+# horisontal luft for jevn animasjon uten hakk (enc0re REVIEW-260709 LOW).
+MARQUEE_LOOP_COPIES = 6
+
 # Statisk innhold utenfor bloggen — inn i sitemap (Krav 7d)
 STATIC_SECTIONS = [
     "/boxing/",
@@ -261,28 +266,39 @@ def marquee_html(latest):
     title_no = latest["title_no"]
     title_en = latest["title_en"]
     href = f"{attr(slug)}.html"
-    link = (f'<a href="{href}" class="marquee__link">'
-            f'{bi_text(title_no, title_en)}</a>')
     # `&lt;3` = the <3 glyph. Escaped tekst-node (esc_text-mekanikk) så
     # posten-tittel-endring aldri kan bryte ut av span-kontekst.
     ny_post = bi("ny post", "new post")
     hei = bi("hei fra vesterålen", "hi from vesterålen")
     heart = '<span class="marquee__heart" aria-hidden="true">&lt;3</span>'
-    item = (f'<span class="marquee__item">{hei}&nbsp;{heart}&nbsp;'
-            f'{ny_post}&nbsp;·&nbsp;{link}</span>')
-    # 6 kopier så seamless-loop virker (rhode-mønster). 6 * item-bredde
-    # tilsvarer ~2x viewport ved typisk desktop-bredde — nok header-room
-    # for jevn horisontal translasjon.
-    viewport_items = "\n      ".join([item] * 6)
+
+    def build_item(is_copy):
+        """Ett bånd-item. is_copy=True → aria-hidden + tabindex=-1 på lenken
+        så duplikatene (2..N) ikke annonseres 6 ganger av skjermleser og
+        heller ikke er tabbable (vrd1ct QA BUG-002 fix)."""
+        hidden_attr = ' aria-hidden="true"' if is_copy else ''
+        link_tab = ' tabindex="-1"' if is_copy else ''
+        link_html = (f'<a href="{href}" class="marquee__link"{link_tab}>'
+                     f'{bi_text(title_no, title_en)}</a>')
+        return (f'<span class="marquee__item"{hidden_attr}>{hei}&nbsp;'
+                f'{heart}&nbsp;{ny_post}&nbsp;·&nbsp;{link_html}</span>')
+
+    # Første er live-item (skjermleser + tab-order). Resten er visuell fyll.
+    first_item = build_item(is_copy=False)
+    copy_item = build_item(is_copy=True)
+    viewport_items = "\n      ".join(
+        [first_item] + [copy_item] * (MARQUEE_LOOP_COPIES - 1)
+    )
+    aside_aria = bi_attr("aria-label", "siste post", "latest post")
     return f'''<!-- MARQUEE — annonseringsbånd for nyeste post. Portert fra
      rhode-staging 2026-07-09 (Mission Marquee). Slug/tittel er build-time-
      generert fra posts[0]; oppdaterer seg selv når ny post ships. -->
-<aside class="marquee" aria-label="siste post">
+<aside class="marquee"{aside_aria}>
   <div class="marquee__viewport">
       {viewport_items}
   </div>
   <button class="marquee__pause" type="button"
-          aria-label="pause announcement"
+          aria-label="pause bånd"
           data-aria-no="pause bånd"
           data-aria-en="pause announcement"
           aria-pressed="false">
