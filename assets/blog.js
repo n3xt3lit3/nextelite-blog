@@ -68,17 +68,49 @@
   });
 
   // ═══════════════════════════════════════
+  // MARQUEE — pause/play + prefers-reduced-motion runtime
+  // Portert fra rhode-staging (Mission Cassini). Kun aktiv når forsiden
+  // har renderet marquee-elementet (post-/arkiv-sider ignorerer denne blokka).
+  // ═══════════════════════════════════════
+  var marqueeEl = document.querySelector('.marquee');
+  var marqueePause = document.querySelector('.marquee__pause');
+  if (marqueeEl && marqueePause) {
+    // Runtime reduced-motion: sett is-paused hvis brukeren har OS-preferansen.
+    // (CSS stopper også animasjonen — dette gjør SVG-ikonet konsistent play-tilstand.)
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      marqueeEl.classList.add('is-paused');
+      marqueePause.setAttribute('aria-pressed', 'true');
+      marqueePause.setAttribute('aria-label', 'play announcement');
+      marqueePause.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4l12 8-12 8V4z" fill="currentColor"/></svg>';
+    }
+
+    marqueePause.addEventListener('click', function () {
+      var paused = marqueeEl.classList.toggle('is-paused');
+      marqueePause.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      marqueePause.setAttribute('aria-label',
+        paused ? 'play announcement' : 'pause announcement');
+      var svg = marqueePause.querySelector('svg');
+      if (svg) {
+        svg.innerHTML = paused
+          ? '<path d="M6 4l12 8-12 8V4z" fill="currentColor"/>'
+          : '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
+      }
+    });
+  }
+
+  // ═══════════════════════════════════════
   // NAV HIDE ON SCROLL DOWN, SHOW ON UP
+  // (marquee slides sammen med nav når den er tilstede — sømløs top-of-page-motiv)
   // ═══════════════════════════════════════
   var lastScroll = 0;
   var navEl = document.querySelector('nav');
   window.addEventListener('scroll', function () {
     var current = window.scrollY;
-    if (current > lastScroll && current > 100) {
-      navEl.style.transform = 'translateY(-100%)';
-    } else {
-      navEl.style.transform = 'translateY(0)';
-    }
+    var hide = current > lastScroll && current > 100;
+    if (navEl) navEl.style.transform = hide ? 'translateY(-100%)' : 'translateY(0)';
+    if (marqueeEl) marqueeEl.style.transform = hide ? 'translateY(-100%)' : 'translateY(0)';
     lastScroll = current;
   }, { passive: true });
 })();

@@ -245,6 +245,56 @@ def nav_html(variant, page, root=""):
 
 
 # ─────────────────────────────────────────────
+# Markup-varianter: marquee (announcement bar, index only)
+# ─────────────────────────────────────────────
+
+def marquee_html(latest):
+    """Announcement-bånd øverst på forsiden — «hei fra vesterålen <3 ny post · <lenke>».
+    Selv-oppdaterende: tittel + slug kommer fra nyeste post (posts[0] etter dato-sort).
+    Portert fra rhode-staging (l1ft0ff / Mission Cassini) og oversatt til publisert-
+    designets språk (Inter, tokens, l-no/l-en bilingual). Sett kun på forsiden;
+    post-/arkiv-sider bruker samme <nav> uten marquee.
+    Sømløs loop: samme item duplisert 6 ganger så translateX(-50%) løper uten hakk.
+    Prefers-reduced-motion: CSS + JS begge stopper animasjonen (rhode hadde bare
+    duration-squish — dispatch krevde ekte static). Pause-knapp er 44x44 touch-target."""
+    slug = latest["slug"]
+    title_no = latest["title_no"]
+    title_en = latest["title_en"]
+    href = f"{attr(slug)}.html"
+    link = (f'<a href="{href}" class="marquee__link">'
+            f'{bi_text(title_no, title_en)}</a>')
+    # `&lt;3` = the <3 glyph. Escaped tekst-node (esc_text-mekanikk) så
+    # posten-tittel-endring aldri kan bryte ut av span-kontekst.
+    ny_post = bi("ny post", "new post")
+    hei = bi("hei fra vesterålen", "hi from vesterålen")
+    heart = '<span class="marquee__heart" aria-hidden="true">&lt;3</span>'
+    item = (f'<span class="marquee__item">{hei}&nbsp;{heart}&nbsp;'
+            f'{ny_post}&nbsp;·&nbsp;{link}</span>')
+    # 6 kopier så seamless-loop virker (rhode-mønster). 6 * item-bredde
+    # tilsvarer ~2x viewport ved typisk desktop-bredde — nok header-room
+    # for jevn horisontal translasjon.
+    viewport_items = "\n      ".join([item] * 6)
+    return f'''<!-- MARQUEE — annonseringsbånd for nyeste post. Portert fra
+     rhode-staging 2026-07-09 (Mission Marquee). Slug/tittel er build-time-
+     generert fra posts[0]; oppdaterer seg selv når ny post ships. -->
+<aside class="marquee" aria-label="siste post">
+  <div class="marquee__viewport">
+      {viewport_items}
+  </div>
+  <button class="marquee__pause" type="button"
+          aria-label="pause announcement"
+          data-aria-no="pause bånd"
+          data-aria-en="pause announcement"
+          aria-pressed="false">
+    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
+      <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
+    </svg>
+  </button>
+</aside>'''
+
+
+# ─────────────────────────────────────────────
 # Markup-varianter: artikkelkropp
 # ─────────────────────────────────────────────
 
@@ -539,6 +589,7 @@ def build_index_page(posts, tpl):
         "{{OG_IMAGE}}": attr(og_image_abs(latest)),
         "{{OG_IMAGE_EXTRA}}": og_image_extra(latest),
         "{{LATEST_SLUG}}": latest["slug"],
+        "{{MARQUEE}}": marquee_html(latest),
         "{{NAV}}": nav_html("index", "home"),
         "{{CONTENT}}": content,
         "{{FOOTER_LABEL}}": SITE_FOOTER_LABEL,

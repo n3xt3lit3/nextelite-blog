@@ -853,3 +853,145 @@ body.v-vega {
 
 body[data-lang="no"] .l-en { display: none; }
 body[data-lang="en"] .l-no { display: none; }
+
+/* ═══════════════════════════════════════
+   MARQUEE — annonseringsbånd øverst på forsiden.
+   Portert fra rhode-staging (Mission Cassini) og oversatt til publisert-
+   designets språk: Inter i stedet for Swiss, --bg-warm/--text/--accent
+   i stedet for --cream-warm/--charcoal, --side i stedet for --gutter.
+   Kun på forsiden (body.has-marquee); post-/arkiv-sider uendret.
+   ═══════════════════════════════════════ */
+
+body.has-marquee nav { top: 44px; }
+body.has-marquee main { padding-top: 184px; }
+
+.marquee {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101; /* over nav (100) — annonsen sitter alltid øverst */
+  height: 44px;
+  background: var(--bg-warm);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.3s ease; /* speiler nav-hide-on-scroll timing */
+}
+
+.marquee__viewport {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-left: var(--side);
+  padding-right: 60px; /* rom for pause-knappen */
+  animation: marquee-slide 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee.is-paused .marquee__viewport {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  flex: 0 0 auto;
+  font-family: var(--font);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.marquee__link {
+  color: var(--text-dark);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.marquee__link:hover,
+.marquee__link:focus-visible {
+  color: var(--text-dark);
+  border-color: var(--accent);
+}
+
+/* «<3» — subtil aksent, ikke skrikende. Warm gold i tokens, ikke rhode-magenta. */
+.marquee__heart {
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  vertical-align: baseline;
+  position: relative;
+  top: 0.5px;
+}
+
+.marquee__pause {
+  position: absolute;
+  right: var(--side);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; /* touch target floor */
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.marquee__pause:hover,
+.marquee__pause:focus-visible {
+  color: var(--accent);
+}
+
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* prefers-reduced-motion: HARD STOP (dispatch-krav).
+   Rhode squishet bare duration; her stopper vi animasjonen helt
+   og viser første item centrert som statisk annonse. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__viewport {
+    animation: none;
+    justify-content: center;
+    padding-left: 20px;
+  }
+  .marquee__viewport .marquee__item:not(:first-child) {
+    display: none;
+  }
+  .marquee {
+    transition: none;
+  }
+}
+
+/* Responsive: 768px og 375px — behold 44px høyde og 12px font-floor. */
+@media (max-width: 768px) {
+  .marquee__viewport {
+    gap: 32px;
+    padding-right: 52px;
+  }
+  .marquee__pause {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 375px) {
+  .marquee__viewport {
+    gap: 24px;
+    padding-left: 12px;
+    padding-right: 48px;
+  }
+  body.has-marquee main {
+    padding-top: 164px;
+  }
+}
