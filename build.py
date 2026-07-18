@@ -334,6 +334,15 @@ def render_index_body(post, other):
     m = post
     html = []
 
+    # ::disclosure standing pattern (CEO 2026-07-18): mini-linje (whisper) rett
+    # etter header + full <aside class="affiliate-disclosure"> RETT ETTER foerste
+    # figure. build.py auto-flytter aside-plasseringen slik at source-rekkefolgen
+    # av ::disclosure blir irrelevant. Whisper-tekst overstyres per-post via
+    # whisper_no/whisper_en pa selve disclosure-blokken; ellers default under.
+    disclosure_block = next(
+        (b for b in m["_blocks"] if b["type"] == "disclosure"), None
+    )
+
     # header (fra frontmatter — tilsvarer 'header'-blokken)
     html.append(f'''<div class="fade-in">
           <p class="article-meta">{bi_text(m["kicker_no"], m["kicker_en"])}</p>
@@ -342,28 +351,74 @@ def render_index_body(post, other):
         </div>''')
     html.append('<div class="article-body">')
 
+    # Whisper-linje (typografisk hvisken, ikke banner). Foerste ting leseren
+    # moeter. Muted --text-light, 12px, ingen boks/ramme. Full aside kommer
+    # rett etter foerste figure. Emiteres kun naar ::disclosure eksisterer.
+    if disclosure_block is not None:
+        whisper_no = disclosure_block.get(
+            "whisper_no",
+            "Reklame: innlegget inneholder annonselenker og rabattkode."
+        )
+        whisper_en = disclosure_block.get(
+            "whisper_en",
+            "Ad disclosure: this post contains affiliate links and a discount code."
+        )
+        html.append(
+            '<p class="affiliate-whisper fade-in" role="note" aria-label="Reklame">'
+            + bi_text(whisper_no, whisper_en)
+            + '</p>'
+        )
+
+    def _render_disclosure_aside(b):
+        """Full disclosure-aside. Bevart 1:1 fra tidligere elif-gren."""
+        inner_parts = []
+        i = 1
+        while b.get(f"p{i}_no"):
+            inner_parts.append(f"<p>{block_bi(b, f'p{i}_no', f'p{i}_en')}</p>")
+            i += 1
+        inner = "".join(inner_parts) if inner_parts else block_bi(b)
+        return (
+            f'<aside class="affiliate-disclosure fade-in" role="note"'
+            f' aria-label="Reklame">{inner}</aside>'
+        )
+
+    disclosure_pending = disclosure_block is not None
+
+    def _flush_disclosure_after_figure():
+        """Kall RETT ETTER en figure-emit (image/video/image-pair). Emiterer
+        aside-en akkurat en gang, uansett hvor mange figurer som foelger."""
+        nonlocal disclosure_pending
+        if disclosure_pending:
+            html.append(_render_disclosure_aside(disclosure_block))
+            disclosure_pending = False
+
     for b in m["_blocks"]:
         t = b["type"]
+        if t == "disclosure":
+            # Emiteres auto rett etter foerste figure. Aldri i source-rekkefolge.
+            continue
         if t == "paragraph":
-            html.append(f'''<div class="fade-in">
+            # Bilingual paragrafer: standard-mønster (både no+en) rendrer som
+            # ett <p> med .l-no/.l-en-spans inne. Single-språk-blokker (fra
+            # kladd med separate NO/EN-avsnitt) rendrer som ett <p> med
+            # klasse .l-no eller .l-en så CSS-language-toggle skjuler hele
+            # avsnittet i motsatt språk (ikke bare innholdet).
+            has_no = b.get("no") is not None
+            has_en = b.get("en") is not None
+            if has_no and has_en:
+                html.append(f'''<div class="fade-in">
           <p>{block_bi(b)}</p>
         </div>''')
-        elif t == "disclosure":
-            # Forbrukertilsynet-klarert aside (commit 647ce1d / 11dfa6e):
-            # role="note" + aria-label="Reklame" for screen-reader-merking.
-            # Innholdet kan ha flere ::p1/::p2-felter — slå sammen som
-            # separate <p>-elementer for korrekt avstand (CSS-regel i
-            # blog.css linje 312-313).
-            inner_parts = []
-            i = 1
-            while b.get(f"p{i}_no"):
-                inner_parts.append(f"<p>{block_bi(b, f'p{i}_no', f'p{i}_en')}</p>")
-                i += 1
-            inner = "".join(inner_parts) if inner_parts else block_bi(b)
-            html.append(
-                f'<aside class="affiliate-disclosure fade-in" role="note"'
-                f' aria-label="Reklame">{inner}</aside>'
-            )
+            elif has_no:
+                content = b["no"] if b.get("html") == "true" else esc_text(b["no"])
+                html.append(f'''<div class="fade-in">
+          <p class="l-no">{content}</p>
+        </div>''')
+            elif has_en:
+                content = b["en"] if b.get("html") == "true" else esc_text(b["en"])
+                html.append(f'''<div class="fade-in">
+          <p class="l-en">{content}</p>
+        </div>''')
         elif t == "tagline-code":
             html.append(f'''<div class="fade-in">
           <p class="tagline tagline-code">{block_bi(b)}</p>
@@ -388,6 +443,7 @@ def render_index_body(post, other):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
             html.append(fig)
+            _flush_disclosure_after_figure()
         elif t == "video":
             poster = f' poster="{attr(b["poster"])}"' if b.get("poster") else ""
             muted = " muted" if b.get("audio") == "false" else ""
@@ -399,6 +455,7 @@ def render_index_body(post, other):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
             html.append(fig)
+            _flush_disclosure_after_figure()
         elif t == "image-pair":
             fig = '<figure class="image-pair fade-in">'
             n = 1
@@ -409,6 +466,7 @@ def render_index_body(post, other):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
             html.append(fig)
+            _flush_disclosure_after_figure()
         elif t == "inline-promo":
             html.append('''<div class="inline-promo fade-in">
           <a href="https://nextelite.no/boxing/?lang=no" target="_blank" rel="noopener" data-boxing-link>
@@ -420,6 +478,8 @@ def render_index_body(post, other):
           </a>
         </div>''')
         elif t == "sign-off":
+            # Safety-flush: post uten figurer far aside-en her, foer sign-off.
+            _flush_disclosure_after_figure()
             html.append('''<div class="fade-in">
           <p class="sign-off">&lt;333</p>
         </div>''')

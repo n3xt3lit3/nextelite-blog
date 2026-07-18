@@ -13,3 +13,12 @@ vid/*.m4v
 !vid/*.mp4
 astro-app/
 __pycache__/
+
+# parkert media/utkast (CEO-vraket, aldri offentlig git-historikk).
+# Lagt inn 2026-07-18 etter //root-verifikasjon fanget post4-media i
+# u-pushet stage-commit 75f264e. img/_hold/, content/_hold/ og alle
+# spesifikke post4-varianter er sperret paa gitignore-nivaa.
+img/_hold/
+content/_hold/
+img/post4-*
+

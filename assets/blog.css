@@ -4,6 +4,11 @@
   --text: #4A4A4A;
   --text-light: #8A8A8A;
   --text-dark: #2A2A2A;
+  /* --text-secondary: WCAG AA-compliant "whisper" tone for legal/meta lines.
+     rgba(26,26,26,0.65) blended over --bg = ~5.06:1 vs --bg cream (PASS AA).
+     Introdusert per grn//red 2026-07-18 for .affiliate-whisper som feilet AA
+     med --text-light (2.96:1). Aldri hardkodet hex; token-basert. */
+  --text-secondary: rgba(26, 26, 26, 0.65);
   --accent: #C4A882;
   /* Brand-magenta: matcher rhode-versjonens hjerte-farge (rhode/blog-rhode.css:42
      --accent) og NextElite kanon (30-IDENTITY/nextelite-base.css --brand-magenta).
@@ -260,6 +265,21 @@ main {
   margin: 56px 0;
   padding-left: 24px;
   border-left: 3px solid var(--text-light);
+}
+
+/* Whisper-linje: typografisk hvisken oeverst i article-body, foer hero-figure.
+   CEO 2026-07-18: kort juridisk anker leseren moeter foerst; full aside kommer
+   rett etter hero. Ingen boks, ingen ramme.
+   grn//red 2026-07-18 (WCAG AA): 14px min + var(--text-secondary) for 5.06:1
+   kontrast mot --bg cream. --text-light gav 2.96:1 (FAIL AA). */
+.article-body .affiliate-whisper {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  margin: 0 0 32px 0;
 }
 
 .article-body .affiliate-disclosure {

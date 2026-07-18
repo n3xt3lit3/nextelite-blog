@@ -33,10 +33,6 @@ alt_en: Me and Blue in the grass after the morning routine
 caption_no: chiller med hunden min etter dårlig medisin og dårlig kaffe.
 caption_en: chilling with my dog after bad medicine and bad coffee.
 
-::tagline-code
-no: // code your next level
-en: // code your next level
-
 ::paragraph
 no: Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Begge deler stemmer fortsatt. To ting har endra seg. Den første pakken kom. Nå kom den store.
 en: Last week I said the tray worked and the stack wasn't finished. Both still true. Two things have changed. The first order arrived. Now the big one arrived.
