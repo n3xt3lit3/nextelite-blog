@@ -84,7 +84,25 @@
 }
 </script>
 </head>
-<body data-lang="no" class="v-vega">
+<body data-lang="no" class="v-vega has-marquee">
+
+<!-- MARQUEE — annonseringsbånd for nyeste post. Portert fra
+     rhode-staging 2026-07-09 (Mission Marquee). Slug/tittel er build-time-
+     generert fra posts[0]; oppdaterer seg selv når ny post ships.
+     Synlig pause-button fjernet 2026-07-19 (CEO-korreksjon); pause-mekanisme
+     nå usynlig: hover/touch/focus-within pauser animasjonen (WCAG 2.2.2
+     dekket via CSS :hover + :focus-within + JS touchstart/end + prefers-
+     reduced-motion runtime i blog.js). -->
+<aside class="marquee" aria-label="siste post" data-aria-no="siste post" data-aria-en="latest post">
+  <div class="marquee__viewport">
+      <span class="marquee__item"><span class="l-no">hei fra vesterålen</span><span class="l-en">hi from vesterålen</span>&nbsp;<span class="marquee__heart" aria-hidden="true">&lt;3</span>&nbsp;<span class="l-no">ny post</span><span class="l-en">new post</span>&nbsp;·&nbsp;<a href="snake-oil.html" class="marquee__link"><span class="l-no">jeg har kjøpt snake oil. bokstavelig talt.</span><span class="l-en">i bought snake oil. literally.</span></a></span>
+      <span class="marquee__item" aria-hidden="true"><span class="l-no">hei fra vesterålen</span><span class="l-en">hi from vesterålen</span>&nbsp;<span class="marquee__heart" aria-hidden="true">&lt;3</span>&nbsp;<span class="l-no">ny post</span><span class="l-en">new post</span>&nbsp;·&nbsp;<a href="snake-oil.html" class="marquee__link" tabindex="-1"><span class="l-no">jeg har kjøpt snake oil. bokstavelig talt.</span><span class="l-en">i bought snake oil. literally.</span></a></span>
+      <span class="marquee__item" aria-hidden="true"><span class="l-no">hei fra vesterålen</span><span class="l-en">hi from vesterålen</span>&nbsp;<span class="marquee__heart" aria-hidden="true">&lt;3</span>&nbsp;<span class="l-no">ny post</span><span class="l-en">new post</span>&nbsp;·&nbsp;<a href="snake-oil.html" class="marquee__link" tabindex="-1"><span class="l-no">jeg har kjøpt snake oil. bokstavelig talt.</span><span class="l-en">i bought snake oil. literally.</span></a></span>
+      <span class="marquee__item" aria-hidden="true"><span class="l-no">hei fra vesterålen</span><span class="l-en">hi from vesterålen</span>&nbsp;<span class="marquee__heart" aria-hidden="true">&lt;3</span>&nbsp;<span class="l-no">ny post</span><span class="l-en">new post</span>&nbsp;·&nbsp;<a href="snake-oil.html" class="marquee__link" tabindex="-1"><span class="l-no">jeg har kjøpt snake oil. bokstavelig talt.</span><span class="l-en">i bought snake oil. literally.</span></a></span>
+      <span class="marquee__item" aria-hidden="true"><span class="l-no">hei fra vesterålen</span><span class="l-en">hi from vesterålen</span>&nbsp;<span class="marquee__heart" aria-hidden="true">&lt;3</span>&nbsp;<span class="l-no">ny post</span><span class="l-en">new post</span>&nbsp;·&nbsp;<a href="snake-oil.html" class="marquee__link" tabindex="-1"><span class="l-no">jeg har kjøpt snake oil. bokstavelig talt.</span><span class="l-en">i bought snake oil. literally.</span></a></span>
+      <span class="marquee__item" aria-hidden="true"><span class="l-no">hei fra vesterålen</span><span class="l-en">hi from vesterålen</span>&nbsp;<span class="marquee__heart" aria-hidden="true">&lt;3</span>&nbsp;<span class="l-no">ny post</span><span class="l-en">new post</span>&nbsp;·&nbsp;<a href="snake-oil.html" class="marquee__link" tabindex="-1"><span class="l-no">jeg har kjøpt snake oil. bokstavelig talt.</span><span class="l-en">i bought snake oil. literally.</span></a></span>
+  </div>
+</aside>
 
 <!-- NAV -->
 <nav>

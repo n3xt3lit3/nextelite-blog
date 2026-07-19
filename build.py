@@ -253,19 +253,19 @@ def nav_html(variant, page, root=""):
 # Markup-varianter: marquee (announcement bar, index only)
 # ─────────────────────────────────────────────
 
-def marquee_html(latest):
+def marquee_html(latest, root=""):
     """Announcement-bånd øverst på forsiden — «hei fra vesterålen <3 ny post · <lenke>».
     Selv-oppdaterende: tittel + slug kommer fra nyeste post (posts[0] etter dato-sort).
     Portert fra rhode-staging (l1ft0ff / Mission Cassini) og oversatt til publisert-
-    designets språk (Inter, tokens, l-no/l-en bilingual). Sett kun på forsiden;
-    post-/arkiv-sider bruker samme <nav> uten marquee.
+    designets språk (Inter, tokens, l-no/l-en bilingual). Sitewide fra
+    2026-07-19 (CEO): forside, post- og arkiv-sider, alltid lenke til nyeste post.
     Sømløs loop: samme item duplisert 6 ganger så translateX(-50%) løper uten hakk.
     Prefers-reduced-motion: CSS + JS begge stopper animasjonen (rhode hadde bare
     duration-squish — dispatch krevde ekte static). Pause-knapp er 44x44 touch-target."""
     slug = latest["slug"]
     title_no = latest["title_no"]
     title_en = latest["title_en"]
-    href = f"{attr(slug)}.html"
+    href = f"{root}{attr(slug)}.html"
     # `&lt;3` = the <3 glyph. Escaped tekst-node (esc_text-mekanikk) så
     # posten-tittel-endring aldri kan bryte ut av span-kontekst.
     ny_post = bi("ny post", "new post")
@@ -713,15 +713,15 @@ def sidebar_playlist_html(post):
 </aside>"""
 
 
-def build_post_page(post, other, tpl):
+def build_post_page(post, other, tpl, latest):
     variant = post.get("variant", "index")
     if variant == "vega":
         content = render_vega_body(post, other)
-        body_class = ' class="v-vega"'
+        body_class = ' class="v-vega has-marquee"'
         nav = nav_html("vega", "post")
     else:
         content = render_index_body(post, other)
-        body_class = ""
+        body_class = ' class="has-marquee"'
         nav = nav_html("index", "post")
 
     out = tpl
@@ -742,6 +742,7 @@ def build_post_page(post, other, tpl):
         "{{CONTENT}}": content,
         "{{FOOTER_LABEL}}": attr(post.get("footer_label", SITE_FOOTER_LABEL)),
         "{{SIDEBAR_PLAYLIST}}": sidebar_playlist_html(post),
+        "{{MARQUEE}}": marquee_html(latest),
     }
     for k, v in repl.items():
         out = out.replace(k, v)
@@ -801,6 +802,7 @@ def build_arkiv_pages(posts, tpl):
         "{{ARKIV_TITLE}}": bi("arkiv.", "archive."),
         "{{POST_LIST}}": "\n".join(sections),
         "{{FOOTER_LABEL}}": SITE_FOOTER_LABEL,
+        "{{MARQUEE}}": marquee_html(posts[0], root="../"),
     }
     out = tpl
     for k, v in repl.items():
@@ -819,6 +821,7 @@ def build_arkiv_pages(posts, tpl):
             "{{ARKIV_TITLE}}": str(y) + ".",
             "{{POST_LIST}}": "\n".join(items),
             "{{FOOTER_LABEL}}": SITE_FOOTER_LABEL,
+            "{{MARQUEE}}": marquee_html(posts[0], root="../"),
         }
         out = tpl
         for k, v in repl.items():
@@ -951,7 +954,7 @@ def main():
     # post-sider — post-nav peker på neste eldre post, eldste wrapper til nyeste
     for i, p in enumerate(posts):
         other = posts[(i + 1) % len(posts)]
-        build_post_page(p, other, post_tpl)
+        build_post_page(p, other, post_tpl, posts[0])
 
     build_index_page(posts, index_tpl)
     build_arkiv_pages(posts, arkiv_tpl)

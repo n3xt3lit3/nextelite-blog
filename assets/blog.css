@@ -905,7 +905,7 @@ body[data-lang="en"] .l-no { display: none; }
    Portert fra rhode-staging (Mission Cassini) og oversatt til publisert-
    designets språk: Inter i stedet for Swiss, --bg-warm/--text/--accent
    i stedet for --cream-warm/--charcoal, --side i stedet for --gutter.
-   Kun på forsiden (body.has-marquee); post-/arkiv-sider uendret.
+   Sitewide (body.has-marquee) fra 2026-07-19: forside + post + arkiv.
    ═══════════════════════════════════════ */
 
 body.has-marquee nav { top: 44px; }
