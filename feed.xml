@@ -5,8 +5,15 @@
     <link>https://nextelite.no/</link>
     <description>nextelite. boxing, protocol, art. en blogg fra vesteralen.</description>
     <language>nb</language>
-    <lastBuildDate>Sat, 18 Jul 2026 18:08:24 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 13:53:49 +0200</lastBuildDate>
     <atom:link href="https://nextelite.no/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>jeg har kjøpt snake oil. bokstavelig talt.</title>
+      <link>https://nextelite.no/snake-oil</link>
+      <guid isPermaLink="true">https://nextelite.no/snake-oil</guid>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 +0200</pubDate>
+      <description>Status på protokollen. Snake oil, glutation, søvn, kroppen, og feilene i systemet.</description>
+    </item>
     <item>
       <title>pakken kom.</title>
       <link>https://nextelite.no/pakken-kom</link>
