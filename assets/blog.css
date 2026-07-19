@@ -1077,5 +1077,4 @@ body.has-marquee main { padding-top: 184px; }
 .spotify-card__source { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #b3b3b3; }
 
 /* KUN vektvest-videoen temmes (CEO 260719 presisering: bare den ene skulle endres). Andre videoer beholder full bredde. */
-.article-image:has(source[src*="baklengs-video-vektvest"]) video,
-.article-image:has(source[src*="baklengs-video-ponytail"]) video { max-height: 70vh; width: auto; max-width: 100%; margin: 0 auto; display: block; }
+.article-image:has(source[src*="baklengs-video-vektvest"]) video { max-height: 70vh; width: auto; max-width: 100%; margin: 0 auto; display: block; }
