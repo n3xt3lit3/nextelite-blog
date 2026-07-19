@@ -1075,3 +1075,6 @@ body.has-marquee main { padding-top: 184px; }
 .spotify-card__title { font-family: var(--font); font-size: 14px; font-weight: 700; color: #ffffff; margin: 0 0 2px 0; }
 .spotify-card__subtitle { font-size: 11px; color: #b3b3b3; margin: 0 0 8px 0; }
 .spotify-card__source { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #b3b3b3; }
+
+/* Inline-videoer (ikke hero) temmes: kun hero-videoen er stor (CEO 260719 "you made the wrong video bigger"). Staaende videoer sentreres i moderat hoyde i stedet for full-bleed. */
+.article-image:not(.article-image--hero-full) video { max-height: 70vh; width: auto; max-width: 100%; margin: 0 auto; display: block; }
