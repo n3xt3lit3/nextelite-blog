@@ -292,21 +292,15 @@ def marquee_html(latest):
     aside_aria = bi_attr("aria-label", "siste post", "latest post")
     return f'''<!-- MARQUEE — annonseringsbånd for nyeste post. Portert fra
      rhode-staging 2026-07-09 (Mission Marquee). Slug/tittel er build-time-
-     generert fra posts[0]; oppdaterer seg selv når ny post ships. -->
+     generert fra posts[0]; oppdaterer seg selv når ny post ships.
+     Synlig pause-button fjernet 2026-07-19 (CEO-korreksjon); pause-mekanisme
+     nå usynlig: hover/touch/focus-within pauser animasjonen (WCAG 2.2.2
+     dekket via CSS :hover + :focus-within + JS touchstart/end + prefers-
+     reduced-motion runtime i blog.js). -->
 <aside class="marquee"{aside_aria}>
   <div class="marquee__viewport">
       {viewport_items}
   </div>
-  <button class="marquee__pause" type="button"
-          aria-label="pause bånd"
-          data-aria-no="pause bånd"
-          data-aria-en="pause announcement"
-          aria-pressed="false">
-    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
-      <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
-    </svg>
-  </button>
 </aside>'''
 
 
@@ -343,8 +337,32 @@ def render_index_body(post, other):
         (b for b in m["_blocks"] if b["type"] == "disclosure"), None
     )
 
-    # header (fra frontmatter — tilsvarer 'header'-blokken)
-    html.append(f'''<div class="fade-in">
+    # header (fra frontmatter — tilsvarer 'header'-blokken).
+    # CEO 2026-07-19 for post 4: disclosure kan sette byline_marker_no/en
+    # (f.eks. "REKLAME") som appendes til byline paa én kombinert linje —
+    # grn//red-spec at markoren alltid er i foerste viewport (header-blokka).
+    # Uten byline_marker: bevar 2-linje default header (backward-compat).
+    byline_marker_no = ""
+    byline_marker_en = ""
+    if disclosure_block is not None:
+        byline_marker_no = disclosure_block.get("byline_marker_no", "")
+        byline_marker_en = disclosure_block.get("byline_marker_en", "")
+    if byline_marker_no or byline_marker_en:
+        no_parts = [m["kicker_no"], m["date_label_no"]]
+        if byline_marker_no:
+            no_parts.append(byline_marker_no)
+        en_parts = [m["kicker_en"], m["date_label_en"]]
+        if byline_marker_en:
+            en_parts.append(byline_marker_en)
+        # Middle-dot U+00B7 separator (typografisk byline-mønster).
+        combined_no = " · ".join(no_parts)
+        combined_en = " · ".join(en_parts)
+        html.append(f'''<div class="fade-in">
+          <p class="article-meta">{bi_text(combined_no, combined_en)}</p>
+          <h1 class="article-title">{bi_text(m["title_no"], m["title_en"])}</h1>
+        </div>''')
+    else:
+        html.append(f'''<div class="fade-in">
           <p class="article-meta">{bi_text(m["kicker_no"], m["kicker_en"])}</p>
           <h1 class="article-title">{bi_text(m["title_no"], m["title_en"])}</h1>
           <p class="article-meta" style="margin-top: 8px;">{bi_text(m["date_label_no"], m["date_label_en"])}</p>
@@ -353,21 +371,27 @@ def render_index_body(post, other):
 
     # Whisper-linje (typografisk hvisken, ikke banner). Foerste ting leseren
     # moeter. Muted --text-light, 12px, ingen boks/ramme. Full aside kommer
-    # rett etter foerste figure. Emiteres kun naar ::disclosure eksisterer.
+    # rett etter foerste figure. Emiteres kun naar ::disclosure eksisterer
+    # OG blokka ikke har suppress_whisper: true (CEO 2026-07-19 for post 4:
+    # aside alene under hero er tilstrekkelig annonse-anker, dobbel plassering
+    # er off UI. Post 3 uendret — den mangler suppress_whisper-flagg).
     if disclosure_block is not None:
-        whisper_no = disclosure_block.get(
-            "whisper_no",
-            "Reklame: innlegget inneholder annonselenker og rabattkode."
-        )
-        whisper_en = disclosure_block.get(
-            "whisper_en",
-            "Ad disclosure: this post contains affiliate links and a discount code."
-        )
-        html.append(
-            '<p class="affiliate-whisper fade-in" role="note" aria-label="Reklame">'
-            + bi_text(whisper_no, whisper_en)
-            + '</p>'
-        )
+        _suppress_val = str(disclosure_block.get("suppress_whisper", "")).lower()
+        suppress_whisper = _suppress_val in ("true", "yes", "1")
+        if not suppress_whisper:
+            whisper_no = disclosure_block.get(
+                "whisper_no",
+                "Reklame: innlegget inneholder annonselenker og rabattkode."
+            )
+            whisper_en = disclosure_block.get(
+                "whisper_en",
+                "Ad disclosure: this post contains affiliate links and a discount code."
+            )
+            html.append(
+                '<p class="affiliate-whisper fade-in" role="note" aria-label="Reklame">'
+                + bi_text(whisper_no, whisper_en)
+                + '</p>'
+            )
 
     def _render_disclosure_aside(b):
         """Full disclosure-aside. Bevart 1:1 fra tidligere elif-gren."""
@@ -437,7 +461,10 @@ def render_index_body(post, other):
         </div>''')
         elif t == "image":
             style = f' style="object-position:{attr(b["object_position"])}"' if b.get("object_position") else ""
-            fig = (f'<figure class="article-image fade-in">\n'
+            # hero: true -> ubeskaaret hoyde (post 4 parkert-havna CEO 260718).
+            # Legger til .article-image--hero-full som overrider max-height 50vh.
+            hero_cls = " article-image--hero-full" if str(b.get("hero", "")).lower() == "true" else ""
+            fig = (f'<figure class="article-image{hero_cls} fade-in">\n'
                    f'          <img src="{attr(b["src"])}"{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy"{style}>')
             if b.get("caption_no"):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
@@ -449,8 +476,28 @@ def render_index_body(post, other):
             muted = " muted" if b.get("audio") == "false" else ""
             style = f' style="object-position:{attr(b["object_position"])}"' if b.get("object_position") else ""
             aria = bi_attr("aria-label", b.get("alt_no", ""), b.get("alt_en", "")) if b.get("alt_no") else ' aria-label=""'
-            fig = (f'<figure class="article-image fade-in">\n'
-                   f'          <video src="{attr(b["src"])}"{poster} controls preload="metadata" playsinline{muted}{aria}{style}></video>')
+            # preload: default "metadata" (post 3 mirror-selfie backward compat);
+            # optional block-level override for research-spec compliance (post 4:
+            # preload="none" per d33p-visual-density-research 260705).
+            preload = attr(b.get("preload", "metadata"))
+            # hero: true -> ubeskaaret hoyde (post 4 ponytail hero video CEO 260719).
+            # CSS .article-image--hero-full-regelen daekker allerede video via
+            # doble-selektor `.article-image--hero-full img, .article-image--hero-full video`.
+            hero_cls = " article-image--hero-full" if str(b.get("hero", "")).lower() == "true" else ""
+            # webm_src: optional secondary source for WebM fallback (d33p-research).
+            # Naar satt, bruk <source>-children i stedet for src-attributt paa <video>.
+            # Ellers: bevar postens 3 single-src-attributt-mønster uendret.
+            webm_src = b.get("webm_src", "").strip()
+            if webm_src:
+                sources = (
+                    f'<source src="{attr(webm_src)}" type="video/webm">'
+                    f'<source src="{attr(b["src"])}" type="video/mp4">'
+                )
+                fig = (f'<figure class="article-image{hero_cls} fade-in">\n'
+                       f'          <video{poster} controls preload="{preload}" playsinline{muted}{aria}{style}>{sources}</video>')
+            else:
+                fig = (f'<figure class="article-image{hero_cls} fade-in">\n'
+                       f'          <video src="{attr(b["src"])}"{poster} controls preload="{preload}" playsinline{muted}{aria}{style}></video>')
             if b.get("caption_no"):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
@@ -477,6 +524,33 @@ def render_index_body(post, other):
             </div>
           </a>
         </div>''')
+        elif t == "spotify-card":
+            # Statisk lenke-kort (aldri iframe/embed per GDPR-prinsipp).
+            # CEO 260719 restyle: Spotify-feeling layout — moerkt kort, stort artwork,
+            # tydelig tekst-hierarki. Vertikal stack (cover paa topp, tekst nederst)
+            # istedenfor tidligere horisontal cream-warm design (CEO screenshot viste
+            # kortet med usynlig tekst i grå stripe — restyle med div-nodes for
+            # sikker block-level layout, ikke inline spans som feilkollapser).
+            title = block_bi(b, "title_no", "title_en")
+            subtitle = block_bi(b, "subtitle_no", "subtitle_en")
+            has_label = b.get("label_no") is not None or b.get("label_en") is not None
+            label_html = ""
+            if has_label:
+                label_html = f'<p class="section-label">{block_bi(b, "label_no", "label_en")}</p>\n  '
+            href = attr(b["href"])
+            img_src = attr(b["image"])
+            img_alt = bi_attr("alt", b.get("image_alt_no", ""), b.get("image_alt_en", "")) if b.get("image_alt_no") else ' alt=""'
+            source_text = esc_text(b.get("source", "Spotify"))
+            html.append(
+                f'<div class="spotify-card-wrap fade-in">\n'
+                f'  {label_html}<a class="spotify-card" href="{href}" rel="noopener" target="_blank">\n'
+                f'    <img class="spotify-card__cover" src="{img_src}"{img_alt} loading="eager" decoding="async">\n'
+                f'    <div class="spotify-card__title">{title}</div>\n'
+                f'    <div class="spotify-card__subtitle">{subtitle}</div>\n'
+                f'    <div class="spotify-card__source">{source_text}</div>\n'
+                f'  </a>\n'
+                f'</div>'
+            )
         elif t == "sign-off":
             # Safety-flush: post uten figurer far aside-en her, foer sign-off.
             _flush_disclosure_after_figure()

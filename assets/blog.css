@@ -321,6 +321,26 @@ main {
   border-radius: 4px;
 }
 
+/* Hero-full modifier: viser staaende/portraitt-bilde helt ubeskaaret naar
+   frontmatter/block har `hero: true`. Overrider max-height 50vh + object-fit
+   cover som ellers cropper hoye bilder. CEO 2026-07-18 for post 4 parkert-havna. */
+.article-image--hero-full {
+  overflow: visible;
+}
+.article-image--hero-full img,
+.article-image--hero-full video {
+  max-height: none;
+  object-fit: contain;
+}
+
+/* Spotify-kort: statisk lenke-kort (ALDRI iframe/embed per GDPR-prinsipp).
+   CEO 260719 restyle: Spotify-feeling layout - moerkt kort med stort artwork
+   + tydelig tekst-hierarki. Grunn til hardkodede farger under: dette er
+   BEVISST unntak fra lys-token-systemet — Spotify-kortet skal foele Spotify,
+   ikke NextElite-lyst-editorial. Hardkodede verdier er komponent-lokale og
+   dokumentert i denne kommentaren: #121212 (Spotify dark bg), #b3b3b3
+   (Spotify secondary text), #1DB954 (Spotify brand-green), #1a1a1a (hover). */
+
 /* l1ft0ff — Mission Liftoff — kill native overlay play-button dim */
 /* Browsers render a translucent dark backdrop behind the big center play-button */
 /* over the poster. Hide that overlay so JPEG poster shows clean. Bottom controls stay. */
@@ -961,36 +981,14 @@ body.has-marquee main { padding-top: 184px; }
   top: 0.5px;
 }
 
-.marquee__pause {
-  position: absolute;
-  right: var(--side);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px; /* touch target floor */
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-  display: grid;
-  place-items: center;
-  background: none;
-  border: 0;
-  color: var(--text);
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.marquee__pause:hover,
-.marquee__pause:focus-visible {
-  color: var(--accent);
-}
-
-/* Paused/play-state: SVG-glyfen (play-trekant) arver hjerte-fargen
-   (rosa --brand-magenta). Bevisst kobling — når båndet står stille,
-   «peker» trekanten mot samme rosa som <3-glyfen. Gjelder både
-   manuell pause og reduced-motion-tilstanden (JS setter is-paused i begge).
-   CEO-korreksjon 2026-07-09 sammen med .marquee__heart-farge-endringen. */
-.marquee.is-paused .marquee__pause {
-  color: var(--brand-magenta);
+/* .marquee__pause visual button fjernet 2026-07-19 (CEO-korreksjon:
+   sat midt i teksten, off UI). Pause-mekanisme beholdt usynlig for
+   WCAG 2.2.2: hover/touch/focus-within pauser animasjonen. Se blog.js
+   for touch + prefers-reduced-motion handling.
+   CSS-side: :focus-within paa .marquee stopper animasjonen for keyboard-
+   navigering; JS-siden setter .is-paused for mouseenter/touchstart. */
+.marquee:focus-within .marquee__viewport {
+  animation-play-state: paused;
 }
 
 @keyframes marquee-slide {
@@ -1068,3 +1066,12 @@ body.has-marquee main { padding-top: 184px; }
     padding-top: 174px;
   }
 }
+
+
+/* Spotify mini-kort (CEO 260719: v14-designet i mindre versjon). Moerke farger = bevisst komponent-unntak. */
+.spotify-card { display: block; background: #121212; border-radius: 12px; padding: 12px; max-width: 180px; text-decoration: none; }
+.spotify-card:hover, .spotify-card:active { background: #1a1a1a; }
+.spotify-card img, .spotify-card__cover { width: 100% !important; height: auto !important; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; margin: 0 0 10px 0 !important; display: block; }
+.spotify-card__title { font-family: var(--font); font-size: 14px; font-weight: 700; color: #ffffff; margin: 0 0 2px 0; }
+.spotify-card__subtitle { font-size: 11px; color: #b3b3b3; margin: 0 0 8px 0; }
+.spotify-card__source { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #b3b3b3; }
