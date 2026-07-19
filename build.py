@@ -693,6 +693,26 @@ def iso_time(date_str):
 # Sidebygging
 # ─────────────────────────────────────────────
 
+def sidebar_playlist_html(post):
+    """Rail-kort for spilleliste: samme feature som gloves-on-promoen, men
+    playlist-innhold (CEO 260719). Genereres KUN for poster med ::spotify-card
+    -blokk; data gjenbrukes derfra (ingen dobbel sannhet)."""
+    b = next((x for x in post["_blocks"] if x["type"] == "spotify-card"), None)
+    if b is None:
+        return ""
+    return f"""<!-- sidebar promo -- spilleliste -->
+<aside class="sidebar-promo sidebar-promo--playlist" aria-label="Spilleliste">
+  <a href="{attr(b["href"])}" target="_blank" rel="noopener noreferrer">
+    <img class="sidebar-promo-img" src="{attr(b["image"])}" alt="" loading="lazy">
+    <div class="sidebar-promo-body">
+      <div class="sidebar-promo-label">{esc_text(b.get("title_no", ""))}</div>
+      <div class="sidebar-promo-sub">{block_bi(b, "label_no", "label_en")}</div>
+      <div class="sidebar-promo-cta">Spotify <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+    </div>
+  </a>
+</aside>"""
+
+
 def build_post_page(post, other, tpl):
     variant = post.get("variant", "index")
     if variant == "vega":
@@ -721,6 +741,7 @@ def build_post_page(post, other, tpl):
         "{{NAV}}": nav,
         "{{CONTENT}}": content,
         "{{FOOTER_LABEL}}": attr(post.get("footer_label", SITE_FOOTER_LABEL)),
+        "{{SIDEBAR_PLAYLIST}}": sidebar_playlist_html(post),
     }
     for k, v in repl.items():
         out = out.replace(k, v)
