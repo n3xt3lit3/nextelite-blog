@@ -21,6 +21,9 @@ affiliate: true
 
 ::disclosure
 html: true
+suppress_whisper: true
+byline_marker_no: Inneholder reklame
+byline_marker_en: Contains ads
 p1_no: <strong>Reklame / annonselenke:</strong> Denne posten inneholder en rabattkode (NHR7699) som gir deg 5–10 % avslag hos iHerb. Jeg får butikkreditt tilbake når koden brukes. Jeg handler der selv og skriver om faktiske bestillinger — aldri produkter jeg ikke bruker.
 p1_en: <strong>Advertising / affiliate link:</strong> This post contains a discount code (NHR7699) giving you 5–10% off at iHerb. I earn store credit when the code is used. I shop there myself and write about actual orders. Never products I don't use.
 p2_no: PS: jeg tar tjueåtte piller om dagen. Noen må betale for dem. Klikker du på linkene her, får jeg kickback. Kaffepenger blir til supplementer blir til neste blogpost. Det er et lukket kretsløp. Du skylder meg ingenting. Klikk hvis du vil.
@@ -284,8 +287,8 @@ object_position: center 25%
 audio: false
 alt_no: Speilselfie med solbriller på hodet
 alt_en: Mirror selfie with sunglasses on head
-caption_no: ferdig med badet. solbrillene er viktige.
-caption_en: done with the bathroom. the sunglasses are important.
+caption_no: øvde på selfieposering. derfor ble dette en liten video.
+caption_en: was practicing selfie posing. which is why this became a little video.
 
 ::paragraph
 no: Forrige uke var alt nytt. Nå er alt fortsatt nytt, bare litt mindre nytt. Det er framgang. Det er ikke resultatet. Det er prosessen. Jeg sa det forrige uke og jeg kommer til å si det igjen til jeg har noe annet å si.
