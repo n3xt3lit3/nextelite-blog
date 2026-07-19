@@ -68,58 +68,40 @@
   });
 
   // ═══════════════════════════════════════
-  // MARQUEE — pause/play + prefers-reduced-motion runtime
-  // Portert fra rhode-staging (Mission Cassini). Kun aktiv når forsiden
-  // har renderet marquee-elementet (post-/arkiv-sider ignorerer denne blokka).
-  // enc0re REVIEW-260709 ISSUE-002 + ISSUE-003: bilingual applyPauseState
-  // helper (les data-lang, oppdater aria + ikon), matchMedia change-listener
-  // med Safari<14 addListener-fallback så OS-toggle mid-økt respekteres.
+  // MARQUEE — invisible pause + prefers-reduced-motion runtime
+  // Portert fra rhode-staging (Mission Cassini). Synlig pause-knapp fjernet
+  // 2026-07-19 (CEO-korreksjon: satt midt i teksten, off UI). Pause-mekanisme
+  // beholdt usynlig for WCAG 2.2.2 (32s > 5s krever pause-tilgang):
+  //   - Desktop: mouseenter/leave paa .marquee (JS her).
+  //   - Touch:   touchstart/touchend/touchcancel paa .marquee (JS her).
+  //   - Keyboard: :focus-within paa .marquee (CSS-only, blog.css).
+  //   - System:  prefers-reduced-motion runtime + OS-toggle-lytter (JS her).
+  // enc0re REVIEW-260709 ISSUE-003 matchMedia change-listener med Safari<14
+  // addListener-fallback bevart.
   // ═══════════════════════════════════════
   var marqueeEl = document.querySelector('.marquee');
-  var marqueePause = document.querySelector('.marquee__pause');
-  if (marqueeEl && marqueePause) {
-    // Husstil: norsk pause-verb = «pause bånd», play-verb = «fortsett bånd»
-    // (per enc0re REVIEW-260709 ISSUE-002; CEO kan overstyre ved ja).
-    var MARQUEE_LABELS = {
-      no: { pause: 'pause bånd', play: 'fortsett bånd' },
-      en: { pause: 'pause announcement', play: 'play announcement' }
-    };
-    var PAUSE_ICON = '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
-    var PLAY_ICON = '<path d="M6 4l12 8-12 8V4z" fill="currentColor"/>';
+  if (marqueeEl) {
+    var pauseOn  = function () { marqueeEl.classList.add('is-paused'); };
+    var pauseOff = function () { marqueeEl.classList.remove('is-paused'); };
+    marqueeEl.addEventListener('mouseenter', pauseOn);
+    marqueeEl.addEventListener('mouseleave', pauseOff);
+    marqueeEl.addEventListener('touchstart',  pauseOn,  { passive: true });
+    marqueeEl.addEventListener('touchend',    pauseOff, { passive: true });
+    marqueeEl.addEventListener('touchcancel', pauseOff, { passive: true });
 
-    function applyPauseState(paused) {
-      var lang = document.body.getAttribute('data-lang') || 'no';
-      var role = paused ? 'play' : 'pause';
-      marqueeEl.classList.toggle('is-paused', paused);
-      marqueePause.setAttribute('aria-pressed', paused ? 'true' : 'false');
-      marqueePause.setAttribute('aria-label', MARQUEE_LABELS[lang][role]);
-      // Oppdater data-aria-no/en så eksisterende lang-toggle-mekanikk
-      // (blog.js linje 29-31) plukker riktig label ved språkbryt.
-      marqueePause.setAttribute('data-aria-no', MARQUEE_LABELS.no[role]);
-      marqueePause.setAttribute('data-aria-en', MARQUEE_LABELS.en[role]);
-      var svg = marqueePause.querySelector('svg');
-      if (svg) svg.innerHTML = paused ? PLAY_ICON : PAUSE_ICON;
-    }
-
-    // Runtime reduced-motion: init state fra OS-preferansen.
+    // Runtime reduced-motion: init state fra OS-preferansen + OS-toggle mid-økt.
     var mm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mm && mm.matches) applyPauseState(true);
-
-    // OS-toggle mid-økt respekteres (ISSUE-003). Safari<14 mangler
-    // addEventListener på MediaQueryList — fall tilbake til deprecated
-    // addListener der.
+    if (mm && mm.matches) marqueeEl.classList.add('is-paused');
     if (mm) {
-      var onReduceChange = function (e) { applyPauseState(e.matches); };
+      var onReduceChange = function (e) {
+        marqueeEl.classList.toggle('is-paused', e.matches);
+      };
       if (mm.addEventListener) {
         mm.addEventListener('change', onReduceChange);
       } else if (mm.addListener) {
         mm.addListener(onReduceChange);
       }
     }
-
-    marqueePause.addEventListener('click', function () {
-      applyPauseState(!marqueeEl.classList.contains('is-paused'));
-    });
   }
 
   // ═══════════════════════════════════════
