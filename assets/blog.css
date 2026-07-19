@@ -1078,3 +1078,4 @@ body.has-marquee main { padding-top: 184px; }
 
 /* KUN vektvest-videoen temmes (CEO 260719 presisering: bare den ene skulle endres). Andre videoer beholder full bredde. */
 .article-image:has(source[src*="baklengs-video-vektvest"]) video { max-height: 70vh; width: auto; max-width: 100%; margin: 0 auto; display: block; }
+.article-image:has(source[src*="baklengs-video-ponytail"]) video { max-height: 36vh; }
