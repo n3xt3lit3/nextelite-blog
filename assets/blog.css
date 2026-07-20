@@ -391,12 +391,16 @@ main {
    ═══════════════════════════════════════ */
 
 .sign-off {
-  margin-top: 64px;
-  font-family: var(--font);
-  font-size: 20px;
-  font-weight: 300;
+  margin-top: 48px;
+  text-align: right;
+  line-height: 0;
+}
+
+.sign-off-heart {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
   color: var(--text-light);
-  letter-spacing: 0.05em;
 }
 
 /* ═══════════════════════════════════════
