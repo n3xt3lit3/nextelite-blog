@@ -517,11 +517,11 @@ def render_index_body(post, other):
         elif t == "inline-promo":
             html.append('''<div class="inline-promo fade-in">
           <a href="https://nextelite.no/boxing/?lang=no" target="_blank" rel="noopener" data-boxing-link>
-            <img class="inline-promo-img" src="img/boxing-bodo-ring-purple.jpg" alt="NextElite" loading="lazy">
-            <div class="inline-promo-body">
-              <div class="inline-promo-label">NEXTELITE</div>
-              <div class="inline-promo-sub">gloves on</div>
+            <div class="promo-top">
+              <span class="promo-word">gloves on</span>
+              <span class="promo-pill">nextelite</span>
             </div>
+            <img class="promo-img" src="img/boxing-bodo-ring-purple.jpg" alt="NextElite boksering i Bodo" loading="lazy">
           </a>
         </div>''')
         elif t == "spotify-card":
@@ -704,12 +704,11 @@ def sidebar_playlist_html(post):
     return f"""<!-- sidebar promo -- spilleliste -->
 <aside class="sidebar-promo sidebar-promo--playlist" aria-label="Spilleliste">
   <a href="{attr(b["href"])}" target="_blank" rel="noopener noreferrer">
-    <img class="sidebar-promo-img" src="{attr(b["image"])}" alt="" loading="lazy">
-    <div class="sidebar-promo-body">
-      <div class="sidebar-promo-label">{esc_text(b.get("title_no", ""))}</div>
-      <div class="sidebar-promo-sub">{block_bi(b, "label_no", "label_en")}</div>
-      <div class="sidebar-promo-cta">Spotify <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+    <div class="promo-top">
+      <span class="promo-word">{esc_text(b.get("title_no", ""))}</span>
+      <span class="promo-pill">spotify</span>
     </div>
+    <img class="promo-img" src="{attr(b["image"])}" alt="" loading="lazy">
   </a>
 </aside>"""
 
