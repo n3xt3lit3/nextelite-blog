@@ -765,6 +765,7 @@ def build_index_page(posts, tpl):
         "{{NAV}}": nav_html("index", "home"),
         "{{CONTENT}}": content,
         "{{FOOTER_LABEL}}": SITE_FOOTER_LABEL,
+        "{{SIDEBAR_PLAYLIST}}": sidebar_playlist_html(latest),
     }
     out = tpl
     for k, v in repl.items():
