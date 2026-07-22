@@ -42,6 +42,14 @@ SITE_DESCRIPTION = "nextelite. boxing, protocol, art. en blogg fra vesteralen."
 SITE_FOOTER_LABEL = "uke 1 / 2026"  # forsidens live footer-tekst i dag
 PUBLISHER_LOGO = SITE + "/img/boxing-topten-mirror.jpg"
 
+# Kanonisk spilleliste-kort: vises paa ALLE poster + forside (CEO 260722).
+# Poster med egen ::spotify-card-blokk bruker sin egen; resten faller til denne.
+SITE_PLAYLIST = {
+    "title": "Week 1",
+    "image": "img/baklengs-spotify-week1.jpg",
+    "href": "https://open.spotify.com/playlist/1bag4cb83tQ1TxEwUqUJOL",
+}
+
 # Antall duplikater av marquee-item for sømløs translateX(-50%) loop.
 # 6 tilsvarer ~2x desktop-viewport-bredde ved typisk item-lengde — nok
 # horisontal luft for jevn animasjon uten hakk (enc0re REVIEW-260709 LOW).
@@ -695,20 +703,22 @@ def iso_time(date_str):
 # ─────────────────────────────────────────────
 
 def sidebar_playlist_html(post):
-    """Rail-kort for spilleliste: samme feature som gloves-on-promoen, men
-    playlist-innhold (CEO 260719). Genereres KUN for poster med ::spotify-card
-    -blokk; data gjenbrukes derfra (ingen dobbel sannhet)."""
+    """Rail-kort for spilleliste: samme feature som gloves-on-promoen. Vises paa
+    ALLE poster + forside (CEO 260722). Poster med egen ::spotify-card-blokk
+    bruker sin egen data; resten faller til SITE_PLAYLIST (kanonisk kilde)."""
     b = next((x for x in post["_blocks"] if x["type"] == "spotify-card"), None)
-    if b is None:
-        return ""
+    if b is not None:
+        href, image, title = b["href"], b["image"], b.get("title_no", "")
+    else:
+        href, image, title = SITE_PLAYLIST["href"], SITE_PLAYLIST["image"], SITE_PLAYLIST["title"]
     return f"""<!-- sidebar promo -- spilleliste -->
 <aside class="sidebar-promo sidebar-promo--playlist" aria-label="Spilleliste">
-  <a href="{attr(b["href"])}" target="_blank" rel="noopener noreferrer">
+  <a href="{attr(href)}" target="_blank" rel="noopener noreferrer">
     <div class="promo-top">
-      <span class="promo-word">{esc_text(b.get("title_no", ""))}</span>
+      <span class="promo-word">{esc_text(title)}</span>
       <span class="promo-pill">spotify</span>
     </div>
-    <img class="promo-img" src="{attr(b["image"])}" alt="" loading="lazy">
+    <img class="promo-img" src="{attr(image)}" alt="" loading="lazy">
   </a>
 </aside>"""
 
