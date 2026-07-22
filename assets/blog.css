@@ -1026,4 +1026,4 @@ body.has-marquee main { padding-top: 184px; }
 .article-image:has(source[src*="baklengs-video-ponytail"]) video { aspect-ratio: 7 / 6; height: auto; object-position: 50% 55%; }
 
 /* Spilleliste-rail: samme feature som gloves-on, 30px under (CEO 260719) */
-.sidebar-promo--playlist { top: calc(34% + 300px); }
+.sidebar-promo--playlist { top: calc(34% + 240px); }
