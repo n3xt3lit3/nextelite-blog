@@ -522,16 +522,6 @@ def render_index_body(post, other):
             fig += "</figure>"
             html.append(fig)
             _flush_disclosure_after_figure()
-        elif t == "inline-promo":
-            html.append('''<div class="inline-promo fade-in">
-          <a href="https://nextelite.no/boxing/?lang=no" target="_blank" rel="noopener" data-boxing-link>
-            <div class="promo-top">
-              <span class="promo-word">gloves on</span>
-              <span class="promo-pill">nextelite</span>
-            </div>
-            <img class="promo-img" src="img/boxing-bodo-ring-purple.jpg" alt="NextElite boksering i Bodo" loading="lazy">
-          </a>
-        </div>''')
         elif t == "spotify-card":
             # Statisk lenke-kort (aldri iframe/embed per GDPR-prinsipp).
             # CEO 260719 restyle: Spotify-feeling layout — moerkt kort, stort artwork,

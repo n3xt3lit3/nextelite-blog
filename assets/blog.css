@@ -546,19 +546,25 @@ footer {
    SIDEBAR PROMO — Desktop only
    ═══════════════════════════════════════ */
 
-.sidebar-promo {
+/* Promo-rail: to kort (boksing + spilleliste). Desktop = fast hoeyre-rail
+   vertikalt. Mobil = horisontal sveip-karusell nederst. CEO 260723. */
+.promo-rail {
   position: fixed;
   right: clamp(16px, 2.5vw, 40px);
   top: 34%;
   transform: translateY(-50%);
   z-index: 50;
   width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
+
+.sidebar-promo { display: block; }
 
 /* Rhode-stil promo-kort (boksing + spilleliste). CEO 260722.
    Tungt lowercase-ord + pille oeverst, bilde under, rent lyst kort. */
-.sidebar-promo a,
-.inline-promo a {
+.sidebar-promo a {
   display: block;
   text-decoration: none;
   color: var(--text);
@@ -568,8 +574,7 @@ footer {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.sidebar-promo a:hover,
-.inline-promo a:hover {
+.sidebar-promo a:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
 }
@@ -616,35 +621,29 @@ footer {
   transition: filter 0.3s ease;
 }
 
-.sidebar-promo a:hover .promo-img,
-.inline-promo a:hover .promo-img {
+.sidebar-promo a:hover .promo-img {
   filter: grayscale(0%);
 }
 
-/* ═══════════════════════════════════════
-   INLINE PROMO — Mobile only (injected by JS)
-   ═══════════════════════════════════════ */
-
-.inline-promo {
-  display: none;
-}
-
-.inline-promo + .inline-promo {
-  margin-top: 32px;
-}
-
-.inline-promo a {
-  margin: 56px auto;
-  max-width: 300px;
-}
-
-/* Hide sidebar when main content would overlap, show inline instead */
+/* Mobil: rail blir horisontal sveip-karusell nederst (CEO 260723). */
 @media (max-width: 1100px) {
-  .sidebar-promo {
-    display: none;
+  .promo-rail {
+    position: static;
+    transform: none;
+    width: auto;
+    flex-direction: row;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px var(--side) 56px;
+    scrollbar-width: none;
   }
-  .inline-promo {
-    display: block;
+  .promo-rail::-webkit-scrollbar { display: none; }
+  .sidebar-promo {
+    flex: 0 0 78%;
+    max-width: 300px;
+    scroll-snap-align: start;
   }
 }
 
@@ -1014,16 +1013,10 @@ body.has-marquee main { padding-top: 184px; }
 
 
 /* Spotify mini-kort (CEO 260719: v14-designet i mindre versjon). Moerke farger = bevisst komponent-unntak. */
-.spotify-card { display: block; background: #121212; border-radius: 12px; padding: 12px; max-width: 180px; text-decoration: none; }
-.spotify-card:hover, .spotify-card:active { background: #1a1a1a; }
-.spotify-card img, .spotify-card__cover { width: 100% !important; height: auto !important; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; margin: 0 0 10px 0 !important; display: block; }
-.spotify-card__title { font-family: var(--font); font-size: 14px; font-weight: 700; color: #ffffff; margin: 0 0 2px 0; }
-.spotify-card__subtitle { font-size: 11px; color: #b3b3b3; margin: 0 0 8px 0; }
-.spotify-card__source { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #b3b3b3; }
+
 
 /* KUN vektvest-videoen temmes (CEO 260719 presisering: bare den ene skulle endres). Andre videoer beholder full bredde. */
 .article-image:has(source[src*="baklengs-video-vektvest"]) video { max-height: 70vh; width: auto; max-width: 100%; margin: 0 auto; display: block; }
 .article-image:has(source[src*="baklengs-video-ponytail"]) video { aspect-ratio: 7 / 6; height: auto; object-position: 50% 55%; }
 
 /* Spilleliste-rail: samme feature som gloves-on, 30px under (CEO 260719) */
-.sidebar-promo--playlist { top: calc(34% + 240px); }
