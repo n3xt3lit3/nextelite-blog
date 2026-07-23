@@ -641,8 +641,7 @@ footer {
   }
   .promo-rail::-webkit-scrollbar { display: none; }
   .sidebar-promo {
-    flex: 0 0 78%;
-    max-width: 300px;
+    flex: 0 0 210px;
     scroll-snap-align: start;
   }
 }
