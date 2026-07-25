@@ -565,6 +565,25 @@ footer {
 
 .sidebar-promo { display: block; }
 
+/* X-rail: vertikal @N3XT3LIT3 i venstrefeltet (CEO 260725). Speiler
+   promo-railens topp-anker. Kun desktop — mobil har ikke venstrefelt. */
+.x-rail {
+  position: fixed;
+  left: clamp(16px, 2.5vw, 40px);
+  top: clamp(170px, 22vh, 280px);
+  z-index: 50;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-decoration: none;
+}
+.x-rail:hover { color: var(--text); }
+.x-rail .xx { font-weight: 700; letter-spacing: .1em; }
+@media (max-width: 980px) { .x-rail { display: none; } }
+
 /* Rhode-stil promo-kort (boksing + spilleliste). CEO 260722.
    Tungt lowercase-ord + pille oeverst, bilde under, rent lyst kort. */
 .sidebar-promo a {
