@@ -639,12 +639,8 @@ footer {
   object-fit: cover;
   border-radius: 10px;
   display: block;
-  filter: grayscale(20%);
+  /* grayscale-forfilter fjernet (CEO 260725: originalfargene skal vises foer hover ogsaa) */
   transition: filter 0.3s ease;
-}
-
-.sidebar-promo a:hover .promo-img {
-  filter: grayscale(0%);
 }
 
 /* Mobil: rail blir horisontal sveip-karusell nederst (CEO 260723). */
