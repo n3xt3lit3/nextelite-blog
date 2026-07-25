@@ -551,8 +551,11 @@ footer {
 .promo-rail {
   position: fixed;
   right: clamp(16px, 2.5vw, 40px);
-  top: 34%;
-  transform: translateY(-50%);
+  /* topp-forankret under header+marquee (CEO 260725: «gloves on»-tittelen laa
+     bak menylinja ved oppstartshoyde — var top:34% + translateY(-50%), som
+     sentrerte railen og skjov toppen under headeren paa lavere vinduer) */
+  top: clamp(170px, 22vh, 280px);
+  transform: none;
   z-index: 50;
   width: 210px;
   display: flex;
