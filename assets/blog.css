@@ -485,6 +485,16 @@ main {
   line-height: 1.6;
 }
 
+/* footer social-links (snap + x): 44px+ touch-target via inline-block +
+   padding-block/inline. Negativ margin-block kollapser flow-endring saa
+   footer-hoeyden holdes uendret (past-lesson pattern:
+   padding-block:14px + margin-block:-14px). CEO 260726 delta. */
+footer .tagline {
+  display: inline-block;
+  padding: 14px 18px;
+  margin: -14px 0;
+}
+
 .tagline-code {
   font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
   font-size: 12px;
