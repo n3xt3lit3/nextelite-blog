@@ -491,7 +491,7 @@ main {
    padding-block:14px + margin-block:-14px). CEO 260726 delta. */
 footer .tagline {
   display: inline-block;
-  padding: 14px 18px;
+  padding: 14px 20px;
   margin: -14px 0;
 }
 
@@ -649,8 +649,9 @@ footer {
   object-fit: cover;
   border-radius: 10px;
   display: block;
-  /* grayscale-forfilter fjernet (CEO 260725: originalfargene skal vises foer hover ogsaa) */
-  transition: filter 0.3s ease;
+  /* grayscale-forfilter fjernet (CEO 260725: originalfargene skal vises foer hover
+     ogsaa); orphan 'transition: filter 0.3s ease' fjernet (enc0re A-02, 260726),
+     ingen filter-deklarasjoner igjen paa .promo-img. */
 }
 
 /* Mobil: rail blir horisontal sveip-karusell nederst (CEO 260723). */
