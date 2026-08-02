@@ -488,11 +488,43 @@ main {
 /* footer social-links (snap + x): 44px+ touch-target via inline-block +
    padding-block/inline. Negativ margin-block kollapser flow-endring saa
    footer-hoeyden holdes uendret (past-lesson pattern:
-   padding-block:14px + margin-block:-14px). CEO 260726 delta. */
+   padding-block:14px + margin-block:-14px). CEO 260726 delta.
+   Beholdes for templates/arkiv.html som fortsatt bruker .tagline-lenker. */
 footer .tagline {
   display: inline-block;
   padding: 14px 20px;
   margin: -14px 0;
+}
+
+/* footer social-links V1 naken glyf-rad (CEO-pek 260802, <B> runway v01).
+   20px currentColor SVG (X + Snap). Ingen ramme/glow/bakgrunn. Hit-area
+   44px via padding 12/margin -12 (samme flow-collapse-pattern som
+   .tagline). Farge arver --text-light token, hover -> --text-dark.
+   Renderes i footer for templates/index.html + templates/post.html. */
+.footer-social-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  vertical-align: middle;
+}
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 12px;
+  margin: -12px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  color: var(--text-dark);
+}
+.footer-social-link svg {
+  display: block;
 }
 
 .tagline-code {
