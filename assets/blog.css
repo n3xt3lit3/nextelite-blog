@@ -500,13 +500,17 @@ footer .tagline {
    20px currentColor SVG (X + Snap). Ingen ramme/glow/bakgrunn. Hit-area
    44px via padding 12/margin -12 (samme flow-collapse-pattern som
    .tagline). Farge arver --text-light token, hover -> --text-dark.
-   Renderes i footer for templates/index.html + templates/post.html. */
+   Renderes i footer for templates/index.html + templates/post.html +
+   templates/arkiv.html.
+   margin-top 16px (CEO-pek 260802 delta-2, "a little more spacing"):
+   ett hakk paa footer-skala (12px padding + 16px matches base-scale). */
 .footer-social-row {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 28px;
   vertical-align: middle;
+  margin-top: 16px;
 }
 .footer-social-link {
   display: inline-flex;
