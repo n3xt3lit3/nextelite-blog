@@ -503,13 +503,15 @@ footer .tagline {
    Renderes i footer for templates/index.html + templates/post.html +
    templates/arkiv.html.
    margin-top 16px (CEO-pek 260802 delta-2, "a little more spacing"):
-   ett hakk paa footer-skala (12px padding + 16px matches base-scale). */
+   ett hakk paa footer-skala (12px padding + 16px matches base-scale).
+   CEO 260803: venstrestilt (display:flex + justify-content:flex-start)
+   for balansert layout; flukter med footerens content-box venstrekant
+   (var(--side) padding). Logo forblir sentrert via footer text-align. */
 .footer-social-row {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 28px;
-  vertical-align: middle;
   margin-top: 16px;
 }
 .footer-social-link {
