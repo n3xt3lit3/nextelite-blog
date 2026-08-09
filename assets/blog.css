@@ -1088,3 +1088,15 @@ body.has-marquee main { padding-top: 184px; }
 .article-image:has(source[src*="baklengs-video-ponytail"]) video { aspect-ratio: 7 / 6; height: auto; object-position: 50% 55%; }
 
 /* Spilleliste-rail: samme feature som gloves-on, 30px under (CEO 260719) */
+
+/* ═══════════════════════════════════════
+   PAUSED per CEO 260809: sign-off doodle-hjerte off blog, reversible.
+   Skjuler den håndtegnede SVG-signaturen på alle sider (post-footere + index).
+   SVG-asset og build.py-generator uendret. Reverter: slett hele denne blokka
+   (linje ~1092–1097). Standing rule bakstøtter: `<333 xxx n3xt3lit3`-signatur-
+   estetikk hører til CEO-kunst, ikke websites.
+   ═══════════════════════════════════════ */
+.sign-off,
+.sign-off-heart {
+  display: none !important;
+}
