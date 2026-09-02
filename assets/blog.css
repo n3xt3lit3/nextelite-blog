@@ -29,6 +29,36 @@
   --display-heavy: 'Rektorat Heavy', 'Clash Display', 'Inter', -apple-system, sans-serif;
 }
 
+/* ═══════════════════════════════════════
+   DS BRIDGE — l1ft0ff, Mission Gemini, 2026-09-02
+   assets/ds/nextelite-base.css is now loaded before this file (design-system
+   compliance, fl4w #1). base.css is @layer'ed, so unlayered blog.css wins on
+   every property it sets. The element-level rules below are the base-layer
+   declarations blog.css never set; they are pinned to their pre-import
+   (user-agent) values so the import is pixel-neutral on the CEO-verified look.
+   Lifting any line here changes the look and needs <B> sign-off first.
+   ═══════════════════════════════════════ */
+@view-transition { navigation: none; }
+* { transition-timing-function: revert; }
+html { hanging-punctuation: revert; }
+h1, h2, h3, h4 {
+  font-family: inherit; color: inherit;
+  font-size: revert; font-weight: revert; line-height: revert;
+  text-wrap: revert; overflow-wrap: revert;
+}
+h5, h6, p { overflow-wrap: revert; }
+p { max-width: revert; text-wrap: revert; }
+a { color: revert; text-decoration: revert; transition: revert; }
+a:hover { opacity: revert; }
+ul, ol { list-style: revert; }
+img, picture, video, canvas, svg { display: revert; max-width: revert; }
+img { height: revert; font-style: revert; }
+input, button, textarea, select { font: revert; }
+button { cursor: revert; background: revert; border: revert; }
+:focus-visible { outline: revert; outline-offset: revert; border-radius: revert; }
+section { content-visibility: revert; contain-intrinsic-size: revert; }
+/* ═══ end DS BRIDGE ═══ */
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
