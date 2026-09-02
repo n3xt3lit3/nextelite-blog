@@ -219,6 +219,20 @@ main {
   color: var(--text-light);
   margin-bottom: 24px;
 }
+/* Dato-linja under tittelen. Var inline style="margin-top: 8px;" i build.py;
+   flyttet hit 2026-09-02 (AGENTS.md regel 9, fl4w #5). */
+.article-meta--date { margin-top: 8px; }
+
+/* object_position fra frontmatter (build.py OBJECT_POSITION_CLASSES).
+   Var inline style="object-position:..." paa img/video. */
+.op-center-25 { object-position: center 25%; }
+.op-center-40 { object-position: center 40%; }
+
+/* Vega-variant video (forste-kamp). Var inline
+   style="width:100%;max-height:70vh;border-radius:4px;display:block;" —
+   width/radius/display kommer allerede fra .article-image video; kun
+   max-height avviker. */
+.article-image video.article-video--tall { max-height: 70vh; }
 
 .article-title {
   font-family: var(--heading);
