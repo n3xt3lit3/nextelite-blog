@@ -17,7 +17,10 @@
      Introdusert per grn//red 2026-07-18 for .affiliate-whisper som feilet AA
      med --text-light (2.96:1). Aldri hardkodet hex; token-basert. */
   --text-secondary: rgba(26, 26, 26, 0.65);
-  --accent: #C4A882;
+  /* --accent var #C4A882 (off-canon, fl4w #6). Naa kanon-token
+     --color-warm-gray (#C5B8B0) fra assets/ds/design-tokens.css, 2026-09-02.
+     Eneste bruker: .tagline-code. Visuelt: tan -> varm graa, samme lyshet. */
+  --accent: var(--color-warm-gray);
   /* Brand-magenta: matcher rhode-versjonens hjerte-farge (rhode/blog-rhode.css:42
      --accent) og NextElite kanon (30-IDENTITY/nextelite-base.css --brand-magenta).
      Kun for punkt-aksenter (<3-glyf, play-glyph i paused-state); ikke button-bg. */
