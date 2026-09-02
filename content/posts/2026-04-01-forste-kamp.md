@@ -1,7 +1,7 @@
 ---
 slug: forste-kamp
 date: 2026-04-01
-modified: 2026-04-16
+modified: 2026-09-02
 title_no: første kamp.
 title_en: first fight.
 kicker_no: Bodø Spektrum / Arctic Boxing
