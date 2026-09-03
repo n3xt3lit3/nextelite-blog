@@ -17,7 +17,10 @@
      Introdusert per grn//red 2026-07-18 for .affiliate-whisper som feilet AA
      med --text-light (2.96:1). Aldri hardkodet hex; token-basert. */
   --text-secondary: rgba(26, 26, 26, 0.65);
-  --accent: #C4A882;
+  /* --accent var #C4A882 (off-canon, fl4w #6). Naa kanon-token
+     --color-warm-gray (#C5B8B0) fra assets/ds/design-tokens.css, 2026-09-02.
+     Eneste bruker: .tagline-code. Visuelt: tan -> varm graa, samme lyshet. */
+  --accent: var(--color-warm-gray);
   /* Brand-magenta: matcher rhode-versjonens hjerte-farge (rhode/blog-rhode.css:42
      --accent) og NextElite kanon (30-IDENTITY/nextelite-base.css --brand-magenta).
      Kun for punkt-aksenter (<3-glyf, play-glyph i paused-state); ikke button-bg. */
@@ -28,6 +31,36 @@
   --heading: 'Clash Display', 'Inter', -apple-system, sans-serif;
   --display-heavy: 'Rektorat Heavy', 'Clash Display', 'Inter', -apple-system, sans-serif;
 }
+
+/* ═══════════════════════════════════════
+   DS BRIDGE — l1ft0ff, Mission Gemini, 2026-09-02
+   assets/ds/nextelite-base.css is now loaded before this file (design-system
+   compliance, fl4w #1). base.css is @layer'ed, so unlayered blog.css wins on
+   every property it sets. The element-level rules below are the base-layer
+   declarations blog.css never set; they are pinned to their pre-import
+   (user-agent) values so the import is pixel-neutral on the CEO-verified look.
+   Lifting any line here changes the look and needs <B> sign-off first.
+   ═══════════════════════════════════════ */
+@view-transition { navigation: none; }
+* { transition-timing-function: revert; }
+html { hanging-punctuation: revert; }
+h1, h2, h3, h4 {
+  font-family: inherit; color: inherit;
+  font-size: revert; font-weight: revert; line-height: revert;
+  text-wrap: revert; overflow-wrap: revert;
+}
+h5, h6, p { overflow-wrap: revert; }
+p { max-width: revert; text-wrap: revert; }
+a { color: revert; text-decoration: revert; transition: revert; }
+a:hover { opacity: revert; }
+ul, ol { list-style: revert; }
+img, picture, video, canvas, svg { display: revert; max-width: revert; }
+img { height: revert; font-style: revert; }
+input, button, textarea, select { font: revert; }
+button { cursor: revert; background: revert; border: revert; }
+:focus-visible { outline: revert; outline-offset: revert; border-radius: revert; }
+section { content-visibility: revert; contain-intrinsic-size: revert; }
+/* ═══ end DS BRIDGE ═══ */
 
 *, *::before, *::after {
   margin: 0;
@@ -189,6 +222,20 @@ main {
   color: var(--text-light);
   margin-bottom: 24px;
 }
+/* Dato-linja under tittelen. Var inline style="margin-top: 8px;" i build.py;
+   flyttet hit 2026-09-02 (AGENTS.md regel 9, fl4w #5). */
+.article-meta--date { margin-top: 8px; }
+
+/* object_position fra frontmatter (build.py OBJECT_POSITION_CLASSES).
+   Var inline style="object-position:..." paa img/video. */
+.op-center-25 { object-position: center 25%; }
+.op-center-40 { object-position: center 40%; }
+
+/* Vega-variant video (forste-kamp). Var inline
+   style="width:100%;max-height:70vh;border-radius:4px;display:block;" —
+   width/radius/display kommer allerede fra .article-image video; kun
+   max-height avviker. */
+.article-image video.article-video--tall { max-height: 70vh; }
 
 .article-title {
   font-family: var(--heading);

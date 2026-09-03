@@ -22,3 +22,6 @@ img/_hold/
 content/_hold/
 img/post4-*
 
+
+# lokale eksperimenter (exp-*), aldri offentlig. Flyttet fra repo-rot 2026-09-02 (fl4w #10).
+exp/

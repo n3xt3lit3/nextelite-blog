@@ -1,6 +1,7 @@
 ---
 slug: pakken-kom
 date: 2026-04-10
+modified: 2026-09-02
 title_no: pakken kom.
 title_en: the order arrived.
 kicker_no: Nemine Steffensen / Øksnes, Vesterålen

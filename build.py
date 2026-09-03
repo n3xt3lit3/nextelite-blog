@@ -373,7 +373,7 @@ def render_index_body(post, other):
         html.append(f'''<div class="fade-in">
           <p class="article-meta">{bi_text(m["kicker_no"], m["kicker_en"])}</p>
           <h1 class="article-title">{bi_text(m["title_no"], m["title_en"])}</h1>
-          <p class="article-meta" style="margin-top: 8px;">{bi_text(m["date_label_no"], m["date_label_en"])}</p>
+          <p class="article-meta article-meta--date">{bi_text(m["date_label_no"], m["date_label_en"])}</p>
         </div>''')
     html.append('<div class="article-body">')
 
@@ -468,7 +468,7 @@ def render_index_body(post, other):
           <p class="pull-quote">{block_bi(b)}</p>
         </div>''')
         elif t == "image":
-            style = f' style="object-position:{attr(b["object_position"])}"' if b.get("object_position") else ""
+            style = op_class(b.get("object_position"))
             # hero: true -> ubeskaaret hoyde (post 4 parkert-havna CEO 260718).
             # Legger til .article-image--hero-full som overrider max-height 50vh.
             hero_cls = " article-image--hero-full" if str(b.get("hero", "")).lower() == "true" else ""
@@ -482,7 +482,7 @@ def render_index_body(post, other):
         elif t == "video":
             poster = f' poster="{attr(b["poster"])}"' if b.get("poster") else ""
             muted = " muted" if b.get("audio") == "false" else ""
-            style = f' style="object-position:{attr(b["object_position"])}"' if b.get("object_position") else ""
+            style = op_class(b.get("object_position"))
             aria = bi_attr("aria-label", b.get("alt_no", ""), b.get("alt_en", "")) if b.get("alt_no") else ' aria-label=""'
             # preload: default "metadata" (post 3 mirror-selfie backward compat);
             # optional block-level override for research-spec compliance (post 4:
@@ -573,7 +573,7 @@ def render_vega_body(post, other):
     html.append(f'''<div class="fade-in">
           <p class="article-meta">{bi_esc(m["kicker_no"], m["kicker_en"])}</p>
           <h1 class="article-title">{bi_esc(m["title_no"], m["title_en"])}</h1>
-          <p class="article-meta" style="margin-top: 8px;">{bi_esc(m["date_label_no"], m["date_label_en"])}</p>
+          <p class="article-meta article-meta--date">{bi_esc(m["date_label_no"], m["date_label_en"])}</p>
         </div>''')
     html.append(f'''<figure class="article-header-image fade-in">
           <img src="{attr(m["header_image"])}"{bi_attr("alt", m["header_image_alt_no"], m["header_image_alt_en"])} loading="eager">
@@ -604,7 +604,7 @@ def render_vega_body(post, other):
             poster = attr(b.get("poster", ""))
             fig = (f'<figure class="article-image fade-in">\n'
                    f'          <video src="{attr(b["src"])}" poster="{poster}" controls playsinline preload="metadata" '
-                   f'style="width:100%;max-height:70vh;border-radius:4px;display:block;"></video>')
+                   f'class="article-video--tall"></video>')
             if b.get("caption_no"):
                 fig += f'<figcaption>{bi_esc(b["caption_no"], b["caption_en"])}</figcaption>'
             fig += "</figure>"
@@ -828,6 +828,24 @@ def build_arkiv_pages(posts, tpl):
         for k, v in repl.items():
             out = out.replace(k, v)
         write_out(os.path.join("arkiv", f"{y}.html"), out)
+
+
+# Inline style="" er forbudt (AGENTS.md regel 9). object_position i frontmatter
+# mappes til en klasse i assets/blog.css. Ny verdi = legg til CSS-regel foerst.
+OBJECT_POSITION_CLASSES = {
+    "center 25%": "op-center-25",
+    "center 40%": "op-center-40",
+}
+
+
+def op_class(value):
+    if not value:
+        return ""
+    cls = OBJECT_POSITION_CLASSES.get(str(value).strip())
+    if not cls:
+        sys.exit(f"build.py: ukjent object_position {value!r} — legg til klasse i "
+                 "OBJECT_POSITION_CLASSES + assets/blog.css")
+    return f' class="{cls}"'
 
 
 def build_sitemap(posts):
