@@ -118,3 +118,22 @@
     lastScroll = current;
   }, { passive: true });
 })();
+
+// Mount YouTube only after the visitor chooses to play; closing stops playback.
+(function () {
+  var opener = document.querySelector('[data-apex-video-open]');
+  var dialog = document.querySelector('.apex-video-dialog');
+  if (!opener || !dialog) return;
+  var player = dialog.querySelector('[data-apex-video-player]');
+  opener.addEventListener('click', function () {
+    var frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/gMKWIcmWru0?autoplay=1';
+    frame.title = 'Apex Crypto livestream';
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    player.replaceChildren(frame);
+    dialog.showModal();
+  });
+  dialog.addEventListener('close', function () { player.replaceChildren(); });
+})();
