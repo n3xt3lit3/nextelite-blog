@@ -7,16 +7,14 @@
 }
 
 :root {
-  --bg: #F0EDE8;
-  --bg-warm: #F5F3F0;
-  --text: #4A4A4A;
-  --text-light: #8A8A8A;
-  --text-dark: #2A2A2A;
-  /* --text-secondary: WCAG AA-compliant "whisper" tone for legal/meta lines.
-     rgba(26,26,26,0.65) blended over --bg = ~5.06:1 vs --bg cream (PASS AA).
-     Introdusert per grn//red 2026-07-18 for .affiliate-whisper som feilet AA
-     med --text-light (2.96:1). Aldri hardkodet hex; token-basert. */
-  --text-secondary: rgba(26, 26, 26, 0.65);
+  --bg: #ffffff;
+  --bg-warm: #f1f0ed;
+  --badge-bg: #dedede;
+  --text: #67645e;
+  --text-light: #67645e;
+  --text-dark: #525252;
+  /* Readable muted text on both white pages and warm-gray cards. */
+  --text-secondary: #67645e;
   /* --accent var #C4A882 (off-canon, fl4w #6). Naa kanon-token
      --color-warm-gray (#C5B8B0) fra assets/ds/design-tokens.css, 2026-09-02.
      Eneste bruker: .tagline-code. Visuelt: tan -> varm graa, samme lyshet. */
@@ -700,6 +698,7 @@ footer {
 
 .promo-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
@@ -718,14 +717,14 @@ footer {
 .promo-pill {
   flex: 0 0 auto;
   font-family: var(--font);
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: lowercase;
-  color: var(--bg);
-  background: var(--text-dark);
+  color: var(--text-dark);
+  background: var(--badge-bg);
   border-radius: 999px;
-  padding: 4px 10px;
+  padding: 8px 12px;
   margin-top: 5px;
   white-space: nowrap;
 }
@@ -1153,7 +1152,7 @@ body.has-marquee main { padding-top: 184px; }
   margin-top: 48px;
   padding: clamp(24px, 4vw, 40px);
   border-radius: 24px;
-  background: radial-gradient(ellipse at top right, var(--bg-warm), var(--bg) 85%);
+  background: var(--bg-warm);
   border: 1px solid color-mix(in srgb, var(--text) 16%, var(--bg));
   box-shadow: 0 20px 48px color-mix(in srgb, var(--text-dark) 10%, transparent), inset 0 1px 0 var(--bg-warm);
   color: var(--text-dark);
@@ -1182,11 +1181,14 @@ body.has-marquee main { padding-top: 184px; }
 .affiliate-feature .affiliate-feature-label {
   display: inline-block;
   margin: 0;
-  padding: 6px 12px;
-  border: 1px solid currentColor;
+  padding: 12px 20px;
+  border: 0;
   border-radius: 999px;
-  font-size: 12px;
-  line-height: 1.5;
+  background: var(--badge-bg);
+  color: var(--text-dark);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 700;
+  line-height: 1.4;
 }
 .affiliate-feature .affiliate-feature-disclosure {
   padding-top: 20px;
