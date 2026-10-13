@@ -408,7 +408,8 @@ main {
   display: none !important;
 }
 
-.article-image figcaption {
+.article-image figcaption,
+.affiliate-feature .affiliate-feature-disclosure {
   font-family: var(--font);
   font-size: 12px;
   font-weight: 300;
@@ -1260,3 +1261,49 @@ body.has-marquee main { padding-top: 184px; }
 .apex-video-cover:hover .apex-video-play { background: color-mix(in srgb, var(--youtube-red) 88%, var(--text-dark)); }
 .apex-video-cover:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .apex-video iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; }
+
+/* Give native player controls room only while watching. */
+.affiliate-feature.is-playing { position: relative; }
+.apex-video-close { display: block; min-height: 44px; position: absolute; top: 12px; right: 12px; margin: 0; padding: 8px 12px; border: 0; border-radius: 8px; background: transparent; color: var(--text-dark); font: inherit; font-size: 12px; cursor: pointer; }
+.apex-video-close:hover { background: var(--border); }
+.apex-video-close:focus-visible { outline: 2px solid var(--text-dark); outline-offset: 2px; }
+@media (min-width: 1280px) {
+  .affiliate-feature.is-playing { position: fixed; width: 512px; top: 144px; max-height: calc(100dvh - 168px); padding: 16px; z-index: 60; }
+  .affiliate-feature.is-playing:hover { transform: none; }
+  .affiliate-feature.is-playing h2 { padding-right: 104px; }
+  .affiliate-feature.is-playing .affiliate-feature-disclosure { padding-top: 12px; margin-bottom: 12px; }
+  .affiliate-feature.is-playing .apex-video { margin-bottom: 12px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @media (min-width: 1280px) {
+    .affiliate-feature { transition: width 480ms cubic-bezier(.22, 1, .36, 1), top 480ms cubic-bezier(.22, 1, .36, 1), padding 480ms cubic-bezier(.22, 1, .36, 1), max-height 480ms cubic-bezier(.22, 1, .36, 1), transform 240ms ease; }
+  }
+  .affiliate-feature.is-playing iframe { animation: apex-player-enter 420ms ease both; }
+  @keyframes apex-player-enter { from { opacity: 0; } to { opacity: 1; } }
+}
+
+.affiliate-feature.is-playing .affiliate-feature-link { width: var(--apex-cta-width); max-width: 100%; box-sizing: border-box; }
+
+/* Title-only community entry, with details revealed on request. */
+.apex-expand { display: block; position: relative; width: 100%; padding: 0 40px 0 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.apex-expand-arrow { position: absolute; right: 0; top: 4px; font-family: var(--font); font-size: 28px; }
+.apex-expand:focus-visible { outline: 2px solid var(--text-dark); outline-offset: 6px; border-radius: 4px; }
+.affiliate-feature:not(.is-playing) h2 { margin-bottom: 0; }
+.affiliate-feature.is-playing .apex-expand-arrow { display: none; }
+#apex-details[hidden] { display: none; }
+
+.affiliate-feature:not(.is-playing) { padding: 14px 12px; }
+@media (min-width: 1280px) {
+  .affiliate-feature:not(.is-playing) { width: 280px; }
+}
+.affiliate-feature .affiliate-feature-disclosure,
+.affiliate-feature.is-playing .affiliate-feature-disclosure {
+  padding: 0; border: 0; margin: 10px 0 16px;
+  font-family: var(--font); font-size: 12px; font-weight: 300;
+  color: var(--text-light); letter-spacing: .02em;
+}
+.affiliate-feature.is-playing .apex-video { margin-bottom: 0; }
+
+/* Related-post links share the black heading color on every page. */
+.post-nav-label, .post-nav-title, .post-nav-date { color: var(--heading-color); }

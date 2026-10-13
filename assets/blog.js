@@ -119,10 +119,39 @@
   }, { passive: true });
 })();
 
-// Replace the cover with the YouTube player on the visitor's play action.
+// Expand the community card and start its video on the visitor’s click.
 (function () {
   var opener = document.querySelector('[data-apex-video-open]');
-  if (!opener) return;
+  var toggle = document.querySelector('.apex-expand');
+  if (!opener || !toggle) return;
+  var card = opener.closest('.affiliate-feature');
+  var details = document.getElementById('apex-details');
+  var container = opener.parentElement;
+  var close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'apex-video-close';
+  close.innerHTML = '<span class="l-no">Lukk video ×</span><span class="l-en" lang="en">Close video ×</span>';
+  function collapse() {
+    container.replaceChildren(opener);
+    details.hidden = true;
+    card.classList.remove('is-playing');
+    toggle.setAttribute('aria-expanded', 'false');
+    close.remove();
+    toggle.focus();
+  }
+  toggle.addEventListener('click', function () {
+    if (toggle.getAttribute('aria-expanded') === 'true') { collapse(); return; }
+    card.style.setProperty('--apex-cta-width', (card.clientWidth - 32) + 'px');
+    details.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+    card.classList.add('is-playing');
+    card.appendChild(close);
+    opener.click();
+  });
+  close.addEventListener('click', collapse);
+  card.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && !details.hidden) collapse();
+  });
   opener.addEventListener('click', function () {
     var frame = document.createElement('iframe');
     frame.src = 'https://www.youtube-nocookie.com/embed/gMKWIcmWru0?autoplay=1&playsinline=1&start=28';
@@ -130,7 +159,7 @@
     frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     frame.allowFullscreen = true;
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
-    opener.parentElement.replaceChildren(frame);
+    container.replaceChildren(frame);
     frame.focus();
   });
 })();

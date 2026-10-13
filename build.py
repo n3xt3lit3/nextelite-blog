@@ -740,6 +740,7 @@ def build_post_page(post, other, tpl, latest):
         "{{BODY_CLASS}}": body_class,
         "{{NAV}}": nav,
         "{{CONTENT}}": content,
+        "{{APEX_CARD}}": read_template("apex-card.html"),
         "{{FOOTER_LABEL}}": attr(post.get("footer_label", SITE_FOOTER_LABEL)),
         "{{SIDEBAR_PLAYLIST}}": sidebar_playlist_html(post),
         "{{MARQUEE}}": marquee_html(latest),
@@ -764,6 +765,7 @@ def build_index_page(posts, tpl):
         "{{MARQUEE}}": marquee_html(latest),
         "{{NAV}}": nav_html("index", "home"),
         "{{CONTENT}}": content,
+        "{{APEX_CARD}}": read_template("apex-card.html"),
         "{{FOOTER_LABEL}}": SITE_FOOTER_LABEL,
         "{{SIDEBAR_PLAYLIST}}": sidebar_playlist_html(latest),
     }
