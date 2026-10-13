@@ -1248,7 +1248,7 @@ body.has-marquee main { padding-top: 184px; }
 /* Apex video: local cover until the visitor opens the YouTube player. */
 .apex-video { margin: 0 0 24px; }
 .apex-video-cover { display: block; position: relative; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--text-dark); color: var(--bg); cursor: pointer; font: inherit; }
-.apex-video-cover img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.apex-video-cover img { display: block; width: 100%; height: auto; aspect-ratio: 600 / 338; object-fit: cover; }
 .apex-video-play { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px; font-size: 13px; }
 .apex-video > a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text-dark); font-size: 13px; }
 .apex-video-cover:focus-visible, .apex-video-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
