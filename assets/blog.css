@@ -7,6 +7,8 @@
 }
 
 :root {
+  --youtube-red: #ff0000;
+  --youtube-play-white: #ffffff;
   --bg: #ffffff;
   --bg-warm: #f1f0ec;
   --card-bg: #f5f5f5;
@@ -1249,11 +1251,9 @@ body.has-marquee main { padding-top: 184px; }
 .apex-video { margin: 0 0 24px; }
 .apex-video-cover { display: block; position: relative; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--text-dark); color: var(--bg); cursor: pointer; font: inherit; }
 .apex-video-cover img { display: block; width: 100%; height: auto; aspect-ratio: 600 / 338; object-fit: cover; }
-.apex-video-play { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px; font-size: 13px; }
-.apex-video > a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text-dark); font-size: 13px; }
-.apex-video-cover:focus-visible, .apex-video-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.apex-video-dialog { margin: auto; width: min(900px, calc(100vw - 32px)); max-width: none; padding: 16px; box-sizing: border-box; border: 1px solid var(--border); border-radius: 16px; background: var(--card-bg); color: var(--text-dark); }
-.apex-video-dialog::backdrop { background: color-mix(in srgb, var(--text-dark) 80%, transparent); }
-.apex-video-dialog form { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-.apex-video-close { min-height: 44px; padding: 8px 16px; border: 1px solid var(--border); border-radius: 24px; background: var(--card-bg); color: var(--text-dark); font: inherit; cursor: pointer; }
-.apex-video-dialog iframe { display: block; width: 100%; aspect-ratio: 16 / 9; min-height: 200px; border: 0; }
+.apex-video-control { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 8px; background: var(--card-bg); color: var(--text-dark); }
+.apex-video-play { display: flex; flex: 0 0 48px; align-items: center; justify-content: center; height: 32px; border-radius: 8px; background: var(--youtube-red); color: var(--youtube-play-white); }
+.apex-video-label { font-size: 12px; font-weight: 600; }
+.apex-video-cover:hover .apex-video-play { background: color-mix(in srgb, var(--youtube-red) 88%, var(--text-dark)); }
+.apex-video-cover:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.apex-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; min-height: 200px; border: 0; border-radius: 12px; }
