@@ -1156,7 +1156,7 @@ body.has-marquee main { padding-top: 184px; }
   padding: clamp(24px, 4vw, 40px);
   border-radius: 24px;
   background: var(--card-bg);
-  border: 1px solid color-mix(in srgb, var(--text) 16%, var(--bg));
+  border: 0;
   box-shadow: 0 12px 32px color-mix(in srgb, var(--text-dark) 6%, transparent);
   color: var(--text-dark);
   font-family: var(--font);
