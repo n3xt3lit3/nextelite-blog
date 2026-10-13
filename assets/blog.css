@@ -1153,10 +1153,10 @@ body.has-marquee main { padding-top: 184px; }
   margin-top: 48px;
   padding: clamp(24px, 4vw, 40px);
   border-radius: 24px;
-  background: radial-gradient(ellipse at top right, color-mix(in srgb, var(--text) 85%, var(--text-dark)), var(--text-dark) 70%);
-  border: 1px solid color-mix(in srgb, var(--bg-warm) 20%, var(--text-dark));
-  box-shadow: 0 24px 56px color-mix(in srgb, var(--text-dark) 18%, transparent), inset 0 1px 0 color-mix(in srgb, var(--bg-warm) 16%, transparent);
-  color: var(--bg-warm);
+  background: radial-gradient(ellipse at top right, var(--bg-warm), var(--bg) 85%);
+  border: 1px solid color-mix(in srgb, var(--text) 16%, var(--bg));
+  box-shadow: 0 20px 48px color-mix(in srgb, var(--text-dark) 10%, transparent), inset 0 1px 0 var(--bg-warm);
+  color: var(--text-dark);
   font-family: var(--font);
   overflow: hidden;
   scroll-margin-top: 120px;
@@ -1190,10 +1190,10 @@ body.has-marquee main { padding-top: 184px; }
 }
 .affiliate-feature .affiliate-feature-disclosure {
   padding-top: 20px;
-  border-top: 1px solid var(--text-light);
+  border-top: 1px solid var(--border);
   font-size: 13px;
   line-height: 1.6;
-  color: var(--bg);
+  color: var(--text-secondary);
 }
 .affiliate-feature-link {
   display: flex;
@@ -1201,7 +1201,7 @@ body.has-marquee main { padding-top: 184px; }
   justify-content: center;
   min-height: 48px;
   padding: 12px 20px;
-  border: 1px solid var(--bg-warm);
+  border: 1px solid color-mix(in srgb, var(--text-dark) 30%, var(--bg));
   border-radius: 999px;
   background: var(--bg-warm);
   color: var(--text-dark);
@@ -1210,8 +1210,8 @@ body.has-marquee main { padding-top: 184px; }
   line-height: 1.5;
   text-decoration: none;
 }
-.affiliate-feature-link:hover { background: var(--text-dark); color: var(--bg-warm); }
-.affiliate-feature-link:focus-visible { outline: 2px solid var(--bg-warm); outline-offset: 4px; }
+.affiliate-feature-link:hover { background: var(--accent); color: var(--text-dark); }
+.affiliate-feature-link:focus-visible { outline: 2px solid var(--text-dark); outline-offset: 4px; }
 #apex-title { scroll-margin-top: 180px; }
 
 @media (min-width: 1101px) {
