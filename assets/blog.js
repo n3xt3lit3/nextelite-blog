@@ -146,20 +146,22 @@
     toggle.setAttribute('aria-expanded', 'true');
     card.classList.add('is-playing');
     card.appendChild(close);
-    opener.click();
+    playVideo();
   });
   close.addEventListener('click', collapse);
   card.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && !details.hidden) collapse();
   });
-  opener.addEventListener('click', function () {
+  function playVideo() {
+    var startMuted = window.matchMedia('(max-width: 1100px), (pointer: coarse)').matches;
     var frame = document.createElement('iframe');
-    frame.src = 'https://www.youtube-nocookie.com/embed/gMKWIcmWru0?autoplay=1&playsinline=1&start=28';
+    frame.src = 'https://www.youtube-nocookie.com/embed/gMKWIcmWru0?autoplay=1&playsinline=1&start=28' + (startMuted ? '&mute=1' : '');
     frame.title = 'Apex Crypto livestream';
     frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     frame.allowFullscreen = true;
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     container.replaceChildren(frame);
     frame.focus();
-  });
+  }
+  opener.addEventListener('click', playVideo);
 })();
