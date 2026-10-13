@@ -1327,3 +1327,11 @@ body.has-marquee main { padding-top: 184px; }
 }
 
 .affiliate-feature .apex-video-caption { margin: 10px 0 16px; font-family: var(--font); font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--text-light); letter-spacing: .02em; }
+
+/* Tighter rhythm on phones; keep the approved tablet spacing. */
+@media (max-width: 440px) {
+  main { padding-bottom: 32px; }
+  .promo-rail { row-gap: 48px; }
+  .promo-top { gap: 8px; margin-bottom: 12px; }
+  .promo-pill { font-size: 12px; padding: 6px 10px; margin-top: 0; }
+}
