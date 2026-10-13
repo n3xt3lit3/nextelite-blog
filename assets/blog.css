@@ -1307,3 +1307,13 @@ body.has-marquee main { padding-top: 184px; }
 
 /* Related-post links share the black heading color on every page. */
 .post-nav-label, .post-nav-title, .post-nav-date { color: var(--heading-color); }
+
+/* Keep the community entry discoverable before long posts on smaller screens. */
+@media (max-width: 1279px) {
+  main { display: flex; flex-direction: column; }
+  main > .affiliate-feature { order: -1; width: 280px; max-width: 100%; margin: 0 0 24px; }
+  main > .affiliate-feature.is-playing { width: 100%; padding: 16px; }
+  main > .affiliate-feature .affiliate-feature-name { font-size: 64px; }
+  main > .affiliate-feature .affiliate-feature-category { font-size: 12px; }
+  main > .affiliate-feature.is-playing h2 { padding-right: 104px; }
+}
