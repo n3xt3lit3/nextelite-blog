@@ -146,6 +146,18 @@ PAGES = {
     "pakken-kom": read("pakken-kom.html"),
     "index": read("index.html"),
 }
+# Include every published post, not only the original migration pages.
+POSTS_DIR = os.path.join(ROOT, "content", "posts")
+for fname in sorted(os.listdir(POSTS_DIR)):
+    if not fname.endswith(".md"):
+        continue
+    post_path = os.path.join(POSTS_DIR, fname)
+    if _is_draft(post_path):
+        continue
+    with open(post_path, encoding="utf-8") as post_file:
+        slug = re.search(r"^slug: (.+)$", post_file.read(), re.M).group(1)
+    PAGES[slug] = read(f"{slug}.html")
+
 NORM_PAGES = {k: norm(v) for k, v in PAGES.items()}
 RAW_COLLAPSED = {k: re.sub(r"\s+", " ", htmllib.unescape(v)) for k, v in PAGES.items()}
 
