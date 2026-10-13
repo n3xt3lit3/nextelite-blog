@@ -1308,12 +1308,20 @@ body.has-marquee main { padding-top: 184px; }
 /* Related-post links share the black heading color on every page. */
 .post-nav-label, .post-nav-title, .post-nav-date { color: var(--heading-color); }
 
-/* Keep the community entry discoverable before long posts on smaller screens. */
-@media (max-width: 1279px) {
-  main { display: flex; flex-direction: column; }
-  main > .affiliate-feature { order: -1; width: 280px; max-width: 100%; margin: 0 0 24px; }
-  main > .affiliate-feature.is-playing { width: 100%; padding: 16px; }
-  main > .affiliate-feature .affiliate-feature-name { font-size: 64px; }
-  main > .affiliate-feature .affiliate-feature-category { font-size: 12px; }
-  main > .affiliate-feature.is-playing h2 { padding-right: 104px; }
+/* When the menu moves below the post, Apex spans both menu columns. */
+@media (max-width: 1100px) {
+  .promo-rail { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 88px; column-gap: 14px; overflow: visible; scroll-snap-type: none; }
+  .promo-rail > .affiliate-feature { grid-column: 1 / -1; position: relative; width: 100%; max-width: none; margin: 0; padding: 14px 16px; }
+  .promo-rail > .affiliate-feature.is-playing { padding: 16px; }
+  .promo-rail .affiliate-feature-name { font-size: 64px; }
+  .promo-rail .affiliate-feature-category { font-size: 12px; }
+  .promo-rail .affiliate-feature.is-playing h2 { padding-right: 104px; }
+  .promo-rail .sidebar-promo { min-width: 0; }
+}
+@media (min-width: 1101px) and (max-width: 1279px) {
+  .promo-rail > .affiliate-feature { position: fixed; left: 16px; top: 170px; width: 230px; max-height: calc(100dvh - 194px); overflow-y: auto; margin: 0; padding: 14px 12px; }
+  .promo-rail .affiliate-feature-name { font-size: 64px; }
+  .promo-rail .affiliate-feature-category { font-size: 12px; }
+  .promo-rail > .affiliate-feature.is-playing { width: 512px; padding: 16px; z-index: 60; }
+  .promo-rail .affiliate-feature.is-playing h2 { padding-right: 104px; }
 }
