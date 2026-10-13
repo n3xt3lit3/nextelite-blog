@@ -1164,6 +1164,9 @@ body.has-marquee main { padding-top: 184px; }
   scroll-margin-top: 120px;
 }
 .affiliate-feature h2 { margin: 0 0 28px; font-weight: 500; color: var(--heading-color); }
+.affiliate-feature-heading-link { display: block; color: inherit; text-decoration: none; border-radius: 4px; }
+.affiliate-feature-heading-link:hover .affiliate-feature-category { text-decoration: underline; text-underline-offset: 4px; }
+.affiliate-feature-heading-link:focus-visible { outline: 2px solid var(--text-dark); outline-offset: 4px; }
 .affiliate-feature-name {
   display: block;
   font-family: var(--display-heavy);
@@ -1219,13 +1222,13 @@ body.has-marquee main { padding-top: 184px; }
 .affiliate-feature-link:focus-visible { outline: 2px solid var(--text-dark); outline-offset: 4px; }
 #apex-title { scroll-margin-top: 180px; }
 
-/* Mirror the existing right promo rail on roomy desktop screens. */
-@media (min-width: 1101px) {
+/* Give the video the available left gutter; use the full content width below this. */
+@media (min-width: 1280px) {
   .affiliate-feature {
     position: fixed;
     left: clamp(16px, 2.5vw, 40px);
     top: clamp(170px, 22vh, 280px);
-    width: 210px;
+    width: clamp(280px, calc(50vw - 352px), 368px);
     max-height: calc(100dvh - clamp(170px, 22vh, 280px) - 24px);
     overflow-y: auto;
     margin: 0;
@@ -1233,10 +1236,10 @@ body.has-marquee main { padding-top: 184px; }
     border-radius: 16px;
     z-index: 50;
   }
-  .affiliate-feature h2 { margin: 0 0 20px; }
+  .affiliate-feature h2 { margin: 0 0 16px; }
   .affiliate-feature-name { font-size: 64px; }
   .affiliate-feature-category { font-size: 12px; letter-spacing: .04em; }
-  .affiliate-feature p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+  .affiliate-feature p { font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
   .affiliate-feature .affiliate-feature-label { font-size: 14px; padding: 8px 12px; line-height: 1.4; }
   .affiliate-feature .affiliate-feature-disclosure { font-size: 12px; padding-top: 16px; }
   .affiliate-feature-link { font-size: 13px; padding: 12px; }
@@ -1248,12 +1251,12 @@ body.has-marquee main { padding-top: 184px; }
 }
 
 /* Apex video: local cover until the visitor opens the YouTube player. */
-.apex-video { margin: 0 0 24px; }
+.apex-video { margin: 0 0 16px; }
 .apex-video-cover { display: block; position: relative; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: var(--text-dark); color: var(--bg); cursor: pointer; font: inherit; }
-.apex-video-cover img { display: block; width: 100%; height: auto; aspect-ratio: 600 / 338; object-fit: cover; }
-.apex-video-control { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 8px; background: var(--card-bg); color: var(--text-dark); }
-.apex-video-play { display: flex; flex: 0 0 48px; align-items: center; justify-content: center; height: 32px; border-radius: 8px; background: var(--youtube-red); color: var(--youtube-play-white); }
-.apex-video-label { font-size: 12px; font-weight: 600; }
+.apex-video-cover img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+.apex-video-control { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 8px 12px; border-radius: 12px; background: transparent; color: var(--youtube-play-white); white-space: nowrap; text-shadow: 0 1px 3px var(--text-dark), 0 0 4px var(--text-dark); }
+.apex-video-play { display: flex; flex: 0 0 56px; align-items: center; justify-content: center; height: 40px; border-radius: 8px; background: var(--youtube-red); color: var(--youtube-play-white); }
+.apex-video-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .apex-video-cover:hover .apex-video-play { background: color-mix(in srgb, var(--youtube-red) 88%, var(--text-dark)); }
 .apex-video-cover:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.apex-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; min-height: 200px; border: 0; border-radius: 12px; }
+.apex-video iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; }
