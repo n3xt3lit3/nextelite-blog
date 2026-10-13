@@ -7,20 +7,19 @@
 }
 
 :root {
-  --bg: #F0EDE8;
-  --bg-warm: #F5F3F0;
-  --text: #4A4A4A;
-  --text-light: #8A8A8A;
-  --text-dark: #2A2A2A;
-  /* --text-secondary: WCAG AA-compliant "whisper" tone for legal/meta lines.
-     rgba(26,26,26,0.65) blended over --bg = ~5.06:1 vs --bg cream (PASS AA).
-     Introdusert per grn//red 2026-07-18 for .affiliate-whisper som feilet AA
-     med --text-light (2.96:1). Aldri hardkodet hex; token-basert. */
-  --text-secondary: rgba(26, 26, 26, 0.65);
-  /* --accent var #C4A882 (off-canon, fl4w #6). Naa kanon-token
-     --color-warm-gray (#C5B8B0) fra assets/ds/design-tokens.css, 2026-09-02.
-     Eneste bruker: .tagline-code. Visuelt: tan -> varm graa, samme lyshet. */
-  --accent: var(--color-warm-gray);
+  --bg: #ffffff;
+  --bg-warm: #f1f0ec;
+  --card-bg: #f5f5f5;
+  --badge-bg: #67645d;
+  --badge-text: #ffffff;
+  --heading-color: #000000;
+  --text: #67645d;
+  --text-light: #67645d;
+  --text-dark: #67645d;
+  /* Readable muted text on both white pages and warm-gray cards. */
+  --text-secondary: #67645d;
+  /* Neutral interaction tone matched to the supplied Rhode screenshots. */
+  --accent: var(--text);
   /* Brand-magenta: matcher rhode-versjonens hjerte-farge (rhode/blog-rhode.css:42
      --accent) og NextElite kanon (30-IDENTITY/nextelite-base.css --brand-magenta).
      Kun for punkt-aksenter (<3-glyf, play-glyph i paused-state); ikke button-bg. */
@@ -144,7 +143,7 @@ nav {
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--text-dark);
+  color: var(--heading-color);
   text-decoration: none;
   padding: 0 40px;
   white-space: nowrap;
@@ -242,7 +241,7 @@ main {
   font-size: clamp(36px, 6vw, 56px);
   font-weight: 700;
   line-height: 1.05;
-  color: var(--text-dark);
+  color: var(--heading-color);
   letter-spacing: -0.01em;
   margin-bottom: 48px;
 }
@@ -615,7 +614,7 @@ footer {
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: var(--text-dark);
+  color: var(--heading-color);
 }
 
 /* ═══════════════════════════════════════
@@ -687,7 +686,7 @@ footer {
   display: block;
   text-decoration: none;
   color: var(--text);
-  background: var(--bg-warm);
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 16px 16px 18px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -700,6 +699,7 @@ footer {
 
 .promo-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
@@ -710,7 +710,7 @@ footer {
   font-family: var(--display-heavy);
   font-size: 26px;
   line-height: 0.92;
-  color: var(--text);
+  color: var(--heading-color);
   text-transform: lowercase;
   letter-spacing: -0.01em;
 }
@@ -718,14 +718,14 @@ footer {
 .promo-pill {
   flex: 0 0 auto;
   font-family: var(--font);
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: lowercase;
-  color: var(--bg);
-  background: var(--text-dark);
+  color: var(--badge-text);
+  background: var(--badge-bg);
   border-radius: 999px;
-  padding: 4px 10px;
+  padding: 8px 12px;
   margin-top: 5px;
   white-space: nowrap;
 }
@@ -977,7 +977,7 @@ body.has-marquee main { padding-top: 184px; }
   right: 0;
   z-index: 101; /* over nav (100) — annonsen sitter alltid øverst */
   height: 44px;
-  background: var(--bg-warm);
+  background: var(--card-bg);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
   transition: transform 0.3s ease; /* speiler nav-hide-on-scroll timing */
@@ -1146,4 +1146,101 @@ body.has-marquee main { padding-top: 184px; }
 .sign-off,
 .sign-off-heart {
   display: none !important;
+}
+
+/* Apex editorial card; scoped to the homepage affiliate feature. */
+.affiliate-feature {
+  margin-top: 48px;
+  padding: clamp(24px, 4vw, 40px);
+  border-radius: 24px;
+  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--text) 16%, var(--bg));
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--text-dark) 6%, transparent);
+  color: var(--text-dark);
+  font-family: var(--font);
+  overflow: hidden;
+  scroll-margin-top: 120px;
+}
+.affiliate-feature h2 { margin: 0 0 28px; font-weight: 500; color: var(--heading-color); }
+.affiliate-feature-name {
+  display: block;
+  font-family: var(--display-heavy);
+  font-size: clamp(72px, 9vw, 120px);
+  line-height: .9;
+  letter-spacing: -.055em;
+  text-transform: lowercase;
+}
+.affiliate-feature-category {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.affiliate-feature p { font-size: 17px; line-height: 1.65; margin-bottom: 24px; }
+.affiliate-feature .affiliate-feature-label {
+  display: inline-block;
+  margin: 0;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.affiliate-feature .affiliate-feature-disclosure {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.affiliate-feature-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.affiliate-feature-link:hover { background: var(--accent); color: var(--badge-text); }
+.affiliate-feature-link:focus-visible { outline: 2px solid var(--text-dark); outline-offset: 4px; }
+#apex-title { scroll-margin-top: 180px; }
+
+/* Mirror the existing right promo rail on roomy desktop screens. */
+@media (min-width: 1101px) {
+  .affiliate-feature {
+    position: fixed;
+    left: clamp(16px, 2.5vw, 40px);
+    top: clamp(170px, 22vh, 280px);
+    width: 210px;
+    max-height: calc(100dvh - clamp(170px, 22vh, 280px) - 24px);
+    overflow-y: auto;
+    margin: 0;
+    padding: 20px 16px;
+    border-radius: 16px;
+    z-index: 50;
+  }
+  .affiliate-feature h2 { margin: 0 0 20px; }
+  .affiliate-feature-name { font-size: 64px; }
+  .affiliate-feature-category { font-size: 12px; letter-spacing: .04em; }
+  .affiliate-feature p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+  .affiliate-feature .affiliate-feature-label { font-size: 14px; padding: 8px 12px; line-height: 1.4; }
+  .affiliate-feature .affiliate-feature-disclosure { font-size: 12px; padding-top: 16px; }
+  .affiliate-feature-link { font-size: 13px; padding: 12px; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .affiliate-feature { transition: transform 240ms ease; }
+  .affiliate-feature:hover { transform: translateY(-3px); }
+  .affiliate-feature-link { transition: background-color 180ms ease, color 180ms ease; }
 }
