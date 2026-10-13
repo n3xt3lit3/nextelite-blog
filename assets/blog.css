@@ -977,7 +977,7 @@ body.has-marquee main { padding-top: 184px; }
   right: 0;
   z-index: 101; /* over nav (100) — annonsen sitter alltid øverst */
   height: 44px;
-  background: var(--bg-warm);
+  background: var(--card-bg);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
   transition: transform 0.3s ease; /* speiler nav-hide-on-scroll timing */
@@ -1001,11 +1001,11 @@ body.has-marquee main { padding-top: 184px; }
 .marquee__item {
   flex: 0 0 auto;
   font-family: var(--font);
-  font-size: 12px;
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text);
-  font-weight: 500;
+  color: var(--heading-color);
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -1016,14 +1016,14 @@ body.has-marquee main { padding-top: 184px; }
   display: inline-block;
   padding-block: 14px;
   margin-block: -14px;
-  color: var(--text-dark);
+  color: var(--heading-color);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .marquee__link:hover,
 .marquee__link:focus-visible {
-  color: var(--text-dark);
+  color: var(--heading-color);
   border-color: var(--brand-magenta);
 }
 
