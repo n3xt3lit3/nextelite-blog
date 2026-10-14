@@ -490,7 +490,7 @@ def render_index_body(post, other):
           <p class="tagline-statement">{block_bi(b)}</p>
         </div>''')
         elif t == "section-label":
-            html.append(f'''<div class="fade-in">
+            html.append(f'''<div class="section-heading-block fade-in">
           <p class="section-label">{block_bi(b)}</p>
         </div>''')
         elif t == "pull-quote":
@@ -618,7 +618,7 @@ def render_vega_body(post, other):
         elif t in ("numbered-entry", "ordered-list"):
             html.append(render_editorial_block(b, escape_all=True))
         elif t == "section-label":
-            html.append(f'<div class="fade-in"><p class="section-label">{bi_esc(b["no"], b["en"])}</p></div>')
+            html.append(f'<div class="section-heading-block fade-in"><p class="section-label">{bi_esc(b["no"], b["en"])}</p></div>')
         elif t == "tagline-statement":
             html.append(f'<div class="fade-in"><p class="tagline-statement">{bi_esc(b["no"], b["en"])}</p></div>')
         elif t == "tagline-code":
