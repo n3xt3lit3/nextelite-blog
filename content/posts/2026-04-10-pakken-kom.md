@@ -34,8 +34,8 @@ p2_en: PS: I take twenty-eight pills a day. Someone has to pay for them. If you 
 src: img/IMG_6133-hero.jpg
 alt_no: Meg og Blue i gresset etter morgenrutinen
 alt_en: Me and Blue in the grass after the morning routine
-caption_no: chiller med hunden min etter dårlig medisin og dårlig kaffe.
-caption_en: chilling with my dog after bad medicine and bad coffee.
+caption_no: Chiller med hunden min etter dårlig medisin og dårlig kaffe.
+caption_en: Chilling with my dog after bad medicine and bad coffee.
 
 ::paragraph
 no: Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Begge deler stemmer fortsatt. To ting har endra seg. Den første pakken kom. Nå kom den store.
@@ -61,8 +61,8 @@ en: The morning is still the same. Alarm, tray, bathroom, supplements. No new de
 src: img/f1l3.sys-blog-new-6611-asset-260410-v01.jpg
 alt_no: Hele supplementhylla etter at pakken kom
 alt_en: The full supplement shelf after the package arrived
-caption_no: hylla. etter pakken.
-caption_en: the shelf. after the package.
+caption_no: Hylla. Etter pakken.
+caption_en: The shelf. After the package.
 
 ::paragraph
 no: Theanin er 200 milligram om morgenen og 200 milligram om kvelden. Neuro-Mag er to kapsler om morgenen og én om kvelden. Det er forskjellen fra forrige uke. Alt annet er det samme. Foreløpig.
@@ -173,8 +173,8 @@ en: The calendar on the laptop is also a tool. It's <a href="fotball.html">the s
 src: img/IMG_6517.jpg
 alt_no: Laptop med kalender åpen på 8. april, Nurosym vagusnervstimulator med ørepropper ved siden av
 alt_en: Laptop with calendar open on April 8, Nurosym vagus nerve stimulator with earbuds beside it
-caption_no: kalender. nurosym. earbuds. 8. april, klokka et sted mellom frokost og trening.
-caption_en: calendar. nurosym. earbuds. april 8, somewhere between breakfast and training.
+caption_no: Kalender. Nurosym. Earbuds. 8. april, klokka et sted mellom frokost og trening.
+caption_en: Calendar. Nurosym. Earbuds. April 8, somewhere between breakfast and training.
 
 ::section-label
 no: badet.
@@ -192,8 +192,8 @@ en: Next to the scale there is a grounding mat and an acupuncture mat. Both are 
 src: img/IMG_6455.jpg
 alt_no: Føtter i grønne Adidas-slippers, fotposisjon-øvelse
 alt_en: Feet in green Adidas slides, foot position drill
-caption_no: grønne slippers. fotposisjon, hver dag.
-caption_en: grounding mat. scale. slippers.
+caption_no: Grønne slippers. Fotposisjon, hver dag.
+caption_en: Grounding mat. Scale. Slippers.
 
 ::paragraph
 no: Jeg øver på å gå med rett fotposisjon. Øvelsen kommer fra en video jeg så. Det er rart å lære å gå på nytt når du er tjueåtte. Men her er vi.
@@ -211,8 +211,8 @@ en: The WHOOP app is the first thing I check. Last night's recovery. HRV. How mu
 src: img/IMG_6542.jpg
 alt_no: Speilbilde i badspeil, myk grå hoodie, morgenlys
 alt_en: Mirror reflection in a bathroom mirror, dark tank top, holding a phone
-caption_no: morgen. før alt annet.
-caption_en: morning. before anything else.
+caption_no: Morgen. Før alt annet.
+caption_en: Morning. Before anything else.
 
 ::section-label
 no: kriger.
@@ -288,8 +288,8 @@ object_position: center 25%
 audio: false
 alt_no: Speilselfie med solbriller på hodet
 alt_en: Mirror selfie with sunglasses on head
-caption_no: øvde på selfieposering. derfor ble dette en liten video.
-caption_en: was practicing selfie posing. which is why this became a little video.
+caption_no: Øvde på selfieposering. Derfor ble dette en liten video.
+caption_en: Was practicing selfie posing. Which is why this became a little video.
 
 ::paragraph
 no: Forrige uke var alt nytt. Nå er alt fortsatt nytt, bare litt mindre nytt. Det er framgang. Det er ikke resultatet. Det er prosessen. Jeg sa det forrige uke og jeg kommer til å si det igjen til jeg har noe annet å si.
