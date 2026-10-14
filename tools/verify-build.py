@@ -19,6 +19,7 @@ import html as htmllib
 import json
 import os
 import re
+import runpy
 import subprocess
 import sys
 
@@ -204,10 +205,29 @@ for fname in sorted(os.listdir(POSTS_DIR)):
         continue
     body = open(os.path.join(POSTS_DIR, fname), encoding="utf-8").read()
     slug = re.search(r"^slug: (.+)$", body, re.M).group(1)
-    strings = [m.group(2) for m in re.finditer(
-        r"^(no|en|alt_no|alt_en|caption_no|caption_en|title_no|title_en|kicker_no|kicker_en): (.+)$",
-        body, re.M)]
+    strings = []
+    for block in re.split(r"(?m)(?=^::)", body):
+        for m in re.finditer(
+                r"^(no|en|alt_no|alt_en|caption_no|caption_en|title_no|title_en|kicker_no|kicker_en): (.+)$",
+                block, re.M):
+            if block.startswith("::ordered-list\n") and m.group(1) in ("no", "en"):
+                strings.extend(json.loads(m.group(2)))
+            else:
+                strings.append(m.group(2))
     content_preserved(strings, slug, f"content/{fname}")
+    check(not re.search(r"^(?:no|en):\s*(?:\d+[.)]|[-*•])\s+", body, re.M),
+          f"{slug}: ingen manuelt nummererte listeavsnitt")
+    if "::numbered-entry" in body or "::ordered-list" in body:
+        page = PAGES[slug]
+        check(page.count('class="protocol-entry fade-in"') == body.count("::numbered-entry\n"),
+              f"{slug}: alle nummererte produktinnslag rendret")
+        check(page.count('<ol class="editorial-list">') == body.count("::ordered-list\n"),
+              f"{slug}: nummererte regler bevart som ordnede lister")
+        source_lists = re.findall(r"^::ordered-list\nno: (.+)$", body, re.M)
+        rendered_lists = re.findall(r'<ol class="editorial-list">(.*?)</ol>', page, re.S)
+        check([len(json.loads(items)) for items in source_lists] ==
+              [items.count("<li>") for items in rendered_lists],
+              f"{slug}: hvert listepunkt bevart i riktig liste")
 
 # (b3) strukturell blokk-bevaring (HIGH-001): substring-sjekken i (b1)/(b2)
 # beviser at teksten ikke er BORTE, men ikke at den rendres i riktig
@@ -236,6 +256,40 @@ for fname in sorted(os.listdir(POSTS_DIR)):
           f"{slug}: {got_fig} <figure> == {n_fig} bilde/video-blokker i kilden")
     check(got_disc == n_disc,
           f"{slug}: {got_disc} disclosure-blockquotes == {n_disc} ::disclosure-blokker")
+
+# (b4) Shared editorial renderer: language order, safe text, invalid input.
+builder = runpy.run_path(os.path.join(ROOT, "build.py"))
+render_editorial = builder["render_editorial_block"]
+sample_list = {"type": "ordered-list", "no": '["A & B", "<script>test</script>"]',
+               "en": '["C & D", "<b>text</b>"]'}
+sample_html = render_editorial(sample_list)
+check(sample_html.count("<li>") == 2 and "<script>" not in sample_html and
+      "A &amp; B" in sample_html and "&lt;b&gt;text&lt;/b&gt;" in sample_html,
+      "ordnede lister bevarer begge språk og escaper tekst")
+invalid_lists = [('["one"]', '["one", "two"]'), ('[]', '[]'),
+                 ('"text"', '"text"'), ('[1]', '[2]')]
+rejected = 0
+for no, en in invalid_lists:
+    try:
+        render_editorial({"type": "ordered-list", "no": no, "en": en})
+    except ValueError:
+        rejected += 1
+check(rejected == len(invalid_lists), "ugyldige eller ulike språklister avvises")
+sample_entry = {"type": "numbered-entry", "number": "2", "html": "true",
+                "title_no": "<b>Tittel</b>", "title_en": "<b>Title</b>",
+                "no": "<em>Tekst</em>", "en": "<em>Text</em>"}
+vega_entry = render_editorial(sample_entry, escape_all=True)
+check('>02</span>' in vega_entry and "<b>" not in vega_entry and
+      "&lt;em&gt;Text&lt;/em&gt;" in vega_entry,
+      "nummererte innslag bevarer Vegas tekst-escaping")
+for variant, renderer in (("index", "render_index_body"), ("vega", "render_vega_body")):
+    sample_post = next(builder["parse_post"](os.path.join(POSTS_DIR, name))
+                       for name in sorted(os.listdir(POSTS_DIR)) if name.endswith(".md")
+                       and builder["parse_post"](os.path.join(POSTS_DIR, name)).get("variant", "index") == variant)
+    sample_post["_blocks"] = [sample_list, sample_entry]
+    rendered = builder[renderer](sample_post, sample_post)
+    check('<ol class="editorial-list">' in rendered and 'class="protocol-entry fade-in"' in rendered,
+          f"{variant}: begge listetyper støttes i post-rendereren")
 
 # ── (c) canonical / og:url / JSON-LD ───────────
 

@@ -81,9 +81,9 @@ en: the package arrived.
 no: Klokka tolv i dag sto det en pappeske på gulvet. Jeg åpnet den. Åtte bokser Thorne og én stor boks Collagen Fit. 1800 kroner med kapsler som har vært underveis i fem måneder i hodet mitt og noen dager på en bil.
 en: Noon today there was a cardboard box on the floor. I opened it. Eight Thorne tubs and one big tub of Collagen Fit. 1800 kroner of capsules that had been in transit for five months in my head and a few days on a van.
 
-::paragraph
-no: Basic Nutrients 2/Day. Super EPA. Magnesium Glycinate. Rhodiola. Vitamin C 500mg med flavonoider. Og Collagen Fit i den store lilla boksen som veier mer enn alt det andre til sammen.
-en: Basic Nutrients 2/Day. Super EPA. Magnesium Glycinate. Rhodiola. Vitamin C 500mg with flavonoids. And Collagen Fit in the big purple tub that weighs more than everything else combined.
+::ordered-list
+no: ["Basic Nutrients 2/Day.", "Super EPA.", "Magnesium Glycinate.", "Rhodiola.", "Vitamin C 500mg med flavonoider.", "Og Collagen Fit i den store lilla boksen som veier mer enn alt det andre til sammen."]
+en: ["Basic Nutrients 2/Day.", "Super EPA.", "Magnesium Glycinate.", "Rhodiola.", "Vitamin C 500mg with flavonoids.", "And Collagen Fit in the big purple tub that weighs more than everything else combined."]
 
 ::image
 src: img/f1l3.sys-supplement-new-6601-asset-260410-v01.jpg
