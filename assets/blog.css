@@ -998,7 +998,7 @@ body.v-vega {
   position: relative;
 }
 
-.v-vega .post-footer {
+.v-vega .article-body .post-footer {
   margin-top: 48px;
   font-family: var(--font);
   font-size: 12px;
