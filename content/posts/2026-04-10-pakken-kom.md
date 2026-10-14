@@ -42,12 +42,12 @@ no: Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Begge del
 en: Last week I said the tray worked and the stack wasn't finished. Both still true. Two things have changed. The first order arrived. Now the big one arrived.
 
 ::tagline-statement
-no: research er arbeid. kroppen er prosjektet.
-en: research is work. the body is the project.
+no: Research er arbeid. kroppen er prosjektet.
+en: Research is work. the body is the project.
 
 ::section-label
-no: brettet.
-en: the tray.
+no: Brettet.
+en: The tray.
 
 ::paragraph
 no: Tirsdag og onsdag denne uka la jeg to nye bokser ned på brettet. L-Theanin fra Thorne. Neuro-Mag fra Life Extension. Det er ikke mye. To bokser og en kvittering fra iHerb. Men det er det første som faktisk kom fram. I dag kom resten.
@@ -74,8 +74,8 @@ no: De to flaskene i boksen: <a href="https://no.iherb.com/tr/cb?pcodes=THR-5080
 en: The two bottles in that box: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine and Neuro-Mag</a> (annonselenke). Same deal.
 
 ::section-label
-no: pakken kom.
-en: the package arrived.
+no: Pakken kom.
+en: The package arrived.
 
 ::paragraph
 no: Klokka tolv i dag sto det en pappeske på gulvet. Jeg åpnet den. Åtte bokser Thorne og én stor boks Collagen Fit. 1800 kroner med kapsler som har vært underveis i fem måneder i hodet mitt og noen dager på en bil.
@@ -117,8 +117,8 @@ no: Hele bestillingen er seks Thorne-produkter. Basic Nutrients, Super EPA, Magn
 en: The whole order is six Thorne products. Basic Nutrients, Super EPA, Magnesium Glycinate, Vitamin C, Rhodiola, Collagen Fit. Exactly what was in the box when I opened it today. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">The full cart is here</a> (annonselenke). Code NHR7699 is already applied. You save ten percent. I get paid for reading Bryan Johnson's protocol on a Friday night. Fair deal.
 
 ::section-label
-no: fortsatt ingen data.
-en: still no data.
+no: Fortsatt ingen data.
+en: Still no data.
 
 ::paragraph
 no: Blodprøvene er fortsatt ikke tatt. Det er det ærlige i dette. Jeg skrev det forrige uke og jeg skriver det igjen. Hele stacken er basert på lesing, ikke på biomarkører. Jeg vet ikke om D-vitaminet mitt er lavt. Jeg vet ikke hva ferritinet er. Jeg vet ikke om skjoldbruskkjertelen tåler ashwagandha. Derfor ligger ashwagandha på vent. Det blir der til noen stikker en nål i armen min og sender meg en pdf.
@@ -133,8 +133,8 @@ no: Dette er ikke ferdig. Det blir kanskje aldri helt ferdig. Men det er ikke le
 en: This isn't finished. Maybe it never will be. But it isn't nothing anymore.
 
 ::section-label
-no: hva som endra seg.
-en: what changed.
+no: Hva som endra seg.
+en: What changed.
 
 ::paragraph
 no: Sengetid er klokka ni nå. Den var halv ti. Tretti minutter høres ikke mye ut. WHOOP sier søvnkonsistensen min ligger rundt 78 prosent den siste uka. Jeg trodde den var lavere. Kroppen lyver ikke, men hjernen min gjør det av og til.
@@ -145,8 +145,8 @@ no: WHOOP-en sier sakte det samme som speilet sier. Kroppen svarer på det jeg g
 en: The WHOOP is saying slowly what the mirror says. The body is responding. Not fast. Not dramatic. Slow. My resting heart rate has settled between 49 and 57. HRV swings from 99 to 157. Monday I hit 96 percent recovery. Wednesday I was at 39, after six hours in a car to Harstad and back. Driving is a harder workout than boxing. The body knows the difference between stress and strain. I don't always. I don't live in a kind climate for this. I'm at 68 degrees north. The sun is a seasonal worker here. Half the year, vitamin D is how you remember you're a mammal.
 
 ::section-label
-no: taurin.
-en: taurine.
+no: Taurin.
+en: Taurine.
 
 ::paragraph
 no: I dag la jeg taurin på brettet. Pulver. Ett gram. Det er ikke et stort valg. Det er en skje til i det varme vannet. Den tar et halvt sekund og kroppen merker det ikke før uke tre.
@@ -157,8 +157,8 @@ no: Det er sånn protokoller faktisk bygges. Ikke med en stor annonsering. Med e
 en: This is how protocols actually get built. Not with a big announcement. With one more scoop in a glass you're already drinking.
 
 ::section-label
-no: verktøy.
-en: tools.
+no: Verktøy.
+en: Tools.
 
 ::paragraph
 no: Supplementer er én ting. Verktøy er noe annet. Jeg har en Nurosym på skrivebordet. Den stimulerer vagusnerven gjennom øret og den står alltid til venstre for laptopen når jeg koder. Jeg bruker den fordi Bryan Johnson bruker den, og fordi en rolig vagusnerve er en rolig PTSD for meg.
@@ -177,8 +177,8 @@ caption_no: Kalender. Nurosym. Earbuds. 8. april, klokka et sted mellom frokost 
 caption_en: Calendar. Nurosym. Earbuds. April 8, somewhere between breakfast and training.
 
 ::section-label
-no: badet.
-en: the bathroom.
+no: Badet.
+en: The bathroom.
 
 ::paragraph
 no: Badet er der jeg starter dagen. Jeg står på vekta først. Withings-vekta. Samme vekt hver morgen, samme tidspunkt, samme belysning. Tallet er ikke alltid det jeg vil ha, men det er ærlig.
@@ -215,8 +215,8 @@ caption_no: Morgen. Før alt annet.
 caption_en: Morning. Before anything else.
 
 ::section-label
-no: kriger.
-en: kriger.
+no: Kriger.
+en: Kriger.
 
 ::paragraph
 no: Hun er fortsatt i recovery. Onsdag var vi på AniCura Harstad. Jeg kjørte Myre, ferje Flesnes-Refsnes, opp til klinikken, tilbake igjen. Seks timer fram og tilbake for kontrollen som tok gipsen av. Hun sov hele veien hjem.
@@ -257,8 +257,8 @@ caption_no: Beskytter over bandasjen. Holder vann og fukt ute.
 caption_en: Cover over the bandage. Keeps water and moisture out.
 
 ::section-label
-no: whoop.
-en: whoop.
+no: Whoop.
+en: Whoop.
 
 ::paragraph
 no: Jeg bruker WHOOP hver dag. Jeg har gjort det i seks måneder. Det er det eneste verktøyet jeg stoler på fra start til slutt. Det sier meg ting jeg ikke vil vite og det sier meg ting jeg trengte å høre. Det registrerer feilene og seirene. Det lyver ikke.
@@ -270,8 +270,8 @@ no: Hvis du vurderer å begynne, så gjør det. Det er det jeg bruker. <a href="
 en: Thinking about starting? Do it. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">A free month for you</a> (annonselenke). A kickback for me. I need an excuse to stare at HRV numbers when I should be sleeping. Thanks in advance.
 
 ::section-label
-no: veien videre.
-en: the road ahead.
+no: Veien videre.
+en: The road ahead.
 
 ::paragraph
 no: Neste uke er det samme som forrige uke. Bygg stacken. Snakk med legen. Bygg brettet. Bokse. Mate Kriger klokka ti. Sove klokka ni.
