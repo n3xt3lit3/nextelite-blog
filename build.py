@@ -345,7 +345,7 @@ def render_editorial_block(b, escape_all=False):
         if number < 1:
             raise ValueError("numbered-entry requires a positive number")
         return f'''<section class="protocol-entry fade-in">
-          <h2 class="protocol-entry-heading"><span class="protocol-entry-number">{number:02d}</span><span>{bilingual("title_no", "title_en")}</span></h2>
+          <h3 class="protocol-entry-heading"><span class="protocol-entry-number">{number:02d}</span><span>{bilingual("title_no", "title_en")}</span></h3>
           <p>{bilingual()}</p>
         </section>'''
     if b["type"] == "ordered-list":
@@ -491,7 +491,7 @@ def render_index_body(post, other):
         </div>''')
         elif t == "section-label":
             html.append(f'''<div class="section-heading-block fade-in">
-          <p class="section-label">{block_bi(b)}</p>
+          <h2 class="section-label">{block_bi(b)}</h2>
         </div>''')
         elif t == "pull-quote":
             html.append(f'''<div class="fade-in">
@@ -564,7 +564,7 @@ def render_index_body(post, other):
             has_label = b.get("label_no") is not None or b.get("label_en") is not None
             label_html = ""
             if has_label:
-                label_html = f'<p class="section-label">{block_bi(b, "label_no", "label_en")}</p>\n  '
+                label_html = f'<h2 class="section-label">{block_bi(b, "label_no", "label_en")}</h2>\n  '
             href = attr(b["href"])
             img_src = attr(b["image"])
             img_alt = bi_attr("alt", b.get("image_alt_no", ""), b.get("image_alt_en", "")) if b.get("image_alt_no") else ' alt=""'
@@ -618,7 +618,7 @@ def render_vega_body(post, other):
         elif t in ("numbered-entry", "ordered-list"):
             html.append(render_editorial_block(b, escape_all=True))
         elif t == "section-label":
-            html.append(f'<div class="section-heading-block fade-in"><p class="section-label">{bi_esc(b["no"], b["en"])}</p></div>')
+            html.append(f'<div class="section-heading-block fade-in"><h2 class="section-label">{bi_esc(b["no"], b["en"])}</h2></div>')
         elif t == "tagline-statement":
             html.append(f'<div class="fade-in"><p class="tagline-statement">{bi_esc(b["no"], b["en"])}</p></div>')
         elif t == "tagline-code":
@@ -749,11 +749,11 @@ def build_post_page(post, other, tpl, latest):
     variant = post.get("variant", "index")
     if variant == "vega":
         content = render_vega_body(post, other)
-        body_class = ' class="v-vega has-marquee"'
+        body_class = ' class="v-vega has-marquee editorial-layout"'
         nav = nav_html("vega", "post")
     else:
         content = render_index_body(post, other)
-        body_class = ' class="has-marquee"'
+        body_class = ' class="has-marquee editorial-layout"'
         nav = nav_html("index", "post")
 
     out = tpl
