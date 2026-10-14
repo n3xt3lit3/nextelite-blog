@@ -331,6 +331,34 @@ def post_nav_html(other, root=""):
   </div>'''
 
 
+def render_editorial_block(b, escape_all=False):
+    """Numbered entries use number/title_no/title_en/no/en.
+
+    ordered-list no/en values are matching JSON arrays of plain-text items.
+    Both renderers share this markup; Vega keeps its text-only contract.
+    """
+    def bilingual(no_key="no", en_key="en"):
+        return bi_text(b[no_key], b[en_key]) if escape_all else block_bi(b, no_key, en_key)
+
+    if b["type"] == "numbered-entry":
+        number = int(b["number"])
+        if number < 1:
+            raise ValueError("numbered-entry requires a positive number")
+        return f'''<section class="protocol-entry fade-in">
+          <h2 class="protocol-entry-heading"><span class="protocol-entry-number">{number:02d}</span><span>{bilingual("title_no", "title_en")}</span></h2>
+          <p>{bilingual()}</p>
+        </section>'''
+    if b["type"] == "ordered-list":
+        items_no, items_en = json.loads(b["no"]), json.loads(b["en"])
+        if (not isinstance(items_no, list) or not isinstance(items_en, list)
+                or not items_no or len(items_no) != len(items_en)
+                or not all(isinstance(item, str) for item in items_no + items_en)):
+            raise ValueError("ordered-list requires matching nonempty arrays of strings")
+        items = "".join(f'<li>{bi_text(no, en)}</li>' for no, en in zip(items_no, items_en))
+        return f'<div class="fade-in"><ol class="editorial-list">{items}</ol></div>'
+    raise ValueError(f"unsupported editorial block: {b['type']}")
+
+
 def render_index_body(post, other):
     """Artikkelkropp, index-varianten (renderBlog 1:1, statisk tospråklig)."""
     m = post
@@ -451,6 +479,8 @@ def render_index_body(post, other):
                 html.append(f'''<div class="fade-in">
           <p class="l-en">{content}</p>
         </div>''')
+        elif t in ("numbered-entry", "ordered-list"):
+            html.append(render_editorial_block(b))
         elif t == "tagline-code":
             html.append(f'''<div class="fade-in">
           <p class="tagline tagline-code">{block_bi(b)}</p>
@@ -585,6 +615,8 @@ def render_vega_body(post, other):
         t = b["type"]
         if t == "paragraph":
             html.append(f'<div class="fade-in"><p>{bi_esc(b["no"], b["en"])}</p></div>')
+        elif t in ("numbered-entry", "ordered-list"):
+            html.append(render_editorial_block(b, escape_all=True))
         elif t == "section-label":
             html.append(f'<div class="fade-in"><p class="section-label">{bi_esc(b["no"], b["en"])}</p></div>')
         elif t == "tagline-statement":

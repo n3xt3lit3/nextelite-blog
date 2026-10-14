@@ -296,6 +296,50 @@ main {
   margin-top: 16px;
 }
 
+/* Editorial numbering for long entries and short, ordered rules. */
+.article-body .protocol-entry-heading {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 16px;
+  margin: 0 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--heading-color);
+  font-family: var(--font);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -.02em;
+}
+.protocol-entry-number {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .08em;
+}
+.article-body .editorial-list {
+  list-style: decimal-leading-zero;
+  margin: 24px 0;
+  padding-left: 32px;
+}
+.editorial-list li {
+  padding: 16px 0 16px 16px;
+  border-top: 1px solid var(--border);
+  line-height: 1.75;
+}
+.editorial-list li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.editorial-list li::marker {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  content: counter(list-item, decimal-leading-zero) "  ";
+}
+
 .article-body .section-break {
   margin-top: 64px;
   margin-bottom: 32px;
