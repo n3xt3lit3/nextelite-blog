@@ -314,6 +314,31 @@ except ValueError:
     invalid_dimensions_rejected = True
 check(invalid_dimensions_rejected, "ugyldige mediedimensjoner avvises")
 
+# Reject unrecognised frame names instead of silently changing the composition.
+try:
+    builder["desktop_frame_class"]('unknown-frame" onload="bad')
+    unknown_frame_rejected = False
+except ValueError:
+    unknown_frame_rejected = True
+check(unknown_frame_rejected, "ukjente mediarammer avvises før HTML genereres")
+for filename in sorted(os.listdir(POSTS_DIR)):
+    if not filename.endswith(".md") or _is_draft(os.path.join(POSTS_DIR, filename)):
+        continue
+    post = builder["parse_post"](os.path.join(POSTS_DIR, filename))
+    frames = []
+    if post.get("header_image"):
+        frames.append(post.get("header_frame"))
+    for block in post["_blocks"]:
+        if block["type"] in ("image", "video"):
+            frames.append(block.get("desktop_frame"))
+        elif block["type"] == "image-pair":
+            n = 1
+            while block.get(f"src_{n}"):
+                frames.append(block.get(f"desktop_frame_{n}"))
+                n += 1
+    check(all(frame in builder["DESKTOP_MEDIA_FRAMES"] for frame in frames),
+          f"{post['slug']}: hvert artikkelmedium har eksplisitt redaksjonell ramme")
+
 # ── (c) canonical / og:url / JSON-LD ───────────
 
 print("(c) canonical / og:url / JSON-LD per side")

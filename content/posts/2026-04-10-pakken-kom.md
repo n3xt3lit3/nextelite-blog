@@ -36,6 +36,7 @@ alt_no: Meg og Blue i gresset etter morgenrutinen
 alt_en: Me and Blue in the grass after the morning routine
 caption_no: Chiller med hunden min etter dårlig medisin og dårlig kaffe.
 caption_en: Chilling with my dog after bad medicine and bad coffee.
+desktop_frame: natural
 
 ::paragraph
 no: Forrige uke sa jeg at brettet funka og at stacken ikke var ferdig. Begge deler stemmer fortsatt. To ting har endra seg. Den første pakken kom. Nå kom den store.
@@ -63,6 +64,7 @@ alt_no: Hele supplementhylla etter at pakken kom
 alt_en: The full supplement shelf after the package arrived
 caption_no: Hylla. Etter pakken.
 caption_en: The shelf. After the package.
+desktop_frame: portrait
 
 ::paragraph
 no: Theanin er 200 milligram om morgenen og 200 milligram om kvelden. Neuro-Mag er to kapsler om morgenen og én om kvelden. Det er forskjellen fra forrige uke. Alt annet er det samme. Foreløpig.
@@ -91,6 +93,7 @@ alt_no: Open eske med Thorne-bokser og Collagen Fit
 alt_en: Open box with Thorne bottles and Collagen Fit
 caption_no: Åtte bokser og en boks Collagen Fit. Klokka tolv.
 caption_en: Eight tubs and one big tub of Collagen Fit. Noon.
+desktop_frame: portrait
 
 ::paragraph
 no: Jeg plukka opp Vitamin C-boksen først. Ikke fordi den er viktigst. Fordi fargen på etiketten er blå og de andre er mer dempa og jeg ville se om noe av det faktisk stemte overens med bildet i hodet mitt. Det gjorde det. Det er bare en boks. En helt vanlig boks med kapsler. Ingenting magisk. Bare noe som faktisk er her nå.
@@ -102,6 +105,7 @@ alt_no: Thorne Vitamin C 500mg with Flavonoids, nærbilde
 alt_en: Thorne Vitamin C 500mg with Flavonoids, close-up
 caption_no: Vitamin C. Den første jeg plukka opp.
 caption_en: Vitamin C. The first one I picked up.
+desktop_frame: portrait
 
 ::paragraph
 no: Jeg hadde tenkt at det skulle føles som noe. Et lite punkt. En liten seier. Det føltes ikke som det. Det føltes som å komme hjem med en handlepose. Du har ikke løst noe. Du har bare flytta det fra bestillingsbekreftelsen til kjøkkenet. Jobben starter i morgen, på brettet, med ett mer glass og tre nye bokser på plass.
@@ -175,6 +179,7 @@ alt_no: Laptop med kalender åpen på 8. april, Nurosym vagusnervstimulator med 
 alt_en: Laptop with calendar open on April 8, Nurosym vagus nerve stimulator with earbuds beside it
 caption_no: Kalender. Nurosym. Earbuds. 8. april, klokka et sted mellom frokost og trening.
 caption_en: Calendar. Nurosym. Earbuds. April 8, somewhere between breakfast and training.
+desktop_frame: portrait
 
 ::section-label
 no: Badet.
@@ -194,6 +199,7 @@ alt_no: Føtter i grønne Adidas-slippers, fotposisjon-øvelse
 alt_en: Feet in green Adidas slides, foot position drill
 caption_no: Grønne slippers. Fotposisjon, hver dag.
 caption_en: Grounding mat. Scale. Slippers.
+desktop_frame: portrait
 
 ::paragraph
 no: Jeg øver på å gå med rett fotposisjon. Øvelsen kommer fra en video jeg så. Det er rart å lære å gå på nytt når du er tjueåtte. Men her er vi.
@@ -213,6 +219,7 @@ alt_no: Speilbilde i badspeil, myk grå hoodie, morgenlys
 alt_en: Mirror reflection in a bathroom mirror, dark tank top, holding a phone
 caption_no: Morgen. Før alt annet.
 caption_en: Morning. Before anything else.
+desktop_frame: portrait
 
 ::section-label
 no: Kriger.
@@ -248,6 +255,7 @@ alt_no: Kriger ligger i senga si med rosa sokk over bandasjen på venstre bakfot
 alt_en: Kriger lying in her bed with a pink sock over the bandage on her left hind foot
 caption_no: Kriger i påska. Rosa gips, kanin og god påske.
 caption_en: Kriger at Easter. Pink cast, rabbit, god påske.
+desktop_frame: portrait
 
 ::image
 src: img/IMG_6240.jpg
@@ -255,6 +263,7 @@ alt_no: Kriger med beskytter over bandasjen mot vann og fukt
 alt_en: Kriger with a protective cover over the bandage to keep water and moisture out
 caption_no: Beskytter over bandasjen. Holder vann og fukt ute.
 caption_en: Cover over the bandage. Keeps water and moisture out.
+desktop_frame: portrait
 
 ::section-label
 no: Whoop.
@@ -290,6 +299,7 @@ alt_no: Speilselfie med solbriller på hodet
 alt_en: Mirror selfie with sunglasses on head
 caption_no: Øvde på selfieposering. Derfor ble dette en liten video.
 caption_en: Was practicing selfie posing. Which is why this became a little video.
+desktop_frame: portrait
 
 ::paragraph
 no: Forrige uke var alt nytt. Nå er alt fortsatt nytt, bare litt mindre nytt. Det er framgang. Det er ikke resultatet. Det er prosessen. Jeg sa det forrige uke og jeg kommer til å si det igjen til jeg har noe annet å si.

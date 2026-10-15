@@ -18,6 +18,7 @@ footer_label: april 2026
 variant: vega
 escape_html: true
 header_image: img/boxing-bodo-ring-purple.jpg
+header_frame: hero
 header_image_alt_no: Tom ring i Bodø Spektrum. Lilla lys.
 header_image_alt_en: Empty ring at Bodø Spektrum. Purple lights.
 header_image_caption_no: Min neste arbeidsplass.
@@ -38,6 +39,7 @@ alt_no: Speilbilde på hotellrom. Topten-hjelm, kvelden før kamp.
 alt_en: Mirror shot in a hotel room. Topten headgear, night before the fight.
 caption_no: Natta før. Hjelm på. Game face on.
 caption_en: Night before. Headgear fit. Head was a different project.
+desktop_frame: portrait
 
 ::section-label
 no: Forberedelser.
@@ -61,6 +63,7 @@ alt_no: Nasjonal startbok fra Norges Bokseforbund.
 alt_en: National start book from Norges Bokseforbund.
 caption_no: Hadsel Bokseklubb. Norway. Det holder.
 caption_en: Hadsel Bokseklubb. Norway. That's enough.
+desktop_frame: portrait
 
 ::paragraph
 no: Hver norsk amatørbokser har en startbok. Et lite hefte der kampene føres inn for hånd. Min sier: Nemine Elise Steffensen. Hadsel Bokseklubb. Norway. Og <333.
@@ -80,6 +83,7 @@ alt_no: Ing-Martin og Nemine i bilen.
 alt_en: Ing-Martin and Nemine in the car.
 caption_no: Ing-Martin. Bestevenn. Ikke i Bodø, men alltid i teamet.
 caption_en: Ing-Martin. Best friend. Not in Bodø, but always on the team.
+desktop_frame: portrait
 
 ::paragraph
 no: Mamma og pappa hadde hundene mine med, Kriger og Blue. Jeg fikk herje med dem før kampen. To schæfere som ikke forstår boksing. Det var akkurat det jeg trengte.
@@ -91,6 +95,7 @@ alt_no: Nemine pakket inn i dasspapir av treningspartnere.
 alt_en: Nemine wrapped in toilet paper by training partners.
 caption_no: Bevis på at jeg er verdens beste lagspiller.
 caption_en: Proof that I'm the world's best team player.
+desktop_frame: portrait
 
 ::section-label
 no: Natta før.
@@ -106,6 +111,7 @@ alt_no: Gearbag og boksesko på hotellrommet.
 alt_en: Gear bag and boxing shoes in the hotel room.
 caption_no: Det eneste som sov den natta var hundene.
 caption_en: The only thing that slept that night was the dogs.
+desktop_frame: portrait
 
 ::paragraph
 no: Jeg lå i senga og stirret i taket med et hode fullt av Tommy og Tigern-striper og boksekamper som ikke fantes ennå. Tre netter med dårlig søvn allerede. En hjerne som nektet å skru seg av.
@@ -125,6 +131,7 @@ alt_no: Tommy og Tigern-bøker ved siden av senga.
 alt_en: Calvin and Hobbes books next to the bed.
 caption_no: Tommy som ikke forstår at han ikke skal kaste vannballonger.
 caption_en: Tommy who doesn't understand he's not supposed to throw water balloons.
+desktop_frame: portrait
 
 ::paragraph
 no: Hotellmaten var jævlig god. Jeg valgte sunt, men fikk virkelig kjenne på hvor vanskelig det er å følge NextElite-protokollen på reise. Alt i miljøet endrer seg. Rutinene mine er bygd for hjemme. For brettet mitt, supplementene mine, kjøleskapet mitt. Et hotellrom i Bodø er ikke det. Jeg gjorde mitt beste.
@@ -151,6 +158,7 @@ src: img/boxing-mascara-prep-3s.mp4
 poster: img/boxing-mascara-thumb.jpg
 caption_no: Boksere bruker også mascara. Prioriteringer.
 caption_en: Boxers wear mascara too. Priorities.
+desktop_frame: tall
 
 ::paragraph
 no: Jeg hadde aldri stått i en ekte ring før. Hadde sparret. Gått miles med pads. Sett kamper live. Ingenting av det er en ring. Alt du har øvd forsvinner i det noen treffer tilbake.
@@ -174,6 +182,7 @@ alt_no: Ungraded Charizard-kort foran et bokseshow-bakteppe.
 alt_en: Ungraded Charizard card against a boxing show backdrop.
 caption_no: Jeg som prøver å være Logan Paul. Ungraded charizard, ikke original.
 caption_en: Me trying to be Logan Paul. Ungraded charizard, not first edition.
+desktop_frame: portrait
 
 ::section-label
 no: Etterpå.
@@ -193,6 +202,7 @@ alt_no: Plaster over venstre øyebryn. Dagen etter kampen.
 alt_en: Plaster over the left eyebrow. Day after the fight.
 caption_no: Plasteret er fra ei bildør. Ikke fra kampen.
 caption_en: This plaster is from a car door. Not from the fight.
+desktop_frame: portrait
 
 ::paragraph
 no: Jeg tapte kampen. Jeg vant tilbake selvrespekten. Hvor rått er det ikke å gå fra hjerneskade til boksekamp.
