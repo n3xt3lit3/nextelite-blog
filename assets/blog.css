@@ -1597,3 +1597,56 @@ body:where(.editorial-layout).has-marquee main { width: 100%; }
 @media (max-width: 375px) {
 :where(body.editorial-layout) .promo-rail { font-size: 16px; line-height: 1.75; }
 }
+
+/* Selected 15 October: compact Apex entry below the article, expanding inline. */
+body.editorial-layout .apex-bottom-section { width: calc(100% - 48px); max-width: 640px; margin: 0 auto 48px; scroll-margin-top: 160px; }
+body.editorial-layout .apex-bottom-section > .affiliate-feature,
+body.editorial-layout .apex-bottom-section > .affiliate-feature:not(.is-playing),
+body.editorial-layout .apex-bottom-section > .affiliate-feature.is-playing {
+  position: relative; inset: auto; width: 280px; max-width: 100%; max-height: none;
+  margin: 0; padding: 20px 24px; border: 0; border-radius: 24px;
+  overflow: visible; background: var(--card-bg); box-shadow: none;
+  transform: none; z-index: auto; box-sizing: border-box;
+}
+body.editorial-layout .apex-bottom-section > .affiliate-feature.is-playing { width: 100%; padding: 24px; }
+body.editorial-layout .apex-bottom-section .affiliate-feature-name { font-size: 64px; }
+body.editorial-layout .apex-bottom-section .affiliate-feature-category { margin-top: 12px; font-size: 12px; line-height: 1.4; }
+body.editorial-layout .apex-bottom-section h2 { margin: 0; }
+body.editorial-layout .apex-bottom-section .is-playing h2 { padding-right: 104px; }
+body.editorial-layout .apex-bottom-section .apex-expand { min-height: 88px; padding: 0 32px 0 0; }
+body.editorial-layout .apex-bottom-section .apex-expand-arrow { right: 0; top: 4px; font-size: 28px; }
+body.editorial-layout .apex-bottom-section .is-playing .apex-expand-arrow { display: none; }
+body.editorial-layout .apex-bottom-section #apex-details { margin-top: 24px; }
+body.editorial-layout .apex-bottom-section .apex-video { margin: 0; }
+body.editorial-layout .apex-bottom-section .apex-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 12px; }
+body.editorial-layout .apex-bottom-section .apex-video-caption { margin: 12px 0 20px; max-width: 600px; font-size: 12px; line-height: 1.7; font-weight: 300; }
+body.editorial-layout .apex-bottom-section .affiliate-feature-link { width: fit-content; max-width: 100%; min-height: 48px; padding: 12px 20px; font-size: 13px; }
+body.editorial-layout .apex-bottom-section .apex-video-close { position: absolute; top: 24px; right: 16px; margin: 0; min-height: 44px; padding: 8px 12px; font-size: 12px; }
+body.editorial-layout .promo-rail { position: static; inset: auto; display: grid; grid-template-columns: repeat(2,minmax(0,220px)); width: calc(100% - 48px); max-width: 640px; justify-content: start; gap: 16px; padding: 0; margin: 0 auto 48px; transform: none; z-index: auto; }
+body.editorial-layout .promo-rail .sidebar-promo { width: auto; min-width: 0; }
+@media (max-width: 600px) {
+  body.editorial-layout .apex-bottom-section, body.editorial-layout .promo-rail { width: calc(100% - 40px); }
+  body.editorial-layout .apex-bottom-section > .affiliate-feature.is-playing { padding: 16px; }
+  body.editorial-layout .apex-bottom-section .is-playing h2 { padding-right: 86px; }
+  body.editorial-layout .apex-bottom-section .affiliate-feature-name { font-size: 52px; }
+  body.editorial-layout .apex-bottom-section .apex-expand { padding-right: 0; }
+  body.editorial-layout .apex-bottom-section .apex-video-close { top: 16px; right: 4px; }
+  body.editorial-layout .promo-rail { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+/* Retain the approved phone card width and type while moving the desktop card. */
+@media (max-width: 519px) {
+  body.editorial-layout .apex-bottom-section { width: calc(100% - 2 * var(--side)); margin-bottom: 88px; }
+  body.editorial-layout .apex-bottom-section > .affiliate-feature,
+  body.editorial-layout .apex-bottom-section > .affiliate-feature:not(.is-playing) { width: 100%; padding: 14px 16px; }
+  body.editorial-layout .apex-bottom-section .affiliate-feature-name { font-size: 64px; }
+  body.editorial-layout .apex-bottom-section .apex-expand { padding-right: 40px; }
+  body.editorial-layout .apex-bottom-section .is-playing h2 { padding-right: 104px; }
+  body.editorial-layout .apex-bottom-section .is-playing .apex-expand { padding-right: 0; }
+  body.editorial-layout .promo-rail { width: auto; margin: 0; padding: 0 var(--side) 56px; column-gap: 14px; }
+}
+@media (max-width: 440px) { body.editorial-layout .apex-bottom-section { margin-bottom: 48px; } }
+@media (prefers-reduced-motion: no-preference) {
+  body.editorial-layout .apex-bottom-section > .affiliate-feature { transition: width 400ms cubic-bezier(.22,1,.36,1), padding 400ms cubic-bezier(.22,1,.36,1); }
+  body.editorial-layout .apex-bottom-section .is-playing #apex-details { animation: apex-inline-reveal 350ms ease both; }
+  @keyframes apex-inline-reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}

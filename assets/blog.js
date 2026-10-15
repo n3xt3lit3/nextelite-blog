@@ -161,7 +161,7 @@
     frame.allowFullscreen = true;
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     container.replaceChildren(frame);
-    frame.focus();
+    close.focus({ preventScroll: true });
   }
   opener.addEventListener('click', playVideo);
 })();
