@@ -331,6 +331,18 @@ def post_nav_html(other, root=""):
   </div>'''
 
 
+DESKTOP_MEDIA_FRAMES = {"natural", "portrait", "hero", "tall", "ponytail", "vest"}
+
+
+def desktop_frame_class(value):
+    """Named editorial frames carry the approved phone composition to desktop."""
+    if not value:
+        return ""
+    if value not in DESKTOP_MEDIA_FRAMES:
+        raise ValueError(f"unknown desktop media frame: {value!r}")
+    return "media-frame--" + value
+
+
 def media_dimensions(block):
     """Optional intrinsic dimensions reserve a proportional box before lazy load."""
     if not (block.get("width") and block.get("height")):
@@ -534,7 +546,7 @@ def render_index_body(post, other):
           <p class="pull-quote">{block_bi(b)}</p>
         </div>''')
         elif t == "image":
-            style = op_class(b.get("object_position"))
+            style = op_class(b.get("object_position"), desktop_frame_class(b.get("desktop_frame")))
             # hero: true -> ubeskaaret hoyde (post 4 parkert-havna CEO 260718).
             # Legger til .article-image--hero-full som overrider max-height 50vh.
             hero_cls = " article-image--hero-full" if str(b.get("hero", "")).lower() == "true" else ""
@@ -548,7 +560,7 @@ def render_index_body(post, other):
         elif t == "video":
             poster = f' poster="{attr(b["poster"])}"' if b.get("poster") else ""
             muted = " muted" if b.get("audio") == "false" else ""
-            style = op_class(b.get("object_position"))
+            style = op_class(b.get("object_position"), desktop_frame_class(b.get("desktop_frame")))
             aria = bi_attr("aria-label", b.get("alt_no", ""), b.get("alt_en", "")) if b.get("alt_no") else ' aria-label=""'
             # preload: default "metadata" (post 3 mirror-selfie backward compat);
             # optional block-level override for research-spec compliance (post 4:
@@ -581,7 +593,7 @@ def render_index_body(post, other):
             fig = '<figure class="image-pair fade-in">'
             n = 1
             while b.get(f"src_{n}"):
-                fig += f'<img src="{attr(b[f"src_{n}"])}"{bi_attr("alt", b[f"alt_{n}_no"], b[f"alt_{n}_en"])} loading="lazy">'
+                fig += f'<img src="{attr(b[f"src_{n}"])}"{op_class(None, desktop_frame_class(b.get(f"desktop_frame_{n}")))}{bi_attr("alt", b[f"alt_{n}_no"], b[f"alt_{n}_en"])} loading="lazy">'
                 n += 1
             if b.get("caption_no"):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
@@ -642,7 +654,7 @@ def render_vega_body(post, other):
           <p class="article-meta article-meta--date">{bi_esc(m["date_label_no"], m["date_label_en"])}</p>
         </div>''')
     html.append(f'''<figure class="article-header-image fade-in">
-          <img src="{attr(m["header_image"])}"{bi_attr("alt", m["header_image_alt_no"], m["header_image_alt_en"])} loading="eager">
+          <img src="{attr(m["header_image"])}"{op_class(None, desktop_frame_class(m.get("header_frame")))}{bi_attr("alt", m["header_image_alt_no"], m["header_image_alt_en"])} loading="eager">
           <figcaption>{bi_esc(m["header_image_caption_no"], m["header_image_caption_en"])}</figcaption>
         </figure>''')
     html.append('<div class="article-body">')
@@ -663,16 +675,17 @@ def render_vega_body(post, other):
             html.append(f'<div class="fade-in"><p class="pull-quote">{bi_esc(b["no"], b["en"])}</p></div>')
         elif t == "image":
             fig = (f'<figure class="article-image fade-in">\n'
-                   f'          <img src="{attr(b["src"])}"{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy">')
+                   f'          <img src="{attr(b["src"])}"{op_class(None, desktop_frame_class(b.get("desktop_frame")))}{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy">')
             if b.get("caption_no"):
                 fig += f'<figcaption>{bi_esc(b["caption_no"], b["caption_en"])}</figcaption>'
             fig += "</figure>"
             html.append(fig)
         elif t == "video":
             poster = attr(b.get("poster", ""))
+            video_class = op_class(None, ("article-video--tall " + desktop_frame_class(b.get("desktop_frame"))).strip())
             fig = (f'<figure class="article-image fade-in">\n'
                    f'          <video src="{attr(b["src"])}" poster="{poster}" controls playsinline preload="metadata" '
-                   f'class="article-video--tall"></video>')
+                   f'{video_class}></video>')
             if b.get("caption_no"):
                 fig += f'<figcaption>{bi_esc(b["caption_no"], b["caption_en"])}</figcaption>'
             fig += "</figure>"
@@ -908,14 +921,16 @@ OBJECT_POSITION_CLASSES = {
 }
 
 
-def op_class(value):
-    if not value:
-        return ""
-    cls = OBJECT_POSITION_CLASSES.get(str(value).strip())
-    if not cls:
-        sys.exit(f"build.py: ukjent object_position {value!r} — legg til klasse i "
-                 "OBJECT_POSITION_CLASSES + assets/blog.css")
-    return f' class="{cls}"'
+def op_class(value, extra_class=""):
+    classes = []
+    if value:
+        cls = OBJECT_POSITION_CLASSES.get(str(value).strip())
+        if not cls:
+            sys.exit(f"build.py: unknown object_position {value!r}")
+        classes.append(cls)
+    if extra_class:
+        classes.append(extra_class)
+    return (' class="' + " ".join(classes) + '"') if classes else ""
 
 
 def build_sitemap(posts):

@@ -1695,18 +1695,56 @@ body.editorial-layout .article-body .article-image + .protocol-entry[data-chapte
   }
   body.editorial-layout .promo-rail .sidebar-promo { width: 220px; flex: none; }
 }
-/* Preserve media proportions on computers instead of filling a 100%-wide,
-   viewport-height-capped box. The selected ponytail crop remains 7:6;
-   the weight-vest portrait retains its existing 70vh cap. Phone rules stay intact. */
+/* Desktop is the approved phone composition at a bounded larger scale.
+   Reference: 375x812 phone capture, unchanged on phones. Cropped frames keep
+   their ratios/focal points instead of recropping as desktop height changes.
+   Media extend 24px beyond the reading column; captions align to the prose. */
 @media (min-width: 768px) {
-  body.editorial-layout .article-body:has(.protocol-chapter) .article-image img,
-  body.editorial-layout .article-body:has(.protocol-chapter) .article-image video {
-    width: auto; height: auto; max-width: 100%; margin-inline: auto;
+  body.editorial-layout .article-image,
+  body.editorial-layout .image-pair,
+  body.editorial-layout .article-header-image { margin-inline: -24px; }
+  body.editorial-layout .article-image figcaption,
+  body.editorial-layout .image-pair figcaption,
+  body.editorial-layout .article-header-image figcaption { padding-inline: 24px; }
+  body.editorial-layout .article-image img,
+  body.editorial-layout .article-image video,
+  body.editorial-layout .image-pair img,
+  body.editorial-layout .article-header-image img {
+    width: 100%; height: auto; max-width: 100%; max-height: none;
+    margin-inline: 0;
   }
-  body.editorial-layout .article-body:has(.protocol-chapter) .article-image:has(source[src*="baklengs-video-ponytail"]) video {
-    width: min(100%, calc(50vh * 7 / 6)); height: auto;
+  body.editorial-layout .media-frame--natural { aspect-ratio: auto; }
+  body.editorial-layout .media-frame--portrait { aspect-ratio: 375 / 406; }
+  body.editorial-layout .media-frame--hero { aspect-ratio: 375 / 487.2; }
+  body.editorial-layout .media-frame--tall { aspect-ratio: 375 / 568.4; }
+  body.editorial-layout .article-image .media-frame--ponytail {
     aspect-ratio: 7 / 6; object-position: 50% 55%;
+  }
+  body.editorial-layout .article-image .media-frame--vest {
+    width: 85.258333%; margin-inline: auto; aspect-ratio: 9 / 16;
   }
 }
 
 html:has(.protocol-chapter) { scroll-behavior: auto; }
+
+/* Required for the APEX playback-state repair. Append after the existing Apex
+   rules in assets/blog.css. Geometry outside the video stage stays unchanged. */
+.affiliate-feature .apex-video { position: relative; aspect-ratio: 16 / 9; }
+.affiliate-feature .apex-video > .apex-video-cover { height: 100%; }
+.affiliate-feature .apex-video > .apex-video-cover[hidden] { display: none; }
+.affiliate-feature .apex-video > .apex-video-cover img { height: 100%; }
+.affiliate-feature .apex-video > iframe,
+body.editorial-layout .apex-bottom-section .apex-video > iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+.affiliate-feature .apex-video > iframe[aria-hidden="true"] { visibility: hidden; }
+.affiliate-feature .apex-video-cover[aria-disabled="true"] { cursor: progress; }
+.affiliate-feature .apex-video-feedback {
+  margin: 12px 0; font: 300 12px/1.6 var(--font); color: var(--text-light);
+}
+.affiliate-feature .apex-video-feedback a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  color: var(--text-dark); text-decoration: underline; text-underline-offset: 3px;
+}
+.affiliate-feature .apex-video-feedback[hidden],
+.affiliate-feature .apex-video-feedback [hidden] { display: none; }

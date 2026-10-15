@@ -40,3 +40,16 @@ i blokken — da settes teksten inn rått, med vilje.
 **Hvis Actions er rødt:** siten er ikke nede — main serverer alltid sist
 committede HTML. Men den nye posten er ikke publisert. Kjør `python3 build.py
 && python3 tools/verify-build.py` lokalt, fiks feilen, og push ferdig output.
+
+## Medierammer
+
+Publiserte medier bruker `desktop_frame` (`desktop_frame_1`, `_2` for bildepar,
+`header_frame` for Vega-header). Verdiene er `natural`, `portrait`, `hero`,
+`tall`, `ponytail` og `vest`. Rammene viderefører de godkjente utsnittene fra
+telefonreferansen 375×812; desktop skalerer rammen uten nye viewport-høyde-crops.
+Telefonreglene, objektposisjonene og mediefilene bevares. Nye/redigerte medier
+skal få en eksplisitt ramme etter visuell kontroll. `natural` følger kildefilens
+proporsjoner; de øvrige bevarer redaksjonelt valgte utsnitt/relativ bredde.
+
+APEX tilstandstester: `node tools/test-apex-playback.js`. De bruker en falsk
+YouTube API for feilsituasjoner og erstatter ikke test med faktisk avspilling.
