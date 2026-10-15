@@ -291,6 +291,29 @@ for variant, renderer in (("index", "render_index_body"), ("vega", "render_vega_
     check('<ol class="editorial-list">' in rendered and 'class="protocol-entry fade-in"' in rendered,
           f"{variant}: begge listetyper støttes i post-rendereren")
 
+# Chapter navigation must resolve to unique targets even across separate chapters.
+chapter_post = dict(sample_post, variant="index", entry_layout="chapter-index")
+chapter_post["_blocks"] = [{"type": "section-label", "no": "Kapittel", "en": "Chapter"}, sample_entry]
+chapter_html = builder["render_index_body"](chapter_post, chapter_post)
+check('href="#protocol-entry-02"' in chapter_html and 'id="protocol-entry-02"' in chapter_html
+      and 'protocol-entry-number' not in chapter_html,
+      "kapittelindeks lenker til enkeltstående overskrift uten doble tall")
+chapter_post["_blocks"] += [{"type": "section-label", "no": "Neste", "en": "Next"}, sample_entry]
+try:
+    builder["render_index_body"](chapter_post, chapter_post)
+    duplicate_rejected = False
+except ValueError:
+    duplicate_rejected = True
+check(duplicate_rejected, "kapittelindeks avviser dupliserte mål på tvers av kapitler")
+check(builder["media_dimensions"]({"width": "720", "height": "1280"}) == ' width="720" height="1280"',
+      "intrinsiske mediedimensjoner reserverer proporsjonal plass før lasting")
+try:
+    builder["media_dimensions"]({"width": "0", "height": "1280"})
+    invalid_dimensions_rejected = False
+except ValueError:
+    invalid_dimensions_rejected = True
+check(invalid_dimensions_rejected, "ugyldige mediedimensjoner avvises")
+
 # ── (c) canonical / og:url / JSON-LD ───────────
 
 print("(c) canonical / og:url / JSON-LD per side")

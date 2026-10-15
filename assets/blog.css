@@ -1650,3 +1650,63 @@ body.editorial-layout .promo-rail .sidebar-promo { width: auto; min-width: 0; }
   body.editorial-layout .apex-bottom-section .is-playing #apex-details { animation: apex-inline-reveal 350ms ease both; }
   @keyframes apex-inline-reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 }
+
+/* Selected chapter index: numbering navigates; plain headings lead the story.
+   Existing figures remain siblings, preserving their media-specific treatment. */
+body.editorial-layout .article-body .protocol-chapter { margin-top: 48px; }
+body.editorial-layout .article-body .protocol-chapter > .section-label {
+  font-size: 28px; line-height: 1.25; letter-spacing: -.02em;
+}
+body.editorial-layout .protocol-chapter-index {
+  display: flex; flex-wrap: wrap; gap: 0 24px;
+  border-bottom: 1px solid var(--layout-rule); margin-top: 12px; padding-bottom: 8px;
+}
+body.editorial-layout .protocol-chapter-index a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  color: var(--reading-color); font: 400 12px/1.5 var(--font);
+  text-decoration: underline; text-underline-offset: 4px;
+}
+body.editorial-layout .protocol-chapter-index a > span:first-child { font-variant-numeric: tabular-nums; }
+body.editorial-layout .protocol-chapter-index a:focus-visible { outline: 2px solid var(--reading-color); outline-offset: 4px; }
+body.editorial-layout .article-body .protocol-chapter + .protocol-entry { margin-top: 28px; }
+body.editorial-layout .article-body .protocol-entry[data-chapter-entry] { scroll-margin-top: 172px; }
+body.editorial-layout .article-body .protocol-entry[data-chapter-entry] .protocol-entry-heading {
+  display: block; margin: 0 0 12px; padding: 0; border: 0;
+  font-size: 23px; font-weight: 500; letter-spacing: -.025em;
+}
+body.editorial-layout .article-body .protocol-entry[data-chapter-entry] + .article-image { margin-top: 24px; margin-bottom: 0; }
+body.editorial-layout .article-body .article-image + .protocol-entry[data-chapter-entry] { margin-top: 36px; }
+@media (max-width: 700px) {
+  body.editorial-layout .article-body .protocol-chapter > .section-label { font-size: 25px; }
+  body.editorial-layout .protocol-chapter-index { gap: 0 16px; }
+  body.editorial-layout .article-body .protocol-chapter + .protocol-entry { margin-top: 24px; }
+  body.editorial-layout .article-body .protocol-entry[data-chapter-entry] { scroll-margin-top: 148px; }
+  body.editorial-layout .article-body .protocol-entry[data-chapter-entry] .protocol-entry-heading { font-size: 21px; }
+}
+/* Desktop rail placement is independent of Apex's below-article placement.
+   At 1200px there is room for the 640px article, a 220px rail and gutters.
+   A shorter window scrolls the rail rather than moving it below the article. */
+@media (min-width: 1200px) {
+  body.editorial-layout .promo-rail {
+    position: fixed; right: 24px; top: 160px;
+    display: flex; flex-direction: column; gap: 16px;
+    width: 220px; max-width: none; margin: 0; padding: 0;
+    max-height: calc(100dvh - 176px); overflow-y: auto; z-index: 50;
+  }
+  body.editorial-layout .promo-rail .sidebar-promo { width: 220px; flex: none; }
+}
+/* Preserve media proportions on computers instead of filling a 100%-wide,
+   viewport-height-capped box. The selected ponytail crop remains 7:6;
+   the weight-vest portrait retains its existing 70vh cap. Phone rules stay intact. */
+@media (min-width: 768px) {
+  body.editorial-layout .article-body:has(.protocol-chapter) .article-image img,
+  body.editorial-layout .article-body:has(.protocol-chapter) .article-image video {
+    width: auto; height: auto; max-width: 100%; margin-inline: auto;
+  }
+  body.editorial-layout .article-body:has(.protocol-chapter) .article-image:has(source[src*="baklengs-video-ponytail"]) video {
+    width: min(100%, calc(50vh * 7 / 6)); height: auto;
+    aspect-ratio: 7 / 6; object-position: 50% 55%;
+  }
+}
+
+html:has(.protocol-chapter) { scroll-behavior: auto; }

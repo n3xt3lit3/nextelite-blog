@@ -331,7 +331,17 @@ def post_nav_html(other, root=""):
   </div>'''
 
 
-def render_editorial_block(b, escape_all=False):
+def media_dimensions(block):
+    """Optional intrinsic dimensions reserve a proportional box before lazy load."""
+    if not (block.get("width") and block.get("height")):
+        return ""
+    width, height = int(block["width"]), int(block["height"])
+    if width < 1 or height < 1:
+        raise ValueError("media dimensions must be positive integers")
+    return f' width="{width}" height="{height}"'
+
+
+def render_editorial_block(b, escape_all=False, chapter_index=False):
     """Numbered entries use number/title_no/title_en/no/en.
 
     ordered-list no/en values are matching JSON arrays of plain-text items.
@@ -344,8 +354,10 @@ def render_editorial_block(b, escape_all=False):
         number = int(b["number"])
         if number < 1:
             raise ValueError("numbered-entry requires a positive number")
-        return f'''<section class="protocol-entry fade-in">
-          <h3 class="protocol-entry-heading"><span class="protocol-entry-number">{number:02d}</span><span>{bilingual("title_no", "title_en")}</span></h3>
+        anchor = f' id="protocol-entry-{number:02d}" data-chapter-entry="true"' if chapter_index else ""
+        counter = "" if chapter_index else f'<span class="protocol-entry-number">{number:02d}</span>'
+        return f'''<section class="protocol-entry fade-in"{anchor}>
+          <h3 class="protocol-entry-heading">{counter}<span>{bilingual("title_no", "title_en")}</span></h3>
           <p>{bilingual()}</p>
         </section>'''
     if b["type"] == "ordered-list":
@@ -452,7 +464,12 @@ def render_index_body(post, other):
             html.append(_render_disclosure_aside(disclosure_block))
             disclosure_pending = False
 
-    for b in m["_blocks"]:
+    use_chapter_index = m.get("entry_layout") == "chapter-index"
+    if use_chapter_index:
+        numbers = [int(entry["number"]) for entry in m["_blocks"] if entry["type"] == "numbered-entry"]
+        if len(numbers) != len(set(numbers)):
+            raise ValueError("chapter-index requires page-wide unique entry numbers")
+    for block_index, b in enumerate(m["_blocks"]):
         t = b["type"]
         if t == "disclosure":
             # Emiteres auto rett etter foerste figure. Aldri i source-rekkefolge.
@@ -480,7 +497,7 @@ def render_index_body(post, other):
           <p class="l-en">{content}</p>
         </div>''')
         elif t in ("numbered-entry", "ordered-list"):
-            html.append(render_editorial_block(b))
+            html.append(render_editorial_block(b, chapter_index=use_chapter_index))
         elif t == "tagline-code":
             html.append(f'''<div class="fade-in">
           <p class="tagline tagline-code">{block_bi(b)}</p>
@@ -490,8 +507,27 @@ def render_index_body(post, other):
           <p class="tagline-statement">{block_bi(b)}</p>
         </div>''')
         elif t == "section-label":
-            html.append(f'''<div class="section-heading-block fade-in">
-          <h2 class="section-label">{block_bi(b)}</h2>
+            entries = []
+            if use_chapter_index:
+                for following in m["_blocks"][block_index + 1:]:
+                    if following["type"] == "section-label":
+                        break
+                    if following["type"] == "numbered-entry":
+                        entries.append(following)
+            index_html = ""
+            if entries:
+                links = "".join(
+                    f'<a href="#protocol-entry-{int(entry["number"]):02d}">'
+                    f'<span>{int(entry["number"]):02d}</span>'
+                    f'<span>{block_bi(entry, "title_no", "title_en")}</span></a>'
+                    for entry in entries
+                )
+                index_html = ('<div class="protocol-chapter-index" role="navigation"'
+                              ' aria-label="I dette kapittelet" data-aria-no="I dette kapittelet"'
+                              ' data-aria-en="In this chapter">' + links + '</div>')
+            chapter_class = " protocol-chapter" if entries else ""
+            html.append(f'''<div class="section-heading-block fade-in{chapter_class}">
+          <h2 class="section-label">{block_bi(b)}</h2>{index_html}
         </div>''')
         elif t == "pull-quote":
             html.append(f'''<div class="fade-in">
@@ -503,7 +539,7 @@ def render_index_body(post, other):
             # Legger til .article-image--hero-full som overrider max-height 50vh.
             hero_cls = " article-image--hero-full" if str(b.get("hero", "")).lower() == "true" else ""
             fig = (f'<figure class="article-image{hero_cls} fade-in">\n'
-                   f'          <img src="{attr(b["src"])}"{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy"{style}>')
+                   f'          <img src="{attr(b["src"])}"{media_dimensions(b)}{bi_attr("alt", b["alt_no"], b["alt_en"])} loading="lazy"{style}>')
             if b.get("caption_no"):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
@@ -532,10 +568,10 @@ def render_index_body(post, other):
                     f'<source src="{attr(b["src"])}" type="video/mp4">'
                 )
                 fig = (f'<figure class="article-image{hero_cls} fade-in">\n'
-                       f'          <video{poster} controls preload="{preload}" playsinline{muted}{aria}{style}>{sources}</video>')
+                       f'          <video{poster}{media_dimensions(b)} controls preload="{preload}" playsinline{muted}{aria}{style}>{sources}</video>')
             else:
                 fig = (f'<figure class="article-image{hero_cls} fade-in">\n'
-                       f'          <video src="{attr(b["src"])}"{poster} controls preload="{preload}" playsinline{muted}{aria}{style}></video>')
+                       f'          <video src="{attr(b["src"])}"{poster}{media_dimensions(b)} controls preload="{preload}" playsinline{muted}{aria}{style}></video>')
             if b.get("caption_no"):
                 fig += f'<figcaption>{block_bi(b, "caption_no", "caption_en")}</figcaption>'
             fig += "</figure>"
