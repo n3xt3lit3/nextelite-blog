@@ -1699,6 +1699,8 @@ body.editorial-layout .article-body .article-image + .protocol-entry[data-chapte
    rhythm: figures sit inside the reading column instead of filling the screen.
    Width changes only the displayed size; frame ratios and focal points stay. */
 @media (min-width: 768px) {
+  /* Match the reading column to the approved compact main media width. */
+  :where(body.editorial-layout) { --reading-width: 520px; }
   /* Restore the original 17px reading size; phone typography stays as published. */
   body:where(.editorial-layout),
   body:where(.editorial-layout).v-vega { font-size: 17px; line-height: 1.75; }
@@ -1708,7 +1710,7 @@ body.editorial-layout .article-body .article-image + .protocol-entry[data-chapte
   body.editorial-layout .image-pair,
   body.editorial-layout .article-header-image {
     width: min(100%, 520px);
-    margin-inline: auto;
+    margin-inline: 0;
   }
   body.editorial-layout .article-image:has(.media-frame--portrait),
   body.editorial-layout .article-image:has(.media-frame--hero),
