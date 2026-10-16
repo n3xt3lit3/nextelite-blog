@@ -49,7 +49,10 @@ Publiserte medier bruker `desktop_frame` (`desktop_frame_1`, `_2` for bildepar,
 telefonreferansen 375×812; desktop skalerer rammen uten nye viewport-høyde-crops.
 Telefonreglene, objektposisjonene og mediefilene bevares. Nye/redigerte medier
 skal få en eksplisitt ramme etter visuell kontroll. `natural` følger kildefilens
-proporsjoner; de øvrige bevarer redaksjonelt valgte utsnitt/relativ bredde.
+proporsjoner; de øvrige bevarer redaksjonelt valgte utsnitt. Desktop viser
+mediene kompakt: opptil 520px for vanlige figurer, 400px for portrett/hero
+og 300px for høye klipp, med mindre grenser i lave vinduer. Leseteksten er
+17px. Telefonens størrelse, utsnitt og typografi endres ikke.
 
 APEX tilstandstester: `node tools/test-apex-playback.js`. De bruker en falsk
 YouTube API for feilsituasjoner og erstatter ikke test med faktisk avspilling.
