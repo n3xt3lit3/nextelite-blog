@@ -1701,6 +1701,7 @@ body.editorial-layout .article-body .article-image + .protocol-entry[data-chapte
 @media (min-width: 768px) {
   /* Match the reading column to the approved compact main media width. */
   :where(body.editorial-layout) { --reading-width: 520px; }
+  body.editorial-layout .apex-bottom-section { max-width: var(--reading-width); }
   /* Restore the original 17px reading size; phone typography stays as published. */
   body:where(.editorial-layout),
   body:where(.editorial-layout).v-vega { font-size: 17px; line-height: 1.75; }
