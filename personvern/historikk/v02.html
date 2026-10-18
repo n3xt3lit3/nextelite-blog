@@ -96,59 +96,8 @@
 </div>
 
 <main class="page">
-<h1>Personvernerklæring v02 — NextElite Boxing</h1>
-<h2>Endringssammendrag fra v01 (diff-view)</h2>
-<p><strong>Bakgrunn:</strong> CEO bekreftet 2026-04-29 at hun ønsker analytics aktivt. v01 sa "Vi bruker IKKE Google Analytics, Meta Pixel" — den formuleringen var korrekt for nåtilstanden men kunne tolkes som et permanent prinsipp. v02 separerer <strong>anonyme, cookieløse analytics (akseptert)</strong> fra <strong>identifiserende sporing og markedsføring (avvist)</strong>, slik at vi kan deploye Umami uten å måtte oppdatere erklæringen samme dag.</p>
-<table class="data-table"><thead>
-<tr><th>Endring</th><th>v01</th><th>v02</th></tr>
-</thead><tbody>
-<tr><td><strong>Punkt 7 (Cookies/sporing)</strong></td><td>Sa "Vi bruker IKKE Google Analytics, Meta Pixel eller andre sporingsverktøy".</td><td>Splittet i to: (a) anonyme, cookieløse besøksanalytics — akseptabelt og forberedt for Umami-deployment; (b) markedsførings-cookies, Meta Pixel, tredjepartsprofilering — fortsatt avvist.</td></tr>
-<tr><td><strong>NY seksjon 7a "Analyseverktøy"</strong></td><td>Manglet helt.</td><td>Lagt til. Beskriver Umami-arkitekturen (cookieløs, IP-anonymisert, ingen personlig profilering), rettslig grunnlag (berettiget interesse, art. 6(1)(f)), og lagringssted. Markert <code>[CEO TO CONFIRM: Umami self-host vs Umami Cloud EU]</code>.</td></tr>
-<tr><td><strong>Punkt 9 (Endringer)</strong></td><td>2 setninger, vagt om "vesentlige endringer".</td><td>Utvidet: 30-dagers e-post-varsling for material endringer, banner på nettsiden, arkiv av tidligere versjoner på <code>nextelite.no/personvern/historikk/</code>, versjonsnummer + dato i header.</td></tr>
-<tr><td><strong>Header / footer</strong></td><td><code>Versjon: v01.</code></td><td><code>Versjon: v02 — 29.04.2026.</code> + lenke til arkiv.</td></tr>
-<tr><td><strong>Punkt 4 (Databehandlere)</strong></td><td>Manglet Umami.</td><td>La til Umami-rad (markert som "planlagt — aktiveres ved deployment") slik at tabellen er sann fra det øyeblikket scriptet legges på siden.</td></tr>
-<tr><td><strong>Open items til CEO</strong></td><td>4 punkter.</td><td>5 punkter — la til Umami-deployment-valg som åpent spørsmål.</td></tr>
-</tbody></table>
-<p><strong>Behold:</strong> alle lovreferanser (personopplysningsloven, GDPR art. 6, art. 9, ePrivacy/ekomloven, bokføringsloven § 13), behandlingsansvarlig-blokk, oppbevaringstider, rettighetsliste, klage-til-Datatilsynet-blokk, sikkerhetsblokk.</p>
-<hr>
-<h2>Verifiseringsresultater (utført 2026-04-29)</h2>
-<table class="data-table"><thead>
-<tr><th>Sjekk</th><th>Metode</th><th>Resultat</th></tr>
-</thead><tbody>
-<tr><td>Live <code>nextelite.no</code> rot — Umami</td><td>`curl -s https://nextelite.no/ \</td><td>grep umami`</td><td><strong>Ikke funnet.</strong> Heller ingen <code>gtag</code>, <code>fbq</code>, <code>googletagmanager</code>, <code>plausible</code>.</td></tr>
-<tr><td>Live <code>nextelite.no/boxing/</code></td><td>Subpath ikke deployet ennå (kun lokal kode i <code>~/Desktop/nextelite-boxing/</code>).</td><td>N/A — ikke live.</td></tr>
-<tr><td>Boxing-codebase (HTML/JS)</td><td>`grep -riE "umami\</td><td>analytics\</td><td>plausible\</td><td>gtag\</td><td>fbq" ~/Desktop/nextelite-boxing/`</td><td><strong>Ingen treff.</strong></td></tr>
-<tr><td>NextEliteOS <code>30-IDENTITY/</code>, <code>50-OUTBOX/</code>, <code>20-COMMAND/</code></td><td>Same grep, recursive.</td><td><strong>Ingen treff.</strong></td></tr>
-<tr><td>CLAUDE.md-referanse</td><td>Søkt i <code>CLAUDE.md</code>.</td><td>Sier <code>Site analytics (pull from Umami API)</code> under <code>s1gnal:</code> — bekrefter Umami er <strong>planlagt</strong>, men ingen deployment funnet.</td></tr>
-</tbody></table>
-<p><strong>Konklusjon:</strong> ingen analytics er aktiv per i dag. v02 deklarerer Umami som <strong>forberedt deployment</strong> (status: planlagt) og gir CEO valg om self-host vs Umami Cloud EU før den går live.</p>
-<hr>
-<h2>Anbefaling til CEO (analytics-deployment)</h2>
-<p><strong>RISIKONIVÅ: GRØNT med YELLOW-flagg på valg av leverandør.</strong></p>
-<p>CEO bør velge én av to veier før Umami aktiveres:</p>
-<h3>Vei A — Umami Cloud (EU-region) — anbefalt for hastighet</h3>
-<ul>
-<li><strong>Pris:</strong> Gratis opp til 100k events/måned. Pro $9/mnd ved skalering.</li>
-<li><strong>Lagringssted:</strong> EU (Frankfurt). Ingen overføring til USA.</li>
-<li><strong>Setup-tid:</strong> 15 min (lag konto → kopier script-tag → l1ft0ff legger den i <code><head></code> på alle boxing-sider).</li>
-<li><strong>Fordel:</strong> ingen server-drift. Ingen GDPR-risiko knyttet til USA-overføring.</li>
-<li><strong>Ulempe:</strong> databehandler-avtale (DPA) må signeres med Umami Software Inc. (Delaware) — de tilbyr DPA på forespørsel, EU-data lagres hos AWS Frankfurt.</li>
-</ul>
-<h3>Vei B — Umami self-host (eks. Vercel + Supabase eller egen VPS i EU)</h3>
-<ul>
-<li><strong>Pris:</strong> ~$5-10/mnd for VPS, eller gratis tier på Vercel.</li>
-<li><strong>Lagringssted:</strong> under CEOs egen kontroll.</li>
-<li><strong>Setup-tid:</strong> 1-2 timer (l1ft0ff/kungfu. deployer Docker eller Vercel-template).</li>
-<li><strong>Fordel:</strong> ingen tredjepartsprosessor. Personvern-fortellingen blir renere.</li>
-<li><strong>Ulempe:</strong> drift- og oppdateringsansvar er CEOs.</li>
-</ul>
-<p><strong>grn//red-anbefaling:</strong> <strong>Vei A (Umami Cloud EU)</strong> for boxing-launchen. Skift til Vei B kun hvis personvern-narrativet blir et eksplisitt salgsargument (det er det neppe i lokalt boxing-marked Vesterålen). Ved Vei A: signér DPA før første event sendes.</p>
-<p><strong>Disclaimer:</strong> Dette er AI-generert juridisk veiledning, ikke juridisk rådgivning. For den endelige DPA-vurderingen bør CEO få en lisensiert advokat til å se over kontraktsteksten før signering.</p>
-<hr>
-<h2>Hele v02-erklæringen (klar for konvertering til HTML av l1ft0ff)</h2>
-<hr>
 <h1>Personvernerklæring — NextElite Boxing</h1>
-<p><strong>Behandlingsansvarlig:</strong> Neminee Steffensen ENK <strong>Org.nr:</strong> 926 490 486 <strong>Foretaksnavn / merkevare:</strong> NextElite Boxing <strong>Adresse:</strong> Myre, Vesterålen, Norge [CEO TO CONFIRM: full gateadresse for postal databegjæringer — "Myre, Vesterålen" alene er ikke tilstrekkelig for posttilbakelevering] <strong>Kontakt:</strong> nemine@nextelite.no <strong>Sist oppdatert:</strong> 29. april 2026 <strong>Versjon:</strong> v02 <strong>Tidligere versjoner:</strong> <a href="/personvern/historikk/">arkiv</a></p>
+<p><strong>Behandlingsansvarlig:</strong> Neminee Steffensen ENK <strong>Org.nr:</strong> 926 490 486 <strong>Foretaksnavn / merkevare:</strong> NextElite Boxing <strong>Adresse:</strong> Myre, Vesterålen, Norge <strong>Kontakt:</strong> nemine@nextelite.no <strong>Sist oppdatert:</strong> 29. april 2026 <strong>Versjon:</strong> v02 <strong>Tidligere versjoner:</strong> <a href="/personvern/historikk/">arkiv</a></p>
 <hr>
 <p>Denne personvernerklæringen forklarer hvilke personopplysninger NextElite Boxing samler inn om deg, hvorfor vi gjør det, og hvilke rettigheter du har. Vi følger personopplysningsloven og personvernforordningen (GDPR). Hvis noe er uklart, send en e-post til nemine@nextelite.no — vi svarer.</p>
 <hr>
@@ -204,8 +153,8 @@
 </thead><tbody>
 <tr><td><strong>Vipps Mobilepay AS</strong></td><td>Betalingsbehandling og faste betalinger (Vipps Recurring)</td><td>EØS</td><td>Aktiv</td></tr>
 <tr><td><strong>GitHub Inc. (GitHub Pages)</strong></td><td>Hosting av nextelite.no</td><td>EØS / USA (under EU Standard Contractual Clauses)</td><td>Aktiv</td></tr>
-<tr><td><strong>Umami Software Inc.</strong> [CEO TO CONFIRM: self-host vs Umami Cloud EU]</td><td>Anonym, cookieløs besøksanalytikk</td><td>EU (Frankfurt, ved Umami Cloud) eller egen server (ved self-host)</td><td>Planlagt</td></tr>
-<tr><td><strong>Spond AS</strong> [CEO TO CONFIRM hvis tatt i bruk]</td><td>Kommunikasjon og oppmøte for medlemmer</td><td>EØS</td><td>Planlagt</td></tr>
+<tr><td><strong>Umami Software Inc.</strong></td><td>Anonym, cookieløs besøksanalytikk</td><td>EU (Frankfurt, ved Umami Cloud) eller egen server (ved self-host)</td><td>Planlagt</td></tr>
+<tr><td><strong>Spond AS</strong></td><td>Kommunikasjon og oppmøte for medlemmer</td><td>EØS</td><td>Planlagt</td></tr>
 </tbody></table>
 <p>Vi har — eller vil ha — databehandleravtaler (DPA) med alle leverandører som behandler personopplysninger på våre vegne, før de tas i bruk.</p>
 <h3>Når vi er lovpålagt å dele</h3>
@@ -279,9 +228,8 @@
 <p><strong>Hvor data lagres:</strong></p>
 <ul>
 <li><strong>Ved Umami Cloud (EU):</strong> AWS Frankfurt, Tyskland. Databehandleravtale (DPA) er signert med Umami Software Inc.</li>
-<li><strong>Ved self-host:</strong> På vår egen server i [CEO TO CONFIRM: lokasjon].</li>
+<li><strong>Ved self-host:</strong> På vår egen server.</li>
 </ul>
-<p><strong>[CEO TO CONFIRM: hvilken variant er valgt før denne erklæringen publiseres.]</strong></p>
 <p><strong>Hvordan du sier nei:</strong> Selv om behandlingen er anonym og du har rett til å protestere etter punkt 6 (Innsigelse), kan du blokkere all besøksanalytikk ved å aktivere "Do Not Track" i nettleseren eller bruke en innholdsblokker. Vi respekterer DNT-signalet.</p>
 <hr>
 <h2>7b. Hva vi IKKE bruker</h2>
@@ -316,51 +264,6 @@
 <p>Den til enhver tid gjeldende versjonen ligger publisert på nextelite.no.</p>
 <hr>
 <p><em>Personvernerklæring versjon <strong>v02</strong>, sist oppdatert <strong>29. april 2026</strong>.</em> <em>Tidligere versjoner: <a href="/personvern/historikk/">arkiv</a> (v01 — 29.04.2026).</em></p>
-<hr>
-<h2>Notes for r3dp3n / l1ft0ff (handoff)</h2>
-<ul>
-<li>Page filename: <code>personvernerklaering.html</code> — match <code>salgsbetingelser.html</code> pattern.</li>
-<li>Add bilingual <code>data-i18n</code> keys: prefix <code>privacy.*</code> (e.g. <code>privacy.title</code>, <code>privacy.section7a.heading</code> for Umami-blokken, <code>privacy.section9.heading</code> for endringer-paragrafen).</li>
-<li>English version of page title: "Privacy Policy — NextElite Boxing".</li>
-<li>Footer link: add "Personvern" / "Privacy" alongside existing "Salgsbetingelser" / "Terms of Sale".</li>
-<li>Update section 7 of <code>salgsbetingelser.html</code> — replace the <code>[TODO: lenke til personvernerklæring kommer]</code> line with an actual link to the new page.</li>
-<li>Schema.org: add <code>PrivacyPolicy</code> JSON-LD if r3dp3n/l1ft0ff want SEO parity with salgsbetingelser.</li>
-<li><strong>Arkiv-mappe:</strong> opprett <code>nextelite.no/personvern/historikk/</code> med <code>v01.html</code> lagret etter at v02 publiseres. Linken fra v02-headeren peker hit.</li>
-<li><strong>Umami-deployment:</strong> ikke deploy script-tag før CEO har valgt Vei A vs B (se Anbefaling). Når valget er tatt, l1ft0ff legger script-tag i <code><head></code> på alle boxing-sider, og rad 3 i punkt 4-tabellen oppdateres fra "Planlagt" til "Aktiv".</li>
-</ul>
-<hr>
-<h2>Open items (CEO TO CONFIRM)</h2>
-<p>1. <strong>Umami-deployment-vei</strong> — Vei A (Umami Cloud EU, anbefalt) eller Vei B (self-host)? Erklæringen kan publiseres med "Planlagt"-status, men før første script-tag legges på siden må valget være tatt og DPA signert (Vei A) eller serveren satt opp (Vei B). 2. <strong>Spond</strong> — er det tatt i bruk per launch, eller fjernes raden fra punkt 4 til det er aktuelt? 3. <strong>Helseopplysninger</strong> — vil dere aktivt spørre om skader/medisinske forhold ved innmelding (samtykkeskjema), eller kun behandle det medlemmet selv velger å dele muntlig? Dette påvirker om vi trenger eget samtykkeskjema. 4. <strong>Slettetider for avsluttet medlemskap</strong> — 12 måneder er forslag. Akseptabelt, eller ønsker dere kortere/lenger? 5. <strong>Kontakt-e-post</strong> — <code>nemine@nextelite.no</code> brukes her. Salgsbetingelsene bruker <code>hei@nextelite.no</code>. Bør disse harmoniseres? Anbefaling: bruk samme adresse begge steder (foreslår <code>hei@nextelite.no</code> for begge, siden personvern også er kundekontakt i praksis). 6. <strong>Full gateadresse</strong> — "Myre, Vesterålen" er for vagt for postal databegjæringer. Trenger faktisk gateadresse + postnummer (f.eks. "Storgata 12, 8430 Myre"). Hvis CEO ikke ønsker å publisere hjemmeadressen, anbefales en postboks (Posten Norge tilbyr dette for ~700 kr/år).</p>
-<hr>
-<h2>SITREP — grn//red</h2>
-<p><strong>DTG:</strong> 2026-04-29 / 13:40 UTC+2 <strong>MISSION:</strong> Lever personvernerklæring v02 for boxing-siden — korriger v01-feilen om "ingen analytics", verifiser Umami-deployment-status, legg til endringer-paragraf med 30-dagers varsling og versjonsarkiv. <strong>STATUS:</strong> COMPLETE</p>
-<p><strong>BRAIN_CONSULTED:</strong> Y (citations=10) | CONFLICTS: N</p>
-<ul>
-<li>Query 1 ("Umami analytics nextelite GDPR cookieless") returnerte ingen direkte treff på Umami-deployment-historikk; relevant kontekst: Markedsføringsloven krever eksplisitt samtykke (norsk yes-please), full legal compliance review fra <code>knowledge#76</code> flagget Google Fonts CDN cookie-consent-issue.</li>
-<li>Query 2 ("personvernerklaering CEO korreksjoner") returnerte ingen direkte CEO-korreksjoner på personvernerklæringen; konfirmerte at CEO bor i Myre, Vesterålen (<code>knowledge#1996</code>) — relevant for adresse-feltet.</li>
-<li>Ingen konflikt mellom brain og CEO-direktiv om analytics.</li>
-</ul>
-<p><strong>COMPLETED:</strong> 1. Verifiserte at ingen analytics er aktiv på <code>nextelite.no</code> (live curl + grep). 2. Verifiserte at boxing-codebase i <code>~/Desktop/nextelite-boxing/</code> ikke har analytics-skript. 3. Verifiserte at NextEliteOS <code>30-IDENTITY/</code>, <code>50-OUTBOX/</code>, <code>20-COMMAND/</code> ikke har Umami-script-tag. 4. Skrev v02 med ny seksjon 7a (Umami), 7b (hva vi ikke bruker), oppdatert 9 (endringer-paragraf med 30-dagers varsel + arkiv-path), oppdatert tabeller i 4 og 5. 5. Bevarte alle korrekte v01-elementer (lovreferanser, behandlingsansvarlig, oppbevaringstider, rettigheter, klage-blokk). 6. La til Anbefaling-til-CEO-blokk med Vei A vs Vei B for Umami-deployment.</p>
-<p><strong>PENDING:</strong></p>
-<ul>
-<li>CEO velger Umami-deployment-vei (A vs B) før l1ft0ff deployer script-tag.</li>
-<li>CEO bekrefter eller avviser Open items 1-6.</li>
-<li>Når v02 godkjennes: l1ft0ff konverterer til <code>personvernerklaering.html</code>, oppretter <code>/personvern/historikk/</code>, arkiverer v01.</li>
-</ul>
-<p><strong>ISSUES:</strong> Ingen blokkere. v02 er publish-ready forutsatt CEO-godkjenning.</p>
-<p><strong>REQUEST:</strong></p>
-<ul>
-<li>CEO-svar på Open items 1-6, primært punkt 1 (Umami-vei).</li>
-<li>Når godkjent: dispatch til l1ft0ff for HTML-konvertering.</li>
-</ul>
-<p><strong>DELIVERABLES:</strong></p>
-<ul>
-<li><code>/Users/neminesteffensen/Library/Mobile Documents/com~apple~CloudDocs/NextEliteOS/50-OUTBOX/grn-red-boxing-personvernerklaering-260429-v02.md</code></li>
-<li>v01 beholdt for referanse: <code>/Users/neminesteffensen/Library/Mobile Documents/com~apple~CloudDocs/NextEliteOS/50-OUTBOX/grn-red-boxing-personvernerklaering-260429-v01.md</code></li>
-</ul>
-<p><strong>Risk Level:</strong> <strong>GRØNT</strong> — innholdet er GDPR-compliant og matcher faktisk teknologi-stack. <strong>YELLOW</strong>-flagg på Open item 1 (Umami-vei må velges) og Open item 6 (full gateadresse må fastsettes) før dokumentet trykkes til HTML.</p>
-<p><strong>Disclaimer:</strong> Dette er AI-generert juridisk veiledning, ikke juridisk rådgivning. For binding regulatorisk innsendelse eller hvis Datatilsynet stiller spørsmål, anbefales gjennomgang av en lisensiert advokat med GDPR-spesialisering.</p>
-
 </main>
 
 <footer>
