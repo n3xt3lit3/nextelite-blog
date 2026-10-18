@@ -73,7 +73,7 @@ en: Theanine: 200mg in the morning, 200mg at night. Neuro-Mag: two caps morning,
 ::paragraph
 html: true
 no: De to flaskene i boksen: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine og Neuro-Mag</a> (annonselenke). Samme deal.
-en: The two bottles in that box: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine and Neuro-Mag</a> (annonselenke). Same deal.
+en: The two bottles in that box: <a href="https://no.iherb.com/tr/cb?pcodes=THR-50801qty1sid0_LEX-16039qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Thorne Theanine and Neuro-Mag</a> (affiliate link). Same deal.
 
 ::section-label
 no: Pakken kom.
@@ -118,7 +118,7 @@ en: Maybe that's the point. The big moments aren't big. They're just small momen
 ::paragraph
 html: true
 no: Hele bestillingen er seks Thorne-produkter. Basic Nutrients, Super EPA, Magnesium Glysinat, Vitamin C, Rhodiola, Collagen Fit. Akkurat det som sto i pappeska da jeg åpna den i dag. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">Hele handlekurven her</a> (annonselenke). Rabattkoden NHR7699 er på. Du sparer ti prosent. Jeg får betalt for å ha lest Bryan Johnsons protokoll på en fredagskveld. Fair handel.
-en: The whole order is six Thorne products. Basic Nutrients, Super EPA, Magnesium Glycinate, Vitamin C, Rhodiola, Collagen Fit. Exactly what was in the box when I opened it today. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">The full cart is here</a> (annonselenke). Code NHR7699 is already applied. You save ten percent. I get paid for reading Bryan Johnson's protocol on a Friday night. Fair deal.
+en: The whole order is six Thorne products. Basic Nutrients, Super EPA, Magnesium Glycinate, Vitamin C, Rhodiola, Collagen Fit. Exactly what was in the box when I opened it today. <a href="https://no.iherb.com/tr/cb?pcodes=THR-00684qty1sid0_THR-00690qty1sid0_THR-01533qty1sid0_THR-75502qty1sid0_THR-01248qty1sid0_THR-01353qty1sid0&amp;rcode=NHR7699" target="_blank" rel="noopener sponsored">The full cart is here</a> (affiliate link). Code NHR7699 is already applied. You save ten percent. I get paid for reading Bryan Johnson's protocol on a Friday night. Fair deal.
 
 ::section-label
 no: Fortsatt ingen data.
@@ -276,7 +276,7 @@ en: I wear a WHOOP every day. Have done for six months. It's the one tool I trus
 ::paragraph
 html: true
 no: Hvis du vurderer å begynne, så gjør det. Det er det jeg bruker. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">Gratis WHOOP og en måned gratis med min link</a> (annonselenke). Du får en måned gratis. Jeg får kickback. Det betaler for alle timene jeg har brukt på å finne ut hva som faktisk funker. Ingen skam.
-en: Thinking about starting? Do it. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">A free month for you</a> (annonselenke). A kickback for me. I need an excuse to stare at HRV numbers when I should be sleeping. Thanks in advance.
+en: Thinking about starting? Do it. <a href="https://join.whoop.com/D98CE860" target="_blank" rel="noopener sponsored">A free month for you</a> (affiliate link). A kickback for me. I need an excuse to stare at HRV numbers when I should be sleeping. Thanks in advance.
 
 ::section-label
 no: Veien videre.

@@ -650,6 +650,30 @@ footer .tagline {
 .footer-social-link svg {
   display: block;
 }
+.footer-legal {
+  margin-top: 8px;
+  font-family: var(--font);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-light);
+  text-align: left;
+}
+.footer-legal-name {
+  display: block;
+}
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.footer-legal-links a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
 
 .tagline-code {
   font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;

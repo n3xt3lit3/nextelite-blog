@@ -32,7 +32,9 @@
     'nav-hover-schedule': { en: 'SHOW UP', no: 'MØT OPP' },
     'nav-hover-n3xt3lit3': { en: 'XXX', no: 'XXX' },
     'footer-mailing': { en: 'MAILING LIST', no: 'NYHETSBREV' },
-    'footer-boring': { en: 'BORING STUFF', no: 'KJEDELIGE TING' },
+    'footer-privacy': { en: 'Privacy', no: 'Personvern' },
+    'footer-terms': { en: 'Terms of sale', no: 'Salgsbetingelser' },
+    'footer-company': { en: 'Neminee Steffensen ENK · org.nr. 926 490 486', no: 'Neminee Steffensen ENK · org.nr. 926 490 486' },
 
     // === MOBILE BOTTOM NAV LABELS ===
     'mob-nav-home': { en: 'HOME', no: 'HJEM' },
@@ -588,11 +590,6 @@
       no: 'Forbrukerr\u00e5det: telefon +47 23 400 500, <a href="https://www.forbrukerradet.no" target="_blank" rel="noopener">forbrukerradet.no</a>',
       en: 'Norwegian Consumer Council (Forbrukerr\u00e5det): phone +47 23 400 500, <a href="https://www.forbrukerradet.no" target="_blank" rel="noopener">forbrukerradet.no</a>'
     },
-    'salg-section-6-li3': {
-      no: 'EU-kommisjonens nettbaserte klageportal (ODR): <a href="https://ec.europa.eu/odr" target="_blank" rel="noopener">ec.europa.eu/odr</a>',
-      en: 'EU Commission online dispute resolution platform (ODR): <a href="https://ec.europa.eu/odr" target="_blank" rel="noopener">ec.europa.eu/odr</a>'
-    },
-
     // Section 7 \u2014 Personvern / Privacy
     'salg-section-7-title': {
       no: 'Behandling av personopplysninger',
@@ -647,8 +644,8 @@
     'pv-meta-brand-value': { no: 'NextElite Boxing', en: 'NextElite Boxing' },
     'pv-meta-address-label': { no: 'Adresse:', en: 'Address:' },
     'pv-meta-address-value': {
-      no: 'Fjellveien 22A, 8430 Myre, Norge',
-      en: 'Fjellveien 22A, 8430 Myre, Norway'
+      no: 'Fjellveien 22B, 8430 Myre, Norge',
+      en: 'Fjellveien 22B, 8430 Myre, Norway'
     },
     'pv-meta-email-label': { no: 'Kontakt:', en: 'Contact:' },
     'pv-meta-updated-label': { no: 'Sist oppdatert:', en: 'Last updated:' },
@@ -681,8 +678,8 @@
       en: 'Email: <strong>nemine@nextelite.no</strong>'
     },
     'pv-section-1-li2': {
-      no: 'Adresse: <strong>Fjellveien 22A, 8430 Myre, Norge</strong>',
-      en: 'Address: <strong>Fjellveien 22A, 8430 Myre, Norway</strong>'
+      no: 'Adresse: <strong>Fjellveien 22B, 8430 Myre, Norge</strong>',
+      en: 'Address: <strong>Fjellveien 22B, 8430 Myre, Norway</strong>'
     },
 
     // Section 2 — Hvilke personopplysninger / Which personal data

@@ -230,18 +230,16 @@ def nav_html(variant, page, root=""):
     <button class="lang-btn" data-lang-btn="en">EN</button>
   </div>
 </nav>'''
-    # index-varianten. Forsiden: blogg → arkiv/ (var død '#'-lenke, pixel-likt).
-    # Post-/arkivsider: blogg + logo → index.html.
+    # index-varianten. Forsiden: blogg → arkiv/.
+    # Logo peker til forsiden. protokoll og om er fjernet: ingen sider finnes.
     blogg_href = "arkiv/" if page == "home" else f"{root}index.html"
-    logo_href = "#" if page == "home" else f"{root}index.html"
+    logo_href = "/" if page == "home" else f"{root}index.html"
     return f'''<nav>
   <div class="nav-left">
     <a href="{blogg_href}" class="nav-link" data-no="blogg" data-en="blog">blogg</a>
-    <a href="#" class="nav-link">protokoll</a>
   </div>
   <a href="{logo_href}" class="nav-logo">nextelite</a>
   <div class="nav-right">
-    <a href="#" class="nav-link">om</a>
     <div class="lang-toggle desktop-lang">
       <button class="lang-btn active" data-lang-btn="no">NO</button>
       <span class="lang-sep">/</span>
