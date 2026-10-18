@@ -109,10 +109,9 @@ def parse_post(path):
         if k not in meta:
             sys.exit(f"{path}: mangler frontmatter-felt {k!r}")
     # affiliate: true -> Forbrukertilsynet-merkingsplikt. Posten MAA ha
-    # minst én ::disclosure-blokk. bl0g://-spec
-    # (50-OUTBOX/bl0g-cowork-to-published-spec-260612-v01.md): build-feil
-    # er den eneste forsvarbare gaten — et glemt disclosure-flagg er en
-    # legal/compliance-risiko, ikke en stil-feil.
+    # minst én ::disclosure-blokk. Et glemt disclosure-flagg er en
+    # legal/compliance-risiko, ikke en stil-feil, så build-feil er
+    # den eneste forsvarbare gaten.
     if str(meta.get("affiliate", "")).strip().lower() in ("true", "yes", "1"):
         if not any(b["type"] == "disclosure" for b in blocks):
             sys.exit(

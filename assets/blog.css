@@ -23,7 +23,7 @@
   /* Neutral interaction tone matched to the supplied Rhode screenshots. */
   --accent: var(--text);
   /* Brand-magenta: matcher rhode-versjonens hjerte-farge (rhode/blog-rhode.css:42
-     --accent) og NextElite kanon (30-IDENTITY/nextelite-base.css --brand-magenta).
+     --accent) og den delte kanon (assets/ds/nextelite-base.css --brand-magenta).
      Kun for punkt-aksenter (<3-glyf, play-glyph i paused-state); ikke button-bg. */
   --brand-magenta: #E8197A;
   --border: rgba(74, 74, 74, 0.1);

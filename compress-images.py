@@ -19,7 +19,7 @@ import shutil
 from pathlib import Path
 from PIL import Image, ImageOps
 
-IMG_DIR = Path("/Users/neminesteffensen/Desktop/nextelite-blog/img")
+IMG_DIR = Path(__file__).resolve().parent / "img"
 MAX_WIDTH = 2000
 JPG_QUALITY = 85
 WEBP_QUALITY = 82

@@ -2,7 +2,7 @@
 
 Statisk blogg på **nextelite.no**. Serveres av GitHub Pages fra `main` (repo-root er publisert HTML). Build går via `.github/workflows/build.yml` på push til `main`, men repoet inneholder alltid ferdig committet output, så main-HEAD er alltid canonical.
 
-Hovedstyring bor i NextEliteOS-repoet (`CLAUDE.md` + `AGENTS.md` der). Denne fila er lokal disiplin for arbeid i **dette** repoet.
+Hovedstyring bor i et eksternt styringsrepo (`CLAUDE.md` + `AGENTS.md` der). Denne fila er lokal disiplin for arbeid i **dette** repoet.
 
 ## Kommandoer
 
@@ -34,11 +34,11 @@ Ingen dependencies. Ren Python 3 stdlib. Node/npm brukes ikke.
 
 ## Stemme-vakt (kjøres FØR ship)
 
-Utkast skal passere disse to i NextEliteOS-repoet:
+Utkast skal passere voice-lint og voice-score i det eksterne styringsrepoet. Skriptene er ikke sjekket inn her. Kjør dem fra det repoets kommando-mappe:
 
 ```bash
-python3 "/Users/neminesteffensen/Library/Mobile Documents/com~apple~CloudDocs/NextEliteOS/20-COMMAND/blog-voice-lint.py"  <post-fil>
-python3 "/Users/neminesteffensen/Library/Mobile Documents/com~apple~CloudDocs/NextEliteOS/20-COMMAND/blog-voice-score.py" <post-fil>
+python3 blog-voice-lint.py <post-fil>
+python3 blog-voice-score.py <post-fil>
 ```
 
 ## Review-gates (mandatory, i rekkefølge)
@@ -66,4 +66,4 @@ Fiks feilen. Commit ferdig output. Push.
 
 ## Peker til hovedstyring
 
-Alt annet (agent-roster, decision tiers, brand-rules, voice-korreksjoner) styres fra `~/Library/Mobile Documents/com~apple~CloudDocs/NextEliteOS/CLAUDE.md` + `AGENTS.md`. Denne fila er scoped til dette repoet.
+Alt annet (agent-roster, decision tiers, brand-rules, voice-korreksjoner) styres fra `CLAUDE.md` og `AGENTS.md` i det eksterne styringsrepoet. Denne fila er scoped til dette repoet.
