@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" aria-label="NextElite · i bought snake oil. literally. · july 2026">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>i bought snake oil. literally. — share card</title>
+<style>
+  @font-face {
+    font-family: 'Rektorat Heavy';
+    src: url('../fonts/RektoratHeavy-Regular.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #f1f0ed;
+    font-family: 'Rektorat Heavy', 'Inter', -apple-system, sans-serif;
+  }
+
+  .card {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    background: #f1f0ed;
+    overflow: hidden;
+  }
+
+  .watermark {
+    position: absolute;
+    bottom: 48px;
+    left: -8px;
+    font-family: 'Rektorat Heavy', -apple-system, sans-serif;
+    font-size: 220px;
+    font-weight: 800;
+    letter-spacing: -12px;
+    color: rgba(0, 0, 0, 0.04);
+    text-transform: lowercase;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 64px 56px;
+  }
+
+  .title {
+    font-family: 'Rektorat Heavy', -apple-system, sans-serif;
+    font-size: 118px;
+    font-weight: 800;
+    letter-spacing: -5px;
+    color: #67645e;
+    text-transform: lowercase;
+    line-height: 0.88;
+  }
+
+  .xx-mark {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 7px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.07);
+    letter-spacing: 3px;
+    pointer-events: none;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+<div class="card" role="img" aria-label="NextElite · i bought snake oil. literally. · july 2026">
+  <div class="watermark">nextelite</div>
+  <div class="content">
+    <div class="title">i bought<br>snake oil.<br>literally.</div>
+  </div>
+  <div class="xx-mark">XX</div>
+</div>
+</body>
+</html>
