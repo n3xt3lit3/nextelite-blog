@@ -1682,13 +1682,13 @@ body.editorial-layout .article-body .protocol-chapter > .section-label {
   font-size: 28px; line-height: 1.25; letter-spacing: -.02em;
 }
 body.editorial-layout .protocol-chapter-index {
-  display: flex; flex-wrap: wrap; gap: 0 24px;
+  display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: 0;
   border-bottom: 1px solid var(--layout-rule); margin-top: 12px; padding-bottom: 8px;
 }
 body.editorial-layout .protocol-chapter-index a {
   display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
   color: var(--reading-color); font: 400 12px/1.5 var(--font);
-  text-decoration: underline; text-underline-offset: 4px;
+  text-decoration: none;
 }
 body.editorial-layout .protocol-chapter-index a > span:first-child { font-variant-numeric: tabular-nums; }
 body.editorial-layout .protocol-chapter-index a:focus-visible { outline: 2px solid var(--reading-color); outline-offset: 4px; }
@@ -1702,7 +1702,7 @@ body.editorial-layout .article-body .protocol-entry[data-chapter-entry] + .artic
 body.editorial-layout .article-body .article-image + .protocol-entry[data-chapter-entry] { margin-top: 36px; }
 @media (max-width: 700px) {
   body.editorial-layout .article-body .protocol-chapter > .section-label { font-size: 25px; }
-  body.editorial-layout .protocol-chapter-index { gap: 0 16px; }
+  body.editorial-layout .protocol-chapter-index { flex-direction: column; gap: 0; }
   body.editorial-layout .article-body .protocol-chapter + .protocol-entry { margin-top: 24px; }
   body.editorial-layout .article-body .protocol-entry[data-chapter-entry] { scroll-margin-top: 148px; }
   body.editorial-layout .article-body .protocol-entry[data-chapter-entry] .protocol-entry-heading { font-size: 21px; }
